@@ -1,9 +1,12 @@
 import React from 'react'
 import { shallow } from 'enzyme'
+import Radium from 'radium'
 import IconLink from './IconLink'
 
+Radium.TestMode.enable()
+
 it('renders children when passed in', () => {
-  const wrapper = shallow(<IconLink icon="github">test</IconLink>)
+  const wrapper = shallow(<IconLink icon="github" responsive>test</IconLink>)
   expect(wrapper.contains('test')).toBe(true)
 })
 

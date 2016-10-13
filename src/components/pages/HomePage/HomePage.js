@@ -231,7 +231,7 @@ const HomePage = () => {
 
       <c.Heading id="pages" style={{ margin: '0.5rem 1rem' }}>pages</c.Heading>
 
-      <c.ComponentSpec title="HeroTemplate">
+      <c.ComponentSpec title="HomePage">
         <c.HeroTemplate
           logo={<c.LogoLink height={80} />}
           hero={<c.Hero />}
