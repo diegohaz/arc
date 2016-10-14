@@ -1,5 +1,4 @@
-<center>
-<img src="https://cloud.githubusercontent.com/assets/3068563/19393134/ddc11478-9209-11e6-82be-7107cf0ec88e.png" height="100" />
+<img src="https://cloud.githubusercontent.com/assets/3068563/19393134/ddc11478-9209-11e6-82be-7107cf0ec88e.png" height="100">
 
 [![JS Standard Style][standard-image]][standard-url]
 [![Build Status][travis-image]][travis-url]
@@ -8,7 +7,6 @@
 **ARc** (**A**tomic **R**ea**c**t) can be a progressive boilerplate, as much as a set of components or a project's structure proposal based on [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/). You choose how to use it: from a single component to the whole philosophy.
 
 See the [demo](https://diegohaz.github.io/arc).
-</center>
 
 ## Branches
 
