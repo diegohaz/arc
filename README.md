@@ -2,6 +2,7 @@
 
 [![JS Standard Style][standard-image]][standard-url]
 [![Build Status][travis-image]][travis-url]
+[![Coverage Status][codecov-image]][codecov-url]
 
 **ARc** (**A**tomic **R**ea**c**t) can be a progressive boilerplate, as much as a set of components or a project's structure proposal based on [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/). You choose how to use it: from a single component to the whole philosophy.
 
@@ -108,5 +109,5 @@ MIT © [Diego Haz](http://github.com/diegohaz)
 [travis-url]: https://travis-ci.org/diegohaz/arc
 [travis-image]: https://img.shields.io/travis/diegohaz/arc.svg?style=flat-square
 
-[coveralls-url]: https://coveralls.io/r/diegohaz/arc
-[coveralls-image]: https://img.shields.io/coveralls/diegohaz/arc.svg?style=flat-square
+[codecov-url]: https://codecov.io/gh/diegohaz/arc
+[codecov-image]: https://img.shields.io/codecov/c/github/diegohaz/arc.svg?style=flat-square
