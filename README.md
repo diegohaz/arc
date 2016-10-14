@@ -2,7 +2,6 @@
 
 [![JS Standard Style][standard-image]][standard-url]
 [![Build Status][travis-image]][travis-url]
-[![Coveralls Status][coveralls-image]][coveralls-url]
 
 **ARc** (**A**tomic **R**ea**c**t) can be a progressive boilerplate, as much as a set of components or a project's structure proposal based on [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/). You choose how to use it: from a single component to the whole philosophy.
 
