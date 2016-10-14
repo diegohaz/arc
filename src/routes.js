@@ -4,7 +4,7 @@ import { Route, IndexRoute } from 'react-router'
 import { HomePage } from 'components'
 
 const routes = (
-  <Route path="/">
+  <Route path="/*">
     <IndexRoute component={HomePage} />
   </Route>
 )
