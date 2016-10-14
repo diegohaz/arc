@@ -1,0 +1,7 @@
+language: node_js
+node_js:
+  - v4
+  - v5
+  - v6
+script:
+  - npm test -- --coverage
