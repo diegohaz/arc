@@ -1,0 +1,21 @@
+{
+  "name": "generator-arc",
+  "version": "0.0.1",
+  "description": "ARc Yeoman generator",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diegohaz/arc.git"
+  },
+  "author": "Diego Haz <hazdiego@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/diegohaz/arc/issues"
+  },
+  "homepage": "https://github.com/diegohaz/arc#readme"
+}
