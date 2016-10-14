@@ -16,10 +16,6 @@ const HeroTemplate = styled(({ logo, hero, nav, children, footer, ...props }) =>
     </main>
   )
 })`
-  body {
-    margin: 0;
-  }
-
   & .logo {
     margin-top: 1rem;
     text-align: center;
