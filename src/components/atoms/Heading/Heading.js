@@ -1,18 +1,22 @@
 import React, { PropTypes } from 'react'
-import Radium from 'radium'
+import styled from 'styled-components'
 
 import { colors, fonts } from 'components'
 
-const Heading = ({ level, style, children, ...props }) => {
-  return React.createElement(`h${level}`, {
-    ...props,
-    style: [styles.base({ level }), style]
-  }, children)
-}
+const Heading = styled(({ level, children, ...props }) => {
+  return React.createElement(`h${level}`, props, children)
+})`
+  font-family: ${fonts.primary};
+  font-weight: 500;
+  font-size: ${(props) => 0.75 + 1 * (1 / props.level)}rem;
+  margin: 0;
+  margin-top: ${(props) => 1 + 0.5 * (1 / props.level)}rem;
+  margin-bottom: ${(props) => 0.5 + 0.5 * (1 / props.level)}rem;
+  color: ${colors.grayscale[0]}
+`
 
 Heading.propTypes = {
   level: PropTypes.number,
-  style: PropTypes.object,
   children: PropTypes.any
 }
 
@@ -20,14 +24,4 @@ Heading.defaultProps = {
   level: 1
 }
 
-const styles = {
-  base: ({ level }) => ({
-    fontFamily: fonts.primary,
-    fontWeight: 500,
-    fontSize: `${0.75 + 1 * (1 / level)}rem`,
-    margin: `${1 + 0.5 * (1 / level)}rem 0 ${0.5 + 0.5 * (1 / level)}rem`,
-    color: colors.grayscale[0]
-  })
-}
-
-export default Radium(Heading)
+export default Heading

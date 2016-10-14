@@ -1,20 +1,7 @@
-import React, { PropTypes } from 'react'
-import Radium from 'radium'
+import React from 'react'
 
 import logo from '!url!./logo.svg'
 
-const LogoImage = ({ style, ...props }) => {
-  return (
-    <img alt="Logo" width="100" {...props} src={logo} style={[styles.base, style]} />
-  )
-}
+const LogoImage = (props) => <img alt="Logo" width="100" {...props} src={logo} />
 
-LogoImage.propTypes = {
-  style: PropTypes.object
-}
-
-const styles = {
-  base: {}
-}
-
-export default Radium(LogoImage)
+export default LogoImage

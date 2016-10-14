@@ -1,49 +1,38 @@
 import React, { PropTypes } from 'react'
-import Radium from 'radium'
+import styled from 'styled-components'
 
 import { Icon, Link } from 'components'
 
-const IconLink = ({ style, icon, right, responsive, children, ...props }) => {
-  const iconElement = (
-    <Icon size={16} icon={icon} style={styles.icon({ right, children, responsive })} />
-  )
+const IconLink = styled(({ icon, right, responsive, children, ...props }) => {
+  const iconElement = <Icon size={16} icon={icon} className="icon" />
   return (
-    <Link {...props} style={{ ...styles.base, ...style }}>
+    <Link {...props}>
       {right || iconElement}
-      <span style={styles.children({ responsive })}>{children}</span>
+      <span className="text">{children}</span>
       {right && iconElement}
     </Link>
   )
-}
+})`
+  & > .text {
+    vertical-align: middle;
+    @media screen and (max-width: 420px) {
+      display: ${(props) => props.responsive && 'none'};
+    }
+  }
+
+  & > .icon {
+    margin: ${(props) => props.children ? (props.right ? '0 0 0 0.3rem' : '0 0.3rem 0 0') : 0};
+    @media screen and (max-width: 420px) {
+      margin: 0;
+    }
+  }
+`
 
 IconLink.propTypes = {
-  style: PropTypes.object,
   icon: PropTypes.string.isRequired,
-  right: PropTypes.bool,
   responsive: PropTypes.bool,
+  right: PropTypes.bool,
   children: PropTypes.any
 }
 
-const styles = {
-  base: {
-    display: 'inline-flex',
-    alignItems: 'center'
-  },
-  children: ({ responsive }) => ({
-    ...responsive && {
-      '@media screen and (max-width: 420px)': {
-        display: 'none'
-      }
-    }
-  }),
-  icon: ({ right, children, responsive }) => ({
-    margin: children ? (right ? '0 0 0 0.3rem' : '0 0.3rem 0 0') : 0,
-    ...responsive && {
-      '@media screen and (max-width: 420px)': {
-        margin: 0
-      }
-    }
-  })
-}
-
-export default Radium(IconLink)
+export default IconLink

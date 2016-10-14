@@ -1,29 +1,24 @@
 import React, { PropTypes } from 'react'
-import Radium from 'radium'
+import styled from 'styled-components'
 
 import { LogoImage, Link } from 'components'
 
-const LogoLink = ({ style, width, height, ...props }) => {
+const LogoLink = styled(({ width, height, ...props }) => {
   width = width || (height ? undefined : 80)
   return (
-    <Link href="#" {...props} style={{ ...styles.base, ...style }}>
+    <Link href="#" {...props}>
       <LogoImage width={width} height={height} />
     </Link>
   )
-}
+})`
+  &:hover {
+    text-decoration: none;
+  }
+`
 
 LogoLink.propTypes = {
-  style: PropTypes.object,
   width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   height: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 }
 
-const styles = {
-  base: {
-    ':hover': {
-      textDecoration: 'none'
-    }
-  }
-}
-
-export default Radium(LogoLink)
+export default LogoLink

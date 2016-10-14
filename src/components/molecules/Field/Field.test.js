@@ -14,16 +14,16 @@ it('renders styles when passed in', () => {
 })
 
 it('renders label when passed in', () => {
-  const wrapper = shallow(<Field name="name" label="foo label" />)
+  const wrapper = shallow(<Field name="name" label="foo label" />).shallow()
   expect(wrapper.contains('foo label')).toBe(true)
 })
 
 it('renders error when passed in along with invalid', () => {
-  const wrapper = shallow(<Field name="name" error="foo error" invalid />)
+  const wrapper = shallow(<Field name="name" error="foo error" invalid />).shallow()
   expect(wrapper.contains('foo error')).toBe(true)
 })
 
 it('does not render error when passed in without invalid', () => {
-  const wrapper = shallow(<Field name="name" error="foo error" />)
+  const wrapper = shallow(<Field name="name" error="foo error" />).shallow()
   expect(wrapper.contains('foo error')).toBe(false)
 })

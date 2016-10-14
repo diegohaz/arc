@@ -18,9 +18,9 @@ it('renders styles when passed in', () => {
   expect(wrapper.prop('style').color).toBe('black')
 })
 
-it('renders different style when prop inline is passed in', () => {
+it('renders differently when prop inline is passed in', () => {
   const wrapper = shallow(<PreformattedText />)
-  const style = wrapper.prop('style')
+  const element = wrapper.debug()
   wrapper.setProps({ inline: true })
-  expect(wrapper.prop('style')).not.toEqual(style)
+  expect(wrapper.debug()).not.toEqual(element)
 })

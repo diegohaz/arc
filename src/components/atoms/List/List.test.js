@@ -19,11 +19,11 @@ it('renders styles when passed in', () => {
 })
 
 it('renders ul by default', () => {
-  const wrapper = shallow(<List />)
+  const wrapper = shallow(<List />).shallow()
   expect(wrapper.find('ul').length).toBeGreaterThan(0)
 })
 
 it('renders ol when ordered prop is passed in', () => {
-  const wrapper = shallow(<List ordered />)
+  const wrapper = shallow(<List ordered />).shallow()
   expect(wrapper.find('ol').length).toBeGreaterThan(0)
 })

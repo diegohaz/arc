@@ -19,6 +19,6 @@ it('renders styles when passed in', () => {
 })
 
 it('renders cite when passed in', () => {
-  const wrapper = shallow(<Blockquote cite="foo" />)
+  const wrapper = shallow(<Blockquote cite="foo" />).shallow()
   expect(wrapper.contains('foo')).toBe(true)
 })

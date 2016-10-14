@@ -7,7 +7,7 @@ jest.setMock('copy-to-clipboard', copy)
 const ColorBox = require('./ColorBox').default
 
 it('renders hex', () => {
-  const wrapper = shallow(<ColorBox hex="#000" />)
+  const wrapper = shallow(<ColorBox hex="#000" />).shallow()
   expect(wrapper.contains('#000')).toBe(true)
 })
 
@@ -23,13 +23,13 @@ it('renders styles when passed in', () => {
 })
 
 it('copies hex to clipboard', () => {
-  const wrapper = shallow(<ColorBox hex="#000" />)
+  const wrapper = shallow(<ColorBox hex="#000" />).shallow()
   wrapper.simulate('click')
   expect(copy).toBeCalledWith('#000')
 })
 
 it('sets state when hex has been succesfully copied', () => {
-  const wrapper = shallow(<ColorBox hex="#fff" />)
+  const wrapper = shallow(<ColorBox hex="#fff" />).shallow()
   jest.useFakeTimers()
   copy.mockReturnValue(true)
 

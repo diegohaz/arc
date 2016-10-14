@@ -1,18 +1,18 @@
 import React, { PropTypes } from 'react'
-import Radium from 'radium'
+import styled from 'styled-components'
 
 import { fonts, colors, Link } from 'components'
 
-const renderLink = (item, style) =>
-  <Link href={`#${item}`} style={[styles.link, style]}>{item}</Link>
+const renderLink = (item, className) =>
+  <Link href={`#${item}`} className={className || 'link'}>{item}</Link>
 
 const renderList = (items) => (
-  <ul style={styles.items}>
-    {items.map((item, i) => <li key={i}>{renderLink(item, styles.innerLink)}</li>)}
+  <ul className="list">
+    {items.map((item, i) => <li key={i}>{renderLink(item, 'inner-link')}</li>)}
   </ul>
 )
-const PrimaryNavigation = ({
-  style,
+
+const PrimaryNavigation = styled(({
   globals,
   atoms,
   molecules,
@@ -22,7 +22,7 @@ const PrimaryNavigation = ({
   ...props
 }) => {
   return (
-    <nav {...props} style={[styles.base, style]}>
+    <nav {...props}>
       {globals && <li>{renderLink('globals')}{renderList(globals)}</li>}
       {atoms && <li>{renderLink('atoms')}{renderList(atoms)}</li>}
       {molecules && <li>{renderLink('molecules')}{renderList(molecules)}</li>}
@@ -31,10 +31,32 @@ const PrimaryNavigation = ({
       {pages && <li>{renderLink('pages')}{renderList(pages)}</li>}
     </nav>
   )
-}
+})`
+  display: inline-block;
+  font-family: ${fonts.primary};
+  margin: 1rem 0;
+  padding-left: 1.6rem;
+  color: ${colors.grayscale[0]};
+  list-style: none;
+  text-align: right;
+
+  & .list {
+    list-style: none;
+    padding-left: 0;
+    line-height: 1.3rem;
+  }
+
+  & .link {
+    text-transform: uppercase;
+  }
+
+  & .inner-link {
+    font-weight: 300;
+    color: ${colors.grayscale[1]}
+  }
+`
 
 PrimaryNavigation.propTypes = {
-  style: PropTypes.object,
   globals: PropTypes.array,
   atoms: PropTypes.array,
   molecules: PropTypes.array,
@@ -43,29 +65,4 @@ PrimaryNavigation.propTypes = {
   pages: PropTypes.array
 }
 
-const styles = {
-  base: {
-    display: 'inline-block',
-    fontFamily: fonts.primary,
-    margin: '1rem 0',
-    paddingLeft: '1.6rem',
-    color: colors.grayscale[0],
-    listStyle: 'none',
-    textAlign: 'right'
-  },
-  items: {
-    listStyle: 'none',
-    paddingLeft: 0,
-    lineHeight: '1.3rem'
-  },
-  link: {
-    textTransform: 'uppercase'
-  },
-  innerLink: {
-    textTransform: 'none',
-    fontWeight: 300,
-    color: colors.grayscale[1]
-  }
-}
-
-export default Radium(PrimaryNavigation)
+export default PrimaryNavigation

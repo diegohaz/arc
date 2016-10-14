@@ -1,18 +1,20 @@
 import React, { PropTypes, Component } from 'react'
-import Radium from 'radium'
+import styled from 'styled-components'
 import copy from 'copy-to-clipboard'
 
 import { fonts } from 'components'
 
 class ColorBox extends Component {
   static propTypes = {
-    style: PropTypes.object,
     hex: PropTypes.string.isRequired
   }
 
   constructor (props) {
     super(props)
     this.copyToClipboard = this.copyToClipboard.bind(this)
+    this.state = {
+      copied: false
+    }
   }
 
   copyToClipboard () {
@@ -24,35 +26,32 @@ class ColorBox extends Component {
   }
 
   render () {
-    const { style, hex, ...props } = this.props
+    const { hex, ...props } = this.props
     return (
-      <div {...props} style={[styles.base({ hex }), style]} onClick={this.copyToClipboard}>
-        <div style={styles.hex}>{this.state.copied ? 'Copied' : hex}</div>
+      <div {...props} onClick={this.copyToClipboard}>
+        <div>{this.state.copied ? 'Copied' : hex}</div>
       </div>
     )
   }
 }
 
-const styles = {
-  base: ({ hex }) => ({
-    display: 'inline-block',
-    position: 'relative',
-    fontFamily: fonts.primary,
-    width: '6.25rem',
-    height: '6.25rem',
-    backgroundColor: hex,
-    cursor: 'pointer'
-  }),
-  hex: {
-    position: 'absolute',
-    color: '#fff',
-    backgroundColor: 'rgba(0,0,0,0.3)',
-    width: '100%',
-    lineHeight: '2rem',
-    fontSize: '1rem',
-    bottom: 0,
-    textAlign: 'center'
-  }
-}
+export default styled(ColorBox)`
+  display: inline-block;
+  position: relative;
+  font-family: ${fonts.primary};
+  width: 6.25rem;
+  height: 6.25rem;
+  background-color: ${(props) => props.hex};
+  cursor: pointer;
 
-export default Radium(ColorBox)
+  & > div {
+    position: absolute;
+    color: #fff;
+    background-color: rgba(0,0,0,0.3);
+    width: 100%;
+    line-height: 2rem;
+    font-size: 1rem;
+    bottom: 0;
+    text-align: center;
+  }
+`

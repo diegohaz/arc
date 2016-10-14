@@ -1,29 +1,21 @@
 import React, { PropTypes } from 'react'
-import Radium from 'radium'
+import styled from 'styled-components'
 
 import { colors, fonts } from 'components'
 
-const List = ({ ordered, style, children, ...props }) => {
-  return React.createElement(ordered ? 'ol' : 'ul', {
-    ...props,
-    style: [styles.base({ ordered }), style]
-  }, children)
-}
+const List = styled(({ ordered, children, ...props }) => {
+  return React.createElement(ordered ? 'ol' : 'ul', props, children)
+})`
+  font-family: ${fonts.primary};
+  margin: 1rem 0;
+  padding-left: 1.6rem;
+  line-height: 1.7rem;
+  color: ${colors.grayscale[0]}
+`
 
 List.propTypes = {
   ordered: PropTypes.bool,
-  style: PropTypes.object,
   children: PropTypes.any
 }
 
-const styles = {
-  base: ({ ordered }) => ({
-    fontFamily: fonts.primary,
-    margin: '1rem 0',
-    paddingLeft: '1.6rem',
-    lineHeight: '1.7rem',
-    color: colors.grayscale[0]
-  })
-}
-
-export default Radium(List)
+export default List

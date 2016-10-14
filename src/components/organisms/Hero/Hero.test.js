@@ -1,12 +1,9 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import Radium from 'radium'
 import Hero from './Hero'
 
-Radium.TestMode.enable()
-
 it('renders props when passed in', () => {
-  const wrapper = shallow(<Hero id="foo" />)
+  const wrapper = shallow(<Hero id="foo" />).shallow()
   expect(wrapper.find({ id: 'foo' }).length).toBeGreaterThan(0)
 })
 

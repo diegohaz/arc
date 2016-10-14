@@ -1,22 +1,16 @@
 import React, { PropTypes } from 'react'
-import Radium from 'radium'
+import styled from 'styled-components'
 
-const TableCell = ({ style, heading, children, ...props }) => {
-  style = [styles.base({ heading }), style]
-  return React.createElement(heading ? 'th' : 'td', { ...props, style }, children)
-}
+const TableCell = styled(({ heading, children, ...props }) => {
+  return React.createElement(heading ? 'th' : 'td', props, children)
+})`
+  text-align: left;
+  padding: 0.75rem;
+`
 
 TableCell.propTypes = {
-  style: PropTypes.object,
   heading: PropTypes.bool,
   children: PropTypes.any
 }
 
-const styles = {
-  base: ({ heading }) => ({
-    textAlign: 'left',
-    padding: '0.75rem'
-  })
-}
-
-export default Radium(TableCell)
+export default TableCell

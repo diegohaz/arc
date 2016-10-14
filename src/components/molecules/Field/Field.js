@@ -1,29 +1,30 @@
 import React, { PropTypes } from 'react'
-import Radium from 'radium'
+import styled from 'styled-components'
 
 import { colors, fonts, Label, Input } from 'components'
 
-const Field = ({ style, error, name, invalid, label, type, ...props }) => {
-  const inputProps = {
-    id: name,
-    type,
-    invalid,
-    'aria-describedby': `${name}Error`,
-    ...props
-  }
+const Field = styled(({ error, name, invalid, label, type, className, ...props }) => {
+  const inputProps = { id: name, type, invalid, 'aria-describedby': `${name}Error`, ...props }
   return (
-    <div style={[styles.base, style]}>
+    <div className={className}>
       {label && <Label htmlFor={inputProps.id}>{label}</Label>}
       <Input {...inputProps} />
       {invalid && error &&
-        <div id={`${name}Error`} role="alert" style={styles.error}>{error}</div>
+        <div id={`${name}Error`} role="alert">{error}</div>
       }
     </div>
   )
-}
+})`
+  marginBottom: 1rem;
+
+  & *[id$=Error] {
+    font-family: ${fonts.primary};
+    color: ${colors.danger[1]};
+    margin: 0.5rem 0 0;
+  }
+`
 
 Field.propTypes = {
-  style: PropTypes.object,
   name: PropTypes.string.isRequired,
   invalid: PropTypes.bool,
   error: PropTypes.string,
@@ -35,15 +36,4 @@ Field.defaultProps = {
   type: 'text'
 }
 
-const styles = {
-  base: {
-    marginBottom: '1rem'
-  },
-  error: {
-    fontFamily: fonts.primary,
-    color: colors.danger[1],
-    margin: '0.5rem 0 0'
-  }
-}
-
-export default Radium(Field)
+export default Field

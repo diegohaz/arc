@@ -14,39 +14,39 @@ it('renders styles when passed in', () => {
 })
 
 it('renders input by default', () => {
-  const wrapper = shallow(<Input />)
+  const wrapper = shallow(<Input />).shallow()
   expect(wrapper.find('input').length).toBeGreaterThan(0)
 })
 
 it('renders textarea when type is textarea', () => {
-  const wrapper = shallow(<Input type="textarea" />)
+  const wrapper = shallow(<Input type="textarea" />).shallow()
   expect(wrapper.find('textarea').length).toBeGreaterThan(0)
 })
 
-it('renders different style when prop invalid is passed in', () => {
+it('renders differently when prop invalid is passed in', () => {
   const wrapper = shallow(<Input />)
-  const style = wrapper.prop('style')
+  const element = wrapper.debug()
   wrapper.setProps({ invalid: true })
-  expect(wrapper.prop('style')).not.toEqual(style)
+  expect(wrapper.debug()).not.toEqual(element)
 })
 
-it('renders different style when type is textarea', () => {
+it('renders differently when type is textarea', () => {
   const wrapper = shallow(<Input />)
-  const style = wrapper.prop('style')
+  const element = wrapper.debug()
   wrapper.setProps({ type: 'textarea' })
-  expect(wrapper.prop('style')).not.toEqual(style)
+  expect(wrapper.debug()).not.toEqual(element)
 })
 
-it('renders different style when type is radio', () => {
+it('renders differently when type is radio', () => {
   const wrapper = shallow(<Input />)
-  const style = wrapper.prop('style')
+  const element = wrapper.debug()
   wrapper.setProps({ type: 'radio' })
-  expect(wrapper.prop('style')).not.toEqual(style)
+  expect(wrapper.debug()).not.toEqual(element)
 })
 
-it('renders different style when type is checkbox', () => {
+it('renders differently when type is checkbox', () => {
   const wrapper = shallow(<Input />)
-  const style = wrapper.prop('style')
+  const element = wrapper.debug()
   wrapper.setProps({ type: 'checkbox' })
-  expect(wrapper.prop('style')).not.toEqual(style)
+  expect(wrapper.debug()).not.toEqual(element)
 })

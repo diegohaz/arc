@@ -1,13 +1,10 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import Radium from 'radium'
 import HeroTemplate from './HeroTemplate'
-
-Radium.TestMode.enable()
 
 const render = () => shallow(
   <HeroTemplate logo="logo" hero="hero" nav="nav" footer="footer">test</HeroTemplate>
-)
+).shallow()
 
 it('renders children when passed in', () => {
   const wrapper = render('test')

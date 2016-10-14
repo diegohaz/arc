@@ -1,9 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import Radium from 'radium'
 import IconLink from './IconLink'
-
-Radium.TestMode.enable()
 
 it('renders children when passed in', () => {
   const wrapper = shallow(<IconLink icon="github" responsive>test</IconLink>)
@@ -22,11 +19,11 @@ it('renders styles when passed in', () => {
 })
 
 it('renders icon on left by default', () => {
-  const wrapper = shallow(<IconLink icon="github">test</IconLink>)
+  const wrapper = shallow(<IconLink icon="github">test</IconLink>).shallow()
   expect(wrapper.children().at(0).prop('icon')).toBe('github')
 })
 
 it('renders icon on right when prop is passed in', () => {
-  const wrapper = shallow(<IconLink icon="github" right>test</IconLink>)
+  const wrapper = shallow(<IconLink icon="github" right>test</IconLink>).shallow()
   expect(wrapper.children().at(1).prop('icon')).toBe('github')
 })

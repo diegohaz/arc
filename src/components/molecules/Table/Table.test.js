@@ -19,16 +19,16 @@ it('renders styles when passed in', () => {
 })
 
 it('renders caption when passed in', () => {
-  const wrapper = shallow(<Table caption="test caption" />)
+  const wrapper = shallow(<Table caption="test caption" />).shallow()
   expect(wrapper.contains('test caption')).toBe(true)
 })
 
 it('renders head when passed in', () => {
-  const wrapper = shallow(<Table head="test head" />)
+  const wrapper = shallow(<Table head="test head" />).shallow()
   expect(wrapper.contains('test head')).toBe(true)
 })
 
 it('renders foot when passed in', () => {
-  const wrapper = shallow(<Table foot="test foot" />)
+  const wrapper = shallow(<Table foot="test foot" />).shallow()
   expect(wrapper.contains('test foot')).toBe(true)
 })

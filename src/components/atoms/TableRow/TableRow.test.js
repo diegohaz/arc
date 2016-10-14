@@ -18,9 +18,9 @@ it('renders styles when passed in', () => {
   expect(wrapper.prop('style').color).toBe('black')
 })
 
-it('renders different style when prop filled is passed in', () => {
+it('renders differently when prop filled is passed in', () => {
   const wrapper = shallow(<TableRow />)
-  const style = wrapper.prop('style')
+  const element = wrapper.debug()
   wrapper.setProps({ filled: true })
-  expect(wrapper.prop('style')).not.toEqual(style)
+  expect(wrapper.debug()).not.toEqual(element)
 })

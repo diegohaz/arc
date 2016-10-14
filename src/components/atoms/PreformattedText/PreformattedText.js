@@ -1,27 +1,17 @@
-import React, { PropTypes } from 'react'
-import Radium from 'radium'
+import { PropTypes } from 'react'
+import styled from 'styled-components'
 
 import { colors, fonts } from 'components'
 
-const PreformattedText = ({ style, inline, children, ...props }) => {
-  return (
-    <pre {...props} style={[styles.base({ inline }), style]}>{children}</pre>
-  )
-}
+const PreformattedText = styled.pre`
+  font-family: ${fonts.pre};
+  display: ${(props) => props.inline ? 'inline' : 'block'};
+  backgroundColor: ${[ ...colors.grayscale ].reverse()[1]};
+  padding: ${(props) => props.inline ? 0 : '1rem'};
+`
 
 PreformattedText.propTypes = {
-  style: PropTypes.object,
-  children: PropTypes.string,
   inline: PropTypes.bool
 }
 
-const styles = {
-  base: ({ inline }) => ({
-    fontFamily: fonts.pre,
-    display: inline ? 'inline' : 'block',
-    backgroundColor: [ ...colors.grayscale ].reverse()[1],
-    padding: inline ? 0 : '1rem'
-  })
-}
-
-export default Radium(PreformattedText)
+export default PreformattedText

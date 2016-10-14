@@ -1,20 +1,32 @@
 import React, { PropTypes } from 'react'
-import Radium from 'radium'
+import styled from 'styled-components'
 
 import { Icon, Button } from 'components'
 
-const IconButton = ({ icon, right, responsive, children, ...props }) => {
-  const iconElement = (
-    <Icon size={16} icon={icon} style={styles.icon({ right, children, responsive })} />
-  )
+const IconButton = styled(({ icon, right, responsive, children, ...props }) => {
+  const iconElement = <Icon size={16} icon={icon} className="icon" />
   return (
     <Button {...props}>
       {right || iconElement}
-      <span style={styles.children({ responsive })}>{children}</span>
+      <span className="text">{children}</span>
       {right && iconElement}
     </Button>
   )
-}
+})`
+  & > .text {
+    vertical-align: middle;
+    @media screen and (max-width: 420px) {
+      display: ${(props) => props.responsive && 'none'};
+    }
+  }
+
+  & > .icon {
+    margin: ${(props) => props.children ? (props.right ? '0 0 0 0.5rem' : '0 0.5rem 0 0') : 0};
+    @media screen and (max-width: 420px) {
+      margin: 0;
+    }
+  }
+`
 
 IconButton.propTypes = {
   icon: PropTypes.string.isRequired,
@@ -23,22 +35,4 @@ IconButton.propTypes = {
   children: PropTypes.any
 }
 
-const styles = {
-  children: ({ responsive }) => ({
-    ...responsive && {
-      '@media screen and (max-width: 420px)': {
-        display: 'none'
-      }
-    }
-  }),
-  icon: ({ right, children, responsive }) => ({
-    margin: children ? (right ? '0 0 0 0.5rem' : '0 0.5rem 0 0') : 0,
-    ...responsive && {
-      '@media screen and (max-width: 420px)': {
-        margin: 0
-      }
-    }
-  })
-}
-
-export default Radium(IconButton)
+export default IconButton

@@ -1,24 +1,10 @@
-import React, { PropTypes } from 'react'
-import Radium from 'radium'
+import styled from 'styled-components'
 
 import { colors } from 'components'
 
-const HorizontalRule = ({ style, ...props }) => {
-  return (
-    <hr {...props} style={[styles.base, style]} />
-  )
-}
+const HorizontalRule = styled.hr`
+  border: 1px solid ${colors.grayscale[4]};
+  border-width: 0 0 1px;
+`
 
-HorizontalRule.propTypes = {
-  style: PropTypes.object
-}
-
-const styles = {
-  base: {
-    borderColor: colors.grayscale[4],
-    borderStyle: 'solid',
-    borderWidth: '0 0 1px'
-  }
-}
-
-export default Radium(HorizontalRule)
+export default HorizontalRule

@@ -1,22 +1,51 @@
 import React, { PropTypes } from 'react'
-import Radium, { Style } from 'radium'
+import styled from 'styled-components'
 
-const HeroTemplate = ({ logo, hero, nav, children, footer }) => {
+const HeroTemplate = styled(({ logo, hero, nav, children, footer, ...props }) => {
   return (
-    <main style={styles.main}>
-      <Style scopeSelector="body" rules={{ margin: 0 }} />
-      <header style={styles.header}>
-        <div style={styles.logo}>{logo}</div>
-        <div style={styles.hero}>{hero}</div>
+    <main {...props}>
+      <header>
+        <div className="logo">{logo}</div>
+        <div className="hero">{hero}</div>
       </header>
-      <section style={styles.body}>
-        <div style={styles.nav}>{nav}</div>
-        <div style={styles.content}>{children}</div>
+      <section className="middle">
+        <div className="nav">{nav}</div>
+        <div className="content">{children}</div>
       </section>
-      <section style={styles.footer}>{footer}</section>
+      <section>{footer}</section>
     </main>
   )
-}
+})`
+  body {
+    margin: 0;
+  }
+
+  & .logo {
+    margin-top: 1rem;
+    text-align: center;
+  }
+
+  & .hero {
+    margin: 1rem 0;
+  }
+
+  & .middle {
+    max-width: 960px;
+    display: flex;
+    margin: 0 auto;
+  }
+
+  & .nav {
+    margin-right: 2rem;
+    @media screen and (max-width: 640px) {
+      display: none;
+    }
+  }
+
+  & .content {
+    flex: 1;
+  }
+`
 
 HeroTemplate.propTypes = {
   logo: PropTypes.node.isRequired,
@@ -26,29 +55,4 @@ HeroTemplate.propTypes = {
   footer: PropTypes.node.isRequired
 }
 
-const styles = {
-  logo: {
-    marginTop: '1rem',
-    textAlign: 'center'
-  },
-  hero: {
-    margin: '1rem 0'
-  },
-  body: {
-    maxWidth: 960,
-    display: 'flex',
-    margin: '0 auto'
-  },
-  nav: {
-    marginRight: '2rem',
-    '@media screen and (max-width: 640px)': {
-      display: 'none'
-    }
-  },
-  content: {
-    flex: 1,
-    width: '100%'
-  }
-}
-
-export default Radium(HeroTemplate)
+export default HeroTemplate

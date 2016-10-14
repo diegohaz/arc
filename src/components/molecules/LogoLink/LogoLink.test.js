@@ -14,16 +14,16 @@ it('renders styles when passed in', () => {
 })
 
 it('has default width', () => {
-  const wrapper = shallow(<LogoLink />)
+  const wrapper = shallow(<LogoLink />).shallow()
   expect(wrapper.find({ width: 80 }).length).toBeGreaterThan(0)
 })
 
 it('sets width when passed in', () => {
-  const wrapper = shallow(<LogoLink width={100} />)
+  const wrapper = shallow(<LogoLink width={100} />).shallow()
   expect(wrapper.find({ width: 100, height: undefined }).length).toBeGreaterThan(0)
 })
 
 it('sets height when passed in', () => {
-  const wrapper = shallow(<LogoLink height={100} />)
+  const wrapper = shallow(<LogoLink height={100} />).shallow()
   expect(wrapper.find({ width: undefined, height: 100 }).length).toBeGreaterThan(0)
 })

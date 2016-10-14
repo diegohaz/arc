@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import Radium, { Style } from 'radium'
+import styled from 'styled-components'
 
 const icons = {
   github: require('./icons/github.svg'),
@@ -7,17 +7,28 @@ const icons = {
   'arrow-top': require('./icons/arrow-top.svg')
 }
 
-const Icon = ({ style, icon, size, ...props }) => {
+const Icon = styled(({ icon, ...props }) => {
   return (
-    <div {...props} style={[styles.base({ icon, size }), style]}>
-      <Style scopeSelector="svg" rules={styles.svg} />
-      <span dangerouslySetInnerHTML={{ __html: icons[icon] }} />
-    </div>
+    <span {...props} dangerouslySetInnerHTML={{ __html: icons[icon] }} />
   )
-}
+})`
+  display: inline-block;
+  width: ${(props) => props.size / 16}rem;
+  height: ${(props) => props.size / 16}rem;
+  box-sizing: border-box;
+  vertical-align: middle;
+  align-self: center;
+  margin: ${(props) => props.size / 160}rem;
+
+  & > svg {
+    width: 100%;
+    height: 100%;
+    fill: currentcolor;
+    stroke: currentcolor;
+  }
+`
 
 Icon.propTypes = {
-  style: PropTypes.object,
   icon: PropTypes.oneOf(Object.keys(icons)).isRequired,
   size: PropTypes.number
 }
@@ -26,22 +37,4 @@ Icon.defaultProps = {
   size: 20
 }
 
-const styles = {
-  base: ({ src, size }) => ({
-    display: 'inline-block',
-    width: `${size / 16}rem`,
-    height: `${size / 16}rem`,
-    boxSizing: 'border-box',
-    verticalAlign: 'middle',
-    alignSelf: 'center',
-    margin: `${size / 160}rem`
-  }),
-  svg: {
-    width: '100%',
-    height: '100%',
-    fill: 'currentcolor',
-    stroke: 'currentcolor'
-  }
-}
-
-export default Radium(Icon)
+export default Icon
