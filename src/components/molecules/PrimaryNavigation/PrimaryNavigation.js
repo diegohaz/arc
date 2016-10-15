@@ -4,35 +4,7 @@ import styled from 'styled-components'
 import { fonts, colors } from 'components/globals'
 import { Link } from 'components'
 
-const renderLink = (item, className) =>
-  <Link href={`#${item}`} className={className || 'link'}>{item}</Link>
-
-const renderList = (items) => (
-  <ul className="list">
-    {items.map((item, i) => <li key={i}>{renderLink(item, 'inner-link')}</li>)}
-  </ul>
-)
-
-const PrimaryNavigation = styled(({
-  globals,
-  atoms,
-  molecules,
-  organisms,
-  templates,
-  pages,
-  ...props
-}) => {
-  return (
-    <nav {...props}>
-      {globals && <li>{renderLink('globals')}{renderList(globals)}</li>}
-      {atoms && <li>{renderLink('atoms')}{renderList(atoms)}</li>}
-      {molecules && <li>{renderLink('molecules')}{renderList(molecules)}</li>}
-      {organisms && <li>{renderLink('organisms')}{renderList(organisms)}</li>}
-      {templates && <li>{renderLink('templates')}{renderList(templates)}</li>}
-      {pages && <li>{renderLink('pages')}{renderList(pages)}</li>}
-    </nav>
-  )
-})`
+const Nav = styled.nav`
   display: inline-block;
   font-family: ${fonts.primary};
   margin: 1rem 0;
@@ -40,22 +12,49 @@ const PrimaryNavigation = styled(({
   color: ${colors.grayscale[0]};
   list-style: none;
   text-align: right;
-
-  & .list {
-    list-style: none;
-    padding-left: 0;
-    line-height: 1.3rem;
-  }
-
-  & .link {
-    text-transform: uppercase;
-  }
-
-  & .inner-link {
-    font-weight: 300;
-    color: ${colors.grayscale[1]}
-  }
 `
+
+const List = styled.ul`
+  list-style: none;
+  padding-left: 0;
+  line-height: 1.3rem;
+`
+
+const StyledLink = styled(Link)`
+  text-transform: uppercase;
+`
+
+const StyledInnerLink = styled(Link)`
+  font-weight: 300;
+  color: ${colors.grayscale[1]};
+`
+
+const renderLink = (item, inner) => (
+  inner
+    ? <StyledInnerLink href={`#${item}`}>{item}</StyledInnerLink>
+    : <StyledLink href={`#${item}`}>{item}</StyledLink>
+)
+
+const renderList = (items) => (
+  <List>
+    {items.map((item, i) => <li key={i}>{renderLink(item, true)}</li>)}
+  </List>
+)
+
+const PrimaryNavigation = ({
+  globals, atoms, molecules, organisms, templates, pages, ...props
+}) => {
+  return (
+    <Nav {...props}>
+      {globals && <li>{renderLink('globals')}{renderList(globals)}</li>}
+      {atoms && <li>{renderLink('atoms')}{renderList(atoms)}</li>}
+      {molecules && <li>{renderLink('molecules')}{renderList(molecules)}</li>}
+      {organisms && <li>{renderLink('organisms')}{renderList(organisms)}</li>}
+      {templates && <li>{renderLink('templates')}{renderList(templates)}</li>}
+      {pages && <li>{renderLink('pages')}{renderList(pages)}</li>}
+    </Nav>
+  )
+}
 
 PrimaryNavigation.propTypes = {
   globals: PropTypes.array,

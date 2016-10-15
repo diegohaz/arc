@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import { Icon, Link } from 'components'
 
@@ -13,20 +13,21 @@ const IconLink = styled(({ icon, right, responsive, children, ...props }) => {
     </Link>
   )
 })`
+${({ right, responsive, children }) => css`
   & > .text {
     vertical-align: middle;
     @media screen and (max-width: 420px) {
-      display: ${(props) => props.responsive && 'none'};
+      display: ${responsive && 'none'};
     }
   }
 
   & > .icon {
-    margin: ${(props) => props.children ? (props.right ? '0 0 0 0.3rem' : '0 0.3rem 0 0') : 0};
+    margin: ${children ? (right ? '0 0 0 0.3rem' : '0 0.3rem 0 0') : 0};
     @media screen and (max-width: 420px) {
-      margin: ${(props) => props.responsive && 0};
+      margin: ${responsive && 0};
     }
   }
-`
+`}`
 
 IconLink.propTypes = {
   icon: PropTypes.string.isRequired,

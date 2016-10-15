@@ -6,7 +6,7 @@ import { colors, fonts } from 'components/globals'
 const PreformattedText = styled.pre`
   font-family: ${fonts.pre};
   display: ${(props) => props.inline ? 'inline' : 'block'};
-  backgroundColor: ${[ ...colors.grayscale ].reverse()[1]};
+  background-color: ${[ ...colors.grayscale ].reverse()[1]};
   padding: ${(props) => props.inline ? 0 : '1rem'};
 `
 

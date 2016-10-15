@@ -4,6 +4,27 @@ import copy from 'copy-to-clipboard'
 
 import { fonts } from 'components/globals'
 
+const Box = styled.div`
+  display: inline-block;
+  position: relative;
+  font-family: ${fonts.primary};
+  width: 6.25rem;
+  height: 6.25rem;
+  background-color: ${(props) => (props.hex)};
+  cursor: pointer;
+`
+
+const Hex = styled.div`
+  position: absolute;
+  color: #fff;
+  background-color: rgba(0,0,0,0.3);
+  width: 100%;
+  line-height: 2rem;
+  font-size: 1rem;
+  bottom: 0;
+  text-align: center;
+`
+
 class ColorBox extends Component {
   static propTypes = {
     hex: PropTypes.string.isRequired
@@ -26,32 +47,12 @@ class ColorBox extends Component {
   }
 
   render () {
-    const { hex, ...props } = this.props
     return (
-      <div {...props} onClick={this.copyToClipboard}>
-        <div>{this.state.copied ? 'Copied' : hex}</div>
-      </div>
+      <Box {...this.props} onClick={this.copyToClipboard}>
+        <Hex>{this.state.copied ? 'Copied' : this.props.hex}</Hex>
+      </Box>
     )
   }
 }
 
-export default styled(ColorBox)`
-  display: inline-block;
-  position: relative;
-  font-family: ${fonts.primary};
-  width: 6.25rem;
-  height: 6.25rem;
-  background-color: ${(props) => props.hex};
-  cursor: pointer;
-
-  & > div {
-    position: absolute;
-    color: #fff;
-    background-color: rgba(0,0,0,0.3);
-    width: 100%;
-    line-height: 2rem;
-    font-size: 1rem;
-    bottom: 0;
-    text-align: center;
-  }
-`
+export default ColorBox

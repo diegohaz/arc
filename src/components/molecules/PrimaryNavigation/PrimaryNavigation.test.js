@@ -14,7 +14,7 @@ it('renders styles when passed in', () => {
 })
 
 it('renders globals when passed in', () => {
-  const wrapper = shallow(<PrimaryNavigation globals={['test']} />).shallow()
+  const wrapper = shallow(<PrimaryNavigation globals={['test']} />)
   expect(wrapper.find({ href: '#globals' }).length).toBeGreaterThan(0)
   expect(wrapper.find({ href: '#test' }).length).toBeGreaterThan(0)
 })
@@ -28,7 +28,7 @@ it('renders types when passed in', () => {
     templates: ['templates-test1', 'templates-test2'],
     pages: ['pages-test1', 'pages-test2']
   }
-  const wrapper = shallow(<PrimaryNavigation {...props} />).shallow()
+  const wrapper = shallow(<PrimaryNavigation {...props} />)
   Object.keys(props).forEach((prop) => {
     expect(wrapper.find({ href: `#${prop}` }).length).toBeGreaterThan(0)
     expect(wrapper.find({ href: `#${prop}-test1` }).length).toBeGreaterThan(0)

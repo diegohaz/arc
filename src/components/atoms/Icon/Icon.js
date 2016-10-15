@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 const icons = {
   github: require('./icons/github.svg'),
@@ -8,17 +8,16 @@ const icons = {
 }
 
 const Icon = styled(({ icon, ...props }) => {
-  return (
-    <span {...props} dangerouslySetInnerHTML={{ __html: icons[icon] }} />
-  )
+  return <span {...props} dangerouslySetInnerHTML={{ __html: icons[icon] }} />
 })`
+${({ size }) => css`
   display: inline-block;
-  width: ${(props) => props.size / 16}rem;
-  height: ${(props) => props.size / 16}rem;
+  width: ${size / 16}rem;
+  height: ${size / 16}rem;
   box-sizing: border-box;
   vertical-align: middle;
   align-self: center;
-  margin: ${(props) => props.size / 160}rem;
+  margin: ${size / 160}rem;
 
   & > svg {
     width: 100%;
@@ -26,7 +25,7 @@ const Icon = styled(({ icon, ...props }) => {
     fill: currentcolor;
     stroke: currentcolor;
   }
-`
+`}`
 
 Icon.propTypes = {
   icon: PropTypes.oneOf(Object.keys(icons)).isRequired,

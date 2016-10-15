@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 import Footer from './Footer'
 
 it('renders props when passed in', () => {
-  const wrapper = shallow(<Footer id="foo" />).shallow()
+  const wrapper = shallow(<Footer id="foo" />)
   expect(wrapper.find({ id: 'foo' }).length).toBeGreaterThan(0)
 })
 

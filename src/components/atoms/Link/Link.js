@@ -8,7 +8,9 @@ const Link = styled(RouterLink)`
   font-family: ${fonts.primary};
   text-decoration: none;
   font-weight: 500;
-  color: ${(props) => colors[props.kind][1]};
+  color: ${(props) => {
+    return colors[props.kind || 'primary'][1]
+  }};
 
   &:hover {
     text-decoration: underline;

@@ -11,22 +11,24 @@ const Caption = styled.caption`
   text-transform: uppercase;
 `
 
-const Table = styled(({ caption, head, foot, children, ...props }) => {
-  return (
-    <table {...props}>
-      {caption && <Caption>{caption}</Caption>}
-      {head && <thead>{head}</thead>}
-      {foot && <tfoot>{foot}</tfoot>}
-      <tbody>{children}</tbody>
-    </table>
-  )
-})`
+const StyledTable = styled.table`
   font-family: ${fonts.primary};
   border-collapse: collapse;
   width: 100%;
   border: 1px solid ${[ ...colors.grayscale ].reverse()[1]};
   color: ${colors.grayscale[0]};
 `
+
+const Table = ({ caption, head, foot, children, ...props }) => {
+  return (
+    <StyledTable {...props}>
+      {caption && <Caption>{caption}</Caption>}
+      {head && <thead>{head}</thead>}
+      {foot && <tfoot>{foot}</tfoot>}
+      <tbody>{children}</tbody>
+    </StyledTable>
+  )
+}
 
 Table.propTypes = {
   caption: PropTypes.string,

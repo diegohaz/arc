@@ -9,17 +9,19 @@ const Credits = styled(Paragraph)`
   margin: 0;
 `
 
-const Footer = styled((props) => {
+const StyledFooter = styled.footer`
+  background-color: ${([ ...colors.grayscale ].reverse()[1])};
+  padding: 2rem;
+`
+
+const Footer = (props) => {
   return (
-    <footer {...props}>
+    <StyledFooter {...props}>
       <Credits>
         Made with ❤️ by <Link href="https://github.com/diegohaz">Haz</Link>
       </Credits>
-    </footer>
+    </StyledFooter>
   )
-})`
-  background-color: ${[ ...colors.grayscale ].reverse()[1]};
-  padding: 2rem;
-`
+}
 
 export default Footer

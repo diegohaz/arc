@@ -1,19 +1,20 @@
 import React, { PropTypes } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import { colors, fonts } from 'components/globals'
 
 const Heading = styled(({ level, children, ...props }) => {
   return React.createElement(`h${level}`, props, children)
 })`
+${({ level }) => css`
   font-family: ${fonts.primary};
   font-weight: 500;
-  font-size: ${(props) => 0.75 + 1 * (1 / props.level)}rem;
+  font-size: ${0.75 + 1 * (1 / level)}rem;
   margin: 0;
-  margin-top: ${(props) => 1 + 0.5 * (1 / props.level)}rem;
-  margin-bottom: ${(props) => 0.5 + 0.5 * (1 / props.level)}rem;
+  margin-top: ${1 + 0.5 * (1 / level)}rem;
+  margin-bottom: ${0.5 + 0.5 * (1 / level)}rem;
   color: ${colors.grayscale[0]}
-`
+`}`
 
 Heading.propTypes = {
   level: PropTypes.number,

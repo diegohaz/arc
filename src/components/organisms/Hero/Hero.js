@@ -9,16 +9,7 @@ const Text = styled(Paragraph)`
   margin: 2rem auto;
 `
 
-const Hero = styled((props) => {
-  return (
-    <div {...props}>
-      <Text>
-        <strong>ARc</strong> (<b>A</b>tomic <b>R</b>ea<b>c</b>t) can be a progressive boilerplate, as much as a set of components or a project's structure proposal based on <Link href="http://bradfrost.com/blog/post/atomic-web-design/">Atomic Design</Link>. You choose how to use it: from a single component to the whole philosophy.
-      </Text>
-      <IconButton icon="github" href="https://github.com/diegohaz/arc">View on GitHub</IconButton>
-    </div>
-  )
-})`
+const Div = styled.div`
   padding: 2rem 6rem;
   background-color: ${[ ...colors.grayscale ].reverse()[1]};
   text-align: center;
@@ -27,5 +18,16 @@ const Hero = styled((props) => {
     padding: 1rem;
   }
 `
+
+const Hero = (props) => {
+  return (
+    <Div {...props}>
+      <Text>
+        <strong>ARc</strong> (<b>A</b>tomic <b>R</b>ea<b>c</b>t) can be a progressive boilerplate, as much as a set of components or a project's structure proposal based on <Link href="http://bradfrost.com/blog/post/atomic-web-design/">Atomic Design</Link>. You choose how to use it: from a single component to the whole philosophy.
+      </Text>
+      <IconButton icon="github" href="https://github.com/diegohaz/arc">View on GitHub</IconButton>
+    </Div>
+  )
+}
 
 export default Hero

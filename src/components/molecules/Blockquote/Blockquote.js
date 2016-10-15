@@ -10,15 +10,7 @@ const Cite = styled.cite`
   font-style: normal;
   margin-top: 0.4rem;
 `
-
-const Blockquote = styled(({ cite, children, ...props }) => {
-  return (
-    <blockquote {...props}>
-      <div>{children}</div>
-      {cite && <Cite>{cite}</Cite>}
-    </blockquote>
-  )
-})`
+const StyledBlockquote = styled.blockquote`
   position: relative;
   font-family: ${fonts.quote};
   font-style: italic;
@@ -30,6 +22,15 @@ const Blockquote = styled(({ cite, children, ...props }) => {
   margin: 1rem 0;
   padding: 0.5rem 0 0.5rem 1.5rem;
 `
+
+const Blockquote = ({ cite, children, ...props }) => {
+  return (
+    <StyledBlockquote {...props}>
+      <div>{children}</div>
+      {cite && <Cite>{cite}</Cite>}
+    </StyledBlockquote>
+  )
+}
 
 Blockquote.propTypes = {
   cite: PropTypes.string,

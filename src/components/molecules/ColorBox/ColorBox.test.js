@@ -23,13 +23,13 @@ it('renders styles when passed in', () => {
 })
 
 it('copies hex to clipboard', () => {
-  const wrapper = shallow(<ColorBox hex="#000" />).shallow()
+  const wrapper = shallow(<ColorBox hex="#000" />)
   wrapper.simulate('click')
   expect(copy).toBeCalledWith('#000')
 })
 
 it('sets state when hex has been succesfully copied', () => {
-  const wrapper = shallow(<ColorBox hex="#fff" />).shallow()
+  const wrapper = shallow(<ColorBox hex="#fff" />)
   jest.useFakeTimers()
   copy.mockReturnValue(true)
 

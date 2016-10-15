@@ -10,20 +10,22 @@ const Error = styled.div`
   margin: 0.5rem 0 0;
 `
 
-const Field = styled(({ error, name, invalid, label, type, className, ...props }) => {
+const Wrapper = styled.div`
+  margin-bottom: 1rem;
+`
+
+const Field = ({ error, name, invalid, label, type, ...props }) => {
   const inputProps = { id: name, type, invalid, 'aria-describedby': `${name}Error`, ...props }
   return (
-    <div className={className}>
+    <Wrapper>
       {label && <Label htmlFor={inputProps.id}>{label}</Label>}
       <Input {...inputProps} />
       {invalid && error &&
         <Error id={`${name}Error`} role="alert">{error}</Error>
       }
-    </div>
+    </Wrapper>
   )
-})`
-  marginBottom: 1rem;
-`
+}
 
 Field.propTypes = {
   name: PropTypes.string.isRequired,
