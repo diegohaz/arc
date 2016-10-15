@@ -23,7 +23,7 @@ const IconButton = styled(({ icon, right, responsive, children, ...props }) => {
   & > .icon {
     margin: ${(props) => props.children ? (props.right ? '0 0 0 0.5rem' : '0 0.5rem 0 0') : 0};
     @media screen and (max-width: 420px) {
-      margin: 0;
+      margin: ${(props) => props.responsive && 0};
     }
   }
 `
