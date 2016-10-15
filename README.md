@@ -30,10 +30,10 @@ You can just download a single component or use the entire code as a boilerplate
 
 ### Download a single component
 
-All the components use [Radium](https://github.com/FormidableLabs/radium) for styling. So make sure you have it installed:
+All the components use [styled-components](https://github.com/styled-components/styled-components) for styling. So make sure you have it installed:
 
 ```sh
-$ npm install --save radium
+$ npm install --save styled-components
 ```
 
 Then, add or replace the imported files (many of components here use `colors` and `fonts` from the [globals.js](src/components/globals.js) file).
@@ -91,13 +91,6 @@ $ npm install --save-dev jest-cli
   }
 }
 ```
-
-### Why inline styles?
-
-Even though Atomic Design has nothing to do with styling, inline styles fit very well with this approach. Watch these two videos to learn more:
-
-- [React Inline Styles and the Future of CSS](https://www.youtube.com/watch?v=k3OF4A30jSQ)
-- [React: CSS in your JS by Christopher Chedeau](https://vimeo.com/116209150)
 
 ## License
 
