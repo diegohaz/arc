@@ -4,6 +4,12 @@ import styled from 'styled-components'
 import { colors, fonts } from 'components/globals'
 import { Label, Input } from 'components'
 
+const Error = styled.div`
+  font-family: ${fonts.primary};
+  color: ${colors.danger[1]};
+  margin: 0.5rem 0 0;
+`
+
 const Field = styled(({ error, name, invalid, label, type, className, ...props }) => {
   const inputProps = { id: name, type, invalid, 'aria-describedby': `${name}Error`, ...props }
   return (
@@ -11,18 +17,12 @@ const Field = styled(({ error, name, invalid, label, type, className, ...props }
       {label && <Label htmlFor={inputProps.id}>{label}</Label>}
       <Input {...inputProps} />
       {invalid && error &&
-        <div id={`${name}Error`} role="alert">{error}</div>
+        <Error id={`${name}Error`} role="alert">{error}</Error>
       }
     </div>
   )
 })`
   marginBottom: 1rem;
-
-  & *[id$=Error] {
-    font-family: ${fonts.primary};
-    color: ${colors.danger[1]};
-    margin: 0.5rem 0 0;
-  }
 `
 
 Field.propTypes = {

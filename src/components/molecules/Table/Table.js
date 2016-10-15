@@ -3,10 +3,18 @@ import styled from 'styled-components'
 
 import { colors, fonts } from 'components/globals'
 
+const Caption = styled.caption`
+  font-weight: 500;
+  line-height: 2rem;
+  font-size: 0.875rem;
+  color: ${colors.grayscale[1]};
+  text-transform: uppercase;
+`
+
 const Table = styled(({ caption, head, foot, children, ...props }) => {
   return (
     <table {...props}>
-      {caption && <caption>{caption}</caption>}
+      {caption && <Caption>{caption}</Caption>}
       {head && <thead>{head}</thead>}
       {foot && <tfoot>{foot}</tfoot>}
       <tbody>{children}</tbody>
@@ -18,14 +26,6 @@ const Table = styled(({ caption, head, foot, children, ...props }) => {
   width: 100%;
   border: 1px solid ${[ ...colors.grayscale ].reverse()[1]};
   color: ${colors.grayscale[0]};
-
-  & > caption {
-    font-weight: 500;
-    line-height: 2rem;
-    font-size: 0.875rem;
-    color: ${colors.grayscale[1]};
-    text-transform: uppercase;
-  }
 `
 
 Table.propTypes = {

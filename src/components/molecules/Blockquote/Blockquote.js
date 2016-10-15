@@ -3,11 +3,19 @@ import styled from 'styled-components'
 
 import { colors, fonts } from 'components/globals'
 
+const Cite = styled.cite`
+  display: block;
+  font-family: ${fonts.primary};
+  font-weight: 300;
+  font-style: normal;
+  margin-top: 0.4rem;
+`
+
 const Blockquote = styled(({ cite, children, ...props }) => {
   return (
     <blockquote {...props}>
       <div>{children}</div>
-      {cite && <cite>{cite}</cite>}
+      {cite && <Cite>{cite}</Cite>}
     </blockquote>
   )
 })`
@@ -21,14 +29,6 @@ const Blockquote = styled(({ cite, children, ...props }) => {
   border-left: 5px solid ${colors.grayscale[4]};
   margin: 1rem 0;
   padding: 0.5rem 0 0.5rem 1.5rem;
-
-  & > cite {
-    display: block;
-    font-family: ${fonts.primary};
-    font-weight: 300;
-    font-style: normal;
-    margin-top: 0.4rem;
-  }
 `
 
 Blockquote.propTypes = {

@@ -20,19 +20,33 @@ const getType = (title) => {
   return type
 }
 
+const Header = styled.header`
+  display: flex;
+  align-items: center;
+  width: 100%;
+`
+
+const Title = styled(Heading)`
+  flex: 1;
+  margin: 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+`
+
 const ComponentSpec = styled(({ title, path, children, ...props }) => {
   const type = getType(title)
   const baseUrl = 'https://github.com/diegohaz/arc/tree/master/src/components/'
   const srcUrl = path ? `${baseUrl}${path}` : `${baseUrl}${type}/${title}`
   return (
     <article id={title} {...props}>
-      <header>
-        <Heading level={2}>{type}/{title}</Heading>
+      <Header>
+        <Title level={2}>{type}/{title}</Title>
         <IconLink icon="code" href={srcUrl} responsive>source code</IconLink>
         <IconLink icon="arrow-top" href="#globals" style={{ marginLeft: '1rem' }} responsive>
           back to top
         </IconLink>
-      </header>
+      </Header>
       <HorizontalRule />
       <div>{children}</div>
     </article>
@@ -42,20 +56,6 @@ const ComponentSpec = styled(({ title, path, children, ...props }) => {
   margin: 0 0 1rem;
   width: 100%;
   box-sizing: border-box;
-
-  & > header {
-    display: flex;
-    align-items: center;
-    width: 100%;
-
-      & > h2 {
-        flex: 1;
-        margin: 0;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        white-space: nowrap;
-      }
-  }
 `
 
 ComponentSpec.propTypes = {
