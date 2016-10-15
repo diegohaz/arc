@@ -2,7 +2,7 @@ import { PropTypes } from 'react'
 import styled from 'styled-components'
 import { Link as RouterLink } from 'react-router'
 
-import { colors, fonts } from 'components'
+import { colors, fonts } from 'components/globals'
 
 const Link = styled(RouterLink)`
   font-family: ${fonts.primary};

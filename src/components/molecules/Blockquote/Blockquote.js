@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import styled from 'styled-components'
 
-import { fonts, colors } from 'components'
+import { colors, fonts } from 'components/globals'
 
 const Blockquote = styled(({ cite, children, ...props }) => {
   return (

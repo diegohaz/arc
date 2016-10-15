@@ -1,7 +1,8 @@
 import React, { PropTypes } from 'react'
 import styled from 'styled-components'
 
-import { fonts, colors, Link } from 'components'
+import { fonts, colors } from 'components/globals'
+import { Link } from 'components'
 
 const renderLink = (item, className) =>
   <Link href={`#${item}`} className={className || 'link'}>{item}</Link>

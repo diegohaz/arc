@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { colors, Paragraph, Link, IconButton } from 'components'
+import { colors } from 'components/globals'
+import { Paragraph, Link, IconButton } from 'components'
 
 const Hero = styled((props) => {
   return (

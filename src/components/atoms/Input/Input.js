@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import styled from 'styled-components'
 
-import { colors } from 'components'
+import { colors } from 'components/globals'
 
 const Input = styled(({ invalid, type, ...props }) => {
   if (type === 'textarea') {

@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import styled from 'styled-components'
 
-import { colors, fonts } from 'components'
+import { colors, fonts } from 'components/globals'
 
 const Heading = styled(({ level, children, ...props }) => {
   return React.createElement(`h${level}`, props, children)

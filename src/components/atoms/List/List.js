@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import styled from 'styled-components'
 
-import { colors, fonts } from 'components'
+import { colors, fonts } from 'components/globals'
 
 const List = styled(({ ordered, children, ...props }) => {
   return React.createElement(ordered ? 'ol' : 'ul', props, children)

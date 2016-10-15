@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { colors, Paragraph, Link } from 'components'
+import { colors } from 'components/globals'
+import { Paragraph, Link } from 'components'
 
 const Footer = styled((props) => {
   return (

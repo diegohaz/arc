@@ -1,7 +1,12 @@
 import React, { PropTypes } from 'react'
-import styled from 'styled-components'
+import styled, { injectGlobal } from 'styled-components'
 
 const HeroTemplate = styled(({ logo, hero, nav, children, footer, ...props }) => {
+  injectGlobal`
+    body {
+      margin: 0;
+    }
+  `
   return (
     <main {...props}>
       <header>

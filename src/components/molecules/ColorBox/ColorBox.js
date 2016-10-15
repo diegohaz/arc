@@ -2,7 +2,7 @@ import React, { PropTypes, Component } from 'react'
 import styled from 'styled-components'
 import copy from 'copy-to-clipboard'
 
-import { fonts } from 'components'
+import { fonts } from 'components/globals'
 
 class ColorBox extends Component {
   static propTypes = {

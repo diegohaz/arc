@@ -1,7 +1,8 @@
 import React, { PropTypes } from 'react'
 import styled from 'styled-components'
 
-import { colors, fonts, Label, Input } from 'components'
+import { colors, fonts } from 'components/globals'
+import { Label, Input } from 'components'
 
 const Field = styled(({ error, name, invalid, label, type, className, ...props }) => {
   const inputProps = { id: name, type, invalid, 'aria-describedby': `${name}Error`, ...props }

@@ -1,7 +1,7 @@
 import { PropTypes } from 'react'
 import styled from 'styled-components'
 
-import { colors, fonts } from 'components'
+import { colors, fonts } from 'components/globals'
 
 const PreformattedText = styled.pre`
   font-family: ${fonts.pre};

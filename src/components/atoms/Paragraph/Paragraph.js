@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { colors, fonts } from 'components'
+import { colors, fonts } from 'components/globals'
 
 const Paragraph = styled.p`
   font-family: ${fonts.primary};

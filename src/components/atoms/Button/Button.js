@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router'
 
-import { colors, fonts } from 'components'
+import { colors, fonts } from 'components/globals'
 
 const Button = styled(({ kind, disabled, type, ...props, to, href }) => {
   if (href || to) {
