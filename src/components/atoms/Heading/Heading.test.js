@@ -2,28 +2,24 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import Heading from './Heading'
 
+const wrap = (props = {}) => shallow(<Heading {...props} />).dive()
+
 it('renders children when passed in', () => {
-  const wrapper = shallow(<Heading>test</Heading>)
+  const wrapper = wrap({ children: 'test' })
   expect(wrapper.contains('test')).toBe(true)
 })
 
 it('renders props when passed in', () => {
-  const wrapper = shallow(<Heading id="foo" />)
+  const wrapper = wrap({ id: 'foo' })
   expect(wrapper.find({ id: 'foo' }).length).toBeGreaterThan(0)
 })
 
-it('renders styles when passed in', () => {
-  const wrapper = shallow(<Heading style={{ color: 'black' }} />)
-  expect(typeof wrapper.prop('style')).toBe('object')
-  expect(wrapper.prop('style').color).toBe('black')
-})
-
 it('renders h1 by default', () => {
-  const wrapper = shallow(<Heading />).dive()
+  const wrapper = wrap()
   expect(wrapper.find('h1').length).toBeGreaterThan(0)
 })
 
 it('renders hLevel when level is passed in', () => {
-  const wrapper = shallow(<Heading level={2} />).dive()
+  const wrapper = wrap({ level: 2 })
   expect(wrapper.find('h2').length).toBeGreaterThan(0)
 })

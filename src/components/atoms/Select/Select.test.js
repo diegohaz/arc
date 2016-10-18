@@ -2,24 +2,20 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import Select from './Select'
 
+const wrap = (props = {}) => shallow(<Select {...props} />)
+
 it('renders children when passed in', () => {
-  const wrapper = shallow(<Select>test</Select>)
+  const wrapper = wrap({ children: 'test' })
   expect(wrapper.contains('test')).toBe(true)
 })
 
 it('renders props when passed in', () => {
-  const wrapper = shallow(<Select id="foo" />)
+  const wrapper = wrap({ id: 'foo' })
   expect(wrapper.find({ id: 'foo' }).length).toBeGreaterThan(0)
 })
 
-it('renders styles when passed in', () => {
-  const wrapper = shallow(<Select style={{ color: 'black' }} />)
-  expect(typeof wrapper.prop('style')).toBe('object')
-  expect(wrapper.prop('style').color).toBe('black')
-})
-
 it('renders differently when prop invalid is passed in', () => {
-  const wrapper = shallow(<Select />)
+  const wrapper = wrap()
   const element = wrapper.debug()
   wrapper.setProps({ invalid: true })
   expect(wrapper.debug()).not.toBe(element)

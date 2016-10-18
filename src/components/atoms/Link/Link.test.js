@@ -2,12 +2,14 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import Link from './Link'
 
+const wrap = (props = {}) => shallow(<Link {...props} />).dive()
+
 it('renders children when passed in', () => {
-  const wrapper = shallow(<Link>test</Link>).dive()
+  const wrapper = wrap({ children: 'test' })
   expect(wrapper.contains('test')).toBe(true)
 })
 
 it('renders props when passed in', () => {
-  const wrapper = shallow(<Link id="foo" />)
+  const wrapper = wrap({ id: 'foo' })
   expect(wrapper.find({ id: 'foo' }).length).toBeGreaterThan(0)
 })

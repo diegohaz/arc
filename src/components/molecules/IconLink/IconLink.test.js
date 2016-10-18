@@ -1,29 +1,36 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { mount, shallow } from 'enzyme'
 import IconLink from './IconLink'
 
+const wrap = (props = {}) => shallow(<IconLink icon="github" {...props} />)
+
+it('mounts with different combination of props', () => {
+  mount(<IconLink icon="github">test</IconLink>)
+  mount(<IconLink icon="github" right>test</IconLink>)
+  mount(<IconLink icon="github" responsive>test</IconLink>)
+  mount(<IconLink icon="github" right responsive>test</IconLink>)
+  mount(<IconLink icon="github" />)
+  mount(<IconLink icon="github" right />)
+  mount(<IconLink icon="github" responsive />)
+  mount(<IconLink icon="github" right responsive />)
+})
+
 it('renders children when passed in', () => {
-  const wrapper = shallow(<IconLink icon="github" responsive>test</IconLink>)
+  const wrapper = wrap({ children: 'test' })
   expect(wrapper.contains('test')).toBe(true)
 })
 
 it('renders props when passed in', () => {
-  const wrapper = shallow(<IconLink icon="github" id="foo" />)
+  const wrapper = wrap({ id: 'foo' })
   expect(wrapper.find({ id: 'foo' }).length).toBeGreaterThan(0)
 })
 
-it('renders styles when passed in', () => {
-  const wrapper = shallow(<IconLink icon="github" style={{ color: 'black' }} />)
-  expect(typeof wrapper.prop('style')).toBe('object')
-  expect(wrapper.prop('style').color).toBe('black')
-})
-
 it('renders icon on left by default', () => {
-  const wrapper = shallow(<IconLink icon="github">test</IconLink>).dive()
+  const wrapper = wrap({ children: 'test' })
   expect(wrapper.children().at(0).prop('icon')).toBe('github')
 })
 
 it('renders icon on right when prop is passed in', () => {
-  const wrapper = shallow(<IconLink icon="github" right>test</IconLink>).dive()
+  const wrapper = wrap({ children: 'test', right: true })
   expect(wrapper.children().at(1).prop('icon')).toBe('github')
 })

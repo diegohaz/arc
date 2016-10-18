@@ -2,28 +2,24 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import List from './List'
 
+const wrap = (props = {}) => shallow(<List {...props} />).dive()
+
 it('renders children when passed in', () => {
-  const wrapper = shallow(<List>test</List>)
+  const wrapper = wrap({ children: 'test' })
   expect(wrapper.contains('test')).toBe(true)
 })
 
 it('renders props when passed in', () => {
-  const wrapper = shallow(<List id="foo" />)
+  const wrapper = wrap({ id: 'foo' })
   expect(wrapper.find({ id: 'foo' }).length).toBeGreaterThan(0)
 })
 
-it('renders styles when passed in', () => {
-  const wrapper = shallow(<List style={{ color: 'black' }} />)
-  expect(typeof wrapper.prop('style')).toBe('object')
-  expect(wrapper.prop('style').color).toBe('black')
-})
-
 it('renders ul by default', () => {
-  const wrapper = shallow(<List />).dive()
+  const wrapper = wrap()
   expect(wrapper.find('ul').length).toBeGreaterThan(0)
 })
 
 it('renders ol when ordered prop is passed in', () => {
-  const wrapper = shallow(<List ordered />).dive()
+  const wrapper = wrap({ ordered: true })
   expect(wrapper.find('ol').length).toBeGreaterThan(0)
 })

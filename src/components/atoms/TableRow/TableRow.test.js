@@ -2,24 +2,20 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import TableRow from './TableRow'
 
+const wrap = (props = {}) => shallow(<TableRow {...props} />)
+
 it('renders children when passed in', () => {
-  const wrapper = shallow(<TableRow>test</TableRow>)
+  const wrapper = wrap({ children: 'test' })
   expect(wrapper.contains('test')).toBe(true)
 })
 
 it('renders props when passed in', () => {
-  const wrapper = shallow(<TableRow id="foo" />)
+  const wrapper = wrap({ id: 'foo' })
   expect(wrapper.find({ id: 'foo' }).length).toBeGreaterThan(0)
 })
 
-it('renders styles when passed in', () => {
-  const wrapper = shallow(<TableRow style={{ color: 'black' }} />)
-  expect(typeof wrapper.prop('style')).toBe('object')
-  expect(wrapper.prop('style').color).toBe('black')
-})
-
 it('renders differently when prop filled is passed in', () => {
-  const wrapper = shallow(<TableRow />)
+  const wrapper = wrap()
   const element = wrapper.debug()
   wrapper.setProps({ filled: true })
   expect(wrapper.debug()).not.toEqual(element)
