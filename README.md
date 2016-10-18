@@ -38,26 +38,7 @@ React stimulates you to create very small and pure components. However, as your 
 
 The [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/) approach comes handy to solve this problem. You will have your minimal/stylish components in one folder, pages in another and so on.
 
-## How to download
-
-You can just download a single component or use the entire code as a boilerplate.
-
-### Download a single component
-
-All the components use [styled-components](https://github.com/styled-components/styled-components) for styling. So make sure you have it installed:
-
-```sh
-$ npm install --save styled-components
-```
-
-Then, add or replace the imported files (many of components here use `colors` and `fonts` from the [globals.js](src/components/globals.js) file).
-
-Finally, you can grab the code by accessing the component folder in this repository or by using `svn`:
-```sh
-$ svn export https://github.com/diegohaz/arc.git/trunk/src/components/atoms/Button path/to/my/components/Button
-```
-
-### Download the entire code
+## Download
 
 Just clone the repository and remove the `.git` folder:
 
@@ -68,7 +49,7 @@ $ rm -rf .git
 $ npm install # or yarn
 ```
 
-## How to use
+## Develop
 
 Once you have installed the dependencies, you can use `npm start` to run a development server or `npm run build` to transpile the code into the `dist` folder.
 
@@ -85,28 +66,6 @@ You can use the [components](src/components) folder here as an example or refer 
 - An **organism** is a group of atoms, molecules and/or other organisms.
 
 There're cases when, during the development, you do realize that some molecule should be an organism, for example. This boilerplate was designed in a way that makes it easier to move components. You just need to move the component folder to the right place and update the respective `index.js` files (`molecules/index.js` and `organisms/index.js`). Everything else should work.
-
-### How to run the tests?
-
-If you grab the entire boilerplate, just run `npm test`.
-
-Otherwise, you need first to copy the [test/fileMock.js](test/fileMock.js) file and install [Jest](https://github.com/facebook/jest) and put the configuration on [package.json](package.json):
-```sh
-$ npm install --save-dev jest-cli
-```
-```json
-{
-  "jest": {
-    "moduleDirectories": [
-      "src",
-      "node_modules"
-    ],
-    "moduleNameMapper": {
-      "^.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/test/fileMock.js"
-    }
-  }
-}
-```
 
 ## License
 
