@@ -19,11 +19,11 @@ it('renders styles when passed in', () => {
 })
 
 it('renders h1 by default', () => {
-  const wrapper = shallow(<Heading />).shallow()
+  const wrapper = shallow(<Heading />).dive()
   expect(wrapper.find('h1').length).toBeGreaterThan(0)
 })
 
 it('renders hLevel when level is passed in', () => {
-  const wrapper = shallow(<Heading level={2} />).shallow()
+  const wrapper = shallow(<Heading level={2} />).dive()
   expect(wrapper.find('h2').length).toBeGreaterThan(0)
 })

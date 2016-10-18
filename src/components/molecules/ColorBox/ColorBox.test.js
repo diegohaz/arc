@@ -7,7 +7,7 @@ jest.setMock('copy-to-clipboard', copy)
 const ColorBox = require('./ColorBox').default
 
 it('renders hex', () => {
-  const wrapper = shallow(<ColorBox hex="#000" />).shallow()
+  const wrapper = shallow(<ColorBox hex="#000" />).dive()
   expect(wrapper.contains('#000')).toBe(true)
 })
 

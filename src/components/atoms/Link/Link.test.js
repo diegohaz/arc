@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 import Link from './Link'
 
 it('renders children when passed in', () => {
-  const wrapper = shallow(<Link>test</Link>).shallow()
+  const wrapper = shallow(<Link>test</Link>).dive()
   expect(wrapper.contains('test')).toBe(true)
 })
 

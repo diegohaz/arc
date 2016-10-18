@@ -2,8 +2,8 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import Icon from './Icon'
 
-it('renders input props when passed in', () => {
-  const wrapper = shallow(<Icon icon="github" id="foo" />).shallow()
+it('renders props when passed in', () => {
+  const wrapper = shallow(<Icon icon="github" id="foo" />).dive()
   expect(wrapper.find({ id: 'foo' }).length).toBeGreaterThan(0)
 })
 

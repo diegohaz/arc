@@ -3,13 +3,7 @@ import styled, { css } from 'styled-components'
 
 import { colors } from 'components/globals'
 
-const Input = styled(({ invalid, type, ...props }) => {
-  if (type === 'textarea') {
-    return <textarea {...props} />
-  }
-  return <input {...props} type={type} />
-})`
-${({ invalid, type }) => css`
+const styles = ({ invalid, type }) => css`
   display: block;
   width: 100%;
   color: inherit;
@@ -28,7 +22,17 @@ ${({ invalid, type }) => css`
     height: auto;
     margin: 0 0.2rem 0 0;
   }
-`}`
+`
+
+const StyledTextarea = styled.textarea`${styles}`
+const StyledInput = styled.input`${styles}`
+
+const Input = ({ invalid, type, ...props }) => {
+  if (type === 'textarea') {
+    return <StyledTextarea {...props} />
+  }
+  return <StyledInput {...props} type={type} />
+}
 
 Input.propTypes = {
   invalid: PropTypes.bool,

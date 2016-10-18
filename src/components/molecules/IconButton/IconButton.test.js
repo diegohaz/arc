@@ -19,11 +19,11 @@ it('renders styles when passed in', () => {
 })
 
 it('renders icon on left by default', () => {
-  const wrapper = shallow(<IconButton icon="github">test</IconButton>).shallow()
+  const wrapper = shallow(<IconButton icon="github">test</IconButton>).dive()
   expect(wrapper.children().at(0).prop('icon')).toBe('github')
 })
 
 it('renders icon on right when prop is passed in', () => {
-  const wrapper = shallow(<IconButton icon="github" right>test</IconButton>).shallow()
+  const wrapper = shallow(<IconButton icon="github" right>test</IconButton>).dive()
   expect(wrapper.children().at(1).prop('icon')).toBe('github')
 })

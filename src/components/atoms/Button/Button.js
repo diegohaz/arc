@@ -4,13 +4,7 @@ import { Link } from 'react-router'
 
 import { colors, fonts } from 'components/globals'
 
-const Button = styled(({ kind, disabled, type, ...props, to, href }) => {
-  if (href || to) {
-    return <Link {...props} />
-  }
-  return <button {...props} type={type} disabled={disabled} />
-})`
-${({ disabled, kind }) => css`
+const styles = ({ disabled, kind }) => css`
   display: inline-flex;
   font-family: ${fonts.primary};
   align-items: center;
@@ -36,7 +30,17 @@ ${({ disabled, kind }) => css`
   &:focus {
     outline: none
   }
-`}`
+`
+
+const StyledLink = styled(Link)`${styles}`
+const StyledButton = styled.button`${styles}`
+
+const Button = ({ type, ...props, to, href }) => {
+  if (href || to) {
+    return <StyledLink {...props} />
+  }
+  return <StyledButton {...props} type={type} />
+}
 
 Button.propTypes = {
   disabled: PropTypes.bool,

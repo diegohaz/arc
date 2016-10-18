@@ -7,10 +7,7 @@ const icons = {
   'arrow-top': require('./icons/arrow-top.svg')
 }
 
-const Icon = styled(({ icon, ...props }) => {
-  return <span {...props} dangerouslySetInnerHTML={{ __html: icons[icon] }} />
-})`
-${({ size }) => css`
+const styles = ({ size }) => css`
   display: inline-block;
   width: ${size / 16}rem;
   height: ${size / 16}rem;
@@ -25,7 +22,13 @@ ${({ size }) => css`
     fill: currentcolor;
     stroke: currentcolor;
   }
-`}`
+`
+
+const Wrapper = styled.span`${styles}`
+
+const Icon = ({ icon, ...props }) => {
+  return <Wrapper {...props} dangerouslySetInnerHTML={{ __html: icons[icon] }} />
+}
 
 Icon.propTypes = {
   icon: PropTypes.oneOf(Object.keys(icons)).isRequired,

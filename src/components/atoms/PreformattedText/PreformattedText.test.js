@@ -22,5 +22,5 @@ it('renders differently when prop inline is passed in', () => {
   const wrapper = shallow(<PreformattedText />)
   const element = wrapper.debug()
   wrapper.setProps({ inline: true })
-  expect(wrapper.debug()).not.toEqual(element)
+  expect(wrapper.debug()).not.toBe(element)
 })

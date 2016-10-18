@@ -19,11 +19,11 @@ it('renders styles when passed in', () => {
 })
 
 it('renders td by default', () => {
-  const wrapper = shallow(<TableCell />).shallow()
+  const wrapper = shallow(<TableCell />).dive()
   expect(wrapper.find('td').length).toBeGreaterThan(0)
 })
 
 it('renders th when prop heading is passed in', () => {
-  const wrapper = shallow(<TableCell heading />).shallow()
+  const wrapper = shallow(<TableCell heading />).dive()
   expect(wrapper.find('th').length).toBeGreaterThan(0)
 })

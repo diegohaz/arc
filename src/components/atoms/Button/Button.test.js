@@ -19,30 +19,30 @@ it('renders styles when passed in', () => {
 })
 
 it('renders button by default', () => {
-  const wrapper = shallow(<Button />).shallow()
+  const wrapper = shallow(<Button />).dive()
   expect(wrapper.find('button').length).toBeGreaterThan(0)
 })
 
 it('renders Link when href is passed in', () => {
-  const wrapper = shallow(<Button href="test" />).shallow()
+  const wrapper = shallow(<Button href="test" />).dive()
   expect(wrapper.find('Link').length).toBeGreaterThan(0)
 })
 
 it('renders Link when to is passed in', () => {
-  const wrapper = shallow(<Button to="test" />).shallow()
+  const wrapper = shallow(<Button to="test" />).dive()
   expect(wrapper.find('Link').length).toBeGreaterThan(0)
 })
 
 it('renders differently when prop disabled is passed in', () => {
-  const wrapper = shallow(<Button />)
+  const wrapper = shallow(<Button />).dive()
   const element = wrapper.debug()
   wrapper.setProps({ disabled: true })
-  expect(wrapper.debug()).not.toEqual(element)
+  expect(wrapper.debug()).not.toBe(element)
 })
 
 it('renders differently when another kind is passed in', () => {
-  const wrapper = shallow(<Button />)
+  const wrapper = shallow(<Button />).dive()
   const element = wrapper.debug()
   wrapper.setProps({ kind: 'secondary' })
-  expect(wrapper.debug()).not.toEqual(element)
+  expect(wrapper.debug()).not.toBe(element)
 })

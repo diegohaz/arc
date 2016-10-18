@@ -22,5 +22,5 @@ it('renders differently when prop invalid is passed in', () => {
   const wrapper = shallow(<Select />)
   const element = wrapper.debug()
   wrapper.setProps({ invalid: true })
-  expect(wrapper.debug()).not.toEqual(element)
+  expect(wrapper.debug()).not.toBe(element)
 })

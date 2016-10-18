@@ -9,7 +9,7 @@ const Link = styled(RouterLink)`
   text-decoration: none;
   font-weight: 500;
   color: ${(props) => {
-    return colors[props.kind || 'primary'][1]
+    return colors[props.kind][1]
   }};
 
   &:hover {
