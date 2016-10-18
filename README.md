@@ -1,8 +1,10 @@
-<img src="https://cloud.githubusercontent.com/assets/3068563/19393134/ddc11478-9209-11e6-82be-7107cf0ec88e.png" height="100">
+<img width="640" alt="arclogo2" src="https://cloud.githubusercontent.com/assets/3068563/19498370/358624a6-956f-11e6-9b8b-470ec1d79522.png">
 
-[![JS Standard Style][standard-image]][standard-url]
-[![Build Status][travis-image]][travis-url]
-[![Coverage Status][codecov-image]][codecov-url]
+<p align="center">
+  <a href="http://standardjs.com"><img src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square" alt="Standard Style" /></a>
+  <a href="https://travis-ci.org/diegohaz/arc"><img src="https://img.shields.io/travis/diegohaz/arc.svg?style=flat-square" alt="Build Status" /></a>
+  <a href="https://codecov.io/gh/diegohaz/arc"><img src="https://img.shields.io/codecov/c/github/diegohaz/arc.svg?style=flat-square" alt="Coverage Status" /></a>
+</p>
 
 **ARc** (Atomic React) can be a progressive boilerplate, as much as a set of components or a project's structure proposal based on [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/). You choose how to use it: from a single component to the whole philosophy.
 
@@ -90,12 +92,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-
-[standard-url]: http://standardjs.com
-[standard-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square
-
-[travis-url]: https://travis-ci.org/diegohaz/arc
-[travis-image]: https://img.shields.io/travis/diegohaz/arc.svg?style=flat-square
-
-[codecov-url]: https://codecov.io/gh/diegohaz/arc
-[codecov-image]: https://img.shields.io/codecov/c/github/diegohaz/arc.svg?style=flat-square
