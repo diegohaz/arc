@@ -1,6 +1,5 @@
-<img width="100%" alt="arclogo2" src="https://cloud.githubusercontent.com/assets/3068563/19498370/358624a6-956f-11e6-9b8b-470ec1d79522.png">
-
 <p align="center">
+  <img width="206" alt="arclogo2" src="https://cloud.githubusercontent.com/assets/3068563/19498653/f9b73170-9570-11e6-9183-61dce798abab.png"><br><br>
   <a href="http://standardjs.com"><img src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square" alt="Standard Style" /></a>
   <a href="https://travis-ci.org/diegohaz/arc"><img src="https://img.shields.io/travis/diegohaz/arc.svg?style=flat-square" alt="Build Status" /></a>
   <a href="https://codecov.io/gh/diegohaz/arc"><img src="https://img.shields.io/codecov/c/github/diegohaz/arc.svg?style=flat-square" alt="Coverage Status" /></a>
@@ -51,7 +50,7 @@ $ rm -rf .git
 $ npm install # or yarn
 ```
 
-## Develop
+## Usage
 
 Once you have installed the dependencies, you can use `npm start` to run a development server or `npm run build` to transpile the code into the `dist` folder.
 
