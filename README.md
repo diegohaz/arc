@@ -1,4 +1,4 @@
-<img width="640" alt="arclogo2" src="https://cloud.githubusercontent.com/assets/3068563/19498370/358624a6-956f-11e6-9b8b-470ec1d79522.png">
+<img width="100%" alt="arclogo2" src="https://cloud.githubusercontent.com/assets/3068563/19498370/358624a6-956f-11e6-9b8b-470ec1d79522.png">
 
 <p align="center">
   <a href="http://standardjs.com"><img src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square" alt="Standard Style" /></a>
