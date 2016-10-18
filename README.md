@@ -4,17 +4,31 @@
 [![Build Status][travis-image]][travis-url]
 [![Coverage Status][codecov-image]][codecov-url]
 
-**ARc** (**A**tomic **R**ea**c**t) can be a progressive boilerplate, as much as a set of components or a project's structure proposal based on [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/). You choose how to use it: from a single component to the whole philosophy.
+**ARc** (Atomic React) can be a progressive boilerplate, as much as a set of components or a project's structure proposal based on [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/). You choose how to use it: from a single component to the whole philosophy.
 
 See the [demo](https://diegohaz.github.io/arc).
 
 ## Branches
 
-- **[master](https://github.com/diegohaz/arc)** - A React/Webpack only application boilerplate.
-- **redux** (soon) - Master + Redux.
-- **universal-redux** (soon) - Redux + [Server Rendering](https://github.com/reactjs/redux/blob/master/docs/recipes/ServerRendering.md).
-- **fullstack** (soon) - Universal + REST API. *The ULTIMATE boilerplate.*
-- **yeoman-generator** (soon) - Generate components, redux stores, API endpoints and the entire project through a CLI utility (e.g. `$ yo arc:component`).
+### [master](https://github.com/diegohaz/arc)
+
+A minimal boilerplate with Atomic Design components, [Webpack](https://github.com/webpack/webpack) and [react-router v4](https://github.com/ReactTraining/react-router/tree/v4).
+
+### redux (soon)
+
+Master plus [redux](https://github.com/reactjs/redux).
+
+### universal-redux (soon)
+
+Redux plus [Server Side Rendering](https://github.com/reactjs/redux/blob/master/docs/recipes/ServerRendering.md).
+
+### fullstack (soon)
+
+Universal plus REST API.
+
+### yeoman-generator (soon)
+
+Generate components, redux stores, API endpoints and the entire project through a CLI utility (e.g. `$ yo arc:component`).
 
 ## Why
 
@@ -57,6 +71,8 @@ $ npm install # or yarn
 ## How to use
 
 Once you have installed the dependencies, you can use `npm start` to run a development server or `npm run build` to transpile the code into the `dist` folder.
+
+The source code should be placed in `src`; public/static files should be placed in `public` so they can be included in the build process.
 
 ## FAQ
 
