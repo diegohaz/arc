@@ -19,9 +19,9 @@ it('renders button by default', () => {
   expect(wrapper.find('button').length).toBeGreaterThan(0)
 })
 
-it('renders Link when href is passed in', () => {
+it('renders anchor when href is passed in', () => {
   const wrapper = wrap({ href: 'test' })
-  expect(wrapper.find('Link').length).toBeGreaterThan(0)
+  expect(wrapper.find('a').length).toBeGreaterThan(0)
 })
 
 it('renders Link when to is passed in', () => {

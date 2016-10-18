@@ -33,11 +33,14 @@ const styles = ({ disabled, kind }) => css`
 `
 
 const StyledLink = styled(Link)`${styles}`
+const Anchor = styled.a`${styles}`
 const StyledButton = styled.button`${styles}`
 
 const Button = ({ type, ...props, to, href }) => {
-  if (href || to) {
+  if (to) {
     return <StyledLink {...props} />
+  } else if (href) {
+    return <Anchor {...props} />
   }
   return <StyledButton {...props} type={type} />
 }

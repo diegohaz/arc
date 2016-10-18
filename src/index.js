@@ -1,22 +1,24 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { Router, browserHistory } from 'react-router'
 import { AppContainer } from 'react-hot-loader'
-import routes from './routes'
+import { BrowserRouter, Match } from 'react-router'
+import { HomePage } from 'components'
 
 const root = document.getElementById('app')
 
-const renderApp = (routes) => (
+const renderApp = () => (
   <AppContainer>
-    <Router history={browserHistory} routes={routes} />
+    <BrowserRouter>
+      <Match pattern="*" component={HomePage} />
+    </BrowserRouter>
   </AppContainer>
 )
 
-render(renderApp(routes), root)
+render(renderApp(), root)
 
 if (module.hot) {
-  module.hot.accept('./routes', () => {
-    require('./routes')
-    render(renderApp(routes), root)
+  module.hot.accept('components', () => {
+    require('components')
+    render(renderApp(), root)
   })
 }
