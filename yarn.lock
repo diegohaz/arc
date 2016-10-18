@@ -4375,15 +4375,14 @@ strip-json-comments@~1.0.1, strip-json-comments@~1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-1.0.4.tgz#1e15fbcac97d3ee99bf2d73b4c656b082bbafb91"
 
-styled-components@1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-1.0.6.tgz#0edb05403937635e5be902ddb8dfb25275540443"
+styled-components:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-1.0.7.tgz#213416cd84e2aea44734ffba77b349323186e4e5"
   dependencies:
     buffer "^5.0.0"
     fbjs "^0.8.4"
     glamor "^2.15.5"
     lodash "^4.15.0"
-    react "^15.3.2"
     supports-color "^3.1.2"
 
 supports-color@^2.0.0:
