@@ -10,7 +10,8 @@ new WebpackDevServer(webpack(config), {
   hot: true,
   host: ip,
   stats: false,
-  historyApiFallback: { index: '/public/' }
+  historyApiFallback: true,
+  contentBase: 'public'
 }).listen(port, ip, function (err, result) {
   if (err) {
     return console.log(err)

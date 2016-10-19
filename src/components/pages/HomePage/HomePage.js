@@ -13,7 +13,7 @@ const componentNames = {
 const HomePage = () => {
   return (
     <c.HeroTemplate
-      logo={<c.LogoLink height={80} />}
+      logo={<c.LogoLink height={200} />}
       hero={<c.Hero />}
       nav={<c.PrimaryNavigation {...componentNames} />}
       footer={<c.Footer />}>
