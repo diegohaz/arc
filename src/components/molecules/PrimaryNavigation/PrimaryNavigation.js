@@ -1,68 +1,35 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
-import { fonts, colors } from 'components/globals'
+import { colors } from 'components/globals'
 import { Link } from 'components'
 
 const Nav = styled.nav`
-  display: inline-block;
-  font-family: ${fonts.primary};
-  margin: 1rem 0;
-  padding-left: 1.6rem;
-  color: ${colors.grayscale[0]};
+  display: flex;
   list-style: none;
-  text-align: right;
-`
 
-const List = styled.ul`
-  list-style: none;
-  padding-left: 0;
-  line-height: 1.3rem;
+  & > :not(:first-child) {
+    margin-left: 1rem;
+  }
 `
 
 const StyledLink = styled(Link)`
-  text-transform: uppercase;
-`
-
-const StyledInnerLink = styled(Link)`
   font-weight: 300;
-  color: ${colors.grayscale[1]};
+  color: ${[ ...colors.grayscale ].reverse()[3]};
+  font-size: 1.25rem;
+
+  &.active {
+    color: ${[ ...colors.grayscale ].reverse()[0]};
+  }
 `
 
-const renderLink = (item, inner) => (
-  inner
-    ? <StyledInnerLink href={`#${item}`}>{item}</StyledInnerLink>
-    : <StyledLink href={`#${item}`}>{item}</StyledLink>
-)
-
-const renderList = (items) => (
-  <List>
-    {items.map((item, i) => <li key={i}>{renderLink(item, true)}</li>)}
-  </List>
-)
-
-const PrimaryNavigation = ({
-  globals, atoms, molecules, organisms, templates, pages, ...props
-}) => {
+const PrimaryNavigation = (props) => {
   return (
     <Nav {...props}>
-      {globals && <li>{renderLink('globals')}{renderList(globals)}</li>}
-      {atoms && <li>{renderLink('atoms')}{renderList(atoms)}</li>}
-      {molecules && <li>{renderLink('molecules')}{renderList(molecules)}</li>}
-      {organisms && <li>{renderLink('organisms')}{renderList(organisms)}</li>}
-      {templates && <li>{renderLink('templates')}{renderList(templates)}</li>}
-      {pages && <li>{renderLink('pages')}{renderList(pages)}</li>}
+      <li><StyledLink to="/" activeOnlyWhenExact activeClassName="active">Home</StyledLink></li>
+      <li><StyledLink to="/sample-page" activeClassName="active">Sample page</StyledLink></li>
     </Nav>
   )
-}
-
-PrimaryNavigation.propTypes = {
-  globals: PropTypes.array,
-  atoms: PropTypes.array,
-  molecules: PropTypes.array,
-  organisms: PropTypes.array,
-  templates: PropTypes.array,
-  pages: PropTypes.array
 }
 
 export default PrimaryNavigation

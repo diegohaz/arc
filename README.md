@@ -5,7 +5,7 @@
   <a href="https://codecov.io/gh/diegohaz/arc"><img src="https://img.shields.io/codecov/c/github/diegohaz/arc.svg?style=flat-square" alt="Coverage Status" /></a>
 </p>
 
-**ARc** (Atomic React) can be a progressive boilerplate, as much as a set of components or a project's structure proposal based on [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/). You choose how to use it: from a single component to the whole philosophy.
+**ARc** (Atomic React) is a React starter kit based on the [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/) methodology. It's progressive, which means that you can start with the basic boilerplate and try the other features when you are comfortable.
 
 See the [demo](https://diegohaz.github.io/arc).
 
@@ -13,11 +13,11 @@ See the [demo](https://diegohaz.github.io/arc).
 
 ### [master](https://github.com/diegohaz/arc)
 
-A minimal boilerplate with Atomic Design components, [Webpack](https://github.com/webpack/webpack) and [react-router v4](https://github.com/ReactTraining/react-router/tree/v4).
+The basic stack with [React](https://facebook.github.io/react/), [Webpack](https://github.com/webpack/webpack), [react-router v4](https://github.com/ReactTraining/react-router/tree/v4) and [Jest](https://facebook.github.io/jest/).
 
 ### redux (soon)
 
-Master plus [redux](https://github.com/reactjs/redux).
+Master plus [Redux](https://github.com/reactjs/redux).
 
 ### universal-redux (soon)
 

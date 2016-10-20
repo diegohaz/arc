@@ -1,8 +1,13 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { mount, shallow } from 'enzyme'
 import Icon from './Icon'
 
 const wrap = (props = {}) => shallow(<Icon icon="github" {...props} />).dive()
+
+it('mounts with different combination of props', () => {
+  mount(<Icon icon="github" />)
+  mount(<Icon icon="github" size={20} />)
+})
 
 it('renders props when passed in', () => {
   const wrapper = wrap({ id: 'foo' })

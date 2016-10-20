@@ -4,16 +4,19 @@ import { Link as RouterLink } from 'react-router'
 
 import { colors, fonts } from 'components/globals'
 
-const styles = css`
-  font-family: ${fonts.primary};
-  text-decoration: none;
-  font-weight: 500;
-  color: ${(props) => colors[props.kind][1]};
+const styles = ({ light, kind }) => {
+  const color = light ? [ ...colors[kind] ].reverse()[1] : colors[kind][1]
+  return css`
+    font-family: ${fonts.primary};
+    text-decoration: none;
+    font-weight: 500;
+    color: ${color};
 
-  &:hover {
-    text-decoration: underline;
-  }
-`
+    &:hover {
+      text-decoration: underline;
+    }
+  `
+}
 
 const StyledLink = styled(RouterLink)`${styles}`
 const Anchor = styled.a`${styles}`
@@ -27,6 +30,7 @@ const Link = ({ ...props, to }) => {
 
 Link.propTypes = {
   kind: PropTypes.oneOf(Object.keys(colors)),
+  light: PropTypes.bool,
   to: PropTypes.string
 }
 

@@ -2,30 +2,60 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { colors } from 'components/globals'
-import { Paragraph, Link, IconButton } from 'components'
-
-const Text = styled(Paragraph)`
-  max-width: 600px;
-  margin: 2rem auto;
-`
+import { Paragraph, IconLink, IconButton, LogoImage } from 'components'
 
 const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: calc(100vh - 3.75rem);
+  max-height: 700px;
   padding: 2rem 6rem;
-  background-color: ${[ ...colors.grayscale ].reverse()[1]};
+  box-sizing: border-box;
+  background-color: ${colors.grayscale[0]};
   text-align: center;
-
   @media screen and (max-width: 640px) {
     padding: 1rem;
   }
 `
 
+const Text = styled(Paragraph)`
+  color: ${[ ...colors.grayscale ].reverse()[3]};
+  margin: 3rem auto;
+  max-width: 800px;
+  font-weight: 300;
+  font-size: 1.35rem;
+  line-height: 1.35em;
+  letter-spacing: 0.07em;
+  @media screen and (max-width: 640px) {
+    font-size: 1rem;
+    margin: 1.5rem auto;
+  }
+`
+
+const Logo = styled(LogoImage)`
+  flex: 1;
+`
+
+const StyledIconButton = styled(IconButton)`
+  flex: none;
+  font-size: 1.2rem;
+`
+
 const Hero = (props) => {
   return (
     <Wrapper {...props}>
+      <Logo />
       <Text>
-        <strong>ARc</strong> (<b>A</b>tomic <b>R</b>ea<b>c</b>t) can be a progressive boilerplate, as much as a set of components or a project's structure proposal based on <Link href="http://bradfrost.com/blog/post/atomic-web-design/">Atomic Design</Link>. You choose how to use it: from a single component to the whole philosophy.
+        <strong>ARc</strong> is a <IconLink light icon="react" href="https://facebook.github.io/react/">React</IconLink> starter kit based on the <IconLink light icon="atomic-design" color="#fff" href="http://bradfrost.com/blog/post/atomic-web-design/">Atomic Design</IconLink> methodology. It's <strong>progressive</strong>, which means that you can start with the basic boilerplate and try the other features when you are comfortable.
       </Text>
-      <IconButton icon="github" href="https://github.com/diegohaz/arc">View on GitHub</IconButton>
+      <StyledIconButton
+        light
+        transparent
+        icon="github"
+        href="https://github.com/diegohaz/arc">
+        View on GitHub
+      </StyledIconButton>
     </Wrapper>
   )
 }

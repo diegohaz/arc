@@ -1,8 +1,23 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { mount, shallow } from 'enzyme'
 import Button from './Button'
 
 const wrap = (props = {}) => shallow(<Button {...props} />).dive()
+
+it('mounts with different combination of props', () => {
+  mount(<Button disabled />)
+  mount(<Button transparent />)
+  mount(<Button transparent disabled />)
+  mount(<Button light />)
+  mount(<Button kind="secondary" />)
+  mount(<Button size={100} />)
+  mount(<Button disabled>test</Button>)
+  mount(<Button transparent>test</Button>)
+  mount(<Button transparent disabled>test</Button>)
+  mount(<Button light>test</Button>)
+  mount(<Button kind="secondary">test</Button>)
+  mount(<Button size={100}>test</Button>)
+})
 
 it('renders children when passed in', () => {
   const wrapper = wrap({ children: 'test' })
@@ -27,18 +42,4 @@ it('renders anchor when href is passed in', () => {
 it('renders Link when to is passed in', () => {
   const wrapper = wrap({ to: 'test' })
   expect(wrapper.find('Link').length).toBeGreaterThan(0)
-})
-
-it('renders differently when prop disabled is passed in', () => {
-  const wrapper = wrap()
-  const element = wrapper.debug()
-  wrapper.setProps({ disabled: true })
-  expect(wrapper.debug()).not.toBe(element)
-})
-
-it('renders differently when another kind is passed in', () => {
-  const wrapper = wrap()
-  const element = wrapper.debug()
-  wrapper.setProps({ kind: 'secondary' })
-  expect(wrapper.debug()).not.toBe(element)
 })

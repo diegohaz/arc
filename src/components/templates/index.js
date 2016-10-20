@@ -1,1 +1,1 @@
-export HeroTemplate from './HeroTemplate/HeroTemplate'
+export PageTemplate from './PageTemplate/PageTemplate'

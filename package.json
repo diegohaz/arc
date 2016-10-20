@@ -17,7 +17,8 @@
       "node_modules"
     ],
     "moduleNameMapper": {
-      "^.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/test/fileMock.js"
+      "^.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/test/fileMock.js",
+      "^components$": "<rootDir>/test/componentsMock.js"
     }
   },
   "devDependencies": {
@@ -49,7 +50,6 @@
     "webpack-dev-server": "^1.16.2"
   },
   "dependencies": {
-    "copy-to-clipboard": "^3.0.5",
     "lodash": "^4.16.4",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",

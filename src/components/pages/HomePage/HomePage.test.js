@@ -3,5 +3,5 @@ import { shallow } from 'enzyme'
 import HomePage from './HomePage'
 
 it('renders', () => {
-  shallow(<HomePage title="Button" />)
+  shallow(<HomePage />)
 })

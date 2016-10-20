@@ -1,0 +1,10 @@
+import React from 'react'
+import { shallow } from 'enzyme'
+import FeatureList from './FeatureList'
+
+const wrap = (props = {}) => shallow(<FeatureList title="Test" {...props} />)
+
+it('renders props when passed in', () => {
+  const wrapper = wrap({ id: 'foo' })
+  expect(wrapper.find({ id: 'foo' }).length).toBeGreaterThan(0)
+})

@@ -27,11 +27,11 @@ const styles = ({ invalid, type }) => css`
 const StyledTextarea = styled.textarea`${styles}`
 const StyledInput = styled.input`${styles}`
 
-const Input = ({ invalid, type, ...props }) => {
+const Input = ({ ...props, type }) => {
   if (type === 'textarea') {
     return <StyledTextarea {...props} />
   }
-  return <StyledInput {...props} type={type} />
+  return <StyledInput {...props} />
 }
 
 Input.propTypes = {

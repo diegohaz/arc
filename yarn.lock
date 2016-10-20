@@ -1263,12 +1263,6 @@ cookie@0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.3.1.tgz#e7e0a1f9ef43b4c8ba925c5c5a96e806d16873bb"
 
-copy-to-clipboard@^3.0.5:
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/copy-to-clipboard/-/copy-to-clipboard-3.0.5.tgz#4cd40e7c2ee159bc72d4f06b5bec8f9e0a1a3442"
-  dependencies:
-    toggle-selection "^1.0.3"
-
 copyfiles@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/copyfiles/-/copyfiles-1.0.0.tgz#317026871d5390e32acd03ec458775267e94bc2a"
@@ -1674,8 +1668,8 @@ eslint-config-standard@^6.2.0:
   resolved "https://registry.yarnpkg.com/eslint-config-standard/-/eslint-config-standard-6.2.0.tgz#1d2384ee074de6f6b6c0f2bbe976863032565aee"
 
 eslint-plugin-promise@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-promise/-/eslint-plugin-promise-3.0.0.tgz#1528635d0160f3484e425cce2169cb74cec0186a"
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-promise/-/eslint-plugin-promise-3.3.0.tgz#20a1ef58b4243ffdaef82ee9360a02353a7cca89"
 
 eslint-plugin-react@^6.3.0:
   version "6.4.1"
@@ -1907,8 +1901,8 @@ file-loader@^0.9.0:
     loader-utils "~0.2.5"
 
 file-type@^3.6.0:
-  version "3.8.0"
-  resolved "https://registry.yarnpkg.com/file-type/-/file-type-3.8.0.tgz#bcadf6a8f624ebe4a10e5ad26727b6b93f16d78d"
+  version "3.9.0"
+  resolved "https://registry.yarnpkg.com/file-type/-/file-type-3.9.0.tgz#257a078384d1db8087bc449d107d52a52672b9e9"
 
 filename-regex@^2.0.0:
   version "2.0.0"
@@ -2070,8 +2064,8 @@ getpass@^0.1.1:
     assert-plus "^1.0.0"
 
 glamor@^2.15.5:
-  version "2.17.6"
-  resolved "https://registry.yarnpkg.com/glamor/-/glamor-2.17.6.tgz#101385f17c9d0b42bffa93416b32cfb2303c1f5c"
+  version "2.17.7"
+  resolved "https://registry.yarnpkg.com/glamor/-/glamor-2.17.7.tgz#56a37fbe8b23c58b74401325a4f99a9e5eae3083"
 
 glob-base@^0.3.0:
   version "0.3.0"
@@ -2249,8 +2243,8 @@ html-encoding-sniffer@^1.0.1:
     whatwg-encoding "^1.0.1"
 
 htmlparser2@^3.9.1:
-  version "3.9.1"
-  resolved "https://registry.yarnpkg.com/htmlparser2/-/htmlparser2-3.9.1.tgz#621b7a58bc9acd003f7af0a2c9a00aa67c8505d2"
+  version "3.9.2"
+  resolved "https://registry.yarnpkg.com/htmlparser2/-/htmlparser2-3.9.2.tgz#1bdf87acca0f3f9e53fa4fcceb0f4b4cbb00b338"
   dependencies:
     domelementtype "^1.3.0"
     domhandler "^2.3.0"
@@ -2452,6 +2446,10 @@ is-fullwidth-code-point@^1.0.0:
   resolved "https://registry.yarnpkg.com/is-fullwidth-code-point/-/is-fullwidth-code-point-1.0.0.tgz#ef9e31386f031a7f0d643af82fde50c457ef00cb"
   dependencies:
     number-is-nan "^1.0.0"
+
+is-fullwidth-code-point@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/is-fullwidth-code-point/-/is-fullwidth-code-point-2.0.0.tgz#a3b30a5c4f199183167aaab93beefae3ddfb654f"
 
 is-glob@^2.0.0, is-glob@^2.0.1:
   version "2.0.1"
@@ -3834,12 +3832,6 @@ react-dom@^15.3.2:
   version "15.3.2"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.3.2.tgz#c46b0aa5380d7b838e7a59c4a7beff2ed315531f"
 
-react-history@^0.14.0:
-  version "0.14.1"
-  resolved "https://registry.yarnpkg.com/react-history/-/react-history-0.14.1.tgz#0b97763c1bc96aee6bb59ed9702b86f731869369"
-  dependencies:
-    history "^4.3.0"
-
 react-hot-loader@^3.0.0-beta.5:
   version "3.0.0-beta.6"
   resolved "https://registry.yarnpkg.com/react-hot-loader/-/react-hot-loader-3.0.0-beta.6.tgz#463fac0bfc8b63a8385258af20c91636abce75f4"
@@ -3858,13 +3850,13 @@ react-proxy@^3.0.0-alpha.0:
     lodash "^4.6.1"
 
 react-router@next:
-  version "4.0.0-alpha.4"
-  resolved "https://registry.yarnpkg.com/react-router/-/react-router-4.0.0-alpha.4.tgz#5f19e97b8df497e6f77f68bb1bd9441f56103335"
+  version "4.0.0-alpha.5"
+  resolved "https://registry.yarnpkg.com/react-router/-/react-router-4.0.0-alpha.5.tgz#9d80514f9bbbec040dffbd4f9cf241da2830e318"
   dependencies:
+    history "^4.3.0"
     path-to-regexp "^1.5.3"
     query-string "4.2.3"
     react-broadcast "^0.1.1"
-    react-history "^0.14.0"
 
 react@^15.3.2:
   version "15.3.2"
@@ -4266,8 +4258,8 @@ source-list-map@~0.1.0:
   resolved "https://registry.yarnpkg.com/source-list-map/-/source-list-map-0.1.6.tgz#e1e6f94f0b40c4d28dcf8f5b8766e0e45636877f"
 
 source-map-support@^0.4.2:
-  version "0.4.4"
-  resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.4.4.tgz#0df5765a05a560c91bc8f8641cf79f2affc0322e"
+  version "0.4.5"
+  resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.4.5.tgz#4438df4219e1b3c7feb674614b4c67f9722db1e4"
   dependencies:
     source-map "^0.5.3"
 
@@ -4355,6 +4347,13 @@ string-width@^1.0.1, string-width@^1.0.2:
     is-fullwidth-code-point "^1.0.0"
     strip-ansi "^3.0.0"
 
+string-width@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/string-width/-/string-width-2.0.0.tgz#635c5436cc72a6e0c387ceca278d4e2eec52687e"
+  dependencies:
+    is-fullwidth-code-point "^2.0.0"
+    strip-ansi "^3.0.0"
+
 string.prototype.codepointat@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/string.prototype.codepointat/-/string.prototype.codepointat-0.2.0.tgz#6b26e9bd3afcaa7be3b4269b526de1b82000ac78"
@@ -4389,9 +4388,9 @@ strip-json-comments@~1.0.1, strip-json-comments@~1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-1.0.4.tgz#1e15fbcac97d3ee99bf2d73b4c656b082bbafb91"
 
-styled-components:
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-1.0.7.tgz#213416cd84e2aea44734ffba77b349323186e4e5"
+styled-components@^1.0.7:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-1.0.8.tgz#e98a8153d2bea2b71b146a332713cef803533b84"
   dependencies:
     buffer "^5.0.0"
     fbjs "^0.8.4"
@@ -4414,15 +4413,15 @@ supports-color@^3.1.0, supports-color@^3.1.1, supports-color@^3.1.2:
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.1.4.tgz#02b279348d337debc39694c5c95f882d448a312a"
 
 table@^3.7.8:
-  version "3.8.0"
-  resolved "https://registry.yarnpkg.com/table/-/table-3.8.0.tgz#252166c7f3286684a9d561b0f3a8929caf3a997b"
+  version "3.8.3"
+  resolved "https://registry.yarnpkg.com/table/-/table-3.8.3.tgz#2bbc542f0fda9861a755d3947fefd8b3f513855f"
   dependencies:
     ajv "^4.7.0"
     ajv-keywords "^1.0.0"
     chalk "^1.1.1"
     lodash "^4.0.0"
     slice-ansi "0.0.4"
-    string-width "^1.0.1"
+    string-width "^2.0.0"
 
 tapable@^0.1.8, tapable@~0.1.8:
   version "0.1.10"
@@ -4510,10 +4509,6 @@ tmpl@1.0.x:
 to-fast-properties@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/to-fast-properties/-/to-fast-properties-1.0.2.tgz#f3f5c0c3ba7299a7ef99427e44633257ade43320"
-
-toggle-selection@^1.0.3:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/toggle-selection/-/toggle-selection-1.0.5.tgz#726c703de607193a73c32c7df49cd24950fc574f"
 
 tough-cookie@^2.3.1, tough-cookie@~2.3.0:
   version "2.3.1"

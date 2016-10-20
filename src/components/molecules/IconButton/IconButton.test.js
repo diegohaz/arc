@@ -25,6 +25,11 @@ it('renders props when passed in', () => {
   expect(wrapper.find({ id: 'foo' }).length).toBeGreaterThan(0)
 })
 
+it('passes size to icon', () => {
+  const wrapper = wrap({ size: 20 })
+  expect(wrapper.find({ size: 20 / 2.5 }).length).toBeGreaterThan(0)
+})
+
 it('renders icon on left by default', () => {
   const wrapper = wrap({ children: 'test' })
   expect(wrapper.children().at(0).prop('icon')).toBe('github')

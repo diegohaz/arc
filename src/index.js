@@ -1,15 +1,16 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
-import { BrowserRouter, Match } from 'react-router'
-import { HomePage } from 'components'
+import { BrowserRouter } from 'react-router'
+
+import { App } from 'components'
 
 const root = document.getElementById('app')
 
 const renderApp = () => (
   <AppContainer>
     <BrowserRouter>
-      <Match pattern="*" component={HomePage} />
+      <App />
     </BrowserRouter>
   </AppContainer>
 )
