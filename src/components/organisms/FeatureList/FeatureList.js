@@ -3,11 +3,6 @@ import styled from 'styled-components'
 
 import { Feature, Link, Heading } from 'components'
 
-const Wrapper = styled.div`
-  margin: 0 auto;
-  max-width: 920px;
-`
-
 const Grid = styled.div`
   display: flex;
   flex-flow: row wrap;
@@ -29,7 +24,7 @@ const StyledFeature = styled(Feature)`
 
 const FeatureList = ({ ...props }) => {
   return (
-    <Wrapper {...props}>
+    <div {...props}>
       <StyledHeading>Basic Stack includes</StyledHeading>
       <Grid>
         <StyledFeature
@@ -88,7 +83,7 @@ const FeatureList = ({ ...props }) => {
           Generate components, redux stores, API endpoints and the entire app through command line.
         </StyledFeature>
       </Grid>
-    </Wrapper>
+    </div>
   )
 }
 

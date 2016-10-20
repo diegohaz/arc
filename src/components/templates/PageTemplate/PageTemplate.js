@@ -2,7 +2,11 @@ import React, { PropTypes, Component } from 'react'
 import styled, { injectGlobal } from 'styled-components'
 
 const Main = styled.main`
+  display: flex;
+  flex-direction: column;
   padding-top: 3.75rem;
+  min-height: 100vh;
+  box-sizing: border-box;
 `
 
 const Header = styled.header`
@@ -15,10 +19,13 @@ const Header = styled.header`
 const Hero = styled.section``
 
 const Content = styled.section`
-  margin: 2rem 0;
+  margin: 2rem auto;
+  max-width: 920px;
 `
 
-const Footer = styled.footer``
+const Footer = styled.footer`
+  margin-top: auto;
+`
 
 class PageTemplate extends Component {
   static propTypes = {

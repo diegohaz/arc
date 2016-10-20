@@ -1,12 +1,14 @@
 import React from 'react'
-import { Match } from 'react-router'
+import { Match, Miss } from 'react-router'
 
-import { HomePage } from 'components'
+import { HomePage, SamplePage } from 'components'
 
 const App = () => {
   return (
     <div>
-      <Match pattern="/" component={HomePage} />
+      <Match pattern="/" exactly component={HomePage} />
+      <Match pattern="/sample-page" component={SamplePage} />
+      <Miss component={HomePage} />
     </div>
   )
 }
