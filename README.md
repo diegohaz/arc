@@ -7,7 +7,7 @@
 
 **ARc** (Atomic React) is a React starter kit based on the [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/) methodology. It's progressive, which means that you can start with the basic boilerplate and try the other features when you are comfortable.
 
-See the [demo](https://diegohaz.github.io/arc).
+See the [demo](https://arc.js.org).
 
 ## Branches
 
@@ -37,7 +37,9 @@ I've been a web developer for the past 14 years, and after dealing with IE vs. N
 
 React stimulates you to create very small and pure components. However, as your project grows, you will have an increasing components folder. At some point, this will be really huge and hard to maintain.
 
-The [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/) approach comes handy to solve this problem. You will have your minimal/stylish components in one folder, pages in another and so on.
+I had a React project with more than 100 components in the `components` folder. The first approach I tried to organize it was separating the components by domain (described [here](http://marmelab.com/blog/2015/12/17/react-directory-structure.html)), but I did realize that most of my components didn't belong to any domain, they were shared, so my problems were just moved to the `commons` folder.
+
+The [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/) approach comes handy to solve this problem because it considers the reusability through composition, *which is actually what React is*. You will have your minimal/stylish components in one folder, pages in another and so on.
 
 ## Download
 
