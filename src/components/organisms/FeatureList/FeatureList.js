@@ -1,13 +1,11 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 import { Feature, Link, Heading } from 'components'
 
 const Wrapper = styled.div`
   margin: 0 auto;
-  padding: 1rem;
-  max-width: 960px;
-  box-sizing: border-box;
+  max-width: 920px;
 `
 
 const Grid = styled.div`
@@ -15,6 +13,9 @@ const Grid = styled.div`
   flex-flow: row wrap;
   & > * {
     width: calc(50% - 2rem);
+    @media screen and (max-width: 640px) {
+      width: calc(100% - 1rem);
+    }
   }
 `
 
@@ -89,13 +90,6 @@ const FeatureList = ({ ...props }) => {
       </Grid>
     </Wrapper>
   )
-}
-
-FeatureList.propTypes = {
-  title: PropTypes.string.isRequired,
-  icon: PropTypes.string,
-  link: PropTypes.string,
-  children: PropTypes.any
 }
 
 export default FeatureList

@@ -29,12 +29,13 @@ const Text = styled(Paragraph)`
   letter-spacing: 0.07em;
   @media screen and (max-width: 640px) {
     font-size: 1rem;
-    margin: 1.5rem auto;
   }
 `
 
 const Logo = styled(LogoImage)`
   flex: 1;
+  width: 100%;
+  min-height: 1px;
 `
 
 const StyledIconButton = styled(IconButton)`
