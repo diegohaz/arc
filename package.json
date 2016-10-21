@@ -13,7 +13,7 @@
   },
   "jest": {
     "modulePathIgnorePatterns": [
-      "<rootDir>/src-min"
+      "<rootDir>/src-clean"
     ],
     "moduleDirectories": [
       "src",

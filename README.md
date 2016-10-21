@@ -58,7 +58,7 @@ Once you have installed the dependencies, you can use `npm start` to run a devel
 
 The source code should be placed in `src`; public/static files should be placed in `public` so they can be included in the build process.
 
-If you want a clean and minimal source code without the predefined components and tests, just use the `src-min` instead by renaming it to `src` (and removing or renaming the older one to something like `src-example`).
+If you want a clean and minimal source code without the predefined components and tests, just use the `src-clean` instead by renaming it to `src` (and removing or renaming the older one to something like `src-example`).
 
 ## FAQ
 
