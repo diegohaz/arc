@@ -1,7 +1,7 @@
-import React, { PropTypes, Component } from 'react'
-import styled, { injectGlobal } from 'styled-components'
+import React, { PropTypes } from 'react'
+import styled from 'styled-components'
 
-const Main = styled.main`
+const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding-top: 3.75rem;
@@ -27,33 +27,22 @@ const Footer = styled.footer`
   margin-top: auto;
 `
 
-class PageTemplate extends Component {
-  static propTypes = {
-    header: PropTypes.any.isRequired,
-    hero: PropTypes.any,
-    children: PropTypes.any.isRequired,
-    footer: PropTypes.any.isRequired
-  }
+const PageTemplate = ({ header, hero, children, footer, ...props }) => {
+  return (
+    <Wrapper {...props}>
+      <Header>{header}</Header>
+      {hero && <Hero>{hero}</Hero>}
+      <Content>{children}</Content>
+      <Footer>{footer}</Footer>
+    </Wrapper>
+  )
+}
 
-  componentDidMount () {
-    injectGlobal`
-      body {
-        margin: 0;
-      }
-    `
-  }
-
-  render () {
-    const { header, hero, children, footer, ...props } = this.props
-    return (
-      <Main {...props}>
-        <Header>{header}</Header>
-        {hero && <Hero>{hero}</Hero>}
-        <Content>{children}</Content>
-        <Footer>{footer}</Footer>
-      </Main>
-    )
-  }
+PageTemplate.propTypes = {
+  header: PropTypes.any.isRequired,
+  hero: PropTypes.any,
+  children: PropTypes.any.isRequired,
+  footer: PropTypes.any.isRequired
 }
 
 export default PageTemplate
