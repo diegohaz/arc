@@ -12,6 +12,9 @@
     "build": "npm run clean && npm run copy && cross-env NODE_ENV=production webpack"
   },
   "jest": {
+    "modulePathIgnorePatterns": [
+      "<rootDir>/src-min"
+    ],
     "moduleDirectories": [
       "src",
       "node_modules"
