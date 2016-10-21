@@ -1,8 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import TableCell from './TableCell'
+import List from '.'
 
-const wrap = (props = {}) => shallow(<TableCell {...props} />).dive()
+const wrap = (props = {}) => shallow(<List {...props} />).dive()
 
 it('renders children when passed in', () => {
   const wrapper = wrap({ children: 'test' })
@@ -14,12 +14,12 @@ it('renders props when passed in', () => {
   expect(wrapper.find({ id: 'foo' }).length).toBeGreaterThan(0)
 })
 
-it('renders td by default', () => {
+it('renders ul by default', () => {
   const wrapper = wrap()
-  expect(wrapper.find('td').length).toBeGreaterThan(0)
+  expect(wrapper.find('ul').length).toBeGreaterThan(0)
 })
 
-it('renders th when prop heading is passed in', () => {
-  const wrapper = wrap({ heading: true })
-  expect(wrapper.find('th').length).toBeGreaterThan(0)
+it('renders ol when ordered prop is passed in', () => {
+  const wrapper = wrap({ ordered: true })
+  expect(wrapper.find('ol').length).toBeGreaterThan(0)
 })

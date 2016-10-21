@@ -1,1 +1,1 @@
-export PageTemplate from './PageTemplate/PageTemplate'
+export PageTemplate from './PageTemplate'

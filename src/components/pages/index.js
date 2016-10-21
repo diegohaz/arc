@@ -1,2 +1,2 @@
-export HomePage from './HomePage/HomePage'
-export SamplePage from './SamplePage/SamplePage'
+export HomePage from './HomePage'
+export SamplePage from './SamplePage'

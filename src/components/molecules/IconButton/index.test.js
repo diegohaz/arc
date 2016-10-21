@@ -1,6 +1,6 @@
 import React from 'react'
 import { mount, shallow } from 'enzyme'
-import IconButton from './IconButton'
+import IconButton from '.'
 
 const wrap = (props = {}) => shallow(<IconButton icon="github" {...props} />)
 

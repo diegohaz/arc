@@ -1,8 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import HorizontalRule from './HorizontalRule'
+import Header from '.'
 
-const wrap = (props = {}) => shallow(<HorizontalRule {...props} />)
+const wrap = (props = {}) => shallow(<Header {...props} />).dive()
 
 it('renders props when passed in', () => {
   const wrapper = wrap({ id: 'foo' })

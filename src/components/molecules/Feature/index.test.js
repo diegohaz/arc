@@ -1,6 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import Feature from './Feature'
+import Feature from '.'
 
 const wrap = (props = {}) => shallow(<Feature title="Test" {...props} />).dive()
 

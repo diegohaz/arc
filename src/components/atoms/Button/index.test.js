@@ -1,6 +1,6 @@
 import React from 'react'
 import { mount, shallow } from 'enzyme'
-import Button from './Button'
+import Button from '.'
 
 const wrap = (props = {}) => shallow(<Button {...props} />).dive()
 

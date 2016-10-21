@@ -1,21 +1,13 @@
 import React from 'react'
 import { mount, shallow } from 'enzyme'
-import TableRow from './TableRow'
+import Select from '.'
 
-const wrap = (props = {}) => shallow(<TableRow {...props} />)
+const wrap = (props = {}) => shallow(<Select {...props} />)
 
 it('mounts with different combination of props', () => {
-  const wrapMounted = ({ children, ...props }) => mount(
-    <table>
-      <tbody>
-        <TableRow {...props}>
-          {children && <td>{children}</td>}
-        </TableRow>
-      </tbody>
-    </table>
-  )
-  wrapMounted({ children: 'test' })
-  wrapMounted({ filled: true, children: 'test' })
+  mount(<Select />)
+  mount(<Select invalid />)
+  mount(<Select invalid>test</Select>)
 })
 
 it('renders children when passed in', () => {

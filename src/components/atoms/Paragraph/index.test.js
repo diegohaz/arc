@@ -1,14 +1,8 @@
 import React from 'react'
-import { mount, shallow } from 'enzyme'
-import Select from './Select'
+import { shallow } from 'enzyme'
+import Paragraph from '.'
 
-const wrap = (props = {}) => shallow(<Select {...props} />)
-
-it('mounts with different combination of props', () => {
-  mount(<Select />)
-  mount(<Select invalid />)
-  mount(<Select invalid>test</Select>)
-})
+const wrap = (props = {}) => shallow(<Paragraph {...props} />)
 
 it('renders children when passed in', () => {
   const wrapper = wrap({ children: 'test' })
