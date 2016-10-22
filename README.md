@@ -31,6 +31,10 @@ Universal plus REST API.
 
 Generate components, redux stores, API endpoints and the entire project through a CLI utility (e.g. `$ yo arc:component`).
 
+## Forks
+
+*Did you fork this repo and made something different? Add it to this section and send a PR.*
+
 ## Why
 
 I've been a web developer for the past 14 years, and after dealing with IE vs. Netscape wars, `<table>` layouts and flash websites I can say we live now the best moment in web development. Web components are awesome and React makes it better.
