@@ -29,8 +29,8 @@ const styles = ({ disabled, transparent, light, kind, size }) => {
     };
 
     &:hover, &:focus, &:active {
-      background-color: ${transparent || color[0]};
-      color: ${transparent && color[0]};
+      background-color: ${disabled || transparent || color[0]};
+      color: ${disabled || transparent && color[0]};
     }
 
     &:focus {
