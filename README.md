@@ -15,9 +15,9 @@ See the [demo](https://arc.js.org).
 
 The basic stack with [React](https://facebook.github.io/react/), [Webpack](https://github.com/webpack/webpack), [react-router v4](https://github.com/ReactTraining/react-router/tree/v4) and [Jest](https://facebook.github.io/jest/).
 
-### redux (soon)
+### [redux](https://github.com/diegohaz/arc/tree/redux)
 
-Master plus [Redux](https://github.com/reactjs/redux).
+Master plus [redux](https://github.com/reactjs/redux), [redux-saga](https://github.com/yelouafi/redux-saga) and [redux-form](https://github.com/erikras/redux-form).
 
 ### universal-redux (soon)
 

@@ -57,8 +57,7 @@ const FeatureList = ({ ...props }) => {
         <StyledFeature
           icon="redux"
           link="http://redux.js.org"
-          title="Redux"
-          soon>
+          title="Redux">
           The predictable state container for JavaScript apps.
         </StyledFeature>
         <StyledFeature
