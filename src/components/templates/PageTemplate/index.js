@@ -19,6 +19,8 @@ const Header = styled.header`
 const Hero = styled.section``
 
 const Content = styled.section`
+  width: 100%;
+  box-sizing: border-box;
   margin: 2rem auto;
   max-width: 920px;
 `
