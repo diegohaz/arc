@@ -8,6 +8,7 @@ var DEBUG = process.env.NODE_ENV !== 'production'
 var config = {
   devtool: DEBUG ? 'eval' : false,
   entry: [
+    'babel-polyfill',
     path.join(__dirname, 'src')
   ],
   output: {
