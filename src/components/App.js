@@ -1,10 +1,11 @@
-import React, { Component } from 'react'
+import React, { PropTypes, Component } from 'react'
 import { injectGlobal } from 'styled-components'
-import { Match, Miss } from 'react-router'
-
-import { HomePage, SamplePage } from 'components'
 
 class App extends Component {
+  static propTypes = {
+    children: PropTypes.any
+  }
+
   componentDidMount () {
     injectGlobal`
       body {
@@ -14,12 +15,9 @@ class App extends Component {
   }
 
   render () {
+    const { children } = this.props
     return (
-      <div>
-        <Match pattern="/" exactly component={HomePage} />
-        <Match pattern="/sample-page" component={SamplePage} />
-        <Miss component={HomePage} />
-      </div>
+      <div>{children}</div>
     )
   }
 }

@@ -1,31 +1,23 @@
-import React, { Component } from 'react'
-import styled, { injectGlobal } from 'styled-components'
-import { Match, Miss } from 'react-router'
-
-import { HomePage } from 'components'
-
-const Wrapper = styled.div`
-  width: 100%;
-  height: 100%;
-`
+import React, { PropTypes, Component } from 'react'
+import { injectGlobal } from 'styled-components'
 
 class App extends Component {
+  static propTypes = {
+    children: PropTypes.any
+  }
+
   componentDidMount () {
     injectGlobal`
-      html, body, #app {
+      body {
         margin: 0;
-        width: 100%;
-        height: 100%;
       }
     `
   }
 
   render () {
+    const { children } = this.props
     return (
-      <Wrapper>
-        <Match pattern="/" exactly component={HomePage} />
-        <Miss component={HomePage} />
-      </Wrapper>
+      <div>{children}</div>
     )
   }
 }
