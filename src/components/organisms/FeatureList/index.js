@@ -35,9 +35,9 @@ const FeatureList = ({ ...props }) => {
         </StyledFeature>
         <StyledFeature
           icon="react-router"
-          link="https://react-router.now.sh/"
-          title="React Router 4">
-          The next generation of the declarative routing for React.
+          link="https://github.com/ReactTraining/react-router"
+          title="React Router">
+          The declarative routing library for React.
         </StyledFeature>
         <StyledFeature
           icon="webpack"
