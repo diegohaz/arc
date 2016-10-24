@@ -2,14 +2,16 @@
   "name": "arc",
   "version": "0.1.0",
   "private": true,
+  "main": "src",
   "scripts": {
-    "start": "node server",
+    "start": "node .",
     "test": "jest",
     "coverage": "npm test -- --coverage && opn coverage/lcov-report/index.html",
+    "dev": "concurrently --kill-others 'nodemon .' 'node webpack/webpack-dev-server'",
     "lint": "eslint 'src/**/*.js'",
     "clean": "del 'dist/!(.git*|Procfile)**'",
     "copy": "copyfiles -u 1 public/* public/**/* dist",
-    "build": "npm run clean && npm run copy && cross-env NODE_ENV=production webpack"
+    "build": "npm run clean && npm run copy && cross-env NODE_ENV=production webpack --config webpack/webpack.config"
   },
   "jest": {
     "modulePathIgnorePatterns": [
@@ -25,13 +27,10 @@
     }
   },
   "devDependencies": {
-    "babel-core": "^6.17.0",
     "babel-eslint": "^7.0.0",
     "babel-jest": "^16.0.0",
     "babel-loader": "^6.2.5",
-    "babel-preset-es2015": "^6.16.0",
-    "babel-preset-react": "^6.16.0",
-    "babel-preset-stage-1": "^6.16.0",
+    "concurrently": "^3.1.0",
     "copyfiles": "^1.0.0",
     "cross-env": "^3.1.2",
     "del-cli": "^0.2.0",
@@ -45,6 +44,7 @@
     "file-loader": "^0.9.0",
     "jest-cli": "^16.0.1",
     "json-loader": "^0.5.4",
+    "nodemon": "^1.11.0",
     "opn-cli": "^3.1.0",
     "raw-loader": "^0.5.1",
     "react-addons-test-utils": "^15.3.2",
@@ -55,10 +55,20 @@
   },
   "dependencies": {
     "axios": "^0.15.2",
+    "babel-core": "^6.17.0",
     "babel-polyfill": "^6.16.0",
+    "babel-preset-es2015": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-1": "^6.16.0",
+    "body-parser": "^1.15.2",
+    "compression": "^1.6.2",
+    "cookie-parser": "^1.4.3",
+    "csurf": "^1.9.0",
+    "express": "^4.14.0",
     "lodash": "^4.16.4",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
+    "react-helmet": "^3.1.0",
     "react-hot-loader": "^3.0.0-beta.5",
     "react-redux": "^4.4.5",
     "react-router": "^2.8.1",
@@ -66,8 +76,12 @@
     "react-router-scroll": "^0.3.2",
     "redux": "^3.6.0",
     "redux-form": "^6.1.1",
+    "redux-form-submit": "^0.1.2",
     "redux-saga": "^0.12.0",
+    "redux-thunk": "^2.1.0",
+    "serialize-javascript": "^1.3.0",
     "styled-components": "^1.0.7",
-    "validator": "^6.1.0"
+    "validator": "^6.1.0",
+    "webpack-isomorphic-tools": "^2.6.3"
   }
 }
