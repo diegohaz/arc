@@ -9,7 +9,7 @@
 
 This branch adds [Server Side Rendering](https://github.com/reactjs/redux/blob/master/docs/recipes/ServerRendering.md) to the [redux](https://github.com/diegohaz/arc/tree/redux) branch.
 
-See the [demo](https://atomic-react.herokuapp.com). (*Disable javascript to see the magic*)
+See the [demo](https://arc.diegohaz.com). (*Disable javascript to see the magic*)
 
 ## Download
 

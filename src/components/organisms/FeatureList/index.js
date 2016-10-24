@@ -56,16 +56,15 @@ const FeatureList = ({ ...props }) => {
       <Grid>
         <StyledFeature
           icon="redux"
-          link="http://redux.js.org"
+          link="https://github.com/diegohaz/arc/tree/redux"
           title="Redux">
           The predictable state container for JavaScript apps.
         </StyledFeature>
         <StyledFeature
           icon="dist"
-          link="https://github.com/reactjs/redux/blob/master/docs/recipes/ServerRendering.md"
-          title="Server Side Rendering"
-          soon>
-          Write once and run both on the server and client.
+          link="https://github.com/diegohaz/arc/tree/universal-redux"
+          title="Server Side Rendering">
+          Write once and run both on the server and client (everything works with javascript disabled, even the forms).
         </StyledFeature>
         <StyledFeature
           icon="node"
