@@ -26,7 +26,7 @@ const StyledLink = styled(Link)`
 const PrimaryNavigation = (props) => {
   return (
     <Nav {...props}>
-      <li><StyledLink to="/" activeOnlyWhenExact activeClassName="active">Home</StyledLink></li>
+      <li><StyledLink to="/" onlyActiveOnIndex activeClassName="active">Home</StyledLink></li>
       <li><StyledLink to="/sample-page" activeClassName="active">Sample page</StyledLink></li>
     </Nav>
   )
