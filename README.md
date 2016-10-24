@@ -19,9 +19,9 @@ The basic stack with [React](https://facebook.github.io/react/), [Webpack](https
 
 Master plus [redux](https://github.com/reactjs/redux), [redux-saga](https://github.com/yelouafi/redux-saga) and [redux-form](https://github.com/erikras/redux-form).
 
-### universal-redux (soon)
+### [universal-redux](https://github.com/diegohaz/arc/tree/universal-redux)
 
-Redux plus [Server Side Rendering](https://github.com/reactjs/redux/blob/master/docs/recipes/ServerRendering.md).
+Redux plus [Server Side Rendering](https://github.com/reactjs/redux/blob/master/docs/recipes/ServerRendering.md) (*everything works with javascript disabled, even the forms*).
 
 ### fullstack (soon)
 
