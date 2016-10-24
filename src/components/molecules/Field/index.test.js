@@ -9,6 +9,11 @@ it('renders input props when passed in', () => {
   expect(wrapper.find({ id: 'foo' }).length).toBeGreaterThan(0)
 })
 
+it('renders name', () => {
+  const wrapper = wrap()
+  expect(wrapper.find({ name: 'name' }).length).toBeGreaterThan(0)
+})
+
 it('renders label when passed in', () => {
   const wrapper = wrap({ label: 'foo label' })
   expect(wrapper.contains('foo label')).toBe(true)
