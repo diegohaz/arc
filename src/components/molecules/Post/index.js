@@ -6,28 +6,18 @@ import { Heading, Paragraph } from 'components'
 
 const Article = styled.article``
 
-const Placeholder = styled.span`
-  color: ${(props) => [ ...colors.grayscale ].reverse()[props.darkness]};
-  background-color: currentcolor;
-`
-
-const Post = ({ title, body, loading, ...props }) => {
+const Post = ({ title, body, ...props }) => {
   return (
     <Article {...props}>
-      <Heading level={2}>
-        {loading && <Placeholder darkness={2}>{title}</Placeholder> || title}
-      </Heading>
-      <Paragraph>
-        {loading && <Placeholder darkness={1}>{body}</Placeholder> || body}
-      </Paragraph>
+      <Heading level={2}>{title}</Heading>
+      <Paragraph>{body}</Paragraph>
     </Article>
   )
 }
 
 Post.propTypes = {
   title: PropTypes.string.isRequired,
-  body: PropTypes.string.isRequired,
-  loading: PropTypes.bool
+  body: PropTypes.string.isRequired
 }
 
 export default Post
