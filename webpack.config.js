@@ -31,7 +31,6 @@ var config = {
       { test: /\.woff$/, loader: 'url?prefix=fonts/&limit=8000&mimetype=application/font-woff' },
       { test: /\.ttf$/, loader: 'file?prefix=fonts/' },
       { test: /\.eot$/, loader: 'file?prefix=fonts/' },
-      { test: /\.svg$/, loader: 'raw' },
       { test: /\.json$/, loader: 'json' }
     ]
   }
