@@ -15,7 +15,7 @@ const Wrapper = styled.div`
 `
 
 const Field = ({ error, name, invalid, label, type, ...props }) => {
-  const inputProps = { id: name, type, invalid, 'aria-describedby': `${name}Error`, ...props }
+  const inputProps = { id: name, name, type, invalid, 'aria-describedby': `${name}Error`, ...props }
   return (
     <Wrapper>
       {label && <Label htmlFor={inputProps.id}>{label}</Label>}
