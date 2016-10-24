@@ -1,22 +1,22 @@
 <p align="center">
   <img width="206" alt="arclogo2" src="https://cloud.githubusercontent.com/assets/3068563/19498653/f9b73170-9570-11e6-9183-61dce798abab.png"><br><br>
   <a href="http://standardjs.com"><img src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square" alt="Standard Style" /></a>
-  <a href="https://travis-ci.org/diegohaz/arc"><img src="https://img.shields.io/travis/diegohaz/arc/redux.svg?style=flat-square" alt="Build Status" /></a>
-  <a href="https://codecov.io/gh/diegohaz/arc/branch/redux"><img src="https://img.shields.io/codecov/c/github/diegohaz/arc/redux.svg?style=flat-square" alt="Coverage Status" /></a>
+  <a href="https://travis-ci.org/diegohaz/arc"><img src="https://img.shields.io/travis/diegohaz/arc/universal-redux.svg?style=flat-square" alt="Build Status" /></a>
+  <a href="https://codecov.io/gh/diegohaz/arc/branch/universal-redux"><img src="https://img.shields.io/codecov/c/github/diegohaz/arc/universal-redux.svg?style=flat-square" alt="Coverage Status" /></a>
 </p>
 
-## Redux
+## Universal Redux
 
-This branch adds [redux](https://github.com/reactjs/redux), [redux-saga](https://github.com/yelouafi/redux-saga) and [redux-form](https://github.com/erikras/redux-form) to the [master](https://github.com/diegohaz/arc) branch.
+This branch adds [Server Side Rendering](https://github.com/reactjs/redux/blob/master/docs/recipes/ServerRendering.md) to the [redux](https://github.com/diegohaz/arc/tree/redux) branch.
 
-See the [demo](https://arc.js.org).
+See the [demo](https://arc.diegohaz.com). (*Disable javascript to see the magic*)
 
 ## Download
 
 Just clone the repository and remove the `.git` folder:
 
 ```sh
-$ git clone -b redux https://github.com/diegohaz/arc my-app
+$ git clone -b universal-redux https://github.com/diegohaz/arc my-app
 $ cd my-app
 $ rm -rf .git
 $ npm install # or yarn
