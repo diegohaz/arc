@@ -12,6 +12,7 @@ const Wrapper = styled.div`
 const PostList = ({ list, loading, ...props }) => {
   return (
     <Wrapper {...props}>
+      {loading && <div>Loading</div>}
       {list.map((post, i) => <Post key={i} loading={loading} {...post} />)}
     </Wrapper>
   )

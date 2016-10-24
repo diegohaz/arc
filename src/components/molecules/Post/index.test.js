@@ -24,9 +24,3 @@ it('renders body', () => {
   const wrapper = wrap()
   expect(wrapper.contains('test body')).toBe(true)
 })
-
-it('renders placeholder when loading', () => {
-  const wrapper = wrap({ loading: true })
-  expect(wrapper.contains('test title')).toBe(true)
-  expect(wrapper.contains('test body')).toBe(true)
-})
