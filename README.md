@@ -9,7 +9,7 @@
 
 This branch adds [Server Side Rendering](https://github.com/reactjs/redux/blob/master/docs/recipes/ServerRendering.md) to the [redux](https://github.com/diegohaz/arc/tree/redux) branch.
 
-See the [demo](https://arc.diegohaz.com). (*Disable javascript to see the magic*)
+See the [demo](https://atomic-react.herokuapp.com). (*Disable javascript to see the magic*)
 
 ## Download
 
@@ -24,7 +24,7 @@ $ npm install # or yarn
 
 ## Usage
 
-Once you have installed the dependencies, you can use `npm start` to run a development server or `npm run build` to transpile the code into the `dist` folder.
+Once you have installed the dependencies, you can use `npm run dev` to run a development server or `npm run build` to build the code into the `dist` folder.
 
 The source code should be placed in `src`; public/static files should be placed in `public` so they can be included in the build process.
 
