@@ -22,7 +22,7 @@ const app = express()
 
 if (env === 'production') {
   app.set('forceSSLOptions', {
-    enable301Redirects: false,
+    enable301Redirects: true,
     trustXFPHeader: true
   })
   app.use(forceSSL)
