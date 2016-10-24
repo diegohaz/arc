@@ -1,10 +1,12 @@
 import upperFirst from 'lodash/upperFirst'
 import forIn from 'lodash/forIn'
 import { combineReducers } from 'redux'
+import { routerReducer as routing } from 'react-router-redux'
 import { fork } from 'redux-saga/effects'
 import { reducer as form } from 'redux-form'
 
 const reducers = {
+  routing,
   form
 }
 

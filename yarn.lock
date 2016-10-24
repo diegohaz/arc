@@ -3912,6 +3912,10 @@ react-redux@^4.4.5:
     lodash "^4.2.0"
     loose-envify "^1.1.0"
 
+react-router-redux:
+  version "4.0.6"
+  resolved "https://registry.yarnpkg.com/react-router-redux/-/react-router-redux-4.0.6.tgz#10cf98dce911d7dd912a05bdb07fee4d3c563dee"
+
 react-router-scroll@^0.3.2:
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/react-router-scroll/-/react-router-scroll-0.3.2.tgz#ba8b1d01b3681dc5a68d72865d35c10e84065e52"
