@@ -52,6 +52,86 @@ You can use the [components](src/components) folder here as an example or refer 
 
 There're cases when, during the development, you do realize that some molecule should be an organism, for example. You just need to move the component folder to the right place and update the respective `index.js` files (`molecules/index.js` and `organisms/index.js`). Everything else should work.
 
+### Containers
+
+This project uses a very straight approach of Redux: all components should be as [pure](https://medium.com/@housecor/react-stateless-functional-components-nine-wins-you-might-have-overlooked-997b0d933dbc#.ly1b33jnz) as possible and should be placed in the `components` folder.
+
+If, for some reason, you need to connect a component to the store, just create a container with the same name, importing the pure component and connect it. Thus having a nice separation of concerns. **Do not add any extra styles or another presentational logic on containers**.
+
+**src/components/organisms/PostList**
+```js
+// just presentational logic
+import React, { PropTypes } from 'react'
+import styled from 'styled-components'
+
+import { Post } from 'components'
+
+const PostList = ({ list, loading, ...props }) => {
+  return (
+    <div {...props}>
+      {loading && <div>Loading</div>}
+      {list.map((post, i) => <Post key={i} {...post} />)}
+    </div>
+  )
+}
+
+PostList.propTypes = {
+  list: PropTypes.array.isRequired,
+  loading: PropTypes.bool
+}
+
+export default PostList
+```
+
+**src/containers/PostList**
+```js
+import React, { PropTypes, Component } from 'react'
+import { connect } from 'react-redux'
+import { postList, fromPost, fromStatus, POST_LIST } from 'store'
+
+import { PostList } from 'components'
+
+class PostListContainer extends Component {
+  static propTypes = {
+    list: PropTypes.array.isRequired,
+    limit: PropTypes.number,
+    loading: PropTypes.bool,
+    request: PropTypes.func.isRequired
+  }
+
+  static defaultProps = {
+    limit: 20
+  }
+
+  componentDidMount () {
+    this.props.request()
+  }
+
+  render () {
+    const { list, loading } = this.props
+    return <PostList {...{ list, loading }} />
+  }
+}
+
+const mapStateToProps = (state) => ({
+  list: fromPost.getList(state),
+  loading: fromStatus.isLoading(state, POST_LIST)
+})
+
+const mapDispatchToProps = (dispatch, { limit }) => ({
+  request: () => dispatch(postList.request(limit))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostListContainer)
+```
+
+**src/components/elsewhere**
+```js
+import { PostForm, PostList } from 'containers'
+
+<PostList limit={15} />
+```
+
 ## Contributing
 
 When issuing, use the following patterns in the title for better understanding:
