@@ -66,13 +66,17 @@ Once you have installed the dependencies, you can use `npm start` to run a devel
 
 Use `npm run build` to transpile the code into the `dist` folder. Then, you can deploy it everywhere.
 
-### Folders
+### Source code
 
 The source code should be placed in `src`; public/static files should be placed in `public` so they can be included in the build process.
 
 If you want to start with a clean and minimal source code without the predefined components and tests, just use the `src-clean` instead by renaming it to `src` (and removing or renaming the older one to something like `src-example`).
 
-### How do I know if the component I'm creating is an atom, molecule or organism?
+### Components
+
+This project leverages the Atomic Design methodology to create a scalable and easy to maintain component folder structure. See [why](https://github.com/diegohaz/arc#why).
+
+If you are creating a component and you don't know if it is an atom, a molecule or an organism, don't worry so much. It will be easy to move it later.
 
 You can use the [components](src/components) folder here as an example or refer to the [Pattern Lab Demo](http://demo.patternlab.io/) which this project is based on. Basically, you can think this way:
 
@@ -80,7 +84,7 @@ You can use the [components](src/components) folder here as an example or refer 
 - A **molecule** is a group of atoms;
 - An **organism** is a group of atoms, molecules and/or other organisms.
 
-There're cases when, during the development, you do realize that some molecule should be an organism, for example. This boilerplate was designed in a way that makes it easier to move components. You just need to move the component folder to the right place and update the respective `index.js` files (`molecules/index.js` and `organisms/index.js`). Everything else should work.
+There're cases when, during the development, you do realize that some molecule should be an organism, for example. You just need to move the component folder to the right place and update the respective `index.js` files (`molecules/index.js` and `organisms/index.js`). Everything else should work.
 
 ## Contributing
 
