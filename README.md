@@ -145,6 +145,49 @@ const reducers = {
 }
 ```
 
+### Universal
+```js
+component &&
+component[method] &&
+promises.push(component[method]({ req, res, params, location, store }))
+```
+
+This code is present in `src/server.js` and it will call `Component.method()` for the requested Page container, where `method` is the name of the HTTP method used in the request (`get`, `post` etc.).
+
+```js
+import React, { Component } from 'react'
+import submit from 'redux-form-submit'
+import { postList } from 'store'
+
+import { SamplePage } from 'components'
+import { config } from './PostForm'
+
+class SamplePageContainer extends Component {
+  // called when POST /sampla-page
+  static post ({ req, store }) {
+    return Promise.all([
+      this.get({ store }),
+      store.dispatch(submit(config, req.body))
+    ])
+  }
+
+  // called when GET /sample-page
+  static get ({ store }) {
+    return new Promise((resolve, reject) => {
+      store.dispatch(postList.request(15, resolve, reject))
+    })
+  }
+
+  render () {
+    return <SamplePage />
+  }
+}
+
+export default SamplePageContainer
+```
+
+In order to make the forms work on the server side, this is combined with [redux-form](https://github.com/erikras/redux-form) and [redux-form-submit](https://github.com/diegohaz/redux-form-submit).
+
 ## Contributing
 
 When issuing, use the following patterns in the title for better understanding:
