@@ -123,6 +123,28 @@ import { PostList } from 'containers'
 
 This approach makes it easier to transform any pure component into a container at any time.
 
+### Store
+
+Here lives all the state management of the app.
+
+- `actions` are the messages dispatched throughout the application to perform state changes. [Learn more](http://redux.js.org/docs/basics/Actions.html);
+- `reducer` listens to the actions and translates the state changes to the store. [Learn more](http://redux.js.org/docs/basics/Reducers.html);
+- `selectors` are used by the application to get parts of the current state. [Learn more](http://redux.js.org/docs/recipes/ComputingDerivedData.html);
+- `sagas` listen to the actions and are responsible for performing side effects, like data fetching, caching etc. [Learn more](https://github.com/yelouafi/redux-saga).
+
+To add a new store, just create a new folder with a reducer and change the `store/index.js` file:
+```js
+import post from './post/reducer'
+import status from './status/reducer'
+
+const reducers = {
+  routing,
+  form,
+  post,
+  status
+}
+```
+
 ## Contributing
 
 When issuing, use the following patterns in the title for better understanding:
