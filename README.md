@@ -24,11 +24,120 @@ $ npm install # or yarn
 
 ## Usage
 
-Once you have installed the dependencies, you can use `npm run dev` to run a development server or `npm run build` to build the code into the `dist` folder.
+### Run
+
+Once you have installed the dependencies, you can use `npm start` to run a development server.
+
+### Deploy
+
+Use `npm run build` to transpile the code into the `dist` folder. Then, you can deploy it everywhere.
+
+### Source code
 
 The source code should be placed in `src`; public/static files should be placed in `public` so they can be included in the build process.
 
-If you want a clean and minimal source code without the predefined components and tests, just use the `src-clean` instead by renaming it to `src` (and removing or renaming the older one to something like `src-example`).
+If you want to start with a clean and minimal source code without the predefined components and tests, just use the `src-clean` instead by renaming it to `src` (and removing or renaming the older one to something like `src-example`).
+
+### Components
+
+This project leverages the Atomic Design methodology to create a scalable and easy to maintain component folder structure. See [why](https://github.com/diegohaz/arc#why).
+
+If you are creating a component and you don't know if it is an atom, a molecule or an organism, don't worry so much. It will be easy to move it later.
+
+You can use the [components](src/components) folder here as an example or refer to the [Pattern Lab Demo](http://demo.patternlab.io/) which this project is based on. Basically, you can think this way:
+
+- An **atom** is a native html tag or a React Component that renders an html tag;
+- A **molecule** is a group of atoms;
+- An **organism** is a group of atoms, molecules and/or other organisms.
+
+There're cases when, during the development, you do realize that some molecule should be an organism, for example. You just need to move the component folder to the right place and update the respective `index.js` files (`molecules/index.js` and `organisms/index.js`). Everything else should work.
+
+### Containers
+
+This project uses a very straight approach of Redux: all components should be as [pure](https://medium.com/@housecor/react-stateless-functional-components-nine-wins-you-might-have-overlooked-997b0d933dbc#.ly1b33jnz) as possible and should be placed in the `components` folder.
+
+If, for some reason, you need to connect a component to the store, just create a container with the same name, importing the pure component and connect it. Thus having a nice separation of concerns. **Do not add any extra styles or another presentational logic on containers**.
+
+**src/components/organisms/PostList**
+```js
+// just presentational logic
+import React, { PropTypes } from 'react'
+import styled from 'styled-components'
+
+import { Post } from 'components'
+
+const PostList = ({ list, loading, ...props }) => {
+  return (
+    <div {...props}>
+      {loading && <div>Loading</div>}
+      {list.map((post, i) => <Post key={i} {...post} />)}
+    </div>
+  )
+}
+
+PostList.propTypes = {
+  list: PropTypes.array.isRequired,
+  loading: PropTypes.bool
+}
+
+export default PostList
+```
+
+**src/containers/PostList**
+```js
+import React, { PropTypes, Component } from 'react'
+import { connect } from 'react-redux'
+import { postList, fromPost, fromStatus, POST_LIST } from 'store'
+
+import { PostList } from 'components'
+
+class PostListContainer extends Component {
+  componentDidMount () {
+    this.props.request()
+  }
+
+  render () {
+    const { list, loading } = this.props
+    return <PostList {...{ list, loading }} />
+  }
+}
+
+const mapStateToProps = (state) => ({
+  list: fromPost.getList(state),
+  loading: fromStatus.isLoading(state, POST_LIST)
+})
+
+const mapDispatchToProps = (dispatch, { limit }) => ({
+  request: () => dispatch(postList.request(limit))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostListContainer)
+```
+
+**src/components/elsewhere**
+```js
+import { PostList } from 'containers'
+
+<PostList limit={15} />
+```
+
+This approach makes it easier to transform any pure component into a container at any time.
+
+## Contributing
+
+When issuing, use the following patterns in the title for better understanding:
+```bash
+[v0.3.1-redux] Something wrong is not right # the v0.3.1 release of the redux branch
+[redux] Something wrong is not right # the actual code of the redux branch
+[master] Something right is not wrong # the actual code of the master branch
+Something wrong is right # general or not directly related to any branch
+```
+
+PRs are very appreciated. For bugs/features consider creating an issue before sending a PR. But there're other things you can contribute directly:
+
+- I'm not a native english speaker. If you find any typo or some text that could be written in a better way, please send a PR, even if it is only a punctuation;
+- If you forked or created another boilerplate based on this one with another features (using [`css-modules`](https://github.com/css-modules/css-modules) instead of [`styled-components`](https://github.com/styled-components/styled-components), for example), add that to the [Forks section](#forks) with the following pattern:
+  - [arc-css-modules](https://github.com/username/arc-css-modules) - A little description
 
 ## License
 
