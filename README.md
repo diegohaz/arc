@@ -92,17 +92,6 @@ import { postList, fromPost, fromStatus, POST_LIST } from 'store'
 import { PostList } from 'components'
 
 class PostListContainer extends Component {
-  static propTypes = {
-    list: PropTypes.array.isRequired,
-    limit: PropTypes.number,
-    loading: PropTypes.bool,
-    request: PropTypes.func.isRequired
-  }
-
-  static defaultProps = {
-    limit: 20
-  }
-
   componentDidMount () {
     this.props.request()
   }
@@ -127,10 +116,12 @@ export default connect(mapStateToProps, mapDispatchToProps)(PostListContainer)
 
 **src/components/elsewhere**
 ```js
-import { PostForm, PostList } from 'containers'
+import { PostList } from 'containers'
 
 <PostList limit={15} />
 ```
+
+This approach makes it easier to transform any pure component into a container at any time.
 
 ## Contributing
 
