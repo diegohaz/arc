@@ -6,7 +6,7 @@
     "start": "node server",
     "test": "jest",
     "coverage": "npm test -- --coverage && opn coverage/lcov-report/index.html",
-    "lint": "eslint 'src/**/*.js'",
+    "lint": "eslint 'src/**/*.js' 'src-clean/**/*.js' webpack.config.js server.js",
     "clean": "del 'dist/!(.git*|Procfile)**'",
     "copy": "copyfiles -u 1 public/* public/**/* dist",
     "build": "npm run clean && npm run copy && cross-env NODE_ENV=production webpack"
