@@ -1,22 +1,22 @@
 <p align="center">
   <img width="206" alt="arclogo2" src="https://cloud.githubusercontent.com/assets/3068563/19498653/f9b73170-9570-11e6-9183-61dce798abab.png"><br><br>
   <a href="http://standardjs.com"><img src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square" alt="Standard Style" /></a>
-  <a href="https://travis-ci.org/diegohaz/arc"><img src="https://img.shields.io/travis/diegohaz/arc/universal-redux.svg?style=flat-square" alt="Build Status" /></a>
-  <a href="https://codecov.io/gh/diegohaz/arc/branch/universal-redux"><img src="https://img.shields.io/codecov/c/github/diegohaz/arc/universal-redux.svg?style=flat-square" alt="Coverage Status" /></a>
+  <a href="https://travis-ci.org/diegohaz/arc"><img src="https://img.shields.io/travis/diegohaz/arc/fullstack.svg?style=flat-square" alt="Build Status" /></a>
+  <a href="https://codecov.io/gh/diegohaz/arc/branch/fullstack"><img src="https://img.shields.io/codecov/c/github/diegohaz/arc/fullstack.svg?style=flat-square" alt="Coverage Status" /></a>
 </p>
 
-## Universal Redux
+## Fullstack
 
-This branch adds [Server Side Rendering](https://github.com/reactjs/redux/blob/master/docs/recipes/ServerRendering.md) to the [redux](https://github.com/diegohaz/arc/tree/redux) branch.
+This branch adds a NodeJS, Express and MongoDB REST API to the [universal-redux](https://github.com/diegohaz/arc/tree/universal-redux) branch.
 
-See the [demo](https://arc.diegohaz.com). (*Disable javascript to see the magic*)
+See the [demo](https://arc.diegohaz.com).
 
 ## Download
 
 Just clone the repository and remove the `.git` folder:
 
 ```sh
-$ git clone -b universal-redux https://github.com/diegohaz/arc my-app
+$ git clone -b fullstack https://github.com/diegohaz/arc my-app
 $ cd my-app
 $ rm -rf .git
 $ npm install # or yarn
@@ -43,6 +43,9 @@ heroku apps:create my-new-app
 
 # add heroku remote reference to the local repository
 heroku git:remote --app my-new-app
+
+# add the MongoLab addon to the heroku app
+heroku addons:create mongolab
 
 # commit and push the files
 git add -A
@@ -216,6 +219,14 @@ export default SamplePageContainer
 ```
 
 In order to make the forms work on the server side, this is combined with [redux-form](https://github.com/erikras/redux-form) and [redux-form-submit](https://github.com/diegohaz/redux-form-submit).
+
+### REST API
+
+The REST API code should be placed in `src/api`. Each folder is an endpoint.
+
+- **model** defines the Mongoose schema and model for the API endpoint. Any changes to the data model should be done here;
+- **controller** defines the main router middlewares which use the API model;
+- **index** defines the routes using, along other middlewares (like session, validation etc.), the middlewares defined in the controller file.
 
 ## Contributing
 

@@ -8,18 +8,42 @@ const config = {
   all: {
     env: process.env.NODE_ENV || 'development',
     baseUrl: `http://${ip}:${port}`,
-    apiUrl: `https://jsonplaceholder.typicode.com`,
+    apiUrl: `http://${ip}:${port}/api`,
+    mongo: {
+      options: {
+        db: {
+          safe: true
+        }
+      }
+    },
     browser,
     ip,
     port
   },
-  test: {},
-  development: {},
+  test: {
+    mongo: {
+      uri: `mongodb://${ip}/arc-test`,
+      options: {
+        debug: false
+      }
+    }
+  },
+  development: {
+    mongo: {
+      uri: `mongodb://${ip}/arc-dev`,
+      options: {
+        debug: true
+      }
+    }
+  },
   production: {
     ip: process.env.IP || '0.0.0.0',
     port: process.env.PORT || 8080,
     baseUrl: 'https://arc.diegohaz.com',
-    apiUrl: 'https://jsonplaceholder.typicode.com'
+    apiUrl: 'https://arc.diegohaz.com/api',
+    mongo: {
+      uri: process.env.MONGODB_URI || 'mongodb://localhost/arc'
+    }
   }
 }
 

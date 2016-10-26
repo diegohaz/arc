@@ -6,7 +6,8 @@
   ],
   "env": {
     "browser": true,
-    "jest": true
+    "jest": true,
+    "jasmine": true
   },
   "globals": {
     "__DEV__": true,

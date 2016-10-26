@@ -1,7 +1,17 @@
 language: node_js
 node_js:
   - v6
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - gcc-4.8
+    - g++-4.8
 script:
   - npm run lint && npm test -- --coverage
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+env:
+  global:
+  - CXX=g++-4.8

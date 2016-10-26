@@ -1,6 +1,7 @@
 import React from 'react'
 import serialize from 'serialize-javascript'
 import styleSheet from 'styled-components/lib/models/StyleSheet'
+import cors from 'cors'
 import csrf from 'csurf'
 import { renderToString, renderToStaticMarkup } from 'react-dom/server'
 import { Provider } from 'react-redux'
@@ -8,13 +9,19 @@ import { createMemoryHistory, RouterContext, match } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 import { Router } from 'express'
 import express from 'services/express'
+import mongoose from 'services/mongoose'
+import api from 'api'
 import routes from 'routes'
 import configureStore from 'store/configure'
-import { env, port, ip } from 'config'
+import { env, port, ip, mongo } from 'config'
 import { setCsrfToken } from 'store'
 import { Html } from 'components'
 
 const router = new Router()
+
+mongoose.connect(mongo.uri)
+
+router.use('/api', cors(), api)
 
 router.use(csrf({ cookie: true }))
 

@@ -14,6 +14,7 @@
     "build": "npm run clean && npm run copy && cross-env NODE_ENV=production webpack --config webpack/webpack.config"
   },
   "jest": {
+    "setupTestFrameworkScriptFile": "<rootDir>/test/setup.js",
     "modulePathIgnorePatterns": [
       "<rootDir>/src-clean"
     ],
@@ -33,6 +34,7 @@
     "copyfiles": "^1.0.0",
     "cross-env": "^3.1.2",
     "del-cli": "^0.2.0",
+    "dotenv-safe": "^2.3.2",
     "enzyme": "^2.4.1",
     "eslint": "^3.7.1",
     "eslint-config-standard": "^6.2.0",
@@ -41,10 +43,14 @@
     "eslint-plugin-react": "^6.3.0",
     "eslint-plugin-standard": "^2.0.1",
     "jest-cli": "^16.0.1",
+    "mockgoose": "^6.0.8",
+    "nock": "^9.0.0",
     "nodemon": "^1.11.0",
     "opn-cli": "^3.1.0",
     "react-addons-test-utils": "^15.3.2",
     "sinon": "^1.17.6",
+    "supertest": "^2.0.1",
+    "supertest-as-promised": "^4.0.1",
     "webpack-dev-server": "^1.16.2"
   },
   "dependencies": {
@@ -56,8 +62,10 @@
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-1": "^6.16.0",
     "body-parser": "^1.15.2",
+    "bodymen": "^1.0.2",
     "compression": "^1.6.2",
     "cookie-parser": "^1.4.3",
+    "cors": "^2.8.1",
     "csurf": "^1.9.0",
     "express": "^4.14.0",
     "express-force-ssl": "^0.3.2",
@@ -65,6 +73,9 @@
     "json-loader": "^0.5.4",
     "lodash": "^4.16.4",
     "morgan": "^1.7.0",
+    "mongoose": "^4.6.5",
+    "mongoose-keywords": "^0.3.1",
+    "querymen": "^2.1.1",
     "raw-loader": "^0.5.1",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
