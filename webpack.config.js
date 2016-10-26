@@ -1,10 +1,10 @@
 var path = require('path')
 var webpack = require('webpack')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 var ip = process.env.IP || '0.0.0.0'
 var port = process.env.PORT || 3000
 var DEBUG = process.env.NODE_ENV !== 'production'
-var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var config = {
   devtool: DEBUG ? 'eval' : false,
@@ -25,7 +25,7 @@ var config = {
     }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: __dirname + '/public/index.html',
+      template: path.join(__dirname + '/public/index.html'),
     })
   ],
   module: {
