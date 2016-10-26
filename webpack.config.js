@@ -4,6 +4,7 @@ var webpack = require('webpack')
 var ip = process.env.IP || '0.0.0.0'
 var port = process.env.PORT || 3000
 var DEBUG = process.env.NODE_ENV !== 'production'
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var config = {
   devtool: DEBUG ? 'eval' : false,
@@ -12,7 +13,7 @@ var config = {
   ],
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'app.js',
+    filename: 'app.[hash].js',
     publicPath: '/'
   },
   resolve: {
@@ -21,6 +22,10 @@ var config = {
   plugins: [
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': "'" + process.env.NODE_ENV + "'"
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: __dirname + '/public/index.html',
     })
   ],
   module: {
