@@ -4,7 +4,9 @@ import morgan from 'morgan'
 import cookieParser from 'cookie-parser'
 import bodyParser from 'body-parser'
 import path from 'path'
-import { env, ip, port, root } from 'config'
+import { env, ip, port } from 'config'
+
+const root = path.join(__dirname, '../../..')
 
 export default (routes) => {
   const app = express()

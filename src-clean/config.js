@@ -1,15 +1,14 @@
-import path from 'path'
+import merge from 'lodash/merge'
 
+const browser = typeof window !== 'undefined'
 const ip = process.env.IP || '0.0.0.0'
 const port = process.env.PORT || 3000
-const browser = typeof window !== 'undefined'
 
 const config = {
   all: {
     env: process.env.NODE_ENV || 'development',
-    root: path.join(__dirname, '..'),
     baseUrl: `http://${ip}:${port}`,
-    apiUrl: `http://${ip}:9000`,
+    apiUrl: `https://jsonplaceholder.typicode.com`,
     browser,
     ip,
     port
@@ -19,10 +18,10 @@ const config = {
   production: {
     ip: process.env.IP || '0.0.0.0',
     port: process.env.PORT || 8080,
-    baseUrl: 'http://cblhub.diegohaz.com',
-    apiUrl: 'https://cblhub-api.diegohaz.com'
+    baseUrl: 'https://arc.diegohaz.com',
+    apiUrl: 'https://jsonplaceholder.typicode.com'
   }
 }
 
-module.exports = exports = { ...config.all, ...config[config.all.env] }
+module.exports = exports = merge(config.all, config[config.all.env])
 export default exports
