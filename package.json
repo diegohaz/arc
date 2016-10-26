@@ -6,7 +6,7 @@
     "start": "node server",
     "test": "jest",
     "coverage": "npm test -- --coverage && opn coverage/lcov-report/index.html",
-    "lint": "eslint 'src/**/*.js'",
+    "lint": "eslint 'src/**/*.js' 'src-clean/**/*.js' webpack.config.js server.js",
     "clean": "del 'dist/!(.git*|Procfile)**'",
     "copy": "copyfiles -u 1 public/* public/**/* dist",
     "build": "npm run clean && npm run copy && cross-env NODE_ENV=production webpack"
@@ -43,6 +43,7 @@
     "eslint-plugin-react": "^6.3.0",
     "eslint-plugin-standard": "^2.0.1",
     "file-loader": "^0.9.0",
+    "html-webpack-plugin": "^2.24.0",
     "jest-cli": "^16.0.1",
     "json-loader": "^0.5.4",
     "opn-cli": "^3.1.0",

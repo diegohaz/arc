@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react'
 import styled from 'styled-components'
 
-import { colors } from 'components/globals'
 import { Heading, Paragraph } from 'components'
 
 const Article = styled.article``

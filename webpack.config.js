@@ -1,5 +1,6 @@
 var path = require('path')
 var webpack = require('webpack')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 var ip = process.env.IP || '0.0.0.0'
 var port = process.env.PORT || 3000
@@ -13,7 +14,7 @@ var config = {
   ],
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'app.js',
+    filename: 'app.[hash].js',
     publicPath: '/'
   },
   resolve: {
@@ -22,6 +23,10 @@ var config = {
   plugins: [
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': "'" + process.env.NODE_ENV + "'"
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: path.join(__dirname, '/public/index.html')
     })
   ],
   module: {
