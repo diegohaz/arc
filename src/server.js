@@ -1,21 +1,25 @@
 import React from 'react'
+import serialize from 'serialize-javascript'
+import styleSheet from 'styled-components/lib/models/StyleSheet'
 import { renderToString, renderToStaticMarkup } from 'react-dom/server'
 import { Provider } from 'react-redux'
 import { createMemoryHistory, RouterContext, match } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
-import serialize from 'serialize-javascript'
-import styleSheet from 'styled-components/lib/models/StyleSheet'
-import { env } from 'config'
-import app from 'services/express'
+import { Router } from 'express'
+import express from 'services/express'
 import routes from 'routes'
 import configureStore from 'store/configure'
+import { env } from 'config'
 import { setCsrfToken } from 'store'
 import { Html } from 'components'
 
-app.use((req, res, next) => {
+const router = new Router()
+
+router.use((req, res, next) => {
   if (env === 'development') {
     global.webpackIsomorphicTools.refresh()
   }
+
   const memoryHistory = createMemoryHistory(req.url)
   const store = configureStore({}, memoryHistory)
   const history = syncHistoryWithStore(memoryHistory, store)
@@ -76,3 +80,5 @@ app.use((req, res, next) => {
     })
   })
 })
+
+export default express(router)

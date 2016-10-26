@@ -1,32 +1,24 @@
 import React from 'react'
+import serialize from 'serialize-javascript'
+import styleSheet from 'styled-components/lib/models/StyleSheet'
 import { renderToString, renderToStaticMarkup } from 'react-dom/server'
 import { Provider } from 'react-redux'
 import { createMemoryHistory, RouterContext, match } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
-import serialize from 'serialize-javascript'
-import express from 'express'
-import cookieParser from 'cookie-parser'
-import bodyParser from 'body-parser'
-import path from 'path'
-import compression from 'compression'
-import styleSheet from 'styled-components/lib/models/StyleSheet'
-import { env, ip, port, root } from 'config'
+import { Router } from 'express'
+import express from 'services/express'
 import routes from 'routes'
 import configureStore from 'store/configure'
+import { env } from 'config'
 import { Html } from 'components'
 
-const app = express()
+const router = new Router()
 
-app.use(cookieParser())
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
-app.use(compression())
-app.use(express.static(path.join(root, 'dist')))
-
-app.use((req, res, next) => {
+router.use((req, res, next) => {
   if (env === 'development') {
     global.webpackIsomorphicTools.refresh()
   }
+
   const memoryHistory = createMemoryHistory(req.url)
   const store = configureStore({}, memoryHistory)
   const history = syncHistoryWithStore(memoryHistory, store)
@@ -86,10 +78,4 @@ app.use((req, res, next) => {
   })
 })
 
-app.listen(port, (error) => {
-  if (error) {
-    console.error(error)
-  } else {
-    console.info(`Listening on http://${ip}:${port}`)
-  }
-})
+export default express(router)
