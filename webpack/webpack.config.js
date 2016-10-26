@@ -15,7 +15,7 @@ var config = {
   ],
   output: {
     path: path.join(__dirname, '../dist'),
-    filename: 'app.js',
+    filename: 'app.[hash].js',
     publicPath: DEBUG ? 'http://' + ip + ':' + port + '/' : '/'
   },
   resolve: {
