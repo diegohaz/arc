@@ -1,6 +1,7 @@
 import axios from 'axios'
+import { apiUrl } from 'config'
 
-const api = axios.create({ baseURL: 'https://jsonplaceholder.typicode.com' })
+const api = axios.create({ baseURL: apiUrl })
 
 export const request = (config) => api.request(config)
 

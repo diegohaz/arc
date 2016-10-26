@@ -3,8 +3,8 @@ import forIn from 'lodash/forIn'
 import { combineReducers } from 'redux'
 import { routerReducer as routing } from 'react-router-redux'
 import { fork } from 'redux-saga/effects'
-import { reducer as form } from 'redux-form'
 
+import form from './form/reducer'
 import post from './post/reducer'
 import status from './status/reducer'
 

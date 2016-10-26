@@ -1,5 +1,6 @@
+import { connect } from 'react-redux'
 import { reduxForm } from 'redux-form'
-import { postCreate } from 'store'
+import { postCreate, fromForm } from 'store'
 import { createValidator, required } from 'services/validation'
 
 import { PostForm } from 'components'
@@ -13,9 +14,18 @@ const validate = createValidator({
   body: [required]
 })
 
-export default reduxForm({
+const mapStateToProps = (state) => ({
+  initialValues: {
+    _csrf: fromForm.getCsrfToken(state)
+  }
+})
+
+export const config = {
   form: 'PostForm',
+  fields: ['title', 'body'],
   destroyOnUnmount: false,
   onSubmit,
   validate
-})(PostForm)
+}
+
+export default connect(mapStateToProps)(reduxForm(config)(PostForm))

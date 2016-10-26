@@ -1,21 +1,22 @@
 var path = require('path')
 var webpack = require('webpack')
-var HtmlWebpackPlugin = require('html-webpack-plugin')
+var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin')
+var webpackIsomorphicToolsConfig = require('./webpack-isomorphic-tools')
 
 var ip = process.env.IP || '0.0.0.0'
-var port = process.env.PORT || 3000
+var port = (+process.env.PORT + 1) || 3001
 var DEBUG = process.env.NODE_ENV !== 'production'
 
 var config = {
   devtool: DEBUG ? 'eval' : false,
   entry: [
     'babel-polyfill',
-    path.join(__dirname, 'src')
+    path.join(__dirname, '../src/client')
   ],
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, '../dist'),
     filename: 'app.[hash].js',
-    publicPath: '/'
+    publicPath: DEBUG ? 'http://' + ip + ':' + port + '/' : '/'
   },
   resolve: {
     modulesDirectories: ['src', 'node_modules']
@@ -23,10 +24,6 @@ var config = {
   plugins: [
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': "'" + process.env.NODE_ENV + "'"
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: path.join(__dirname, '/public/index.html')
     })
   ],
   module: {
@@ -50,12 +47,14 @@ if (DEBUG) {
   )
 
   config.plugins = config.plugins.concat([
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new WebpackIsomorphicToolsPlugin(webpackIsomorphicToolsConfig)
   ])
 } else {
   config.plugins = config.plugins.concat([
     new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } })
+    new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }),
+    new WebpackIsomorphicToolsPlugin(webpackIsomorphicToolsConfig)
   ])
 }
 
