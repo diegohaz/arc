@@ -21,7 +21,7 @@
     ],
     "moduleNameMapper": {
       "^.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/test/fileMock.js",
-      "^components$": "<rootDir>/test/componentsMock.js"
+      "^(components|containers)$": "<rootDir>/test/componentsMock.js"
     }
   },
   "devDependencies": {
@@ -49,17 +49,26 @@
     "opn-cli": "^3.1.0",
     "raw-loader": "^0.5.1",
     "react-addons-test-utils": "^15.3.2",
+    "sinon": "^1.17.6",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.16.2"
   },
   "dependencies": {
+    "axios": "^0.15.2",
+    "babel-polyfill": "^6.16.0",
     "lodash": "^4.16.4",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-hot-loader": "^3.0.0-beta.5",
+    "react-redux": "^4.4.5",
     "react-router": "^2.8.1",
+    "react-router-redux": "^4.0.6",
     "react-router-scroll": "^0.3.2",
-    "styled-components": "^1.0.7"
+    "redux": "^3.6.0",
+    "redux-form": "^6.1.1",
+    "redux-saga": "^0.12.0",
+    "styled-components": "^1.0.7",
+    "validator": "^6.1.0"
   }
 }
