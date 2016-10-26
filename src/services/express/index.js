@@ -4,7 +4,6 @@ import compression from 'compression'
 import morgan from 'morgan'
 import cookieParser from 'cookie-parser'
 import bodyParser from 'body-parser'
-import csrf from 'csurf'
 import path from 'path'
 import { env } from 'config'
 
@@ -27,7 +26,6 @@ export default (routes) => {
     app.use(compression())
     app.use(morgan('dev'))
     app.use(cookieParser())
-    app.use(csrf({ cookie: true }))
     app.use(express.static(path.join(root, 'dist')))
   }
 

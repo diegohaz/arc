@@ -1,6 +1,7 @@
 import React from 'react'
 import serialize from 'serialize-javascript'
 import styleSheet from 'styled-components/lib/models/StyleSheet'
+import csrf from 'csurf'
 import { renderToString, renderToStaticMarkup } from 'react-dom/server'
 import { Provider } from 'react-redux'
 import { createMemoryHistory, RouterContext, match } from 'react-router'
@@ -14,6 +15,8 @@ import { setCsrfToken } from 'store'
 import { Html } from 'components'
 
 const router = new Router()
+
+router.use(csrf({ cookie: true }))
 
 router.use((req, res, next) => {
   if (env === 'development') {
