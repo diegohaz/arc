@@ -4,7 +4,7 @@ import morgan from 'morgan'
 import cookieParser from 'cookie-parser'
 import bodyParser from 'body-parser'
 import path from 'path'
-import { env, ip, port } from 'config'
+import { env } from 'config'
 
 const root = path.join(__dirname, '../../..')
 
@@ -22,14 +22,6 @@ export default (routes) => {
   app.use(bodyParser.urlencoded({ extended: false }))
   app.use(bodyParser.json())
   app.use(routes)
-
-  app.listen(port, (error) => {
-    if (error) {
-      console.error(error)
-    } else {
-      console.info(`Listening on http://${ip}:${port}`)
-    }
-  })
 
   return app
 }

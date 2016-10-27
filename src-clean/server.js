@@ -9,7 +9,7 @@ import { Router } from 'express'
 import express from 'services/express'
 import routes from 'routes'
 import configureStore from 'store/configure'
-import { env } from 'config'
+import { env, port, ip } from 'config'
 import { Html } from 'components'
 
 const router = new Router()
@@ -78,4 +78,14 @@ router.use((req, res, next) => {
   })
 })
 
-export default express(router)
+const app = express(router)
+
+app.listen(port, (error) => {
+  if (error) {
+    console.error(error)
+  } else {
+    console.info(`Listening on http://${ip}:${port}`)
+  }
+})
+
+export default app
