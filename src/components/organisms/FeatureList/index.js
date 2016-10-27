@@ -68,9 +68,8 @@ const FeatureList = ({ ...props }) => {
         </StyledFeature>
         <StyledFeature
           icon="node"
-          link="http://expressjs.com/"
-          title="Express RESTful API"
-          soon>
+          link="https://github.com/diegohaz/arc/tree/fullstack"
+          title="RESTful API">
           Write a backend with NodeJS, Express and MongoDB to your React app.
         </StyledFeature>
         <StyledFeature
