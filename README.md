@@ -23,7 +23,7 @@ Master plus [redux](https://github.com/reactjs/redux), [redux-saga](https://gith
 
 Redux plus [Server Side Rendering](https://github.com/reactjs/redux/blob/master/docs/recipes/ServerRendering.md) (*everything works with javascript disabled, even the forms*).
 
-### fullstack (soon)
+### [fullstack](https://github.com/diegohaz/arc/tree/fullstack)
 
 Universal plus REST API.
 
