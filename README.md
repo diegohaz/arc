@@ -32,6 +32,35 @@ Once you have installed the dependencies, you can use `npm run dev` to run a dev
 
 Use `npm run build` to transpile the code into the `dist` folder. Then, you can deploy it everywhere.
 
+Example on [Heroku](https://heroku.com/) using [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line):
+
+```sh
+# start a new local git repository
+git init
+
+# create a new heroku app
+heroku apps:create my-new-app
+
+# add heroku remote reference to the local repository
+heroku git:remote --app my-new-app
+
+# commit and push the files
+git add -A
+git commit -m "Initial commit"
+git push heroku master
+
+# open the deployed app in the browser
+heroku open
+```
+
+The second time you deploy, you just need to:
+
+```sh
+git add -A
+git commit -m "Update code"
+git push heroku master
+```
+
 ### Source code
 
 The source code should be placed in `src`; public/static files should be placed in `public` so they can be included in the build process.
