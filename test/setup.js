@@ -4,7 +4,7 @@ import mongoose from '../src/services/mongoose'
 import { mongo } from '../src/config'
 
 EventEmitter.defaultMaxListeners = Infinity
-jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000
+jasmine.DEFAULT_TIMEOUT_INTERVAL = 100000
 
 beforeAll(async () => {
   await mockgoose(mongoose)
