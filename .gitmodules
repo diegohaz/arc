@@ -1,0 +1,12 @@
+[submodule "templates/master"]
+	path = templates/master
+	url = https://github.com/diegohaz/arc
+	branch = master
+[submodule "templates/redux"]
+	path = templates/redux
+	url = https://github.com/diegohaz/arc
+	branch = redux
+[submodule "templates/universal-redux"]
+	path = templates/universal-redux
+	url = https://github.com/diegohaz/arc
+	branch = universal-redux

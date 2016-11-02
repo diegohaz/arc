@@ -1,21 +1,53 @@
 {
   "name": "generator-arc",
-  "version": "0.0.1",
-  "description": "ARc Yeoman generator",
-  "main": "index.js",
-  "dependencies": {},
-  "devDependencies": {},
+  "version": "0.0.5",
+  "description": "React app generator with Webpack, React Router, Jest, Redux, Server Side Rendering and more",
+  "homepage": "https://github.com/diegohaz/arc",
+  "repository": "diegohaz/arc",
+  "main": "generators/app/index.js",
+  "files": [
+    "generators",
+    "templates"
+  ],
+  "author": {
+    "name": "Diego Haz",
+    "email": "hazdiego@gmail.com",
+    "url": "https://github.com/diegohaz"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "build": "babel src -d generators",
+    "prepublish": "npm run build"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/diegohaz/arc.git"
+  "keywords": [
+    "yeoman-generator",
+    "generator",
+    "yeoman",
+    "react",
+    "atomic design",
+    "webpack",
+    "react router",
+    "jest",
+    "redux",
+    "ssr",
+    "server side rendering"
+  ],
+  "dependencies": {
+    "inquirer": "^1.2.3",
+    "lodash": "^4.17.2",
+    "pluralize": "^3.0.0",
+    "yeoman-generator": "^0.24.1"
   },
-  "author": "Diego Haz <hazdiego@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/diegohaz/arc/issues"
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-eslint": "^7.1.1",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-stage-3": "^6.17.0",
+    "eslint": "^3.10.2",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-standard": "^2.0.1"
   },
-  "homepage": "https://github.com/diegohaz/arc#readme"
+  "license": "MIT"
 }
