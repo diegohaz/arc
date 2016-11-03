@@ -88,7 +88,12 @@ There're cases when, during the development, you do realize that some molecule s
 
 This project uses a very straight approach of Redux: all components should be as [pure](https://medium.com/@housecor/react-stateless-functional-components-nine-wins-you-might-have-overlooked-997b0d933dbc#.ly1b33jnz) as possible and should be placed in the `components` folder.
 
-If, for some reason, you need to connect a component to the store, just create a container with the same name, importing the pure component and connect it. Thus having a nice separation of concerns. **Do not add any extra styles or another presentational logic on containers**.
+If, for some reason, you need to connect a component to the store, just create a container with the same name, import the pure component and connect it. Thus having a nice separation of concerns. **Do not add any extra styles or another presentational logic on containers**.
+
+You can refer to [this thread](https://twitter.com/dan_abramov/status/668585589609005056) on Twitter:
+<p align="center"><img alt="Dan Abramov Tweet" src="https://cloud.githubusercontent.com/assets/3068563/19958100/77ca1b68-a183-11e6-887e-a491dc783f43.png"></p>
+
+Example:
 
 **src/components/organisms/PostList**
 ```js
