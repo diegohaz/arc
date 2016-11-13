@@ -24,6 +24,14 @@ $ npm install # or yarn
 
 ## Usage
 
+- [Run](#run)
+- [Deploy](#deploy)
+- [Source code](#source-code)
+- [Components](#components)
+- [Containers](#containers)
+- [Store](#store)
+- [Universal](#universal)
+
 ### Run
 
 Once you have installed the dependencies, you can use `npm run dev` to run a development server.
