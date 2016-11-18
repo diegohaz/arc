@@ -6,7 +6,7 @@ class App extends Component {
     children: PropTypes.any
   }
 
-  componentDidMount () {
+  componentWillMount () {
     injectGlobal`
       body {
         margin: 0;
