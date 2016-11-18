@@ -7,7 +7,7 @@ const resolve = jest.fn()
 const reject = jest.fn()
 
 beforeEach(() => {
-  jest.clearAllMocks()
+  jest.resetAllMocks()
 })
 
 describe('createPost', () => {
