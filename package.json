@@ -27,7 +27,7 @@
   "devDependencies": {
     "babel-core": "^6.17.0",
     "babel-eslint": "^7.0.0",
-    "babel-jest": "^16.0.0",
+    "babel-jest": "^17.0.2",
     "babel-loader": "^6.2.5",
     "babel-preset-es2015": "^6.16.0",
     "babel-preset-react": "^6.16.0",
@@ -44,7 +44,7 @@
     "eslint-plugin-standard": "^2.0.1",
     "file-loader": "^0.9.0",
     "html-webpack-plugin": "^2.24.0",
-    "jest-cli": "^16.0.1",
+    "jest-cli": "^17.0.3",
     "json-loader": "^0.5.4",
     "opn-cli": "^3.1.0",
     "raw-loader": "^0.5.1",
@@ -59,7 +59,7 @@
     "react-dom": "^15.3.2",
     "react-hot-loader": "^3.0.0-beta.5",
     "react-router": "^2.8.1",
-    "react-router-scroll": "^0.3.2",
+    "react-router-scroll": "^0.3.3",
     "styled-components": "^1.0.7"
   }
 }
