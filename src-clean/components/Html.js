@@ -13,7 +13,7 @@ const Html = ({ styles, assets, state, content }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <style dangerouslySetInnerHTML={{ __html: styles }} />
       </head>
-      <body style={{ margin: 0 }}>
+      <body>
         <main id="app" dangerouslySetInnerHTML={{ __html: content }} />
         <script dangerouslySetInnerHTML={{ __html: state }} />
         <script src={assets.javascript.main} />
