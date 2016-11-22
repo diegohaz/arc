@@ -1,17 +1,15 @@
 import React, { PropTypes, Component } from 'react'
 import { injectGlobal } from 'styled-components'
 
+injectGlobal`
+  body {
+    margin: 0;
+  }
+`
+
 class App extends Component {
   static propTypes = {
     children: PropTypes.any
-  }
-
-  componentWillMount () {
-    injectGlobal`
-      body {
-        margin: 0;
-      }
-    `
   }
 
   render () {
