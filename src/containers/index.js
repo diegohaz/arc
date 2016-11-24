@@ -1,3 +1,4 @@
+export Generic from './Generic'
 export NotFoundPage from './NotFoundPage'
 export PostForm from './PostForm'
 export PostList from './PostList'
