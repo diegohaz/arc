@@ -1,5 +1,6 @@
 export Badge from './Badge'
 export Button from './Button'
+export GenericAtom from './GenericAtom'
 export Heading from './Heading'
 export HorizontalRule from './HorizontalRule'
 export Icon from './Icon'
