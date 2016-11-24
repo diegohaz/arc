@@ -1,6 +1,7 @@
 export Blockquote from './Blockquote'
 export Feature from './Feature'
 export Field from './Field'
+export GenericMolecule from './GenericMolecule'
 export IconButton from './IconButton'
 export IconLink from './IconLink'
 export PrimaryNavigation from './PrimaryNavigation'
