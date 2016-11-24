@@ -5,12 +5,14 @@ import { routerReducer as routing } from 'react-router-redux'
 import { fork } from 'redux-saga/effects'
 import { reducer as form } from 'redux-form'
 
+import generic from './generic/reducer'
 import post from './post/reducer'
 import status from './status/reducer'
 
 const reducers = {
   routing,
   form,
+  generic,
   post,
   status
 }
