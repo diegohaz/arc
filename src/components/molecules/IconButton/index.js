@@ -15,6 +15,11 @@ const textStyle = ({ responsive }) => css`
     display: ${responsive && 'none'};
   }
 `
+const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  height: 100%;
+`
 
 const StyledIcon = styled(Icon)`${iconStyles}`
 const Text = styled.span`${textStyle}`
@@ -32,9 +37,11 @@ const IconButton = ({ color, icon, right, responsive, children, ...props, size }
   )
   return (
     <Button {...props}>
-      {right || iconElement}
-      <Text responsive={responsive}>{children}</Text>
-      {right && iconElement}
+      <Wrapper>
+        {right || iconElement}
+        <Text responsive={responsive}>{children}</Text>
+        {right && iconElement}
+      </Wrapper>
     </Button>
   )
 }
