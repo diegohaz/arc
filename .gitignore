@@ -3,3 +3,4 @@ dist
 npm-debug.log
 node_modules
 coverage
+webpack/webpack-assets.json
