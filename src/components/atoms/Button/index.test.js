@@ -40,6 +40,6 @@ it('renders anchor when href is passed in', () => {
 })
 
 it('renders Link when to is passed in', () => {
-  const wrapper = wrap({ to: 'test' })
+  const wrapper = wrap({ to: 'test' }).dive()
   expect(wrapper.find('Link').length).toBeGreaterThan(0)
 })
