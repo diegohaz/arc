@@ -39,7 +39,9 @@ const styles = ({ disabled, transparent, light, kind, size }) => {
   `
 }
 
-const StyledLink = styled(Link)`${styles}`
+const StyledLink = styled(({ disabled, transparent, light, kind, size, ...props }) =>
+  <Link {...props} />
+)`${styles}`
 const Anchor = styled.a`${styles}`
 const StyledButton = styled.button`${styles}`
 
