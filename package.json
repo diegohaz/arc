@@ -11,7 +11,8 @@
     "lint": "eslint 'src/**/*.js' 'src-clean/**/*.js' 'webpack/**/*.js'",
     "clean": "del 'dist/!(.git*|Procfile)**'",
     "copy": "copyfiles -u 1 public/* public/**/* dist",
-    "build": "npm run clean && npm run copy && cross-env NODE_ENV=production webpack --config webpack/webpack.config"
+    "build": "npm run clean && npm run copy && cross-env NODE_ENV=production webpack --config webpack/webpack.config",
+    "heroku-postbuild": "npm run build"
   },
   "jest": {
     "modulePathIgnorePatterns": [
