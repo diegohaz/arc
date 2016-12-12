@@ -1,24 +1,10 @@
-import React from 'react'
-import { render } from 'react-dom'
-import { AppContainer } from 'react-hot-loader'
-import { Router, browserHistory, applyRouterMiddleware } from 'react-router'
-import { useScroll } from 'react-router-scroll'
+require('babel-polyfill')
+require('babel-core/register')
 
-import routes from 'routes'
+var WebpackIsomorphicTools = require('webpack-isomorphic-tools')
+var webpackIsomorphicToolsConfig = require('../webpack/webpack-isomorphic-tools')
 
-const root = document.getElementById('app')
-
-const renderApp = () => (
-  <AppContainer>
-    <Router history={browserHistory} routes={routes} render={applyRouterMiddleware(useScroll())} />
-  </AppContainer>
-)
-
-render(renderApp(), root)
-
-if (module.hot) {
-  module.hot.accept('routes', () => {
-    require('routes')
-    render(renderApp(), root)
+global.webpackIsomorphicTools = new WebpackIsomorphicTools(webpackIsomorphicToolsConfig)
+  .server('./', function () {
+    require('./server')
   })
-}

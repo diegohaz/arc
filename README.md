@@ -1,56 +1,22 @@
 <p align="center">
   <img width="206" alt="arclogo2" src="https://cloud.githubusercontent.com/assets/3068563/19498653/f9b73170-9570-11e6-9183-61dce798abab.png"><br><br>
   <a href="http://standardjs.com"><img src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square" alt="Standard Style" /></a>
-  <a href="https://travis-ci.org/diegohaz/arc"><img src="https://img.shields.io/travis/diegohaz/arc.svg?style=flat-square" alt="Build Status" /></a>
-  <a href="https://codecov.io/gh/diegohaz/arc"><img src="https://img.shields.io/codecov/c/github/diegohaz/arc.svg?style=flat-square" alt="Coverage Status" /></a>
+  <a href="https://travis-ci.org/diegohaz/arc"><img src="https://img.shields.io/travis/diegohaz/arc/fullstack.svg?style=flat-square" alt="Build Status" /></a>
+  <a href="https://codecov.io/gh/diegohaz/arc/branch/fullstack"><img src="https://img.shields.io/codecov/c/github/diegohaz/arc/fullstack.svg?style=flat-square" alt="Coverage Status" /></a>
 </p>
 
-**ARc** (Atomic React) is a React starter kit based on the [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/) methodology. It's progressive, which means that you can start with the basic boilerplate and try the other features when you are comfortable.
+## Fullstack
 
-See the [demo](https://arc.js.org).
+This branch adds a NodeJS, Express and MongoDB REST API to the [universal-redux](https://github.com/diegohaz/arc/tree/universal-redux) branch.
 
-## Branches
-
-### [master](https://github.com/diegohaz/arc)
-
-The basic stack with [React](https://facebook.github.io/react/), [Webpack](https://github.com/webpack/webpack), [react-router](https://github.com/ReactTraining/react-router) and [Jest](https://facebook.github.io/jest/).
-
-### [redux](https://github.com/diegohaz/arc/tree/redux)
-
-Master plus [redux](https://github.com/reactjs/redux), [redux-saga](https://github.com/yelouafi/redux-saga) and [redux-form](https://github.com/erikras/redux-form).
-
-### [universal-redux](https://github.com/diegohaz/arc/tree/universal-redux)
-
-Redux plus [Server Side Rendering](https://github.com/reactjs/redux/blob/master/docs/recipes/ServerRendering.md) (*everything works with javascript disabled, even the forms*).
-
-### [fullstack](https://github.com/diegohaz/arc/tree/fullstack)
-
-Universal plus REST API.
-
-### yeoman-generator (soon)
-
-Generate components, redux stores, API endpoints and the entire project through a CLI utility (e.g. `$ yo arc:component`).
-
-## Forks
-
-*Did you fork this repo and made something different? Add it to this section and send a PR.*
-
-## Why
-
-I've been a web developer for the past 14 years, and after dealing with IE vs. Netscape wars, `<table>` layouts and flash websites I can say we live now the best moment in web development. Web components are awesome and React makes it better.
-
-React stimulates you to create very small and pure components. However, as your project grows, you will have an increasing components folder. At some point, this will be really huge and hard to maintain.
-
-I had a React project with more than 100 components in the `components` folder. The first approach I tried to organize it was separating the components by domain (described [here](http://marmelab.com/blog/2015/12/17/react-directory-structure.html)), but I did realize that most of my components didn't belong to any domain, they were shared, so my problems were just moved to the `commons` folder.
-
-The [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/) approach comes handy to solve this problem because it considers the reusability through composition, *which is actually what React is*. You will have your minimal/stylish components in one folder, pages in another and so on.
+See the [demo](https://arc.diegohaz.com).
 
 ## Download
 
 Just clone the repository and remove the `.git` folder:
 
 ```sh
-$ git clone https://github.com/diegohaz/arc my-app
+$ git clone -b fullstack https://github.com/diegohaz/arc my-app
 $ cd my-app
 $ rm -rf .git
 $ npm install # or yarn
@@ -62,14 +28,50 @@ $ npm install # or yarn
 - [Deploy](#deploy)
 - [Source code](#source-code)
 - [Components](#components)
+- [Containers](#containers)
+- [Store](#store)
+- [Universal](#universal)
+- [REST API](#rest-api)
 
 ### Run
 
-Once you have installed the dependencies, you can use `npm start` to run a development server.
+Once you have installed the dependencies, you can use `npm run dev` to run a development server.
 
 ### Deploy
 
 Use `npm run build` to transpile the code into the `dist` folder. Then, you can deploy it everywhere.
+
+Example on [Heroku](https://heroku.com/) using [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line):
+
+```sh
+# start a new local git repository
+git init
+
+# create a new heroku app
+heroku apps:create my-new-app
+
+# add heroku remote reference to the local repository
+heroku git:remote --app my-new-app
+
+# add the MongoLab addon to the heroku app
+heroku addons:create mongolab
+
+# commit and push the files
+git add -A
+git commit -m "Initial commit"
+git push heroku master
+
+# open the deployed app in the browser
+heroku open
+```
+
+The second time you deploy, you just need to:
+
+```sh
+git add -A
+git commit -m "Update code"
+git push heroku master
+```
 
 ### Source code
 
@@ -90,6 +92,155 @@ You can use the [components](src/components) folder here as an example or refer 
 - An **organism** is a group of atoms, molecules and/or other organisms.
 
 There're cases when, during the development, you do realize that some molecule should be an organism, for example. You just need to move the component folder to the right place and update the respective `index.js` files (`molecules/index.js` and `organisms/index.js`). Everything else should work.
+
+### Containers
+
+This project uses a very straight approach of Redux: all components should be as [pure](https://medium.com/@housecor/react-stateless-functional-components-nine-wins-you-might-have-overlooked-997b0d933dbc#.ly1b33jnz) as possible and should be placed in the `components` folder.
+
+If, for some reason, you need to connect a component to the store, just create a container with the same name, import the pure component and connect it. Thus having a nice separation of concerns. **Do not add any extra styles or another presentational logic on containers**.
+
+You can refer to [this thread](https://twitter.com/dan_abramov/status/668585589609005056) on Twitter:
+<p align="center"><img alt="Dan Abramov Tweet" src="https://cloud.githubusercontent.com/assets/3068563/19958100/77ca1b68-a183-11e6-887e-a491dc783f43.png"></p>
+
+Example:
+
+**src/components/organisms/PostList**
+```js
+// just presentational logic
+import React, { PropTypes } from 'react'
+import styled from 'styled-components'
+
+import { Post } from 'components'
+
+const PostList = ({ list, loading, ...props }) => {
+  return (
+    <div {...props}>
+      {loading && <div>Loading</div>}
+      {list.map((post, i) => <Post key={i} {...post} />)}
+    </div>
+  )
+}
+
+PostList.propTypes = {
+  list: PropTypes.array.isRequired,
+  loading: PropTypes.bool
+}
+
+export default PostList
+```
+
+**src/containers/PostList**
+```js
+import React, { PropTypes, Component } from 'react'
+import { connect } from 'react-redux'
+import { postList, fromPost, fromStatus, POST_LIST } from 'store'
+
+import { PostList } from 'components'
+
+class PostListContainer extends Component {
+  componentDidMount () {
+    this.props.request()
+  }
+
+  render () {
+    const { list, loading } = this.props
+    return <PostList {...{ list, loading }} />
+  }
+}
+
+const mapStateToProps = (state) => ({
+  list: fromPost.getList(state),
+  loading: fromStatus.isLoading(state, POST_LIST)
+})
+
+const mapDispatchToProps = (dispatch, { limit }) => ({
+  request: () => dispatch(postList.request(limit))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostListContainer)
+```
+
+**src/components/elsewhere**
+```js
+import { PostList } from 'containers'
+
+<PostList limit={15} />
+```
+
+This approach makes it easier to transform any pure component into a container at any time.
+
+### Store
+
+Here lives all the state management of the app.
+
+- `actions` are the messages dispatched throughout the application to perform state changes. [Learn more](http://redux.js.org/docs/basics/Actions.html);
+- `reducer` listens to the actions and translates the state changes to the store. [Learn more](http://redux.js.org/docs/basics/Reducers.html);
+- `selectors` are used by the application to get parts of the current state. [Learn more](http://redux.js.org/docs/recipes/ComputingDerivedData.html);
+- `sagas` listen to the actions and are responsible for performing side effects, like data fetching, caching etc. [Learn more](https://github.com/yelouafi/redux-saga).
+
+To add a new store, just create a new folder with a reducer and change the `store/index.js` file:
+```js
+import post from './post/reducer'
+import status from './status/reducer'
+
+const reducers = {
+  routing,
+  form,
+  post,
+  status
+}
+```
+
+### Universal
+```js
+component &&
+component[method] &&
+promises.push(component[method]({ req, res, params, location, store }))
+```
+
+This code is present in `src/server.js` and it will call `Component.method()` for the requested Page container, where `method` is the name of the HTTP method used in the request (`get`, `post` etc.).
+
+```js
+import React, { Component } from 'react'
+import submit from 'redux-form-submit'
+import { postList } from 'store'
+
+import { SamplePage } from 'components'
+import { config } from './PostForm'
+
+class SamplePageContainer extends Component {
+  // called when POST /sampla-page
+  static post ({ req, store }) {
+    return Promise.all([
+      this.get({ store }),
+      store.dispatch(submit(config, req.body))
+    ])
+  }
+
+  // called when GET /sample-page
+  static get ({ store }) {
+    return new Promise((resolve, reject) => {
+      store.dispatch(postList.request(15, resolve, reject))
+    })
+  }
+
+  render () {
+    return <SamplePage />
+  }
+}
+
+export default SamplePageContainer
+```
+
+In order to make the forms work on the server side, this is combined with [redux-form](https://github.com/erikras/redux-form) and [redux-form-submit](https://github.com/diegohaz/redux-form-submit).
+
+### REST API
+
+The REST API code should be placed in `src/api`. Each folder is an endpoint.
+
+- **model** defines the Mongoose schema and model for the API endpoint. Any changes to the data model should be done here;
+- **controller** defines the main router middlewares which use the API model;
+- **index** defines the routes using, along other middlewares (like session, validation etc.), the middlewares defined in the controller file.
 
 ## Contributing
 

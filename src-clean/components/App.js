@@ -1,25 +1,13 @@
-import React, { PropTypes, Component } from 'react'
-import { injectGlobal } from 'styled-components'
+import React, { PropTypes } from 'react'
 
-class App extends Component {
-  static propTypes = {
-    children: PropTypes.any
-  }
+const App = ({ children }) => {
+  return (
+    <div>{children}</div>
+  )
+}
 
-  componentDidMount () {
-    injectGlobal`
-      body {
-        margin: 0;
-      }
-    `
-  }
-
-  render () {
-    const { children } = this.props
-    return (
-      <div>{children}</div>
-    )
-  }
+App.propTypes = {
+  children: PropTypes.any
 }
 
 export default App
