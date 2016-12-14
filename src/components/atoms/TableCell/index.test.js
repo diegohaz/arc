@@ -16,10 +16,10 @@ it('renders props when passed in', () => {
 
 it('renders td by default', () => {
   const wrapper = wrap()
-  expect(wrapper.find('td').length)).toHaveLength(1)
+  expect(wrapper.find('td')).toHaveLength(1)
 })
 
 it('renders th when prop heading is passed in', () => {
   const wrapper = wrap({ heading: true })
-  expect(wrapper.find('th').length)).toHaveLength(1)
+  expect(wrapper.find('th')).toHaveLength(1)
 })
