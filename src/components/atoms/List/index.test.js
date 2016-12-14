@@ -11,15 +11,15 @@ it('renders children when passed in', () => {
 
 it('renders props when passed in', () => {
   const wrapper = wrap({ id: 'foo' })
-  expect(wrapper.find({ id: 'foo' }).length).toBeGreaterThan(0)
+  expect(wrapper.find({ id: 'foo' })).toHaveLength(1)
 })
 
 it('renders ul by default', () => {
   const wrapper = wrap()
-  expect(wrapper.find('ul').length).toBeGreaterThan(0)
+  expect(wrapper.find('ul')).toHaveLength(1)
 })
 
 it('renders ol when ordered prop is passed in', () => {
   const wrapper = wrap({ ordered: true })
-  expect(wrapper.find('ol').length).toBeGreaterThan(0)
+  expect(wrapper.find('ol')).toHaveLength(1)
 })

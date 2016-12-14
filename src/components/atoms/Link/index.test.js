@@ -17,15 +17,15 @@ it('renders children when passed in', () => {
 
 it('renders props when passed in', () => {
   const wrapper = wrap({ id: 'foo' })
-  expect(wrapper.find({ id: 'foo' }).length).toBeGreaterThan(0)
+  expect(wrapper.find({ id: 'foo' })).toHaveLength(1)
 })
 
 it('renders anchor by default', () => {
   const wrapper = wrap()
-  expect(wrapper.find('a').length).toBeGreaterThan(0)
+  expect(wrapper.find('a')).toHaveLength(1)
 })
 
 it('renders Link when prop to is passed in', () => {
   const wrapper = wrap({ to: 'test' })
-  expect(wrapper.find('Link').length).toBeGreaterThan(0)
+  expect(wrapper.find('Link')).toHaveLength(1)
 })
