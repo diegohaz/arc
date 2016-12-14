@@ -22,12 +22,12 @@ it('renders children when passed in', () => {
 
 it('renders props when passed in', () => {
   const wrapper = wrap({ id: 'foo' })
-  expect(wrapper.find({ id: 'foo' }).length).toBeGreaterThan(0)
+  expect(wrapper.find({ id: 'foo' })).toHaveLength(1)
 })
 
 it('passes size to icon', () => {
   const wrapper = wrap({ size: 20 })
-  expect(wrapper.find({ size: 20 / 2.5 }).length).toBeGreaterThan(0)
+  expect(wrapper.find({ size: 20 / 2.5 })).toHaveLength(1)
 })
 
 it('renders icon on left by default', () => {
