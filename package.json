@@ -7,7 +7,7 @@
     "start": "node .",
     "test": "jest",
     "coverage": "npm test -- --coverage && opn coverage/lcov-report/index.html",
-    "dev": "concurrently --kill-others 'nodemon .' 'node webpack/webpack-dev-server'",
+    "dev": "concurrently --kill-others 'nodemon --watch src' 'node webpack/webpack-dev-server'",
     "lint": "eslint 'src/**/*.js' 'src-clean/**/*.js' 'webpack/**/*.js'",
     "clean": "del 'dist/!(.git*|Procfile)**'",
     "copy": "copyfiles -u 1 public/* public/**/* dist",
