@@ -18,7 +18,7 @@ const styles = ({ light, kind }) => {
   `
 }
 
-const StyledLink = styled(RouterLink)`${styles}`
+const StyledLink = styled(({ light, kind, ...props }) => <RouterLink {...props} />)`${styles}`
 const Anchor = styled.a`${styles}`
 
 const Link = ({ ...props, to }) => {

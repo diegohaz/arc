@@ -4,6 +4,11 @@ import Heading from '.'
 
 const wrap = (props = {}) => shallow(<Heading {...props} />).dive()
 
+it('renders with different props', () => {
+  wrap({ kind: 'primary' })
+  wrap({ light: true })
+})
+
 it('renders children when passed in', () => {
   const wrapper = wrap({ children: 'test' })
   expect(wrapper.contains('test')).toBe(true)

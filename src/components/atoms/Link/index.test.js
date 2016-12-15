@@ -26,6 +26,6 @@ it('renders anchor by default', () => {
 })
 
 it('renders Link when prop to is passed in', () => {
-  const wrapper = wrap({ to: 'test' })
+  const wrapper = wrap({ to: 'test' }).dive()
   expect(wrapper.find('Link')).toHaveLength(1)
 })
