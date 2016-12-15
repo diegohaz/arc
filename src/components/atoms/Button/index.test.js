@@ -26,20 +26,20 @@ it('renders children when passed in', () => {
 
 it('renders props when passed in', () => {
   const wrapper = wrap({ type: 'submit' })
-  expect(wrapper.find({ type: 'submit' }).length).toBeGreaterThan(0)
+  expect(wrapper.find({ type: 'submit' })).toHaveLength(1)
 })
 
 it('renders button by default', () => {
   const wrapper = wrap()
-  expect(wrapper.find('button').length).toBeGreaterThan(0)
+  expect(wrapper.find('button')).toHaveLength(1)
 })
 
 it('renders anchor when href is passed in', () => {
   const wrapper = wrap({ href: 'test' })
-  expect(wrapper.find('a').length).toBeGreaterThan(0)
+  expect(wrapper.find('a')).toHaveLength(1)
 })
 
 it('renders Link when to is passed in', () => {
   const wrapper = wrap({ to: 'test' }).dive()
-  expect(wrapper.find('Link').length).toBeGreaterThan(0)
+  expect(wrapper.find('Link')).toHaveLength(1)
 })

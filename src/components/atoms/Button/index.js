@@ -2,10 +2,10 @@ import React, { PropTypes } from 'react'
 import styled, { css } from 'styled-components'
 import { Link } from 'react-router'
 
-import { colors, fonts } from 'components/globals'
+import { colors, reverseColors, fonts } from 'components/globals'
 
 const styles = ({ disabled, transparent, light, kind, size }) => {
-  const color = light ? [ ...colors[kind] ].reverse() : colors[kind]
+  const color = light ? reverseColors[kind] : colors[kind]
   return css`
     display: inline-flex;
     font-family: ${fonts.primary};
@@ -25,7 +25,7 @@ const styles = ({ disabled, transparent, light, kind, size }) => {
     transition: background-color 250ms ease-out, color 250ms ease-out, border-color 250ms ease-out;
     color: ${transparent
       ? (disabled ? color[2] : color[1])
-      : (light ? colors.grayscale[0] : [ ...colors.grayscale ].reverse()[0])
+      : (light ? colors.grayscale[0] : reverseColors.grayscale[0])
     };
 
     &:hover, &:focus, &:active {
