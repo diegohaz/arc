@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import submit from 'redux-form-submit'
-import { postList } from 'store'
+import { postList } from 'store/actions'
 
 import { SamplePage } from 'components'
 import { config } from './PostForm'

@@ -1,15 +1,18 @@
 import React, { PropTypes } from 'react'
 import styled, { css } from 'styled-components'
 
-import { colors } from 'components/globals'
+import { colors, fonts } from 'components/globals'
 
 const styles = ({ invalid, type }) => css`
+  appearance: textfield;
+  font-family: ${fonts.primary};
   display: block;
   width: 100%;
   color: inherit;
   margin: 0;
   box-sizing: border-box;
   font-size: 1.123rem;
+  padding: ${type === 'textarea' ? '' : '0 '}0.75rem;
   border: 1px solid ${invalid ? colors.danger[2] : colors.grayscale[3]};
   border-radius: 2px;
   height: ${type === 'textarea' ? 'auto' : '2.5rem'};

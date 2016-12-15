@@ -14,8 +14,8 @@ import api from 'api'
 import routes from 'routes'
 import configureStore from 'store/configure'
 import { env, port, ip, mongo } from 'config'
-import { setCsrfToken } from 'store'
-import { Html } from 'components'
+import { setCsrfToken } from 'store/actions'
+import Html from 'components/Html'
 
 const router = new Router()
 

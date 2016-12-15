@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { colors } from 'components/globals'
+import { colors, reverseColors } from 'components/globals'
 import { Paragraph, IconLink, IconButton, LogoImage } from 'components'
 
 const Wrapper = styled.div`
@@ -20,7 +20,7 @@ const Wrapper = styled.div`
 `
 
 const Text = styled(Paragraph)`
-  color: ${[ ...colors.grayscale ].reverse()[3]};
+  color: ${reverseColors.grayscale[3]};
   margin: 3rem auto;
   max-width: 800px;
   font-weight: 300;

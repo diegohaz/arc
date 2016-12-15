@@ -1,6 +1,7 @@
 import React, { PropTypes, Component } from 'react'
 import { connect } from 'react-redux'
-import { postList, fromPost, fromStatus, POST_LIST } from 'store'
+import { fromPost, fromStatus } from 'store/selectors'
+import { postList, POST_LIST } from 'store/actions'
 
 import { PostList } from 'components'
 
