@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { colors } from 'components/globals'
+import { reverseColors } from 'components/globals'
 import { Link } from 'components'
 
 const Nav = styled.nav`
@@ -15,11 +15,11 @@ const Nav = styled.nav`
 
 const StyledLink = styled(Link)`
   font-weight: 300;
-  color: ${[ ...colors.grayscale ].reverse()[3]};
+  color: ${reverseColors.grayscale[3]};
   font-size: 1.25rem;
 
   &.active {
-    color: ${[ ...colors.grayscale ].reverse()[0]};
+    color: ${reverseColors.grayscale[0]};
   }
 `
 
