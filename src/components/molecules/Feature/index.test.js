@@ -11,7 +11,7 @@ it('renders children when passed in', () => {
 
 it('renders props when passed in', () => {
   const wrapper = wrap({ id: 'foo' })
-  expect(wrapper.find({ id: 'foo' }).length).toBeGreaterThan(0)
+  expect(wrapper.find({ id: 'foo' })).toHaveLength(1)
 })
 
 it('renders title', () => {
@@ -21,12 +21,12 @@ it('renders title', () => {
 
 it('renders icon when passed in', () => {
   const wrapper = wrap({ icon: 'test' })
-  expect(wrapper.find({ icon: 'test' }).length).toBeGreaterThan(0)
+  expect(wrapper.find({ icon: 'test' })).toHaveLength(1)
 })
 
 it('renders link when passed in', () => {
   const wrapper = wrap({ link: 'test' })
-  expect(wrapper.find({ href: 'test' }).length).toBeGreaterThan(0)
+  expect(wrapper.find({ href: 'test' })).toHaveLength(1)
 })
 
 it('renders badge when prop soon is passed in', () => {

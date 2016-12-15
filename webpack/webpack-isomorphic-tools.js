@@ -12,7 +12,8 @@ var config = {
       parser: WebpackIsomorphicToolsPlugin.url_loader_parser
     }
   },
-  modulesDirectories: ['src', 'node_modules']
+  modulesDirectories: ['src', 'node_modules'],
+  patch_require: true
 }
 
 module.exports = exports = config

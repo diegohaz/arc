@@ -16,6 +16,7 @@
     "__BASENAME__": true
   },
   "rules": {
-    "jsx-quotes": [2, "prefer-double"]
+    "jsx-quotes": [2, "prefer-double"],
+    "indent": [2, 2]
   }
 }

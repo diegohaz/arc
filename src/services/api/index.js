@@ -1,16 +1,18 @@
 import axios from 'axios'
 import { apiUrl } from 'config'
 
+const facade = {}
+
 const api = axios.create({ baseURL: apiUrl })
 
-export const request = (config) => api.request(config)
+facade.request = (config) => api.request(config)
 
 ;['delete', 'get', 'head'].forEach((method) => {
-  module.exports[method] = (url, config) => request({ ...config, method, url })
+  facade[method] = (url, config) => facade.request({ ...config, method, url })
 })
 
 ;['post', 'put', 'patch'].forEach((method) => {
-  module.exports[method] = (url, data, config) => request({ ...config, method, url, data })
+  facade[method] = (url, data, config) => facade.request({ ...config, method, url, data })
 })
 
-export default module.exports
+export default facade

@@ -6,12 +6,12 @@ const wrap = (props = {}) => shallow(<Field name="name" {...props} />)
 
 it('renders input props when passed in', () => {
   const wrapper = wrap({ id: 'foo' })
-  expect(wrapper.find({ id: 'foo' }).length).toBeGreaterThan(0)
+  expect(wrapper.find({ id: 'foo' })).toHaveLength(1)
 })
 
 it('renders name', () => {
   const wrapper = wrap()
-  expect(wrapper.find({ name: 'name' }).length).toBeGreaterThan(0)
+  expect(wrapper.find({ name: 'name' })).toHaveLength(1)
 })
 
 it('renders label when passed in', () => {

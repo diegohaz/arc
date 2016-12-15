@@ -2,10 +2,10 @@ import React, { PropTypes } from 'react'
 import styled, { css } from 'styled-components'
 import { Link as RouterLink } from 'react-router'
 
-import { colors, fonts } from 'components/globals'
+import { colors, reverseColors, fonts } from 'components/globals'
 
 const styles = ({ light, kind }) => {
-  const color = light ? [ ...colors[kind] ].reverse()[1] : colors[kind][1]
+  const color = light ? reverseColors[kind][1] : colors[kind][1]
   return css`
     font-family: ${fonts.primary};
     text-decoration: none;
@@ -18,7 +18,7 @@ const styles = ({ light, kind }) => {
   `
 }
 
-const StyledLink = styled(RouterLink)`${styles}`
+const StyledLink = styled(({ light, kind, ...props }) => <RouterLink {...props} />)`${styles}`
 const Anchor = styled.a`${styles}`
 
 const Link = ({ ...props, to }) => {

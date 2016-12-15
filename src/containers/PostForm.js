@@ -1,9 +1,17 @@
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { reduxForm } from 'redux-form'
-import { postCreate, fromForm } from 'store'
+import { fromForm } from 'store/selectors'
+import { postCreate } from 'store/actions'
 import { createValidator, required } from 'services/validation'
 
 import { PostForm } from 'components'
+
+class PostFormContainer extends Component {
+  render () {
+    return <PostForm {...this.props} />
+  }
+}
 
 const onSubmit = (data, dispatch) => new Promise((resolve, reject) => {
   dispatch(postCreate.request(data, resolve, reject))
@@ -28,4 +36,4 @@ export const config = {
   validate
 }
 
-export default connect(mapStateToProps)(reduxForm(config)(PostForm))
+export default connect(mapStateToProps)(reduxForm(config)(PostFormContainer))

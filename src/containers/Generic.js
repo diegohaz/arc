@@ -1,6 +1,6 @@
 import React, { PropTypes, Component } from 'react'
 import { connect } from 'react-redux'
-import { fromStatus } from 'store'
+import { fromStatus } from 'store/selectors'
 
 class GenericContainer extends Component {
   static propTypes = {

@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import styled from 'styled-components'
 
-import { colors, fonts } from 'components/globals'
+import { colors, reverseColors, fonts } from 'components/globals'
 
 const Caption = styled.caption`
   font-weight: 500;
@@ -15,7 +15,7 @@ const StyledTable = styled.table`
   font-family: ${fonts.primary};
   border-collapse: collapse;
   width: 100%;
-  border: 1px solid ${[ ...colors.grayscale ].reverse()[1]};
+  border: 1px solid ${reverseColors.grayscale[1]};
   color: ${colors.grayscale[0]};
 `
 

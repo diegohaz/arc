@@ -5,8 +5,8 @@ const styles = ({ size, color }) => css`
   display: inline-block;
   width: ${size ? size / 16 + 'rem' : '1em'};
   height: ${size ? size / 16 + 'rem' : '1em'};
-  box-sizing: border-box;
   margin: ${size ? size / 160 + 'rem' : '0.1em'};
+  box-sizing: border-box;
   color: ${color};
 
   & > svg {
