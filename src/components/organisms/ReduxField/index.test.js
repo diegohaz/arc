@@ -17,12 +17,12 @@ beforeEach(() => {
 
 it('renders props when passed in', () => {
   const wrapper = wrap({ id: 'foo' })
-  expect(wrapper.find({ id: 'foo' }).length).toBeGreaterThan(0)
+  expect(wrapper.find({ id: 'foo' })).toHaveLength(1)
 })
 
 it('renders input props when passed in', () => {
   const wrapper = wrap()
-  expect(wrapper.find({ name: 'test' }).length).toBeGreaterThan(0)
+  expect(wrapper.find({ name: 'test' })).toHaveLength(1)
 })
 
 it('does not render invalid when was not touched', () => {
@@ -41,10 +41,10 @@ it('does not render invalid when has no error', () => {
 
 it('renders invalid when was touched and has error', () => {
   const wrapper = wrap({ meta: { touched: true, error: 'test error' } })
-  expect(wrapper.find({ invalid: true }).length).toBeGreaterThan(0)
+  expect(wrapper.find({ invalid: true })).toHaveLength(1)
 })
 
 it('renders error when passed in', () => {
   const wrapper = wrap({ meta: { error: 'test error' } })
-  expect(wrapper.find({ error: 'test error' }).length).toBeGreaterThan(0)
+  expect(wrapper.find({ error: 'test error' })).toHaveLength(1)
 })

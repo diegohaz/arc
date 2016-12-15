@@ -18,5 +18,5 @@ it('disables button while submitting', () => {
   const wrapper = wrap()
   expect(wrapper.find({ disabled: true }).length).toBe(0)
   wrapper.setProps({ submitting: true })
-  expect(wrapper.find({ disabled: true }).length).toBeGreaterThan(0)
+  expect(wrapper.find({ disabled: true })).toHaveLength(1)
 })
