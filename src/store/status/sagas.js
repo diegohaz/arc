@@ -1,3 +1,4 @@
+import omit from 'lodash/omit'
 import { takeEvery } from 'redux-saga'
 import { fork, call, take, race } from 'redux-saga/effects'
 
@@ -20,11 +21,9 @@ export function* resolveOrReject ({ type, resolve, reject }) {
   })
 
   if (success && typeof resolve === 'function') {
-    delete success.type
-    yield call(resolve, success)
+    yield call(resolve, omit(success, 'type'))
   } else if (failure && typeof reject === 'function') {
-    delete failure.type
-    yield call(reject, failure)
+    yield call(reject, omit(failure, 'type'))
   }
 }
 
