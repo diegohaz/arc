@@ -1,36 +1,37 @@
-import { fork, take } from 'redux-saga/effects'
+import { takeEvery } from 'redux-saga'
+import { fork, call, take, race } from 'redux-saga/effects'
 
-export function* watchResolveReject () {
-  const resolvers = {}
-  const rejecters = {}
-  while (true) {
-    const { type, resolve, reject, ...rest } = yield take('*')
-    let [ suffix, ...prefix ] = type.split('_').reverse()
-    prefix = prefix.reverse().join('_')
-    yield { prefix, suffix }
+const requestPattern = /_REQUEST$/
+const successSuffix = '_SUCCESS'
+const failureSuffix = '_FAILURE'
 
-    switch (suffix) {
-    case 'REQUEST':
-      resolvers[prefix] = resolve
-      rejecters[prefix] = reject
-      break
-    case 'SUCCESS':
-      if (resolvers[prefix]) {
-        resolvers[prefix](rest)
-        delete resolvers[prefix]
-      }
-      break
-    case 'FAILURE':
-      if (rejecters[prefix]) {
-        rejecters[prefix](rest)
-        delete rejecters[prefix]
-      }
-    }
+export const matchesRequest = ({ type, resolve, reject }) => {
+  if (typeof resolve !== 'function' && typeof reject !== 'function') {
+    return false
+  }
+  return requestPattern.test(type)
+}
 
-    yield { resolvers, rejecters }
+export function* resolveOrReject ({ type, resolve, reject }) {
+  const prefix = type.replace(requestPattern, '')
+  const { success, failure } = yield race({
+    success: take(prefix + successSuffix),
+    failure: take(prefix + failureSuffix)
+  })
+
+  if (success && typeof resolve === 'function') {
+    delete success.type
+    yield call(resolve, success)
+  } else if (failure && typeof reject === 'function') {
+    delete failure.type
+    yield call(reject, failure)
   }
 }
 
+export function* watchRequestActions () {
+  yield call(takeEvery, matchesRequest, resolveOrReject)
+}
+
 export default function* () {
-  yield fork(watchResolveReject)
+  yield fork(watchRequestActions)
 }
