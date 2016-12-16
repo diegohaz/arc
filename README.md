@@ -79,6 +79,13 @@ The source code should be placed in `src`; public/static files should be placed 
 
 If you want to start with a clean and minimal source code without the predefined components and tests, just use the `src-clean` instead by renaming it to `src` (and removing or renaming the older one to something like `src-example`).
 
+Because of [webpack's config](https://github.com/diegohaz/arc/blob/5c752968c52d013f7218b514021eae08f6ddf07c/webpack.config.js#L19-L21), we can import our source modules without relative paths.
+```js
+import { Button, HomePage } from 'components' // src/components
+import App from 'components/App' // src/components/App
+import routes from 'routes' // src/routes
+```
+
 ### Components
 
 This project leverages the [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/) methodology to create a scalable and easy to maintain component folder structure. See [why](https://github.com/diegohaz/arc#why).
@@ -247,8 +254,7 @@ When issuing, use the following patterns in the title for better understanding:
 ```bash
 [v0.3.1-redux] Something wrong is not right # the v0.3.1 release of the redux branch
 [redux] Something wrong is not right # the actual code of the redux branch
-[master] Something right is not wrong # the actual code of the master branch
-Something wrong is right # general or not directly related to any branch
+Something wrong is right # general, related to master or not directly related to any branch
 ```
 
 PRs are very appreciated. For bugs/features consider creating an issue before sending a PR. But there're other things you can contribute directly:
