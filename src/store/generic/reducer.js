@@ -11,14 +11,16 @@ export default (state = initialState, action) => {
     }
   case GENERIC_UPDATE:
   case GENERIC_DELETE:
-    return find(state, action)
+    return findReducer(state, action)
   default:
     return state
   }
 }
 
-const find = (state, action) => {
-  const index = findIndex(state.list, action.data)
+const findReducer = (state, action) => {
+  const isObject = typeof action.data === 'object'
+  const index = isObject ? findIndex(state.list, action.data) : state.list.indexOf(action.data)
+
   if (index < 0) {
     return state
   }
@@ -29,7 +31,9 @@ const find = (state, action) => {
       ...state,
       list: [
         ...state.list.slice(0, index),
-          { ...state.list[index], ...action.newData },
+        typeof action.data === 'object'
+          ? { ...state.list[index], ...action.newData }
+          : action.newData,
         ...state.list.slice(index + 1)
       ]
     }
