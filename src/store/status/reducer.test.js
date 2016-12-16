@@ -6,47 +6,21 @@ it('returns the initial state', () => {
   expect(reducer(undefined, { type: 'test' })).toEqual(initialState)
 })
 
+const expectStateToMatch = (suffix, loading, error) =>
+  expect(reducer(initialState, { type: `SOMETHING_${suffix}` }))
+    .toEqual({
+      loading: { ...getLoadingState(), SOMETHING: loading },
+      error: { ...getErrorState(), SOMETHING: error }
+    })
+
 it('handles SOMETHING_REQUEST', () => {
-  expect(reducer(initialState, {
-    type: 'SOMETHING_REQUEST'
-  })).toEqual({
-    loading: {
-      ...getLoadingState(),
-      SOMETHING: true
-    },
-    error: {
-      ...getErrorState(),
-      SOMETHING: false
-    }
-  })
+  expectStateToMatch('REQUEST', true, false)
 })
 
 it('handles SOMETHING_SUCCESS', () => {
-  expect(reducer(initialState, {
-    type: 'SOMETHING_SUCCESS'
-  })).toEqual({
-    loading: {
-      ...getLoadingState(),
-      SOMETHING: false
-    },
-    error: {
-      ...getErrorState(),
-      SOMETHING: false
-    }
-  })
+  expectStateToMatch('SUCCESS', false, false)
 })
 
 it('handles SOMETHING_FAILURE', () => {
-  expect(reducer(initialState, {
-    type: 'SOMETHING_FAILURE'
-  })).toEqual({
-    loading: {
-      ...getLoadingState(),
-      SOMETHING: false
-    },
-    error: {
-      ...getErrorState(),
-      SOMETHING: true
-    }
-  })
+  expectStateToMatch('FAILURE', false, true)
 })
