@@ -137,7 +137,8 @@ export default PostList
 ```js
 import React, { PropTypes, Component } from 'react'
 import { connect } from 'react-redux'
-import { postList, fromPost, fromStatus, POST_LIST } from 'store'
+import { fromPost, fromStatus } from 'store/selectors'
+import { postList, POST_LIST } from 'store/actions'
 
 import { PostList } from 'components'
 
@@ -182,17 +183,7 @@ Here lives all the state management of the app.
 - `selectors` are used by the application to get parts of the current state. [Learn more](http://redux.js.org/docs/recipes/ComputingDerivedData.html);
 - `sagas` listen to the actions and are responsible for performing side effects, like data fetching, caching etc. [Learn more](https://github.com/yelouafi/redux-saga).
 
-To add a new store, just create a new folder with a reducer and change the `store/index.js` file:
-```js
-import post from './post/reducer'
-import status from './status/reducer'
-
-const reducers = {
-  routing,
-  form,
-  post,
-  status
-}
+To add a new store, just create a new folder with actions, reducer, selectors and/or sagas. Webpack will automatically import them to your project (how? See [`src/store/actions.js`](src/store/actions.js), [`src/store/reducer.js`](src/store/reducer.js), [`src/store/sagas.js`](src/store/sagas.js) and [`src/store/selectors.js`](src/store/selectors.js)).
 ```
 
 ### Universal

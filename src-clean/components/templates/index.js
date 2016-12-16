@@ -1,1 +1,0 @@
-export PageTemplate from './PageTemplate'

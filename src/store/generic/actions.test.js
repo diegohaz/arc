@@ -11,10 +11,7 @@ test('genericCreate', () => {
 })
 
 test('genericUpdate', () => {
-  expect(actions.genericUpdate(
-    { id: 1 },
-    { title: 'test2' }
-  )).toEqual({
+  expect(actions.genericUpdate({ id: 1 }, { title: 'test2' })).toEqual({
     type: actions.GENERIC_UPDATE,
     data: {
       id: 1
