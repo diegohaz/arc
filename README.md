@@ -178,6 +178,23 @@ PRs are very appreciated. For bugs/features consider creating an issue before se
 - If you forked or created another boilerplate based on this one with another features (using [`css-modules`](https://github.com/css-modules/css-modules) instead of [`styled-components`](https://github.com/styled-components/styled-components), for example), add that to the [Forks section](#forks) with the following pattern:
   - [arc-css-modules](https://github.com/username/arc-css-modules) - A little description
 
+## Contributors
+
+Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
+
+<!-- Contributors START
+Prabhat_Sharma prabhatsharma https://github.com/prabhatsharma code
+Sven_Schmidt 0xsven https://github.com/0xsven bug code
+Sebastian ssmolinski9 https://github.com/ssmolinski9 tests
+Contributors END -->
+<!-- Contributors table START -->
+| [![Prabhat Sharma](https://avatars.githubusercontent.com/prabhatsharma?s=100)<br /><sub>Prabhat Sharma</sub>](https://github.com/prabhatsharma)<br />[💻](https://github.com/diegohaz/arc/commits?author=prabhatsharma) | [![Sven Schmidt](https://avatars.githubusercontent.com/0xsven?s=100)<br /><sub>Sven Schmidt</sub>](https://github.com/0xsven)<br />[🐛](https://github.com/diegohaz/arc/issues?q=author%3A0xsven) [💻](https://github.com/diegohaz/arc/commits?author=0xsven) | [![Sebastian](https://avatars.githubusercontent.com/ssmolinski9?s=100)<br /><sub>Sebastian</sub>](https://github.com/ssmolinski9)<br />[⚠️](https://github.com/diegohaz/arc/commits?author=ssmolinski9) |
+| :---: | :---: | :---: |
+<!-- Contributors table END -->
+
+This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification.
+Contributions of any kind welcome!
+
 ## License
 
 The MIT License (MIT)
