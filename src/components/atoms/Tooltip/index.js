@@ -15,51 +15,68 @@ export const perpendicular = ({ left, right }) =>
 export const perpendicularAxis = ({ left, right }) =>
   left || right ? 'Y' : 'X'
 
+const backgroundColor = ({ light }) =>
+  light ? 'rgba(255, 255, 255, 0.85)' : 'rgba(0, 0, 0, 0.85)'
+
+const color = ({ light }) =>
+  light ? 'black' : 'white'
+
 const styles = css`
   position: relative;
 
+  &:before,
+  &:after {
+    position: absolute;
+    pointer-events: none;
+    display: block;
+    opacity: 0;
+    transition: opacity 100ms ease-in-out, ${opposite} 100ms ease-in-out;
+    will-change: ${opposite};
+  }
+
   &:hover:before,
-  &:focus:before,
+  &:focus:before {
+    opacity: 1;
+    ${opposite}: calc(100% + 1rem);
+  }
+
   &:hover:after,
   &:focus:after {
-    display: block;
+    opacity: 1;
+    ${opposite}: 100%;
   }
 
   &:before {
-    pointer-events: none;
-    display: none;
-    position: absolute;
     content: attr(data-title);
     font-family: ${fonts.primary};
+    white-space: nowrap;
     text-transform: none;
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
     line-height: 1.5;
     text-align: center;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.85);
-    padding: 0.5rem 1rem;
-    ${opposite}: calc(100% + 16px);
+    color: ${color};
+    background-color: ${backgroundColor};
+    border-radius: 0.15384em;
+    padding: 0.75em 1em;
+    ${opposite}: calc(100% + 2rem);
     ${perpendicular}: 50%;
     transform: translate${perpendicularAxis}(-50%);
   }
 
   &:after {
-    pointer-events: none;
-    display: none;
-    position: absolute;
-    ${opposite}: 100%;
+    ${opposite}: calc(100% + 1rem);
     ${perpendicular}: 50%;
     border: solid transparent;
     content: '';
     height: 0;
     width: 0;
-    border-${pos}-color: rgba(0, 0, 0, 0.85);
+    border-${pos}-color: ${backgroundColor};
     border-width: 0.5rem;
     margin-${perpendicular}: -0.5rem;
   }
 `
 
-const Tooltip = styled(({ top, right, bottom, left, children, ...props }) =>
+const Tooltip = styled(({ top, right, bottom, left, light, children, ...props }) =>
   React.cloneElement(children, {
     tabIndex: 0,
     ...props
@@ -71,6 +88,7 @@ Tooltip.propTypes = {
   right: PropTypes.bool,
   bottom: PropTypes.bool,
   left: PropTypes.bool,
+  light: PropTypes.bool,
   'data-title': PropTypes.string.isRequired,
   children: PropTypes.element.isRequired
 }
