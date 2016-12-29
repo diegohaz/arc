@@ -8,6 +8,10 @@ const wrap = (props = {}) => shallow(
   </Tooltip>
 ).dive()
 
+it('renders with different props', () => {
+  wrap({ light: true })
+})
+
 it('renders children when passed in', () => {
   const wrapper = wrap()
   expect(wrapper.contains('test')).toBe(true)
