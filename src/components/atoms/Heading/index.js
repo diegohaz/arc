@@ -11,8 +11,8 @@ const styles = ({ kind, light, level }) => {
     font-weight: 500;
     font-size: ${0.75 + 1 * (1 / level)}rem;
     margin: 0;
-    margin-top: ${1 + 0.5 * (1 / level)}rem;
-    margin-bottom: ${0.5 + 0.5 * (1 / level)}rem;
+    margin-top: 0.85714em;
+    margin-bottom: 0.57142em;
     color: ${color};
   `
 }
