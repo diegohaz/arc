@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { colors, reverseColors } from 'components/globals'
-import { Paragraph, IconLink, IconButton, LogoImage } from 'components'
+import { Paragraph, IconLink, IconButton, LogoImage, Tooltip } from 'components'
 
 const Wrapper = styled.div`
   display: flex;
@@ -50,13 +50,15 @@ const Hero = (props) => {
       <Text>
         <strong>ARc</strong> is a <IconLink light icon="react" href="https://facebook.github.io/react/">React</IconLink> starter kit based on the <IconLink light icon="atomic-design" color="#fff" href="http://bradfrost.com/blog/post/atomic-web-design/">Atomic Design</IconLink> methodology. It's <strong>progressive</strong>, which means that you can start with the basic boilerplate and try the other features when you are comfortable.
       </Text>
-      <StyledIconButton
-        light
-        transparent
-        icon="github"
-        href="https://github.com/diegohaz/arc">
-        View on GitHub
-      </StyledIconButton>
+      <Tooltip data-title="Just a fancy tooltip 😊" light>
+        <StyledIconButton
+          light
+          transparent
+          icon="github"
+          href="https://github.com/diegohaz/arc">
+          View on GitHub
+        </StyledIconButton>
+      </Tooltip>
     </Wrapper>
   )
 }
