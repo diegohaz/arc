@@ -40,7 +40,6 @@ const Logo = styled(LogoImage)`
 
 const StyledIconButton = styled(IconButton)`
   flex: none;
-  font-size: 1.2rem;
 `
 
 const Hero = (props) => {
@@ -52,10 +51,11 @@ const Hero = (props) => {
       </Text>
       <Tooltip data-title="Just a fancy tooltip 😊" light>
         <StyledIconButton
-          light
-          transparent
           icon="github"
-          href="https://github.com/diegohaz/arc">
+          href="https://github.com/diegohaz/arc"
+          size={50}
+          transparent
+          light>
           View on GitHub
         </StyledIconButton>
       </Tooltip>
