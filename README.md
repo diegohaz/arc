@@ -27,6 +27,7 @@ $ npm install # or yarn
 - [Run](#run)
 - [Deploy](#deploy)
 - [Source code](#source-code)
+- [Clean source code](#clean-source-code)
 - [Components](#components)
 - [Containers](#containers)
 - [Store](#store)
@@ -77,13 +78,20 @@ git push heroku master
 
 The source code should be placed in `src`; public/static files should be placed in `public` so they can be included in the build process.
 
-If you want to start with a clean and minimal source code without the predefined components and tests, just use the `src-clean` instead by renaming it to `src` (and removing or renaming the older one to something like `src-example`).
-
 Because of [webpack's config](https://github.com/diegohaz/arc/blob/5c752968c52d013f7218b514021eae08f6ddf07c/webpack.config.js#L19-L21), we can import our source modules without relative paths.
 ```js
 import { Button, HomePage } from 'components' // src/components
 import App from 'components/App' // src/components/App
 import routes from 'routes' // src/routes
+```
+
+### Clean source code
+
+If you want to start with a clean and minimal source code without the predefined components and tests, just use the `src-clean` folder instead by renaming it to `src` (and removing or renaming the older one to something like `src-example`).
+
+Also, you might want to remove unnecessary dependencies:
+```sh
+npm u -S react-modal # used by src/components/molecules/Modal
 ```
 
 ### Components
@@ -260,7 +268,7 @@ PRs are very appreciated. For bugs/features consider creating an issue before se
 
 - I'm not a native english speaker. If you find any typo or some text that could be written in a better way, please send a PR, even if it is only a punctuation;
 - If you forked or created another boilerplate based on this one with another features (using [`css-modules`](https://github.com/css-modules/css-modules) instead of [`styled-components`](https://github.com/styled-components/styled-components), for example), add that to the [Forks section](#forks) with the following pattern:
-  - [arc-css-modules](https://github.com/username/arc-css-modules) - A little description
+  - [arc-css-modules](https://github.com/username/arc-css-modules) - A short description
 
 ## Contributors
 
