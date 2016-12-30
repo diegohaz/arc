@@ -10,7 +10,8 @@ const styles = ({ disabled, transparent, light, kind, size }) => {
     display: inline-flex;
     font-family: ${fonts.primary};
     align-items: center;
-    font-size: ${size ? size / 40 + 'rem' : '1rem'};
+    white-space: nowrap;
+    font-size: ${size / 40 + 'rem'};
     background-color: ${transparent ? 'transparent' : (disabled ? color[2] : color[1])};
     border: 0.0625em solid ${transparent ? 'currentcolor' : 'transparent'};
     height: 2.5em;
@@ -67,7 +68,8 @@ Button.propTypes = {
 
 Button.defaultProps = {
   kind: 'primary',
-  type: 'button'
+  type: 'button',
+  size: 40
 }
 
 export default Button
