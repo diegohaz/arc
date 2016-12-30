@@ -23,11 +23,12 @@ export const fonts = {
 
 export const animations = {
   rotate360: keyframes`
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  `,
+  fadeIn: keyframes`
+    0% { display: none; opacity: 0; }
+    1% { display: block: opacity: 0; }
+    100% { display: block; opacity: 1; }
   `
 }
