@@ -1,0 +1,26 @@
+import React, { PropTypes, Component } from 'react'
+import { connect } from 'react-redux'
+import { fromModal } from 'store/selectors'
+import { modalHide } from 'store/actions'
+
+import { Modal } from 'components'
+
+class ModalContainer extends Component {
+  static propTypes = {
+    name: PropTypes.string.isRequired
+  }
+
+  render () {
+    return <Modal {...this.props} />
+  }
+}
+
+const mapStateToProps = (state, { name }) => ({
+  isOpen: fromModal.isOpen(state, name)
+})
+
+const mapDispatchToProps = (dispatch, { name }) => ({
+  onClose: () => dispatch(modalHide(name))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(ModalContainer)
