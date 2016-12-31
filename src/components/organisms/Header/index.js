@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 import { colors, animations } from 'components/globals'
 import { IconLink, PrimaryNavigation } from 'components'
+import { UserButton } from 'containers'
 
 const Wrapper = styled.div`
   display: flex;
@@ -26,11 +27,16 @@ const StyledIconLink = styled(IconLink)`
   }
 `
 
+const StyledPrimaryNavigation = styled(PrimaryNavigation)`
+  flex: 1
+`
+
 const Header = (props) => {
   return (
     <Wrapper {...props}>
       <StyledIconLink to="/" icon="arc" size={100} />
-      <PrimaryNavigation />
+      <StyledPrimaryNavigation />
+      <UserButton light transparent />
     </Wrapper>
   )
 }
