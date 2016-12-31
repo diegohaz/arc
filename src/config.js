@@ -9,6 +9,8 @@ const config = {
     env: process.env.NODE_ENV || 'development',
     baseUrl: `http://${ip}:${port}`,
     apiUrl: `https://jsonplaceholder.typicode.com`,
+    fbAppId: '991453140998882',
+    googleClientId: '464712936089-q953apdu1bjiqtcjndktnnk1ts4f2cgv.apps.googleusercontent.com',
     browser,
     ip,
     port
@@ -23,5 +25,5 @@ const config = {
   }
 }
 
-module.exports = exports = merge(config.all, config[config.all.env])
-export default exports
+module.exports = merge(config.all, config[config.all.env])
+export default module.exports
