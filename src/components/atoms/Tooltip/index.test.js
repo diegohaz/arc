@@ -1,6 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import Tooltip, { pos, opposite, perpendicular, perpendicularAxis } from '.'
+import Tooltip, { opposite, perpendicular, perpendicularAxis } from '.'
 
 const wrap = (props = {}) => shallow(
   <Tooltip data-title="title" {...props}>
@@ -10,6 +10,8 @@ const wrap = (props = {}) => shallow(
 
 it('renders with different props', () => {
   wrap({ light: true })
+  wrap({ align: 'start' })
+  wrap({ align: 'end' })
 })
 
 it('renders children when passed in', () => {
@@ -32,30 +34,23 @@ it('renders tabIndex', () => {
   expect(wrapper.find({ tabIndex: 0 })).toHaveLength(1)
 })
 
-test('pos', () => {
-  expect(pos({ top: true })).toBe('top')
-  expect(pos({ right: true })).toBe('right')
-  expect(pos({ bottom: true })).toBe('bottom')
-  expect(pos({ left: true })).toBe('left')
-})
-
 test('opposite', () => {
-  expect(opposite({ top: true })).toBe('bottom')
-  expect(opposite({ right: true })).toBe('left')
-  expect(opposite({ bottom: true })).toBe('top')
-  expect(opposite({ left: true })).toBe('right')
+  expect(opposite({ position: 'top' })).toBe('bottom')
+  expect(opposite({ position: 'right' })).toBe('left')
+  expect(opposite({ position: 'bottom' })).toBe('top')
+  expect(opposite({ position: 'left' })).toBe('right')
 })
 
 test('perpendicular', () => {
-  expect(perpendicular({ top: true })).toBe('left')
-  expect(perpendicular({ right: true })).toBe('top')
-  expect(perpendicular({ bottom: true })).toBe('left')
-  expect(perpendicular({ left: true })).toBe('top')
+  expect(perpendicular({ position: 'top' })).toBe('left')
+  expect(perpendicular({ position: 'right' })).toBe('top')
+  expect(perpendicular({ position: 'bottom' })).toBe('left')
+  expect(perpendicular({ position: 'left' })).toBe('top')
 })
 
 test('perpendicularAxis', () => {
-  expect(perpendicularAxis({ top: true })).toBe('X')
-  expect(perpendicularAxis({ right: true })).toBe('Y')
-  expect(perpendicularAxis({ bottom: true })).toBe('X')
-  expect(perpendicularAxis({ left: true })).toBe('Y')
+  expect(perpendicularAxis({ position: 'top' })).toBe('X')
+  expect(perpendicularAxis({ position: 'right' })).toBe('Y')
+  expect(perpendicularAxis({ position: 'bottom' })).toBe('X')
+  expect(perpendicularAxis({ position: 'left' })).toBe('Y')
 })
