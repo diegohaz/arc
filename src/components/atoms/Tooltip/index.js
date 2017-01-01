@@ -66,16 +66,16 @@ const styles = css`
     ${opposite}: calc(100% + 2rem);
     ${({ align }) => {
       switch (align) {
-        case 'start': return css`
-          ${perpendicular}: 0;
-        `
-        case 'center': return css`
-          ${perpendicular}: 50%;
-          transform: translate${perpendicularAxis}(-50%);
-        `
-        case 'end': return css`
-          ${perpendicularOpposite}: 0;
-        `
+      case 'start': return css`
+        ${perpendicular}: 0;
+      `
+      case 'center': return css`
+        ${perpendicular}: 50%;
+        transform: translate${perpendicularAxis}(-50%);
+      `
+      case 'end': return css`
+        ${perpendicularOpposite}: 0;
+      `
       }
     }}
   }
