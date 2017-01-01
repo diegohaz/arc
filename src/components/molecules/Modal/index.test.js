@@ -6,8 +6,9 @@ const onClose = jest.fn()
 
 const wrap = (props = {}) => shallow(<Modal onClose={onClose} {...props} />)
 
-it('renders modal', () => {
+it('renders modal with different props', () => {
   mount(<Modal onClose={onClose} />)
+  mount(<Modal onClose={onClose} closeable />)
 })
 
 it('renders children when passed in', () => {
