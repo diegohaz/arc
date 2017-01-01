@@ -50,6 +50,7 @@ const ModalBox = styled(ReactModal)`
   min-width: 320px;
   max-width: calc(640px - 1rem);
   max-height: calc(100% - 1rem);
+  padding-top: ${({ hasHeader }) => hasHeader ? 0 : '1rem'};
   @media screen and (max-width: 640px) {
     width: calc(100% - 1rem);
     min-width: 0;
@@ -89,12 +90,19 @@ const StyledReactModal = styled(({ className, ...props }) =>
 )`${overlayStyles}`
 
 const Modal = ({ children, title, closeable, onClose, ...props }) => {
+  const hasHeader = title || closeable
   return (
-    <StyledReactModal contentLabel={title || 'Modal'} onRequestClose={onClose} {...props}>
-      {(title || closeable) && <Header>
-        <StyledHeading level={2}>{title}</StyledHeading>
-        {closeable && <IconButton icon="close" onClick={onClose} kind="white" light />}
-      </Header>}
+    <StyledReactModal
+      contentLabel={title || 'Modal'}
+      onRequestClose={onClose}
+      hasHeader={hasHeader}
+      {...props}>
+      {hasHeader &&
+        <Header>
+          <StyledHeading level={2}>{title}</StyledHeading>
+          {closeable && <IconButton icon="close" onClick={onClose} kind="white" light />}
+        </Header>
+      }
       <Content>
         {children}
       </Content>
