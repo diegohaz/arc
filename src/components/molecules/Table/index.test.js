@@ -1,6 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import Table from '.'
+import Table, * as styles from '.'
 
 const wrap = (props = {}) => shallow(<Table {...props} />)
 
@@ -27,4 +27,32 @@ it('renders head when passed in', () => {
 it('renders foot when passed in', () => {
   const wrapper = wrap({ foot: 'test foot' })
   expect(wrapper.contains('test foot')).toBe(true)
+})
+
+describe('styles', () => {
+  const theme = {
+    fonts: {
+      primary: 'sans-serif'
+    },
+    colors: {
+      grayscale: { 0: '#222', 1: '#5555' }
+    },
+    reverseColors: {
+      grayscale: { 0: '#fff', 1: '#bbb' }
+    }
+  }
+
+  test('fontFamily', () => {
+    expect(styles.fontFamily({ theme })).toBe(theme.fonts.primary)
+  })
+
+  test('borderColor', () => {
+    expect(styles.borderColor({ theme })).toBe(theme.reverseColors.grayscale[1])
+    expect(styles.borderColor({ theme, reverse: true })).toBe(theme.colors.grayscale[1])
+  })
+
+  test('color', () => {
+    expect(styles.color({ theme })).toBe(theme.colors.grayscale[0])
+    expect(styles.color({ theme, reverse: true })).toBe(theme.reverseColors.grayscale[0])
+  })
 })

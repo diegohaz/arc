@@ -1,8 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import Label, * as styles from '.'
+import Caption, * as styles from '.'
 
-const wrap = (props = {}) => shallow(<Label {...props} />)
+const wrap = (props = {}) => shallow(<Caption {...props} />)
 
 it('renders children when passed in', () => {
   const wrapper = wrap({ children: 'test' })
@@ -10,8 +10,8 @@ it('renders children when passed in', () => {
 })
 
 it('renders props when passed in', () => {
-  const wrapper = wrap({ htmlFor: 'foo' })
-  expect(wrapper.find({ htmlFor: 'foo' })).toHaveLength(1)
+  const wrapper = wrap({ id: 'foo' })
+  expect(wrapper.find({ id: 'foo' })).toHaveLength(1)
 })
 
 describe('styles', () => {
