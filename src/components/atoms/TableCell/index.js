@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 
 const styles = css`
   text-align: left;
-  padding: 0.75rem;
+  padding: 0.75em;
 `
 
 const Th = styled.th`${styles}`

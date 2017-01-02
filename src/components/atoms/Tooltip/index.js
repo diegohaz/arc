@@ -1,8 +1,6 @@
 import React, { PropTypes } from 'react'
 import styled, { css } from 'styled-components'
 
-import { fonts } from 'components/globals'
-
 const opposites = {
   top: 'bottom',
   right: 'left',
@@ -20,11 +18,13 @@ export const perpendicularOpposite = (props) => opposites[perpendicular(props)]
 export const perpendicularAxis = ({ position }) =>
   position === 'left' || position === 'right' ? 'Y' : 'X'
 
-const backgroundColor = ({ light }) =>
-  light ? 'rgba(255, 255, 255, 0.85)' : 'rgba(0, 0, 0, 0.85)'
+const fontFamily = ({ theme }) => theme.fonts.primary
 
-const color = ({ light }) =>
-  light ? 'black' : 'white'
+const backgroundColor = ({ reverse }) =>
+  reverse ? 'rgba(255, 255, 255, 0.85)' : 'rgba(0, 0, 0, 0.85)'
+
+const color = ({ reverse }) =>
+  reverse ? 'black' : 'white'
 
 const styles = css`
   position: relative;
@@ -53,7 +53,7 @@ const styles = css`
 
   &:before {
     content: attr(data-title);
-    font-family: ${fonts.primary};
+    font-family: ${fontFamily};
     white-space: nowrap;
     text-transform: none;
     font-size: 0.8125rem;
@@ -93,21 +93,26 @@ const styles = css`
   }
 `
 
-const Tooltip = styled(({ position, align, light, children, ...props }) =>
+const Tooltip = styled(({ position, align, reverse, children, theme, ...props }) =>
   React.cloneElement(children, { tabIndex: 0, ...props })
 )`${styles}`
 
 Tooltip.propTypes = {
   position: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
   align: PropTypes.oneOf(['start', 'center', 'end']),
-  light: PropTypes.bool,
+  reverse: PropTypes.bool,
   'data-title': PropTypes.string.isRequired,
   children: PropTypes.element.isRequired
 }
 
 Tooltip.defaultProps = {
   position: 'top',
-  align: 'center'
+  align: 'center',
+  theme: {
+    fonts: {
+      primary: 'sans-serif'
+    }
+  }
 }
 
 export default Tooltip

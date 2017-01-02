@@ -1,5 +1,7 @@
 import React, { PropTypes, Component } from 'react'
-import { injectGlobal } from 'styled-components'
+import { injectGlobal, ThemeProvider } from 'styled-components'
+
+import theme from './theme'
 
 injectGlobal`
   body {
@@ -15,7 +17,7 @@ class App extends Component {
   render () {
     const { children } = this.props
     return (
-      <div>{children}</div>
+      <ThemeProvider theme={theme}>{children}</ThemeProvider>
     )
   }
 }

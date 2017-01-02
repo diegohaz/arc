@@ -1,8 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import Label, * as styles from '.'
+import Molecule, * as styles from '.'
 
-const wrap = (props = {}) => shallow(<Label {...props} />)
+const wrap = (props = {}) => shallow(<Molecule {...props} />)
 
 it('renders children when passed in', () => {
   const wrapper = wrap({ children: 'test' })
@@ -10,8 +10,8 @@ it('renders children when passed in', () => {
 })
 
 it('renders props when passed in', () => {
-  const wrapper = wrap({ htmlFor: 'foo' })
-  expect(wrapper.find({ htmlFor: 'foo' })).toHaveLength(1)
+  const wrapper = wrap({ id: 'foo' })
+  expect(wrapper.find({ id: 'foo' })).toHaveLength(1)
 })
 
 describe('styles', () => {
@@ -20,10 +20,10 @@ describe('styles', () => {
       primary: 'sans-serif'
     },
     colors: {
-      grayscale: { 1: '#555' }
+      grayscale: { 0: '#222' }
     },
     reverseColors: {
-      grayscale: { 1: '#bbb' }
+      grayscale: { 0: '#fff' }
     }
   }
 
@@ -32,7 +32,7 @@ describe('styles', () => {
   })
 
   test('color', () => {
-    expect(styles.color({ theme })).toBe(theme.colors.grayscale[1])
-    expect(styles.color({ theme, reverse: true })).toBe(theme.reverseColors.grayscale[1])
+    expect(styles.color({ theme })).toBe(theme.colors.grayscale[0])
+    expect(styles.color({ theme, reverse: true })).toBe(theme.reverseColors.grayscale[0])
   })
 })

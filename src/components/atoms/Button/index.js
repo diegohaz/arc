@@ -2,45 +2,57 @@ import React, { PropTypes } from 'react'
 import styled, { css } from 'styled-components'
 import { Link } from 'react-router'
 
-import { colors, reverseColors, fonts } from 'components/globals'
+export const colorKind = ({ theme, reverse }) => theme[reverse ? 'reverseColors' : 'colors']
 
-const styles = ({ disabled, transparent, light, kind, size }) => {
-  const color = light ? reverseColors[kind] : colors[kind]
-  return css`
-    display: inline-flex;
-    font-family: ${fonts.primary};
-    align-items: center;
-    white-space: nowrap;
-    font-size: ${size / 40 + 'rem'};
-    background-color: ${transparent ? 'transparent' : (disabled ? color[2] : color[1])};
-    border: 0.0625em solid ${transparent ? 'currentcolor' : 'transparent'};
-    height: 2.5em;
-    justify-content: center;
-    text-decoration: none;
-    cursor: ${disabled ? 'default' : 'pointer'};
-    appearance: none;
-    padding: 0 1em;
-    border-radius: 0.125em;
-    box-sizing: border-box;
-    pointer-events: ${disabled && 'none'};
-    transition: background-color 250ms ease-out, color 250ms ease-out, border-color 250ms ease-out;
-    color: ${transparent
-      ? (disabled ? color[2] : color[1])
-      : (light ? colors.grayscale[0] : reverseColors.grayscale[0])
-    };
+export const fontFamily = ({ theme }) => theme.fonts.primary
+export const fontSize = ({ height }) => `${height / 40}rem`
+export const borderColor = ({ transparent }) => transparent ? 'currentcolor' : 'transparent'
+export const cursor = ({ disabled }) => disabled ? 'default' : 'pointer'
+export const pointerEvents = ({ disabled }) => disabled ? 'none' : 'auto'
 
-    &:hover, &:focus, &:active {
-      background-color: ${disabled || transparent || color[0]};
-      color: ${disabled || transparent && color[0]};
-    }
+export const backgroundColor = ({ transparent, disabled, color, ...props }) =>
+  transparent ? 'transparent' : colorKind(props)[color][disabled ? 2 : 1]
 
-    &:focus {
-      outline: none
-    }
-  `
-}
+export const color = ({ transparent, disabled, color, ...props }) =>
+  colorKind(props)[transparent ? color : 'grayscale'][transparent ? (disabled ? 2 : 1) : 0]
 
-const StyledLink = styled(({ disabled, transparent, light, kind, size, ...props }) =>
+export const hoverBackgroundColor = ({ disabled, transparent, color, ...props }) =>
+  !disabled && !transparent && colorKind(props)[color][0]
+
+export const hoverColor = ({ disabled, transparent, color, ...props }) =>
+  !disabled && transparent && colorKind(props)[color][0]
+
+const styles = css`
+  display: inline-flex;
+  font-family: ${fontFamily};
+  align-items: center;
+  white-space: nowrap;
+  font-size: ${fontSize};
+  border: 0.0625em solid ${borderColor};
+  height: 2.5em;
+  justify-content: center;
+  text-decoration: none;
+  cursor: ${cursor};
+  appearance: none;
+  padding: 0 1em;
+  border-radius: 0.125em;
+  box-sizing: border-box;
+  pointer-events: ${pointerEvents};
+  transition: background-color 250ms ease-out, color 250ms ease-out, border-color 250ms ease-out;
+  background-color: ${backgroundColor};
+  color: ${color};
+
+  &:hover, &:focus, &:active {
+    background-color: ${hoverBackgroundColor};
+    color: ${hoverColor};
+  }
+
+  &:focus {
+    outline: none
+  }
+`
+
+const StyledLink = styled(({ disabled, transparent, reverse, color, height, theme, ...props }) =>
   <Link {...props} />
 )`${styles}`
 const Anchor = styled.a`${styles}`
@@ -57,19 +69,32 @@ const Button = ({ type, ...props, to, href }) => {
 
 Button.propTypes = {
   disabled: PropTypes.bool,
-  kind: PropTypes.oneOf(Object.keys(colors)).isRequired,
+  color: PropTypes.string,
   transparent: PropTypes.bool,
-  light: PropTypes.bool,
-  size: PropTypes.number,
+  reverse: PropTypes.bool,
+  height: PropTypes.number,
   type: PropTypes.string,
   to: PropTypes.string,
   href: PropTypes.string
 }
 
 Button.defaultProps = {
-  kind: 'primary',
+  color: 'primary',
   type: 'button',
-  size: 40
+  height: 40,
+  theme: {
+    fonts: {
+      primary: 'sans-serif'
+    },
+    colors: {
+      grayscale: { 0: '#222', 1: '#555', 2: '#888' },
+      primary: { 0: '#1976d2', 1: '#2196f3', 2: '#71bcf7' }
+    },
+    reverseColors: {
+      grayscale: { 0: '#fff', 1: '#bbb', 2: '#888' },
+      primary: { 0: '#c2e2fb', 1: '#71bcf7', 2: '#2196f3' }
+    }
+  }
 }
 
 export default Button

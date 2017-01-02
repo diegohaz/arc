@@ -1,34 +1,48 @@
 import { PropTypes } from 'react'
 import styled, { keyframes } from 'styled-components'
 
-import { colors, reverseColors } from 'components/globals'
+export const backgroundColor = ({ theme, reverse }) =>
+  theme[reverse ? 'colors' : 'reverseColors'].grayscale[1]
 
-const loading = keyframes`
-  0% { transform: rotate(90deg); }
-  25% { transform: rotate(180deg); }
-  50% { transform: rotate(180deg) scale(1.5); }
-  75% { transform: rotate(270deg); }
+export const color = ({ theme, reverse, color }) =>
+  theme[reverse ? 'reverseColors' : 'colors'][color][1]
+
+const spin = keyframes`
+  0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 `
 
 const Spinner = styled.div`
   position: relative;
+  border: 0.2em solid ${backgroundColor};
+  border-bottom-color: ${color};
+  border-radius: 50%;
   margin: 0 auto;
   width: 1em;
   height: 1em;
-  animation: ${loading} 1.5s infinite ease-in-out;
-  background-color: ${(props) =>
-    props.light ? reverseColors[props.kind][1] : colors[props.kind][1]
-  };
+  animation: ${spin} 1s linear infinite;
 `
 
 Spinner.propTypes = {
-  kind: PropTypes.oneOf(Object.keys(colors)),
-  light: PropTypes.bool
+  color: PropTypes.string,
+  reverse: PropTypes.bool
 }
 
 Spinner.defaultProps = {
-  kind: 'primary'
+  color: 'primary',
+  theme: {
+    fonts: {
+      primary: 'sans-serif'
+    },
+    colors: {
+      primary: { 1: '#2196f3' },
+      grayscale: { 1: '#555' }
+    },
+    reverseColors: {
+      primary: { 1: '#71bcf7' },
+      grayscale: { 1: '#bbb' }
+    }
+  }
 }
 
 export default Spinner

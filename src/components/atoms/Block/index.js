@@ -1,34 +1,26 @@
-import React, { PropTypes } from 'react'
-import styled, { css } from 'styled-components'
+import { PropTypes } from 'react'
+import styled from 'styled-components'
 
 export const fontFamily = ({ theme }) => theme.fonts.primary
+
+export const backgroundColor = ({ theme, reverse, color, transparent }) =>
+  transparent ? 'transparent' : theme[reverse ? 'colors' : 'reverseColors'][color][0]
 
 export const color = ({ theme, reverse, color }) =>
   theme[reverse ? 'reverseColors' : 'colors'][color][color === 'grayscale' ? 0 : 1]
 
-const styles = css`
+const Block = styled.div`
   font-family: ${fontFamily};
-  margin: 1rem 0;
-  padding-left: 1.6rem;
-  line-height: 1.7rem;
+  background-color: ${backgroundColor};
   color: ${color};
 `
 
-const Ol = styled.ol`${styles}`
-const Ul = styled.ul`${styles}`
-
-const List = ({ ordered, children, ...props }) => {
-  return React.createElement(ordered ? Ol : Ul, props, children)
-}
-
-List.propTypes = {
-  ordered: PropTypes.bool,
-  children: PropTypes.any,
+Block.propTypes = {
   color: PropTypes.string,
   reverse: PropTypes.bool
 }
 
-List.defaultProps = {
+Block.defaultProps = {
   color: 'grayscale',
   theme: {
     fonts: {
@@ -43,4 +35,4 @@ List.defaultProps = {
   }
 }
 
-export default List
+export default Block

@@ -1,22 +1,22 @@
 import React, { PropTypes } from 'react'
 import styled from 'styled-components'
 
-import { colors, reverseColors, fonts } from 'components/globals'
+import { Caption } from 'components'
 
-const Caption = styled.caption`
-  font-weight: 500;
-  line-height: 2rem;
-  font-size: 0.875rem;
-  color: ${colors.grayscale[1]};
-  text-transform: uppercase;
-`
+export const fontFamily = ({ theme }) => theme.fonts.primary
+
+export const borderColor = ({ theme, reverse }) =>
+  theme[reverse ? 'colors' : 'reverseColors'].grayscale[1]
+
+export const color = ({ theme, reverse }) =>
+  theme[reverse ? 'reverseColors' : 'colors'].grayscale[0]
 
 const StyledTable = styled.table`
-  font-family: ${fonts.primary};
+  font-family: ${fontFamily};
   border-collapse: collapse;
   width: 100%;
-  border: 1px solid ${reverseColors.grayscale[1]};
-  color: ${colors.grayscale[0]};
+  border: 1px solid ${borderColor};
+  color: ${color};
 `
 
 const Table = ({ caption, head, foot, children, ...props }) => {
@@ -34,7 +34,22 @@ Table.propTypes = {
   caption: PropTypes.string,
   head: PropTypes.any,
   foot: PropTypes.any,
-  children: PropTypes.any
+  children: PropTypes.any,
+  reverse: PropTypes.bool
+}
+
+Table.defaultProps = {
+  theme: {
+    fonts: {
+      primary: 'sans-serif'
+    },
+    colors: {
+      grayscale: { 0: '#222', 1: '#5555' }
+    },
+    reverseColors: {
+      grayscale: { 0: '#fff', 1: '#bbb' }
+    }
+  }
 }
 
 export default Table
