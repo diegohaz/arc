@@ -1,6 +1,8 @@
-import React, { Component, PropTypes } from 'react'
-import { injectGlobal } from 'styled-components'
+import React, { PropTypes, Component } from 'react'
+import { injectGlobal, ThemeProvider } from 'styled-components'
 import Helmet from 'react-helmet'
+
+import theme from './theme'
 
 injectGlobal`
   body {
@@ -31,7 +33,7 @@ class App extends Component {
           link={[
             { rel: 'icon', href: 'https://diegohaz.github.io/arc/icon.png' }
           ]} />
-        {children}
+        <ThemeProvider theme={theme}>{children}</ThemeProvider>
       </div>
     )
   }

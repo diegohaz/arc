@@ -2,23 +2,25 @@ import React, { PropTypes } from 'react'
 import styled, { css } from 'styled-components'
 import { Link as RouterLink } from 'react-router'
 
-import { colors, reverseColors, fonts } from 'components/globals'
+export const fontFamily = ({ theme }) => theme.fonts.primary
 
-const styles = ({ light, kind }) => {
-  const color = light ? reverseColors[kind][1] : colors[kind][1]
-  return css`
-    font-family: ${fonts.primary};
-    text-decoration: none;
-    font-weight: 500;
-    color: ${color};
+export const color = ({ theme, reverse, color }) =>
+  theme[reverse ? 'reverseColors' : 'colors'][color][color === 'grayscale' ? 0 : 1]
 
-    &:hover {
-      text-decoration: underline;
-    }
-  `
-}
+const styles = css`
+  font-family: ${fontFamily};
+  text-decoration: none;
+  font-weight: 500;
+  color: ${color};
 
-const StyledLink = styled(({ light, kind, ...props }) => <RouterLink {...props} />)`${styles}`
+  &:hover {
+    text-decoration: underline;
+  }
+`
+
+const StyledLink = styled(({ theme, reverse, color, ...props }) =>
+  <RouterLink {...props} />
+)`${styles}`
 const Anchor = styled.a`${styles}`
 
 const Link = ({ ...props, to }) => {
@@ -29,13 +31,26 @@ const Link = ({ ...props, to }) => {
 }
 
 Link.propTypes = {
-  kind: PropTypes.oneOf(Object.keys(colors)),
-  light: PropTypes.bool,
+  color: PropTypes.string,
+  reverse: PropTypes.bool,
   to: PropTypes.string
 }
 
 Link.defaultProps = {
-  kind: 'primary'
+  color: 'primary',
+  theme: {
+    fonts: {
+      primary: 'sans-serif'
+    },
+    colors: {
+      grayscale: { 0: '#222' },
+      primary: { 1: '#2196f3' }
+    },
+    reverseColors: {
+      grayscale: { 0: '#fff' },
+      primary: { 1: '#71bcf7' }
+    }
+  }
 }
 
 export default Link

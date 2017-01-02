@@ -5,7 +5,6 @@ import { Icon, Link } from 'components'
 
 const iconStyles = ({ hasText, right, responsive }) => css`
   margin: ${hasText ? (right ? '0 0 0 0.25em' : '0 0.25em 0 0') : 0};
-  padding-top: 0.25em;
   @media screen and (max-width: 420px) {
     margin: ${responsive && 0};
   }
@@ -20,15 +19,16 @@ const textStyle = ({ responsive }) => css`
 const StyledIcon = styled(Icon)`${iconStyles}`
 const Text = styled.span`${textStyle}`
 
-const IconLink = ({ color, size, icon, right, responsive, children, ...props }) => {
+const IconLink = ({ height, icon, right, responsive, children, ...props, color, reverse }) => {
   const iconElement = (
     <StyledIcon
-      size={size && size / 3}
+      height={height && height / 3 || 16}
       icon={icon}
       hasText={!!children}
       right={right}
       responsive={responsive}
       color={color}
+      reverse={reverse}
     />
   )
   return (
@@ -42,10 +42,11 @@ const IconLink = ({ color, size, icon, right, responsive, children, ...props }) 
 
 IconLink.propTypes = {
   icon: PropTypes.string.isRequired,
+  color: PropTypes.string,
+  reverse: PropTypes.bool,
+  height: PropTypes.number,
   responsive: PropTypes.bool,
   right: PropTypes.bool,
-  size: PropTypes.number,
-  color: PropTypes.string,
   children: PropTypes.any
 }
 

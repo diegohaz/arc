@@ -1,5 +1,3 @@
-import { keyframes } from 'styled-components'
-
 export const colors = {
   primary: ['#1976d2', '#2196f3', '#71bcf7', '#c2e2fb'],
   secondary: ['#c2185b', '#e91e63', '#f06292', '#f8bbd0'],
@@ -22,14 +20,4 @@ export const fonts = {
   quote: 'Georgia, serif'
 }
 
-export const animations = {
-  rotate360: keyframes`
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  `,
-  fadeIn: keyframes`
-    0% { display: none; opacity: 0; }
-    1% { display: block: opacity: 0; }
-    100% { display: block; opacity: 1; }
-  `
-}
+export default { colors, reverseColors, fonts }

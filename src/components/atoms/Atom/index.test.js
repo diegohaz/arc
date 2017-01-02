@@ -1,8 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import Link, * as styles from '.'
+import Atom, * as styles from '.'
 
-const wrap = (props = {}) => shallow(<Link {...props} />).dive()
+const wrap = (props = {}) => shallow(<Atom {...props} />)
 
 it('renders children when passed in', () => {
   const wrapper = wrap({ children: 'test' })
@@ -14,16 +14,6 @@ it('renders props when passed in', () => {
   expect(wrapper.find({ id: 'foo' })).toHaveLength(1)
 })
 
-it('renders anchor by default', () => {
-  const wrapper = wrap()
-  expect(wrapper.find('a')).toHaveLength(1)
-})
-
-it('renders Link when prop to is passed in', () => {
-  const wrapper = wrap({ to: 'test' }).dive()
-  expect(wrapper.find('Link')).toHaveLength(1)
-})
-
 describe('styles', () => {
   const theme = {
     fonts: {
@@ -31,11 +21,11 @@ describe('styles', () => {
     },
     colors: {
       grayscale: { 0: '#222' },
-      primary: { 1: '#2196f3' }
+      primary: { 1: 'red' }
     },
     reverseColors: {
       grayscale: { 0: '#fff' },
-      primary: { 1: '#71bcf7' }
+      primary: { 1: 'blue' }
     }
   }
 

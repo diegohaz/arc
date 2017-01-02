@@ -6,18 +6,20 @@ export const fontFamily = ({ theme }) => theme.fonts.primary
 export const color = ({ theme, reverse }) =>
   theme[reverse ? 'reverseColors' : 'colors'].grayscale[1]
 
-const Label = styled.label`
+const Caption = styled.caption`
   font-family: ${fontFamily};
   color: ${color};
-  font-size: 1rem;
-  line-height: 2em;
+  font-weight: 500;
+  line-height: 2rem;
+  font-size: 0.875rem;
+  text-transform: uppercase;
 `
 
-Label.propTypes = {
+Caption.propTypes = {
   reverse: PropTypes.bool
 }
 
-Label.defaultProps = {
+Caption.defaultProps = {
   theme: {
     fonts: {
       primary: 'sans-serif'
@@ -31,4 +33,4 @@ Label.defaultProps = {
   }
 }
 
-export default Label
+export default Caption

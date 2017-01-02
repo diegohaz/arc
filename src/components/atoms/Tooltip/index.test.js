@@ -9,7 +9,7 @@ const wrap = (props = {}) => shallow(
 ).dive()
 
 it('renders with different props', () => {
-  wrap({ light: true })
+  wrap({ reverse: true })
   wrap({ align: 'start' })
   wrap({ align: 'end' })
 })

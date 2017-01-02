@@ -1,4 +1,4 @@
-import { PropTypes } from 'react'
+import React, { PropTypes } from 'react'
 import styled from 'styled-components'
 
 export const fontFamily = ({ theme }) => theme.fonts.primary
@@ -6,19 +6,25 @@ export const fontFamily = ({ theme }) => theme.fonts.primary
 export const color = ({ theme, reverse }) =>
   theme[reverse ? 'reverseColors' : 'colors'].grayscale[0]
 
-const Paragraph = styled.p`
+const Wrapper = styled.div`
   font-family: ${fontFamily};
   color: ${color};
-  font-size: 1rem;
-  line-height: 1.3;
-  margin: 1rem 0 0;
 `
 
-Paragraph.propTypes = {
-  reverse: PropTypes.bool
+const Organism = ({ children, ...props }) => {
+  return (
+    <Wrapper {...props}>
+      {children}
+    </Wrapper>
+  )
 }
 
-Paragraph.defaultProps = {
+Organism.propTypes = {
+  reverse: PropTypes.bool,
+  children: PropTypes.node
+}
+
+Organism.defaultProps = {
   theme: {
     fonts: {
       primary: 'sans-serif'
@@ -32,4 +38,4 @@ Paragraph.defaultProps = {
   }
 }
 
-export default Paragraph
+export default Organism

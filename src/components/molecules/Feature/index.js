@@ -31,14 +31,14 @@ const StyledBadge = styled(Badge)`
 const Feature = ({ icon, title, link, children, ...props, soon }) => {
   return (
     <Wrapper {...props}>
-      {icon && <StyledIcon icon={icon} size={64} />}
+      {icon && <StyledIcon icon={icon} height={64} />}
       <Text>
         <Heading level={2}>
           {link && <Link href={link}>{title}</Link> || title}
         </Heading>
         <Paragraph>{children}</Paragraph>
       </Text>
-      {soon && <StyledBadge kind="grayscale">soon</StyledBadge>}
+      {soon && <StyledBadge color="grayscale">soon</StyledBadge>}
     </Wrapper>
   )
 }

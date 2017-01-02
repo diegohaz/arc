@@ -3,22 +3,21 @@ import styled from 'styled-components'
 
 export const fontFamily = ({ theme }) => theme.fonts.primary
 
-export const color = ({ theme, reverse }) =>
-  theme[reverse ? 'reverseColors' : 'colors'].grayscale[0]
+export const color = ({ theme, reverse, color }) =>
+  theme[reverse ? 'reverseColors' : 'colors'][color][color === 'grayscale' ? 0 : 1]
 
-const Paragraph = styled.p`
+const Atom = styled.span`
   font-family: ${fontFamily};
   color: ${color};
-  font-size: 1rem;
-  line-height: 1.3;
-  margin: 1rem 0 0;
 `
 
-Paragraph.propTypes = {
+Atom.propTypes = {
+  color: PropTypes.string,
   reverse: PropTypes.bool
 }
 
-Paragraph.defaultProps = {
+Atom.defaultProps = {
+  color: 'grayscale',
   theme: {
     fonts: {
       primary: 'sans-serif'
@@ -32,4 +31,4 @@ Paragraph.defaultProps = {
   }
 }
 
-export default Paragraph
+export default Atom

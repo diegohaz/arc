@@ -1,22 +1,8 @@
 import React from 'react'
-import { mount, shallow } from 'enzyme'
-import TableRow from '.'
+import { shallow } from 'enzyme'
+import TableRow, * as styles from '.'
 
 const wrap = (props = {}) => shallow(<TableRow {...props} />)
-
-it('mounts with different combination of props', () => {
-  const wrapMounted = ({ children, ...props }) => mount(
-    <table>
-      <tbody>
-        <TableRow {...props}>
-          {children && <td>{children}</td>}
-        </TableRow>
-      </tbody>
-    </table>
-  )
-  wrapMounted({ children: 'test' })
-  wrapMounted({ filled: true, children: 'test' })
-})
 
 it('renders children when passed in', () => {
   const wrapper = wrap({ children: 'test' })
@@ -26,4 +12,23 @@ it('renders children when passed in', () => {
 it('renders props when passed in', () => {
   const wrapper = wrap({ id: 'foo' })
   expect(wrapper.find({ id: 'foo' })).toHaveLength(1)
+})
+
+describe('styles', () => {
+  const theme = {
+    colors: {
+      grayscale: { 0: '#222', 1: '#555' }
+    },
+    reverseColors: {
+      grayscale: { 0: '#fff', 1: '#bbb' }
+    }
+  }
+
+  test('backgroundColor', () => {
+    expect(styles.backgroundColor({ theme })).toBe(theme.reverseColors.grayscale[0])
+    expect(styles.backgroundColor({ theme, filled: true })).toBe(theme.reverseColors.grayscale[1])
+    expect(styles.backgroundColor({ theme, reverse: true })).toBe(theme.colors.grayscale[0])
+    expect(styles.backgroundColor({ theme, filled: true, reverse: true }))
+      .toBe(theme.colors.grayscale[1])
+  })
 })
