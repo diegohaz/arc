@@ -4,7 +4,7 @@ import api from 'services/api'
 import saga, * as sagas from './sagas'
 
 describe('createPost', () => {
-  const data = { id: 1, title: 'test' }
+  const data = { title: 'test' }
 
   it('calls success', () => {
     const generator = sagas.createPost(data)

@@ -1,6 +1,6 @@
 import React, { PropTypes, Component } from 'react'
 import { connect } from 'react-redux'
-import { fromPost, fromStatus } from 'store/selectors'
+import { fromEntities, fromPost, fromStatus } from 'store/selectors'
 import { postList, POST_LIST } from 'store/actions'
 
 import { PostList } from 'components'
@@ -28,7 +28,7 @@ class PostListContainer extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  list: fromPost.getList(state),
+  list: fromEntities.getList(state, 'post', fromPost.getList(state)),
   loading: fromStatus.isLoading(state, POST_LIST)
 })
 
