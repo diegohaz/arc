@@ -63,6 +63,6 @@
     "react-modal": "^1.6.4",
     "react-router": "^3.0.0",
     "react-router-scroll": "^0.4.1",
-    "styled-components": "1.1.2"
+    "styled-components": "1.1.1"
   }
 }
