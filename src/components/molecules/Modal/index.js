@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react'
 import styled, { css, injectGlobal } from 'styled-components'
 import ReactModal from 'react-modal'
 
-import { colors, fonts } from 'components/globals'
 import { Heading, IconButton } from 'components'
 
 injectGlobal`
@@ -33,11 +32,11 @@ const ModalBox = styled(ReactModal)`
   position: absolute;
   display: flex;
   flex-direction: column;
-  font-family: ${fonts.primary};
+  font-family: ${({ theme }) => theme.fonts.primary};
   font-size: 1rem;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.reverseColors.grayscale[0]};
   border-radius: 0.125em;
-  color: ${colors.grayscale[0]};
+  color: ${({ theme }) => theme.colors.grayscale[0]};
   top: calc(50% - 1rem);
   left: calc(50% - 1rem);
   right: auto;
@@ -100,7 +99,7 @@ const Modal = ({ children, title, closeable, onClose, ...props }) => {
       {hasHeader &&
         <Header>
           <StyledHeading level={2}>{title}</StyledHeading>
-          {closeable && <IconButton icon="close" onClick={onClose} kind="white" light />}
+          {closeable && <IconButton icon="close" onClick={onClose} color="white" reverse />}
         </Header>
       }
       <Content>
@@ -115,6 +114,20 @@ Modal.propTypes = {
   title: PropTypes.string,
   closeable: PropTypes.bool,
   onClose: PropTypes.func.isRequired
+}
+
+Modal.defaultProps = {
+  theme: {
+    fonts: {
+      primary: 'sans-serif'
+    },
+    colors: {
+      grayscale: { 0: '#222' }
+    },
+    reverseColors: {
+      grayscale: { 0: '#fff' }
+    }
+  }
 }
 
 export default Modal

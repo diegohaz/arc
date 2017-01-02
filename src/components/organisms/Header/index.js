@@ -1,14 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { colors, animations } from 'components/globals'
-import { IconLink, PrimaryNavigation } from 'components'
+import { IconLink, PrimaryNavigation, Block } from 'components'
 import { UserButton } from 'containers'
 
-const Wrapper = styled.div`
+const Wrapper = styled(Block)`
   display: flex;
   align-items: center;
-  background-color: ${colors.grayscale[0]};
   padding: 1rem;
 
   & > :not(:first-child) {
@@ -19,12 +17,6 @@ const Wrapper = styled.div`
 const StyledIconLink = styled(IconLink)`
   display: inline-block;
   transform-origin: center;
-  color: ${colors.primary[1]};
-
-  &:hover {
-    color: ${colors.primary[2]};
-    animation: ${animations.rotate360} 5s linear infinite;
-  }
 `
 
 const StyledPrimaryNavigation = styled(PrimaryNavigation)`
@@ -33,10 +25,10 @@ const StyledPrimaryNavigation = styled(PrimaryNavigation)`
 
 const Header = (props) => {
   return (
-    <Wrapper {...props}>
-      <StyledIconLink to="/" icon="arc" size={100} />
-      <StyledPrimaryNavigation />
-      <UserButton light transparent />
+    <Wrapper reverse {...props}>
+      <StyledIconLink to="/" icon="arc" height={100} />
+      <StyledPrimaryNavigation reverse />
+      <UserButton reverse transparent />
     </Wrapper>
   )
 }

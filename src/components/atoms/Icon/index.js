@@ -1,13 +1,20 @@
 import React, { PropTypes } from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
-const styles = ({ size, color }) => css`
+export const fontSize = ({ height }) => height ? `${height / 16}rem` : '1.25em'
+
+export const color = ({ theme, reverse, color }) => color
+  ? theme[reverse ? 'reverseColors' : 'colors'][color][color === 'grayscale' ? 0 : 1]
+  : 'currentcolor'
+
+const Wrapper = styled.span`
   display: inline-block;
-  width: ${size ? size / 16 + 'rem' : '1em'};
-  height: ${size ? size / 16 + 'rem' : '1em'};
-  margin: ${size ? size / 160 + 'rem' : '0.1em'};
-  box-sizing: border-box;
+  font-size: ${fontSize};
   color: ${color};
+  width: 1em;
+  height: 1em;
+  margin: 0.1em;
+  box-sizing: border-box;
 
   & > svg {
     width: 100%;
@@ -17,8 +24,6 @@ const styles = ({ size, color }) => css`
   }
 `
 
-const Wrapper = styled.span`${styles}`
-
 const Icon = ({ icon, ...props }) => {
   const svg = require(`raw!./icons/${icon}.svg`)
   return <Wrapper {...props} dangerouslySetInnerHTML={{ __html: svg }} />
@@ -26,8 +31,20 @@ const Icon = ({ icon, ...props }) => {
 
 Icon.propTypes = {
   icon: PropTypes.string.isRequired,
-  size: PropTypes.number,
-  color: PropTypes.string
+  height: PropTypes.number,
+  color: PropTypes.string,
+  reverse: PropTypes.bool
+}
+
+Icon.defaultProps = {
+  theme: {
+    colors: {
+      grayscale: { 0: '#222' }
+    },
+    reverseColors: {
+      grayscale: { 0: '#fff' }
+    }
+  }
 }
 
 export default Icon

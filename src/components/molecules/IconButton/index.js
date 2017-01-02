@@ -1,8 +1,13 @@
 import React, { PropTypes } from 'react'
-import styled, { css } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 
-import { animations } from 'components/globals'
 import { Icon, Button } from 'components'
+
+const fadeIn = keyframes`
+  0% { display: none; opacity: 0; }
+  1% { display: block: opacity: 0; }
+  100% { display: block; opacity: 1; }
+`
 
 const buttonStyles = ({ hasText, right, responsive, breakpoint, collapsed }) => css`
   max-width: ${hasText && !collapsed ? '100%' : 'calc(2.5em + 0.6em * 2)'};
@@ -21,7 +26,7 @@ const buttonStyles = ({ hasText, right, responsive, breakpoint, collapsed }) => 
       max-width: 100%;
       & .text {
         display: block;
-        animation: ${animations.fadeIn} 250ms;
+        animation: ${fadeIn} 250ms;
       }
     }
   `}
@@ -58,8 +63,8 @@ const StyledButton = styled(({ hasText, right, responsive, collapsed, breakpoint
 
 const Text = styled.span`${textStyle}`
 
-const IconButton = ({ color, icon, children, ...props, breakpoint, right, responsive, size }) => {
-  const iconElement = <StyledIcon size={size / 2.5} icon={icon} color={color} />
+const IconButton = ({ icon, children, ...props, breakpoint, right, responsive, height }) => {
+  const iconElement = <StyledIcon height={height / 2.5} icon={icon} />
   return (
     <StyledButton hasText={!!children} {...props}>
       <Wrapper>
@@ -79,8 +84,7 @@ IconButton.propTypes = {
   breakpoint: PropTypes.number,
   collapsed: PropTypes.bool,
   right: PropTypes.bool,
-  size: PropTypes.number,
-  color: PropTypes.string,
+  height: PropTypes.number,
   children: PropTypes.any
 }
 
