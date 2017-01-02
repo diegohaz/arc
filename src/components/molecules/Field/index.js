@@ -18,7 +18,9 @@ const Field = ({ error, name, invalid, label, type, ...props, theme }) => {
       {label && <Label htmlFor={inputProps.id}>{label}</Label>}
       <Input {...inputProps} />
       {invalid && error &&
-        <Error id={`${name}Error`} role="alert" color="danger" theme={theme}>{error}</Error>
+        <Error id={`${name}Error`} role="alert" color="danger" theme={theme} transparent>
+          {error}
+        </Error>
       }
     </Wrapper>
   )
