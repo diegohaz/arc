@@ -4,7 +4,7 @@ import api from 'services/api'
 
 export function* createPost (newData) {
   try {
-    const { data } = yield call(api.post, '/posts', { id: 1, ...newData })
+    const { data } = yield call(api.post, '/posts', newData)
     yield put(postCreate.success(data))
   } catch (e) {
     yield put(postCreate.failure(e))

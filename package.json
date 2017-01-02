@@ -42,6 +42,7 @@
     "nodemon": "^1.11.0",
     "opn-cli": "^3.1.0",
     "react-addons-test-utils": "^15.3.2",
+    "redux-mock-store": "^1.2.1",
     "sinon": "^1.17.6",
     "webpack-dev-server": "^1.16.2"
   },
@@ -70,6 +71,7 @@
     "lodash": "^4.16.4",
     "morgan": "^1.7.0",
     "raw-loader": "^0.5.1",
+    "normalizr": "^3.0.0",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-helmet": "^3.1.0",
