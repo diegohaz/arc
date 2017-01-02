@@ -99,7 +99,7 @@ const Modal = ({ children, title, closeable, onClose, ...props }) => {
       {hasHeader &&
         <Header>
           <StyledHeading level={2}>{title}</StyledHeading>
-          {closeable && <IconButton icon="close" onClick={onClose} kind="white" light />}
+          {closeable && <IconButton icon="close" onClick={onClose} color="white" reverse />}
         </Header>
       }
       <Content>

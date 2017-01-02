@@ -13,8 +13,10 @@ export const pointerEvents = ({ disabled }) => disabled ? 'none' : 'auto'
 export const backgroundColor = ({ transparent, disabled, color, ...props }) =>
   transparent ? 'transparent' : colorKind(props)[color][disabled ? 2 : 1]
 
-export const color = ({ transparent, disabled, color, ...props }) =>
-  colorKind(props)[transparent ? color : 'grayscale'][transparent ? (disabled ? 2 : 1) : 0]
+export const color = ({ transparent, disabled, color, ...props, reverse }) =>
+  transparent
+  ? colorKind(props)[color][disabled ? 2 : 1]
+  : colorKind({ ...props, reverse: !reverse }).grayscale[0]
 
 export const hoverBackgroundColor = ({ disabled, transparent, color, ...props }) =>
   !disabled && !transparent && colorKind(props)[color][0]

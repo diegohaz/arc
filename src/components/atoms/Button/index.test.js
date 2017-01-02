@@ -95,7 +95,7 @@ describe('styles', () => {
     }
     const f = styles.color
     expect(f(props)).toBe(theme.colors.primary[1])
-    expect(f({ ...props, transparent: false })).toBe(theme.colors.grayscale[0])
+    expect(f({ ...props, transparent: false })).toBe(theme.reverseColors.grayscale[0])
     expect(f({ ...props, disabled: true })).toBe(theme.colors.primary[2])
     expect(f({ ...props, reverse: true })).toBe(theme.reverseColors.primary[1])
     expect(f({ ...props, disabled: true, reverse: true })).toBe(theme.reverseColors.primary[2])

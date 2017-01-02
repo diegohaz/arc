@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { Paragraph, IconLink, IconButton, LogoImage, Tooltip } from 'components'
+import { Paragraph, IconLink, IconButton, LogoImage, Tooltip, Modal } from 'components'
 
 const Wrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.grayscale[0]};
@@ -47,6 +47,7 @@ const Hero = (props) => {
   return (
     <Wrapper {...props}>
       <Logo />
+      <Modal closeable title="Lol" isOpen />
       <Text>
         <strong>ARc</strong> is a <IconLink reverse icon="react" href="https://facebook.github.io/react/">React</IconLink> starter kit based on the <IconLink reverse icon="atomic-design" href="http://bradfrost.com/blog/post/atomic-web-design/">Atomic Design</IconLink> methodology. It's <strong>progressive</strong>, which means that you can start with the basic boilerplate and try the other features when you are comfortable.
       </Text>
