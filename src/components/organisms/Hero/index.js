@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { colors, reverseColors } from 'components/globals'
 import { Paragraph, IconLink, IconButton, LogoImage, Tooltip } from 'components'
 
 const Wrapper = styled.div`
+  background-color: ${({ theme }) => theme.colors.grayscale[0]};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,15 +12,16 @@ const Wrapper = styled.div`
   max-height: 700px;
   padding: 2rem 6rem;
   box-sizing: border-box;
-  background-color: ${colors.grayscale[0]};
   text-align: center;
+  > p {
+    color: ${({ theme }) => theme.colors.grayscale[3]};
+  }
   @media screen and (max-width: 640px) {
     padding: 1rem;
   }
 `
 
 const Text = styled(Paragraph)`
-  color: ${reverseColors.grayscale[3]};
   margin: 3rem auto;
   max-width: 800px;
   font-weight: 300;
@@ -47,20 +48,28 @@ const Hero = (props) => {
     <Wrapper {...props}>
       <Logo />
       <Text>
-        <strong>ARc</strong> is a <IconLink light icon="react" href="https://facebook.github.io/react/">React</IconLink> starter kit based on the <IconLink light icon="atomic-design" color="#fff" href="http://bradfrost.com/blog/post/atomic-web-design/">Atomic Design</IconLink> methodology. It's <strong>progressive</strong>, which means that you can start with the basic boilerplate and try the other features when you are comfortable.
+        <strong>ARc</strong> is a <IconLink reverse icon="react" href="https://facebook.github.io/react/">React</IconLink> starter kit based on the <IconLink reverse icon="atomic-design" href="http://bradfrost.com/blog/post/atomic-web-design/">Atomic Design</IconLink> methodology. It's <strong>progressive</strong>, which means that you can start with the basic boilerplate and try the other features when you are comfortable.
       </Text>
-      <Tooltip data-title="Just a fancy tooltip 😊" light>
+      <Tooltip data-title="Just a fancy tooltip 😊" reverse>
         <StyledIconButton
           icon="github"
           href="https://github.com/diegohaz/arc"
-          size={50}
+          height={50}
           transparent
-          light>
+          reverse>
           View on GitHub
         </StyledIconButton>
       </Tooltip>
     </Wrapper>
   )
+}
+
+Hero.defaultProps = {
+  theme: {
+    colors: {
+      grayscale: { 0: '#222', 3: '#bbb' }
+    }
+  }
 }
 
 export default Hero
