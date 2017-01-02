@@ -58,6 +58,7 @@ If you want to start with a clean and minimal source code without the predefined
 Also, you might want to remove unnecessary dependencies:
 ```sh
 npm u -S react-modal # used by src/components/molecules/Modal
+npm u -S normalizr # used by src/store/entities
 ```
 
 ### Components
