@@ -1,5 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
+import theme from 'arc-theme'
 import Blockquote, * as styles from '.'
 
 const wrap = (props = {}) => shallow(<Blockquote {...props} />).dive()
@@ -20,19 +21,6 @@ it('renders cite when passed in', () => {
 })
 
 describe('styles', () => {
-  const theme = {
-    fonts: {
-      primary: 'sans-serif',
-      quote: 'serif'
-    },
-    colors: {
-      grayscale: { 1: '#555', 2: '#888' }
-    },
-    reverseColors: {
-      grayscale: { 1: '#bbb', 2: '#888' }
-    }
-  }
-
   test('quoteFontFamily', () => {
     expect(styles.quoteFontFamily({ theme })).toBe(theme.fonts.quote)
   })

@@ -1,5 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
+import theme from 'arc-theme'
 import Link, * as styles from '.'
 
 const wrap = (props = {}) => shallow(<Link {...props} />).dive()
@@ -25,20 +26,6 @@ it('renders Link when prop to is passed in', () => {
 })
 
 describe('styles', () => {
-  const theme = {
-    fonts: {
-      primary: 'sans-serif'
-    },
-    colors: {
-      grayscale: { 0: '#222' },
-      primary: { 1: '#2196f3' }
-    },
-    reverseColors: {
-      grayscale: { 0: '#fff' },
-      primary: { 1: '#71bcf7' }
-    }
-  }
-
   test('fontFamily', () => {
     expect(styles.fontFamily({ theme })).toBe(theme.fonts.primary)
   })

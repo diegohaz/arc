@@ -1,5 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
+import theme from 'arc-theme'
 import Button, * as styles from '.'
 
 const wrap = (props = {}) => shallow(<Button {...props} />).dive()
@@ -30,25 +31,6 @@ it('renders Link when to is passed in', () => {
 })
 
 describe('styles', () => {
-  const theme = {
-    fonts: {
-      primary: 'sans-serif'
-    },
-    colors: {
-      grayscale: { 0: '#222', 1: '#555', 2: '#888' },
-      primary: { 0: '#1976d2', 1: '#2196f3', 2: '#71bcf7' }
-    },
-    reverseColors: {
-      grayscale: { 0: '#fff', 1: '#bbb', 2: '#888' },
-      primary: { 0: '#c2e2fb', 1: '#71bcf7', 2: '#2196f3' }
-    }
-  }
-
-  test('colorKind', () => {
-    expect(styles.colorKind({ theme, reverse: false })).toEqual(theme.colors)
-    expect(styles.colorKind({ theme, reverse: true })).toEqual(theme.reverseColors)
-  })
-
   test('fontFamily', () => {
     expect(styles.fontFamily({ theme })).toBe(theme.fonts.primary)
   })

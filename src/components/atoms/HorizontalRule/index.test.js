@@ -1,5 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
+import theme from 'arc-theme'
 import HorizontalRule, * as styles from '.'
 
 const wrap = (props = {}) => shallow(<HorizontalRule {...props} />)
@@ -10,15 +11,6 @@ it('renders props when passed in', () => {
 })
 
 describe('styles', () => {
-  const theme = {
-    colors: {
-      grayscale: { 1: '#555' }
-    },
-    reverseColors: {
-      grayscale: { 1: '#eee' }
-    }
-  }
-
   test('borderColor', () => {
     const props = {
       color: 'grayscale',

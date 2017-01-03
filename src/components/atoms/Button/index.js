@@ -1,28 +1,27 @@
 import React, { PropTypes } from 'react'
 import styled, { css } from 'styled-components'
 import { Link } from 'react-router'
+import { get, getColor } from 'arc-theme'
 
-export const colorKind = ({ theme, reverse }) => theme[reverse ? 'reverseColors' : 'colors']
-
-export const fontFamily = ({ theme }) => theme.fonts.primary
+export const fontFamily = ({ theme }) => get('fonts.primary', theme)
 export const fontSize = ({ height }) => `${height / 40}rem`
 export const borderColor = ({ transparent }) => transparent ? 'currentcolor' : 'transparent'
 export const cursor = ({ disabled }) => disabled ? 'default' : 'pointer'
 export const pointerEvents = ({ disabled }) => disabled ? 'none' : 'auto'
 
-export const backgroundColor = ({ transparent, disabled, color, ...props }) =>
-  transparent ? 'transparent' : colorKind(props)[color][disabled ? 2 : 1]
+export const backgroundColor = ({ transparent, disabled, color, theme, reverse }) =>
+  transparent ? 'transparent' : getColor([color, disabled ? 2 : 1], reverse, theme)
 
-export const color = ({ transparent, disabled, color, ...props, reverse }) =>
+export const color = ({ transparent, disabled, color, theme, reverse }) =>
   transparent
-  ? colorKind(props)[color][disabled ? 2 : 1]
-  : colorKind({ ...props, reverse: !reverse }).grayscale[0]
+  ? getColor([color, disabled ? 2 : 1], reverse, theme)
+  : getColor('grayscale[0]', !reverse, theme)
 
-export const hoverBackgroundColor = ({ disabled, transparent, color, ...props }) =>
-  !disabled && !transparent && colorKind(props)[color][0]
+export const hoverBackgroundColor = ({ disabled, transparent, color, theme, reverse }) =>
+  !disabled && !transparent && getColor([color, 0], reverse, theme)
 
-export const hoverColor = ({ disabled, transparent, color, ...props }) =>
-  !disabled && transparent && colorKind(props)[color][0]
+export const hoverColor = ({ disabled, transparent, color, theme, reverse }) =>
+  !disabled && transparent && getColor([color, 0], reverse, theme)
 
 const styles = css`
   display: inline-flex;
@@ -83,20 +82,7 @@ Button.propTypes = {
 Button.defaultProps = {
   color: 'primary',
   type: 'button',
-  height: 40,
-  theme: {
-    fonts: {
-      primary: 'sans-serif'
-    },
-    colors: {
-      grayscale: { 0: '#222', 1: '#555', 2: '#888' },
-      primary: { 0: '#1976d2', 1: '#2196f3', 2: '#71bcf7' }
-    },
-    reverseColors: {
-      grayscale: { 0: '#fff', 1: '#bbb', 2: '#888' },
-      primary: { 0: '#c2e2fb', 1: '#71bcf7', 2: '#2196f3' }
-    }
-  }
+  height: 40
 }
 
 export default Button

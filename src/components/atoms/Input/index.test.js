@@ -1,5 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
+import theme from 'arc-theme'
 import Input, * as styles from '.'
 
 const wrap = (props = {}) => shallow(<Input {...props} />).dive()
@@ -25,20 +26,6 @@ it('renders textarea when type is textarea', () => {
 })
 
 describe('styles', () => {
-  const theme = {
-    fonts: {
-      primary: 'sans-serif'
-    },
-    colors: {
-      danger: { 2: '#f8877f' },
-      grayscale: { 0: '#222', 3: '#bbb' }
-    },
-    reverseColors: {
-      danger: { 2: '#f44336' },
-      grayscale: { 0: '#fff', 3: '#555' }
-    }
-  }
-
   test('fontFamily', () => {
     expect(styles.fontFamily({ theme })).toBe(theme.fonts.primary)
   })

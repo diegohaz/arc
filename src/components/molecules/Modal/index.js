@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import styled, { css, injectGlobal } from 'styled-components'
 import ReactModal from 'react-modal'
+import { get, getColor } from 'arc-theme'
 
 import { Heading, IconButton } from 'components'
 
@@ -32,11 +33,11 @@ const ModalBox = styled(ReactModal)`
   position: absolute;
   display: flex;
   flex-direction: column;
-  font-family: ${({ theme }) => theme.fonts.primary};
+  font-family: ${({ theme }) => get('fonts.primary', theme)};
   font-size: 1rem;
-  background-color: ${({ theme }) => theme.reverseColors.grayscale[0]};
+  background-color: ${({ theme }) => getColor('grayscale[0]', true, theme)};
   border-radius: 0.125em;
-  color: ${({ theme }) => theme.colors.grayscale[0]};
+  color: ${({ theme }) => getColor('grayscale[0]', false, theme)};
   top: calc(50% - 1rem);
   left: calc(50% - 1rem);
   right: auto;
@@ -114,20 +115,6 @@ Modal.propTypes = {
   title: PropTypes.string,
   closeable: PropTypes.bool,
   onClose: PropTypes.func.isRequired
-}
-
-Modal.defaultProps = {
-  theme: {
-    fonts: {
-      primary: 'sans-serif'
-    },
-    colors: {
-      grayscale: { 0: '#222' }
-    },
-    reverseColors: {
-      grayscale: { 0: '#fff' }
-    }
-  }
 }
 
 export default Modal

@@ -1,5 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
+import theme from 'arc-theme'
 import Spinner, * as styles from '.'
 
 const wrap = (props = {}) => shallow(<Spinner {...props} />)
@@ -10,20 +11,6 @@ it('renders props when passed in', () => {
 })
 
 describe('styles', () => {
-  const theme = {
-    fonts: {
-      primary: 'sans-serif'
-    },
-    colors: {
-      primary: { 1: '#2196f3' },
-      grayscale: { 1: '#555' }
-    },
-    reverseColors: {
-      primary: { 1: '#71bcf7' },
-      grayscale: { 1: '#bbb' }
-    }
-  }
-
   test('backgroundColor', () => {
     expect(styles.backgroundColor({ theme })).toBe(theme.reverseColors.grayscale[1])
     expect(styles.backgroundColor({ theme, reverse: true })).toBe(theme.colors.grayscale[1])

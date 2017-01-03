@@ -1,8 +1,8 @@
 import { PropTypes } from 'react'
 import styled from 'styled-components'
+import { getColor } from 'arc-theme'
 
-export const borderColor = ({ theme, reverse, color }) =>
-  theme[reverse ? 'colors' : 'reverseColors'][color][1]
+export const borderColor = ({ theme, reverse, color }) => getColor([color, 1], !reverse, theme)
 
 const HorizontalRule = styled.hr`
   border: 1px solid ${borderColor};
@@ -16,15 +16,7 @@ HorizontalRule.propTypes = {
 }
 
 HorizontalRule.defaultProps = {
-  color: 'grayscale',
-  theme: {
-    colors: {
-      grayscale: { 1: '#555' }
-    },
-    reverseColors: {
-      grayscale: { 1: '#eee' }
-    }
-  }
+  color: 'grayscale'
 }
 
 export default HorizontalRule

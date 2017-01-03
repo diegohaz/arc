@@ -1,13 +1,10 @@
 import { PropTypes } from 'react'
 import styled from 'styled-components'
+import { get, getColor } from 'arc-theme'
 
-export const fontFamily = ({ theme }) => theme.fonts.primary
-
-export const color = ({ reverse, theme }) =>
-  reverse ? theme.colors.grayscale[0] : theme.reverseColors.grayscale[0]
-
-export const backgroundColor = ({ reverse, theme, color }) =>
-  theme[reverse ? 'reverseColors' : 'colors'][color][1]
+export const fontFamily = ({ theme }) => get('fonts.primary', theme)
+export const color = ({ reverse, theme }) => getColor('grayscale[0]', !reverse, theme)
+export const backgroundColor = ({ reverse, theme, color }) => getColor([color, 1], reverse, theme)
 
 const Badge = styled.span`
   font-family: ${fontFamily};
@@ -25,20 +22,7 @@ Badge.propTypes = {
 }
 
 Badge.defaultProps = {
-  color: 'primary',
-  theme: {
-    fonts: {
-      primary: 'sans-serif'
-    },
-    colors: {
-      grayscale: { 0: '#222', 1: '#555' },
-      primary: { 1: '#2196f3' }
-    },
-    reverseColors: {
-      grayscale: { 0: '#fff', 1: '#bbb' },
-      primary: { 1: '#71bcf7' }
-    }
-  }
+  color: 'primary'
 }
 
 export default Badge

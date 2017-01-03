@@ -1,5 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
+import theme from 'arc-theme'
 import Block, * as styles from '.'
 
 const wrap = (props = {}) => shallow(<Block {...props} />)
@@ -15,20 +16,6 @@ it('renders props when passed in', () => {
 })
 
 describe('styles', () => {
-  const theme = {
-    fonts: {
-      primary: 'sans-serif'
-    },
-    colors: {
-      grayscale: { 0: '#222' },
-      primary: { 0: 'darkred', 1: 'red' }
-    },
-    reverseColors: {
-      grayscale: { 0: '#fff' },
-      primary: { 0: 'lightblue', 1: 'blue' }
-    }
-  }
-
   test('fontFamily', () => {
     expect(styles.fontFamily({ theme })).toBe(theme.fonts.primary)
   })

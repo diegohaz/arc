@@ -1,5 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
+import theme from 'arc-theme'
 import Table, * as styles from '.'
 
 const wrap = (props = {}) => shallow(<Table {...props} />)
@@ -30,18 +31,6 @@ it('renders foot when passed in', () => {
 })
 
 describe('styles', () => {
-  const theme = {
-    fonts: {
-      primary: 'sans-serif'
-    },
-    colors: {
-      grayscale: { 0: '#222', 1: '#5555' }
-    },
-    reverseColors: {
-      grayscale: { 0: '#fff', 1: '#bbb' }
-    }
-  }
-
   test('fontFamily', () => {
     expect(styles.fontFamily({ theme })).toBe(theme.fonts.primary)
   })

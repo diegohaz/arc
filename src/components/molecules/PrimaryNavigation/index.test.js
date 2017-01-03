@@ -1,5 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
+import theme from 'arc-theme'
 import PrimaryNavigation, * as styles from '.'
 
 const wrap = (props = {}) => shallow(<PrimaryNavigation {...props} />)
@@ -10,15 +11,6 @@ it('renders props when passed in', () => {
 })
 
 describe('styles', () => {
-  const theme = {
-    colors: {
-      grayscale: { 0: '#222', 2: '#888' }
-    },
-    reverseColors: {
-      grayscale: { 0: '#fff', 2: '#888' }
-    }
-  }
-
   test('linkColor', () => {
     expect(styles.linkColor({ theme })).toBe(theme.colors.grayscale[2])
     expect(styles.linkColor({ theme, reverse: true })).toBe(theme.reverseColors.grayscale[2])

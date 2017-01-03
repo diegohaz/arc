@@ -1,11 +1,11 @@
 import React, { PropTypes } from 'react'
 import styled from 'styled-components'
+import { getColor } from 'arc-theme'
 
 export const fontSize = ({ height }) => height ? `${height / 16}rem` : '1.25em'
 
-export const color = ({ theme, reverse, color }) => color
-  ? theme[reverse ? 'reverseColors' : 'colors'][color][color === 'grayscale' ? 0 : 1]
-  : 'currentcolor'
+export const color = ({ theme, reverse, color }) =>
+  color ? getColor([color, color === 'grayscale' ? 0 : 1], reverse, theme) : 'currentcolor'
 
 const Wrapper = styled.span`
   display: inline-block;
@@ -34,17 +34,6 @@ Icon.propTypes = {
   height: PropTypes.number,
   color: PropTypes.string,
   reverse: PropTypes.bool
-}
-
-Icon.defaultProps = {
-  theme: {
-    colors: {
-      grayscale: { 0: '#222' }
-    },
-    reverseColors: {
-      grayscale: { 0: '#fff' }
-    }
-  }
 }
 
 export default Icon

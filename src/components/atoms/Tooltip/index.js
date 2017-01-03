@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
 import styled, { css } from 'styled-components'
+import { get } from 'arc-theme'
 
 const opposites = {
   top: 'bottom',
@@ -18,7 +19,7 @@ export const perpendicularOpposite = (props) => opposites[perpendicular(props)]
 export const perpendicularAxis = ({ position }) =>
   position === 'left' || position === 'right' ? 'Y' : 'X'
 
-const fontFamily = ({ theme }) => theme.fonts.primary
+const fontFamily = ({ theme }) => get('fonts.primary', theme)
 
 const backgroundColor = ({ reverse }) =>
   reverse ? 'rgba(255, 255, 255, 0.85)' : 'rgba(0, 0, 0, 0.85)'
@@ -107,12 +108,7 @@ Tooltip.propTypes = {
 
 Tooltip.defaultProps = {
   position: 'top',
-  align: 'center',
-  theme: {
-    fonts: {
-      primary: 'sans-serif'
-    }
-  }
+  align: 'center'
 }
 
 export default Tooltip

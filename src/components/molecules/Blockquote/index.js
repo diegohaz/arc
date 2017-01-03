@@ -1,14 +1,11 @@
 import React, { PropTypes } from 'react'
 import styled from 'styled-components'
+import { get, getColor } from 'arc-theme'
 
-export const quoteFontFamily = ({ theme }) => theme.fonts.quote
-export const citeFontFamily = ({ theme }) => theme.fonts.primary
-
-export const color = ({ theme, reverse }) =>
-  theme[reverse ? 'reverseColors' : 'colors'].grayscale[1]
-
-export const borderColor = ({ theme, reverse }) =>
-  theme[reverse ? 'colors' : 'reverseColors'].grayscale[2]
+export const quoteFontFamily = ({ theme }) => get('fonts.quote', theme)
+export const citeFontFamily = ({ theme }) => get('fonts.primary', theme)
+export const color = ({ theme, reverse }) => getColor('grayscale[1]', reverse, theme)
+export const borderColor = ({ theme, reverse }) => getColor('grayscale[2]', !reverse, theme)
 
 const StyledBlockquote = styled.blockquote`
   position: relative;
@@ -45,21 +42,6 @@ Blockquote.propTypes = {
   children: PropTypes.node,
   reverse: PropTypes.bool,
   theme: PropTypes.object
-}
-
-Blockquote.defaultProps = {
-  theme: {
-    fonts: {
-      primary: 'sans-serif',
-      quote: 'serif'
-    },
-    colors: {
-      grayscale: { 1: '#555', 2: '#888' }
-    },
-    reverseColors: {
-      grayscale: { 1: '#bbb', 2: '#888' }
-    }
-  }
 }
 
 export default Blockquote

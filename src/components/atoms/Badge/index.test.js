@@ -1,5 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
+import theme from 'arc-theme'
 import Badge, * as styles from '.'
 
 const wrap = (props = {}) => shallow(<Badge {...props} />)
@@ -15,20 +16,6 @@ it('renders props when passed in', () => {
 })
 
 describe('styles', () => {
-  const theme = {
-    fonts: {
-      primary: 'sans-serif'
-    },
-    colors: {
-      grayscale: { 0: '#222', 1: '#555' },
-      primary: { 1: '#2196f3' }
-    },
-    reverseColors: {
-      grayscale: { 0: '#fff', 1: '#bbb' },
-      primary: { 1: '#71bcf7' }
-    }
-  }
-
   test('fontFamily', () => {
     expect(styles.fontFamily({ theme })).toBe(theme.fonts.primary)
   })

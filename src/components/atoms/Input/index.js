@@ -1,19 +1,16 @@
 import React, { PropTypes } from 'react'
 import styled, { css } from 'styled-components'
+import { get, getColor } from 'arc-theme'
 
-export const fontFamily = ({ theme }) => theme.fonts.primary
+export const fontFamily = ({ theme }) => get('fonts.primary', theme)
 export const fontSize = ({ height }) => `${height / 35.5555555556}rem`
 export const padding = ({ type }) => type === 'textarea' ? '0.4444444444em' : '0 0.4444444444em'
 export const height = ({ type }) => type === 'textarea' ? 'auto' : '2.2222222222em'
-
-export const color = ({ theme, reverse }) =>
-  theme[reverse ? 'reverseColors' : 'colors'].grayscale[0]
+export const color = ({ theme, reverse }) => getColor('grayscale[0]', reverse, theme)
+export const backgroundColor = ({ theme, reverse }) => getColor('grayscale[0]', !reverse, theme)
 
 export const borderColor = ({ invalid, theme, reverse }) =>
-  theme[reverse ? 'reverseColors' : 'colors'][invalid ? 'danger' : 'grayscale'][invalid ? 2 : 3]
-
-export const backgroundColor = ({ theme, reverse }) =>
-  theme[reverse ? 'colors' : 'reverseColors'].grayscale[0]
+  getColor(invalid ? 'danger[2]' : 'grayscale[3]', reverse, theme)
 
 const styles = css`
   font-family: ${fontFamily};
@@ -25,9 +22,9 @@ const styles = css`
   padding: ${padding};
   height: ${height};
   color: ${color};
+  background-color: ${backgroundColor};
   border: 1px solid ${borderColor};
   border-radius: 2px;
-  background-color: ${backgroundColor};
 
   &[type=checkbox], &[type=radio] {
     display: inline-block;
@@ -61,20 +58,7 @@ Input.propTypes = {
 
 Input.defaultProps = {
   type: 'text',
-  height: 40,
-  theme: {
-    fonts: {
-      primary: 'sans-serif'
-    },
-    colors: {
-      danger: { 2: '#f8877f' },
-      grayscale: { 0: '#222', 3: '#bbb' }
-    },
-    reverseColors: {
-      danger: { 2: '#f44336' },
-      grayscale: { 0: '#fff', 3: '#555' }
-    }
-  }
+  height: 40
 }
 
 export default Input

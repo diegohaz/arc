@@ -1,5 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
+import theme from 'arc-theme'
 import TableRow, * as styles from '.'
 
 const wrap = (props = {}) => shallow(<TableRow {...props} />)
@@ -15,15 +16,6 @@ it('renders props when passed in', () => {
 })
 
 describe('styles', () => {
-  const theme = {
-    colors: {
-      grayscale: { 0: '#222', 1: '#555' }
-    },
-    reverseColors: {
-      grayscale: { 0: '#fff', 1: '#bbb' }
-    }
-  }
-
   test('backgroundColor', () => {
     expect(styles.backgroundColor({ theme })).toBe(theme.reverseColors.grayscale[0])
     expect(styles.backgroundColor({ theme, filled: true })).toBe(theme.reverseColors.grayscale[1])

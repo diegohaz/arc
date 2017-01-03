@@ -1,13 +1,14 @@
 import { PropTypes } from 'react'
 import styled from 'styled-components'
+import { get, getColor } from 'arc-theme'
 
-export const fontFamily = ({ theme }) => theme.fonts.primary
+export const fontFamily = ({ theme }) => get('fonts.primary', theme)
 
 export const backgroundColor = ({ theme, reverse, color, transparent }) =>
-  transparent ? 'transparent' : theme[reverse ? 'colors' : 'reverseColors'][color][0]
+  transparent ? 'transparent' : getColor([color, 0], !reverse, theme)
 
 export const color = ({ theme, reverse, color }) =>
-  theme[reverse ? 'reverseColors' : 'colors'][color][color === 'grayscale' ? 0 : 1]
+  getColor([color, color === 'grayscale' ? 0 : 1], reverse, theme)
 
 const Block = styled.div`
   font-family: ${fontFamily};
@@ -21,18 +22,7 @@ Block.propTypes = {
 }
 
 Block.defaultProps = {
-  color: 'grayscale',
-  theme: {
-    fonts: {
-      primary: 'sans-serif'
-    },
-    colors: {
-      grayscale: { 0: '#222' }
-    },
-    reverseColors: {
-      grayscale: { 0: '#fff' }
-    }
-  }
+  color: 'grayscale'
 }
 
 export default Block

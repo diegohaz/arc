@@ -1,11 +1,9 @@
 import { PropTypes } from 'react'
 import styled, { keyframes } from 'styled-components'
+import { getColor } from 'arc-theme'
 
-export const backgroundColor = ({ theme, reverse }) =>
-  theme[reverse ? 'colors' : 'reverseColors'].grayscale[1]
-
-export const color = ({ theme, reverse, color }) =>
-  theme[reverse ? 'reverseColors' : 'colors'][color][1]
+export const backgroundColor = ({ theme, reverse }) => getColor('grayscale[1]', !reverse, theme)
+export const color = ({ theme, reverse, color }) => getColor([color, 1], reverse, theme)
 
 const spin = keyframes`
   0% { transform: rotate(0deg); }
@@ -29,20 +27,7 @@ Spinner.propTypes = {
 }
 
 Spinner.defaultProps = {
-  color: 'primary',
-  theme: {
-    fonts: {
-      primary: 'sans-serif'
-    },
-    colors: {
-      primary: { 1: '#2196f3' },
-      grayscale: { 1: '#555' }
-    },
-    reverseColors: {
-      primary: { 1: '#71bcf7' },
-      grayscale: { 1: '#bbb' }
-    }
-  }
+  color: 'primary'
 }
 
 export default Spinner

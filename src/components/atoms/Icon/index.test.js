@@ -1,5 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
+import theme from 'arc-theme'
 import Icon, * as styles from '.'
 
 const wrap = (props = {}) => shallow(<Icon icon="github" {...props} />).dive()
@@ -10,17 +11,6 @@ it('renders props when passed in', () => {
 })
 
 describe('styles', () => {
-  const theme = {
-    colors: {
-      grayscale: { 0: '#222' },
-      primary: { 1: 'red' }
-    },
-    reverseColors: {
-      grayscale: { 0: '#fff' },
-      primary: { 1: 'blue' }
-    }
-  }
-
   test('fontSize', () => {
     const fontSize = (height) => parseFloat(styles.fontSize({ height })).toFixed(2)
     expect(fontSize()).toBe('1.25')

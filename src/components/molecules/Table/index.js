@@ -1,15 +1,12 @@
 import React, { PropTypes } from 'react'
 import styled from 'styled-components'
+import { get, getColor } from 'arc-theme'
 
 import { Caption } from 'components'
 
-export const fontFamily = ({ theme }) => theme.fonts.primary
-
-export const borderColor = ({ theme, reverse }) =>
-  theme[reverse ? 'colors' : 'reverseColors'].grayscale[1]
-
-export const color = ({ theme, reverse }) =>
-  theme[reverse ? 'reverseColors' : 'colors'].grayscale[0]
+export const fontFamily = ({ theme }) => get('fonts.primary', theme)
+export const borderColor = ({ theme, reverse }) => getColor('grayscale[1]', !reverse, theme)
+export const color = ({ theme, reverse }) => getColor('grayscale[0]', reverse, theme)
 
 const StyledTable = styled.table`
   font-family: ${fontFamily};
@@ -36,20 +33,6 @@ Table.propTypes = {
   foot: PropTypes.any,
   children: PropTypes.any,
   reverse: PropTypes.bool
-}
-
-Table.defaultProps = {
-  theme: {
-    fonts: {
-      primary: 'sans-serif'
-    },
-    colors: {
-      grayscale: { 0: '#222', 1: '#5555' }
-    },
-    reverseColors: {
-      grayscale: { 0: '#fff', 1: '#bbb' }
-    }
-  }
 }
 
 export default Table

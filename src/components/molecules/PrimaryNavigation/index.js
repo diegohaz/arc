@@ -1,13 +1,11 @@
 import React, { PropTypes } from 'react'
 import styled from 'styled-components'
+import { getColor } from 'arc-theme'
 
 import { Link } from 'components'
 
-export const linkColor = ({ theme, reverse }) =>
-  theme[reverse ? 'reverseColors' : 'colors'].grayscale[2]
-
-export const activeLinkColor = ({ theme, reverse }) =>
-  theme[reverse ? 'reverseColors' : 'colors'].grayscale[0]
+export const linkColor = ({ theme, reverse }) => getColor('grayscale[2]', reverse, theme)
+export const activeLinkColor = ({ theme, reverse }) => getColor('grayscale[0]', reverse, theme)
 
 const Nav = styled.nav`
   display: flex;
@@ -36,17 +34,6 @@ const PrimaryNavigation = (props) => {
 
 PrimaryNavigation.propTypes = {
   reverse: PropTypes.bool
-}
-
-PrimaryNavigation.defaultProps = {
-  theme: {
-    colors: {
-      grayscale: { 0: '#222', 2: '#888' }
-    },
-    reverseColors: {
-      grayscale: { 0: '#fff', 2: '#888' }
-    }
-  }
 }
 
 export default PrimaryNavigation

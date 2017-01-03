@@ -1,10 +1,9 @@
 import React, { PropTypes } from 'react'
 import styled from 'styled-components'
+import { get, getColor } from 'arc-theme'
 
-export const fontFamily = ({ theme }) => theme.fonts.primary
-
-export const color = ({ theme, reverse }) =>
-  theme[reverse ? 'reverseColors' : 'colors'].grayscale[0]
+export const fontFamily = ({ theme }) => get('fonts.primary', theme)
+export const color = ({ theme, reverse }) => getColor('grayscale[0]', reverse, theme)
 
 const Wrapper = styled.div`
   font-family: ${fontFamily};
@@ -22,20 +21,6 @@ const Organism = ({ children, ...props }) => {
 Organism.propTypes = {
   reverse: PropTypes.bool,
   children: PropTypes.node
-}
-
-Organism.defaultProps = {
-  theme: {
-    fonts: {
-      primary: 'sans-serif'
-    },
-    colors: {
-      grayscale: { 0: '#222' }
-    },
-    reverseColors: {
-      grayscale: { 0: '#fff' }
-    }
-  }
 }
 
 export default Organism

@@ -1,10 +1,9 @@
 import { PropTypes } from 'react'
 import styled from 'styled-components'
+import { get, getColor } from 'arc-theme'
 
-export const fontFamily = ({ theme }) => theme.fonts.primary
-
-export const color = ({ theme, reverse }) =>
-  theme[reverse ? 'reverseColors' : 'colors'].grayscale[1]
+export const fontFamily = ({ theme }) => get('fonts.primary', theme)
+export const color = ({ theme, reverse }) => getColor('grayscale[1]', reverse, theme)
 
 const Caption = styled.caption`
   font-family: ${fontFamily};
@@ -17,20 +16,6 @@ const Caption = styled.caption`
 
 Caption.propTypes = {
   reverse: PropTypes.bool
-}
-
-Caption.defaultProps = {
-  theme: {
-    fonts: {
-      primary: 'sans-serif'
-    },
-    colors: {
-      grayscale: { 1: '#555' }
-    },
-    reverseColors: {
-      grayscale: { 1: '#bbb' }
-    }
-  }
 }
 
 export default Caption

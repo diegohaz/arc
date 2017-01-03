@@ -1,10 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
+import { getColor } from 'arc-theme'
 
 import { Paragraph, Link, Icon } from 'components'
 
 const Wrapper = styled.div`
-  background-color: ${({ theme }) => theme.reverseColors.grayscale[1]};
+  background-color: ${({ theme }) => getColor('grayscale[1]', true, theme)};
   padding: 2rem;
 `
 
@@ -22,14 +23,6 @@ const Footer = (props) => {
       </Credits>
     </Wrapper>
   )
-}
-
-Footer.defaultProps = {
-  theme: {
-    reverseColors: {
-      grayscale: { 1: '#bbb' }
-    }
-  }
 }
 
 export default Footer
