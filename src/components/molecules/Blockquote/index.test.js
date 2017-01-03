@@ -1,7 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import theme from 'arc-theme'
-import Blockquote, * as styles from '.'
+import Blockquote from '.'
 
 const wrap = (props = {}) => shallow(<Blockquote {...props} />).dive()
 
@@ -18,24 +17,4 @@ it('renders props when passed in', () => {
 it('renders cite when passed in', () => {
   const wrapper = wrap({ cite: 'foo' })
   expect(wrapper.contains('foo')).toBe(true)
-})
-
-describe('styles', () => {
-  test('quoteFontFamily', () => {
-    expect(styles.quoteFontFamily({ theme })).toBe(theme.fonts.quote)
-  })
-
-  test('citeFontFamily', () => {
-    expect(styles.citeFontFamily({ theme })).toBe(theme.fonts.primary)
-  })
-
-  test('color', () => {
-    expect(styles.color({ theme })).toBe(theme.colors.grayscale[1])
-    expect(styles.color({ theme, reverse: true })).toBe(theme.reverseColors.grayscale[1])
-  })
-
-  test('borderColor', () => {
-    expect(styles.borderColor({ theme })).toBe(theme.reverseColors.grayscale[2])
-    expect(styles.borderColor({ theme, reverse: true })).toBe(theme.colors.grayscale[2])
-  })
 })

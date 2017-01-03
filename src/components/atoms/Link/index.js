@@ -1,18 +1,13 @@
 import React, { PropTypes } from 'react'
 import styled, { css } from 'styled-components'
 import { Link as RouterLink } from 'react-router'
-import { get, getColor } from 'arc-theme'
-
-export const fontFamily = ({ theme }) => get('fonts.primary', theme)
-
-export const color = ({ theme, reverse, color }) =>
-  getColor([color, color === 'grayscale' ? 0 : 1], reverse, theme)
+import { font, color } from 'arc-theme'
 
 const styles = css`
-  font-family: ${fontFamily};
+  font-family: ${font('primary')};
   text-decoration: none;
   font-weight: 500;
-  color: ${color};
+  color: ${color({ grayscale: 0 }, 1)};
 
   &:hover {
     text-decoration: underline;

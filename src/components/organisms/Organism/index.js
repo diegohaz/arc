@@ -1,13 +1,10 @@
 import React, { PropTypes } from 'react'
 import styled from 'styled-components'
-import { get, getColor } from 'arc-theme'
-
-export const fontFamily = ({ theme }) => get('fonts.primary', theme)
-export const color = ({ theme, reverse }) => getColor('grayscale[0]', reverse, theme)
+import { font, color } from 'arc-theme'
 
 const Wrapper = styled.div`
-  font-family: ${fontFamily};
-  color: ${color};
+  font-family: ${font('primary')};
+  color: ${color('grayscale', 0)};
 `
 
 const Organism = ({ children, ...props }) => {

@@ -1,18 +1,13 @@
 import React, { PropTypes } from 'react'
 import styled, { css } from 'styled-components'
-import { get, getColor } from 'arc-theme'
-
-export const fontFamily = ({ theme }) => get('fonts.primary', theme)
-
-export const color = ({ theme, reverse, color }) =>
-  getColor([color, color === 'grayscale' ? 0 : 1], reverse, theme)
+import { font, color } from 'arc-theme'
 
 const styles = css`
-  font-family: ${fontFamily};
+  font-family: ${font('primary')};
   margin: 1rem 0;
   padding-left: 1.6rem;
   line-height: 1.7rem;
-  color: ${color};
+  color: ${color({ grayscale: 0 }, 1)};
 `
 
 const Ol = styled.ol`${styles}`

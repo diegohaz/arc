@@ -1,25 +1,21 @@
 import React, { PropTypes } from 'react'
 import styled from 'styled-components'
-import { get, getColor } from 'arc-theme'
+import { font, color, reverseColor } from 'arc-theme'
 
 import { Caption } from 'components'
 
-export const fontFamily = ({ theme }) => get('fonts.primary', theme)
-export const borderColor = ({ theme, reverse }) => getColor('grayscale[1]', !reverse, theme)
-export const color = ({ theme, reverse }) => getColor('grayscale[0]', reverse, theme)
-
 const StyledTable = styled.table`
-  font-family: ${fontFamily};
+  font-family: ${font('primary')};
   border-collapse: collapse;
   width: 100%;
-  border: 1px solid ${borderColor};
-  color: ${color};
+  border: 1px solid ${reverseColor('grayscale', 1)};
+  color: ${color('grayscale', 0)};
 `
 
-const Table = ({ caption, head, foot, children, ...props }) => {
+const Table = ({ caption, head, foot, children, ...props, reverse }) => {
   return (
     <StyledTable {...props}>
-      {caption && <Caption>{caption}</Caption>}
+      {caption && <Caption reverse={reverse}>{caption}</Caption>}
       {head && <thead>{head}</thead>}
       {foot && <tfoot>{foot}</tfoot>}
       <tbody>{children}</tbody>

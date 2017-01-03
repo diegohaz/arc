@@ -1,21 +1,17 @@
 import React, { PropTypes } from 'react'
 import styled, { css } from 'styled-components'
-import { get, getColor } from 'arc-theme'
+import { font, color } from 'arc-theme'
 
-export const fontFamily = ({ theme }) => get('fonts.primary', theme)
 export const fontSize = ({ level }) => `${0.75 + 1 * (1 / level)}rem`
 
-export const color = ({ theme, reverse, color }) =>
-  getColor([color, color === 'grayscale' ? 0 : 1], reverse, theme)
-
 const styles = css`
-  font-family: ${fontFamily};
+  font-family: ${font('primary')};
   font-weight: 500;
   font-size: ${fontSize};
   margin: 0;
   margin-top: 0.85714em;
   margin-bottom: 0.57142em;
-  color: ${color};
+  color: ${color({ grayscale: 0 }, 1)};
 `
 
 const Heading = styled(({ level, children, reverse, theme, ...props }) => {

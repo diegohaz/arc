@@ -101,9 +101,9 @@ aproba@^1.0.3:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/aproba/-/aproba-1.0.4.tgz#2713680775e7614c8ba186c065d4e2e52d1072c0"
 
-arc-theme@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/arc-theme/-/arc-theme-0.1.1.tgz#0c751c76db06ded31c0176cfb7c6f150d1ad1357"
+arc-theme@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/arc-theme/-/arc-theme-0.2.1.tgz#e38cf7ff65218ee12b6ba7fc5e97a6601cf333fe"
   dependencies:
     lodash "^4.17.4"
 

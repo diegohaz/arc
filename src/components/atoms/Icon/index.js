@@ -1,16 +1,13 @@
 import React, { PropTypes } from 'react'
 import styled from 'styled-components'
-import { getColor } from 'arc-theme'
+import { color, ifProps } from 'arc-theme'
 
 export const fontSize = ({ height }) => height ? `${height / 16}rem` : '1.25em'
-
-export const color = ({ theme, reverse, color }) =>
-  color ? getColor([color, color === 'grayscale' ? 0 : 1], reverse, theme) : 'currentcolor'
 
 const Wrapper = styled.span`
   display: inline-block;
   font-size: ${fontSize};
-  color: ${color};
+  color: ${ifProps('color', color({ grayscale: 0 }, 1), 'currentcolor')};
   width: 1em;
   height: 1em;
   margin: 0.1em;

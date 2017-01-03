@@ -1,9 +1,6 @@
 import { PropTypes } from 'react'
 import styled, { keyframes } from 'styled-components'
-import { getColor } from 'arc-theme'
-
-export const backgroundColor = ({ theme, reverse }) => getColor('grayscale[1]', !reverse, theme)
-export const color = ({ theme, reverse, color }) => getColor([color, 1], reverse, theme)
+import { color, reverseColor } from 'arc-theme'
 
 const spin = keyframes`
   0% { transform: rotate(0deg); }
@@ -12,8 +9,8 @@ const spin = keyframes`
 
 const Spinner = styled.div`
   position: relative;
-  border: 0.2em solid ${backgroundColor};
-  border-bottom-color: ${color};
+  border: 0.2em solid ${reverseColor('grayscale', 1)};
+  border-bottom-color: ${color(1)};
   border-radius: 50%;
   margin: 0 auto;
   width: 1em;

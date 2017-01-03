@@ -1,9 +1,8 @@
 import { PropTypes } from 'react'
 import styled from 'styled-components'
-import { getColor } from 'arc-theme'
+import { reverseColor } from 'arc-theme'
 
-export const backgroundColor = ({ theme, filled, reverse }) =>
-  getColor(['grayscale', filled ? 1 : 0], !reverse, theme)
+const backgroundColor = ({ filled }) => reverseColor('grayscale', filled ? 1 : 0)
 
 const TableRow = styled.tr`
   background-color: ${backgroundColor};

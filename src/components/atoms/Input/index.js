@@ -1,29 +1,21 @@
 import React, { PropTypes } from 'react'
 import styled, { css } from 'styled-components'
-import { get, getColor } from 'arc-theme'
+import { font, color, reverseColor, ifProps } from 'arc-theme'
 
-export const fontFamily = ({ theme }) => get('fonts.primary', theme)
 export const fontSize = ({ height }) => `${height / 35.5555555556}rem`
-export const padding = ({ type }) => type === 'textarea' ? '0.4444444444em' : '0 0.4444444444em'
-export const height = ({ type }) => type === 'textarea' ? 'auto' : '2.2222222222em'
-export const color = ({ theme, reverse }) => getColor('grayscale[0]', reverse, theme)
-export const backgroundColor = ({ theme, reverse }) => getColor('grayscale[0]', !reverse, theme)
-
-export const borderColor = ({ invalid, theme, reverse }) =>
-  getColor(invalid ? 'danger[2]' : 'grayscale[3]', reverse, theme)
 
 const styles = css`
-  font-family: ${fontFamily};
+  font-family: ${font('primary')};
   display: block;
   width: 100%;
   margin: 0;
   box-sizing: border-box;
   font-size: ${fontSize};
-  padding: ${padding};
-  height: ${height};
-  color: ${color};
-  background-color: ${backgroundColor};
-  border: 1px solid ${borderColor};
+  padding: ${ifProps({ type: 'textarea' }, '0.4444444444em', '0 0.4444444444em')};
+  height: ${ifProps({ type: 'textarea' }, 'auto', '2.2222222222em')};
+  color: ${color('grayscale', 0)};
+  background-color: ${reverseColor('grayscale', 0)};
+  border: 1px solid ${ifProps('invalid', color('danger', 2), color('grayscale', 3))};
   border-radius: 2px;
 
   &[type=checkbox], &[type=radio] {

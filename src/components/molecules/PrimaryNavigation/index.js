@@ -1,11 +1,8 @@
 import React, { PropTypes } from 'react'
 import styled from 'styled-components'
-import { getColor } from 'arc-theme'
+import { color } from 'arc-theme'
 
 import { Link } from 'components'
-
-export const linkColor = ({ theme, reverse }) => getColor('grayscale[2]', reverse, theme)
-export const activeLinkColor = ({ theme, reverse }) => getColor('grayscale[0]', reverse, theme)
 
 const Nav = styled.nav`
   display: flex;
@@ -15,10 +12,10 @@ const Nav = styled.nav`
   }
   a {
     font-weight: 300;
-    color: ${linkColor};
+    color: ${color('grayscale', 2)};
     font-size: 1.25rem;
     &.active {
-      color: ${activeLinkColor};
+      color: ${color('grayscale', 0)};
     }
   }
 `
