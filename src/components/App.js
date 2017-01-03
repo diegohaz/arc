@@ -2,7 +2,7 @@ import React, { PropTypes, Component } from 'react'
 import { injectGlobal, ThemeProvider } from 'styled-components'
 import Helmet from 'react-helmet'
 
-import theme from './theme'
+import theme from './themes/default'
 
 injectGlobal`
   body {

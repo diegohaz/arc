@@ -1,17 +1,13 @@
 import React, { PropTypes } from 'react'
 import styled, { css } from 'styled-components'
 import { Link as RouterLink } from 'react-router'
-
-export const fontFamily = ({ theme }) => theme.fonts.primary
-
-export const color = ({ theme, reverse, color }) =>
-  theme[reverse ? 'reverseColors' : 'colors'][color][color === 'grayscale' ? 0 : 1]
+import { font, color } from 'arc-theme'
 
 const styles = css`
-  font-family: ${fontFamily};
+  font-family: ${font('primary')};
   text-decoration: none;
   font-weight: 500;
-  color: ${color};
+  color: ${color({ grayscale: 0 }, 1)};
 
   &:hover {
     text-decoration: underline;
@@ -37,20 +33,7 @@ Link.propTypes = {
 }
 
 Link.defaultProps = {
-  color: 'primary',
-  theme: {
-    fonts: {
-      primary: 'sans-serif'
-    },
-    colors: {
-      grayscale: { 0: '#222' },
-      primary: { 1: '#2196f3' }
-    },
-    reverseColors: {
-      grayscale: { 0: '#fff' },
-      primary: { 1: '#71bcf7' }
-    }
-  }
+  color: 'primary'
 }
 
 export default Link

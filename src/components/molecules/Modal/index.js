@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import styled, { css, injectGlobal } from 'styled-components'
 import ReactModal from 'react-modal'
+import { font, color, reverseColor } from 'arc-theme'
 
 import { Heading, IconButton } from 'components'
 
@@ -32,11 +33,11 @@ const ModalBox = styled(ReactModal)`
   position: absolute;
   display: flex;
   flex-direction: column;
-  font-family: ${({ theme }) => theme.fonts.primary};
+  font-family: ${font('primary')};
   font-size: 1rem;
-  background-color: ${({ theme }) => theme.reverseColors.grayscale[0]};
+  background-color: ${reverseColor('grayscale', 0)};
   border-radius: 0.125em;
-  color: ${({ theme }) => theme.colors.grayscale[0]};
+  color: ${color('grayscale', 0)};
   top: calc(50% - 1rem);
   left: calc(50% - 1rem);
   right: auto;
@@ -88,7 +89,7 @@ const StyledReactModal = styled(({ className, ...props }) =>
   <ModalBox overlayClassName={className} closeTimeoutMS={250} {...props} />
 )`${overlayStyles}`
 
-const Modal = ({ children, title, closeable, onClose, ...props }) => {
+const Modal = ({ children, title, closeable, onClose, ...props, reverse }) => {
   const hasHeader = title || closeable
   return (
     <StyledReactModal
@@ -98,7 +99,7 @@ const Modal = ({ children, title, closeable, onClose, ...props }) => {
       {...props}>
       {hasHeader &&
         <Header>
-          <StyledHeading level={2}>{title}</StyledHeading>
+          <StyledHeading level={2} reverse={reverse}>{title}</StyledHeading>
           {closeable && <IconButton icon="close" onClick={onClose} color="white" reverse />}
         </Header>
       }
@@ -113,21 +114,8 @@ Modal.propTypes = {
   children: PropTypes.node,
   title: PropTypes.string,
   closeable: PropTypes.bool,
+  reverse: PropTypes.bool,
   onClose: PropTypes.func.isRequired
-}
-
-Modal.defaultProps = {
-  theme: {
-    fonts: {
-      primary: 'sans-serif'
-    },
-    colors: {
-      grayscale: { 0: '#222' }
-    },
-    reverseColors: {
-      grayscale: { 0: '#fff' }
-    }
-  }
 }
 
 export default Modal

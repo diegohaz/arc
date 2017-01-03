@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
+import { color } from 'arc-theme'
 
-import { Paragraph, IconLink, IconButton, LogoImage, Tooltip } from 'components'
+import { Block, Paragraph, IconLink, IconButton, LogoImage, Tooltip } from 'components'
 
-const Wrapper = styled.div`
-  background-color: ${({ theme }) => theme.colors.grayscale[0]};
+const Wrapper = styled(Block)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,15 +13,13 @@ const Wrapper = styled.div`
   padding: 2rem 6rem;
   box-sizing: border-box;
   text-align: center;
-  > p {
-    color: ${({ theme }) => theme.colors.grayscale[3]};
-  }
   @media screen and (max-width: 640px) {
     padding: 1rem;
   }
 `
 
 const Text = styled(Paragraph)`
+  color: ${color('grayscale', 3)}
   margin: 3rem auto;
   max-width: 800px;
   font-weight: 300;
@@ -45,7 +43,7 @@ const StyledIconButton = styled(IconButton)`
 
 const Hero = (props) => {
   return (
-    <Wrapper {...props}>
+    <Wrapper reverse {...props}>
       <Logo />
       <Text>
         <strong>ARc</strong> is a <IconLink reverse icon="react" href="https://facebook.github.io/react/">React</IconLink> starter kit based on the <IconLink reverse icon="atomic-design" href="http://bradfrost.com/blog/post/atomic-web-design/">Atomic Design</IconLink> methodology. It's <strong>progressive</strong>, which means that you can start with the basic boilerplate and try the other features when you are comfortable.
@@ -62,14 +60,6 @@ const Hero = (props) => {
       </Tooltip>
     </Wrapper>
   )
-}
-
-Hero.defaultProps = {
-  theme: {
-    colors: {
-      grayscale: { 0: '#222', 3: '#bbb' }
-    }
-  }
 }
 
 export default Hero

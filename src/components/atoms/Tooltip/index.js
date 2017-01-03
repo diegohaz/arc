@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
 import styled, { css } from 'styled-components'
+import { font, ifProps } from 'arc-theme'
 
 const opposites = {
   top: 'bottom',
@@ -18,13 +19,7 @@ export const perpendicularOpposite = (props) => opposites[perpendicular(props)]
 export const perpendicularAxis = ({ position }) =>
   position === 'left' || position === 'right' ? 'Y' : 'X'
 
-const fontFamily = ({ theme }) => theme.fonts.primary
-
-const backgroundColor = ({ reverse }) =>
-  reverse ? 'rgba(255, 255, 255, 0.85)' : 'rgba(0, 0, 0, 0.85)'
-
-const color = ({ reverse }) =>
-  reverse ? 'black' : 'white'
+const backgroundColor = ifProps('reverse', 'rgba(255, 255, 255, 0.85)', 'rgba(0, 0, 0, 0.85)')
 
 const styles = css`
   position: relative;
@@ -53,13 +48,13 @@ const styles = css`
 
   &:before {
     content: attr(data-title);
-    font-family: ${fontFamily};
+    font-family: ${font('primary')};
     white-space: nowrap;
     text-transform: none;
     font-size: 0.8125rem;
     line-height: 1.5;
     text-align: center;
-    color: ${color};
+    color: ${ifProps('reverse', 'black', 'white')};
     background-color: ${backgroundColor};
     border-radius: 0.15384em;
     padding: 0.75em 1em;
@@ -107,12 +102,7 @@ Tooltip.propTypes = {
 
 Tooltip.defaultProps = {
   position: 'top',
-  align: 'center',
-  theme: {
-    fonts: {
-      primary: 'sans-serif'
-    }
-  }
+  align: 'center'
 }
 
 export default Tooltip

@@ -1,6 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import Link, * as styles from '.'
+import Link from '.'
 
 const wrap = (props = {}) => shallow(<Link {...props} />).dive()
 
@@ -22,35 +22,4 @@ it('renders anchor by default', () => {
 it('renders Link when prop to is passed in', () => {
   const wrapper = wrap({ to: 'test' }).dive()
   expect(wrapper.find('Link')).toHaveLength(1)
-})
-
-describe('styles', () => {
-  const theme = {
-    fonts: {
-      primary: 'sans-serif'
-    },
-    colors: {
-      grayscale: { 0: '#222' },
-      primary: { 1: '#2196f3' }
-    },
-    reverseColors: {
-      grayscale: { 0: '#fff' },
-      primary: { 1: '#71bcf7' }
-    }
-  }
-
-  test('fontFamily', () => {
-    expect(styles.fontFamily({ theme })).toBe(theme.fonts.primary)
-  })
-
-  test('color', () => {
-    const props = {
-      color: 'grayscale',
-      reverse: false,
-      theme
-    }
-    expect(styles.color(props)).toBe(theme.colors.grayscale[0])
-    expect(styles.color({ ...props, reverse: true })).toBe(theme.reverseColors.grayscale[0])
-    expect(styles.color({ ...props, color: 'primary' })).toBe(theme.colors.primary[1])
-  })
 })
