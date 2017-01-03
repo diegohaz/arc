@@ -1,20 +1,17 @@
 import React, { PropTypes } from 'react'
 import styled, { css } from 'styled-components'
+import { font, color } from 'arc-theme'
 
-export const fontFamily = ({ theme }) => theme.fonts.primary
 export const fontSize = ({ level }) => `${0.75 + 1 * (1 / level)}rem`
 
-export const color = ({ theme, reverse, color }) =>
-  theme[reverse ? 'reverseColors' : 'colors'][color][color === 'grayscale' ? 0 : 1]
-
 const styles = css`
-  font-family: ${fontFamily};
+  font-family: ${font('primary')};
   font-weight: 500;
   font-size: ${fontSize};
   margin: 0;
   margin-top: 0.85714em;
   margin-bottom: 0.57142em;
-  color: ${color};
+  color: ${color({ grayscale: 0 }, 1)};
 `
 
 const Heading = styled(({ level, children, reverse, theme, ...props }) => {
@@ -30,18 +27,7 @@ Heading.propTypes = {
 
 Heading.defaultProps = {
   level: 1,
-  color: 'grayscale',
-  theme: {
-    fonts: {
-      primary: 'sans-serif'
-    },
-    colors: {
-      grayscale: { 0: '#222' }
-    },
-    reverseColors: {
-      grayscale: { 0: '#fff' }
-    }
-  }
+  color: 'grayscale'
 }
 
 export default Heading

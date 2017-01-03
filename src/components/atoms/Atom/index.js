@@ -1,14 +1,10 @@
 import { PropTypes } from 'react'
 import styled from 'styled-components'
-
-export const fontFamily = ({ theme }) => theme.fonts.primary
-
-export const color = ({ theme, reverse, color }) =>
-  theme[reverse ? 'reverseColors' : 'colors'][color][color === 'grayscale' ? 0 : 1]
+import { font, color } from 'arc-theme'
 
 const Atom = styled.span`
-  font-family: ${fontFamily};
-  color: ${color};
+  font-family: ${font('primary')};
+  color: ${color({ grayscale: 0 }, 1)};
 `
 
 Atom.propTypes = {
@@ -17,18 +13,7 @@ Atom.propTypes = {
 }
 
 Atom.defaultProps = {
-  color: 'grayscale',
-  theme: {
-    fonts: {
-      primary: 'sans-serif'
-    },
-    colors: {
-      grayscale: { 0: '#222' }
-    },
-    reverseColors: {
-      grayscale: { 0: '#fff' }
-    }
-  }
+  color: 'grayscale'
 }
 
 export default Atom
