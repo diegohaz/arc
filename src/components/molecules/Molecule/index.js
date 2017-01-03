@@ -1,14 +1,10 @@
 import React, { PropTypes } from 'react'
 import styled from 'styled-components'
-
-export const fontFamily = ({ theme }) => theme.fonts.primary
-
-export const color = ({ theme, reverse }) =>
-  theme[reverse ? 'reverseColors' : 'colors'].grayscale[0]
+import { font, color } from 'arc-theme'
 
 const Wrapper = styled.div`
-  font-family: ${fontFamily};
-  color: ${color};
+  font-family: ${font('primary')};
+  color: ${color('grayscale', 0)};
 `
 
 const Molecule = ({ children, ...props }) => {
@@ -22,20 +18,6 @@ const Molecule = ({ children, ...props }) => {
 Molecule.propTypes = {
   reverse: PropTypes.bool,
   children: PropTypes.node
-}
-
-Molecule.defaultProps = {
-  theme: {
-    fonts: {
-      primary: 'sans-serif'
-    },
-    colors: {
-      grayscale: { 0: '#222' }
-    },
-    reverseColors: {
-      grayscale: { 0: '#fff' }
-    }
-  }
 }
 
 export default Molecule

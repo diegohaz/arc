@@ -1,52 +1,42 @@
 import React, { PropTypes } from 'react'
 import styled, { css } from 'styled-components'
 import { Link } from 'react-router'
+import { font, color, reverseColor, ifProps } from 'arc-theme'
 
-export const colorKind = ({ theme, reverse }) => theme[reverse ? 'reverseColors' : 'colors']
+const fontSize = ({ height }) => `${height / 40}rem`
 
-export const fontFamily = ({ theme }) => theme.fonts.primary
-export const fontSize = ({ height }) => `${height / 40}rem`
-export const borderColor = ({ transparent }) => transparent ? 'currentcolor' : 'transparent'
-export const cursor = ({ disabled }) => disabled ? 'default' : 'pointer'
-export const pointerEvents = ({ disabled }) => disabled ? 'none' : 'auto'
+const backgroundColor = ({ transparent, disabled }) =>
+  transparent ? 'transparent' : color(disabled ? 2 : 1)
 
-export const backgroundColor = ({ transparent, disabled, color, ...props }) =>
-  transparent ? 'transparent' : colorKind(props)[color][disabled ? 2 : 1]
+const foregroundColor = ({ transparent, disabled }) =>
+  transparent ? color(disabled ? 2 : 1) : reverseColor('grayscale', 0)
 
-export const color = ({ transparent, disabled, color, ...props, reverse }) =>
-  transparent
-  ? colorKind(props)[color][disabled ? 2 : 1]
-  : colorKind({ ...props, reverse: !reverse }).grayscale[0]
-
-export const hoverBackgroundColor = ({ disabled, transparent, color, ...props }) =>
-  !disabled && !transparent && colorKind(props)[color][0]
-
-export const hoverColor = ({ disabled, transparent, color, ...props }) =>
-  !disabled && transparent && colorKind(props)[color][0]
+const hoverBackgroundColor = ({ disabled, transparent }) => !disabled && !transparent && color(0)
+const hoverForegroundColor = ({ disabled, transparent }) => !disabled && transparent && color(0)
 
 const styles = css`
   display: inline-flex;
-  font-family: ${fontFamily};
+  font-family: ${font('primary')};
   align-items: center;
   white-space: nowrap;
   font-size: ${fontSize};
-  border: 0.0625em solid ${borderColor};
+  border: 0.0625em solid ${ifProps('transparent', 'currentcolor', 'transparent')};
   height: 2.5em;
   justify-content: center;
   text-decoration: none;
-  cursor: ${cursor};
+  cursor: ${ifProps('disabled', 'default', 'pointer')};
   appearance: none;
   padding: 0 1em;
   border-radius: 0.125em;
   box-sizing: border-box;
-  pointer-events: ${pointerEvents};
+  pointer-events: ${ifProps('disabled', 'none', 'auto')};
   transition: background-color 250ms ease-out, color 250ms ease-out, border-color 250ms ease-out;
   background-color: ${backgroundColor};
-  color: ${color};
+  color: ${foregroundColor};
 
   &:hover, &:focus, &:active {
     background-color: ${hoverBackgroundColor};
-    color: ${hoverColor};
+    color: ${hoverForegroundColor};
   }
 
   &:focus {
@@ -83,20 +73,7 @@ Button.propTypes = {
 Button.defaultProps = {
   color: 'primary',
   type: 'button',
-  height: 40,
-  theme: {
-    fonts: {
-      primary: 'sans-serif'
-    },
-    colors: {
-      grayscale: { 0: '#222', 1: '#555', 2: '#888' },
-      primary: { 0: '#1976d2', 1: '#2196f3', 2: '#71bcf7' }
-    },
-    reverseColors: {
-      grayscale: { 0: '#fff', 1: '#bbb', 2: '#888' },
-      primary: { 0: '#c2e2fb', 1: '#71bcf7', 2: '#2196f3' }
-    }
-  }
+  height: 40
 }
 
 export default Button
