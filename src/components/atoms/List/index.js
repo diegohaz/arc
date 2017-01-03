@@ -1,17 +1,13 @@
 import React, { PropTypes } from 'react'
 import styled, { css } from 'styled-components'
-
-export const fontFamily = ({ theme }) => theme.fonts.primary
-
-export const color = ({ theme, reverse, color }) =>
-  theme[reverse ? 'reverseColors' : 'colors'][color][color === 'grayscale' ? 0 : 1]
+import { font, color } from 'arc-theme'
 
 const styles = css`
-  font-family: ${fontFamily};
+  font-family: ${font('primary')};
   margin: 1rem 0;
   padding-left: 1.6rem;
   line-height: 1.7rem;
-  color: ${color};
+  color: ${color({ grayscale: 0 }, 1)};
 `
 
 const Ol = styled.ol`${styles}`
@@ -29,18 +25,7 @@ List.propTypes = {
 }
 
 List.defaultProps = {
-  color: 'grayscale',
-  theme: {
-    fonts: {
-      primary: 'sans-serif'
-    },
-    colors: {
-      grayscale: { 0: '#222' }
-    },
-    reverseColors: {
-      grayscale: { 0: '#fff' }
-    }
-  }
+  color: 'grayscale'
 }
 
 export default List
