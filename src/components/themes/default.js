@@ -1,4 +1,8 @@
-export const colors = {
+import { reverse } from 'arc-theme'
+
+const theme = {}
+
+theme.colors = {
   primary: ['#1976d2', '#2196f3', '#71bcf7', '#c2e2fb'],
   secondary: ['#c2185b', '#e91e63', '#f06292', '#f8bbd0'],
   danger: ['#d32f2f', '#f44336', '#f8877f', '#ffcdd2'],
@@ -8,16 +12,12 @@ export const colors = {
   white: ['#fff', '#fff', '#eee']
 }
 
-export const reverseColors = {}
+theme.reverseColors = reverse(theme.colors)
 
-Object.keys(colors).forEach((key) => {
-  reverseColors[key] = [ ...colors[key] ].reverse()
-})
-
-export const fonts = {
+theme.fonts = {
   primary: 'Helvetica Neue, Helvetica, Roboto, sans-serif',
   pre: 'Consolas, Liberation Mono, Menlo, Courier, monospace',
   quote: 'Georgia, serif'
 }
 
-export default { colors, reverseColors, fonts }
+export default theme
