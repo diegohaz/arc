@@ -3383,7 +3383,7 @@ lru-cache@^4.0.1:
 
 ltcdr@^2.2.1:
   version "2.2.1"
-  resolved "https://registry.yarnpkg.com/ltcdr/-/ltcdr-2.2.1.tgz#5ab87ad1d4c1dab8e8c08bbf037ee0c1902287cf"
+  resolved "http://registry.npmjs.org/ltcdr/-/ltcdr-2.2.1.tgz#5ab87ad1d4c1dab8e8c08bbf037ee0c1902287cf"
 
 makeerror@1.0.x:
   version "1.0.11"
