@@ -3,8 +3,12 @@ import styled, { css } from 'styled-components'
 
 import { Icon, Link } from 'components'
 
-const iconStyles = ({ hasText, right, responsive }) => css`
+const StyledLink = styled(Link)`
+`
+
+const iconStyles = ({ height, hasText, right, responsive }) => css`
   margin: ${hasText ? (right ? '0 0 0 0.25em' : '0 0.25em 0 0') : 0};
+  font-size: ${height ? `${height / 3 / 16}rem` : '0.75em'};
   @media screen and (max-width: 420px) {
     margin: ${responsive && 0};
   }
@@ -22,7 +26,7 @@ const Text = styled.span`${textStyle}`
 const IconLink = ({ height, icon, right, responsive, children, ...props, color, reverse }) => {
   const iconElement = (
     <StyledIcon
-      height={height && height / 3 || 16}
+      height={height}
       icon={icon}
       hasText={!!children}
       right={right}
@@ -32,19 +36,19 @@ const IconLink = ({ height, icon, right, responsive, children, ...props, color, 
     />
   )
   return (
-    <Link {...props}>
+    <StyledLink {...props}>
       {right || iconElement}
       <Text responsive={responsive}>{children}</Text>
       {right && iconElement}
-    </Link>
+    </StyledLink>
   )
 }
 
 IconLink.propTypes = {
   icon: PropTypes.string.isRequired,
+  height: PropTypes.number,
   color: PropTypes.string,
   reverse: PropTypes.bool,
-  height: PropTypes.number,
   responsive: PropTypes.bool,
   right: PropTypes.bool,
   children: PropTypes.any

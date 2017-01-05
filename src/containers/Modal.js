@@ -7,7 +7,8 @@ import { Modal } from 'components'
 
 class ModalContainer extends Component {
   static propTypes = {
-    name: PropTypes.string.isRequired
+    name: PropTypes.string.isRequired,
+    isOpen: PropTypes.bool
   }
 
   render () {
@@ -15,8 +16,8 @@ class ModalContainer extends Component {
   }
 }
 
-const mapStateToProps = (state, { name }) => ({
-  isOpen: fromModal.isOpen(state, name)
+const mapStateToProps = (state, { name, isOpen }) => ({
+  isOpen: isOpen || fromModal.isOpen(state, name)
 })
 
 const mapDispatchToProps = (dispatch, { name }) => ({
