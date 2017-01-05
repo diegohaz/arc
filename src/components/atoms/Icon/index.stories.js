@@ -4,14 +4,14 @@ import Icon from '.'
 
 storiesOf('Icon', module)
   .add('default', () => (
-    <Icon icon="arc" />
+    <Icon icon="close" />
   ))
   .add('color', () => (
-    <Icon icon="arc" color="primary" />
+    <Icon icon="close" color="primary" />
   ))
   .add('color reverse', () => (
-    <Icon icon="arc" color="primary" reverse />
+    <Icon icon="close" color="primary" reverse />
   ))
   .add('height', () => (
-    <Icon icon="arc" height={100} />
+    <Icon icon="close" height={100} />
   ))
