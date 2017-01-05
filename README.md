@@ -29,6 +29,7 @@ $ npm install # or yarn
 - [Source code](#source-code)
 - [Clean source code](#clean-source-code)
 - [Components](#components)
+  - [Storybook](#storybook)
 - [Storybook](#storybook)
 - [Containers](#containers)
 - [Store](#store)
@@ -85,7 +86,7 @@ To understand better the Atomic Design methodology, you can refer to the [`src/c
 - A **page** is... a page, where you will put mostly organisms (e.g. [`HomePage`](src/components/pages/HomePage/index.js));
 - A **template** is a layout to be used on pages, see [why templates are good practice](https://github.com/diegohaz/arc/issues/20#issuecomment-265934388).
 
-### Storybook
+#### Storybook
 
 I highly recommend you to incorporate [react-storybook](https://github.com/storybooks/react-storybook) on your development process. It really improves productivity and developer experience. Actually, most of the time you can just use the storybook instead of the real webapp while creating components.
 
