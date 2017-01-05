@@ -13,13 +13,22 @@ const Options = styled.div`
   }
 `
 
-const ConfirmModal = ({ children, onConfirm, onClose, confirmLabel, cancelLabel, ...props }) => {
+const ConfirmModal = ({
+  children,
+  onConfirm,
+  onClose,
+  confirmLabel,
+  cancelLabel,
+  confirmProps,
+  cancelProps,
+  ...props
+}) => {
   return (
     <Modal {...props}>
       {children || 'Do you want to proceed?'}
       <Options>
-        <Button onClick={onConfirm}>{confirmLabel}</Button>
-        <Button onClick={onClose} transparent>{cancelLabel}</Button>
+        <Button onClick={onConfirm} {...confirmProps}>{confirmLabel}</Button>
+        <Button onClick={onClose} transparent {...cancelProps}>{cancelLabel}</Button>
       </Options>
     </Modal>
   )
@@ -31,12 +40,16 @@ ConfirmModal.propTypes = {
   onConfirm: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
   confirmLabel: PropTypes.string,
-  cancelLabel: PropTypes.string
+  cancelLabel: PropTypes.string,
+  confirmProps: PropTypes.object,
+  cancelProps: PropTypes.object
 }
 
 ConfirmModal.defaultProps = {
   confirmLabel: 'Confirm',
-  cancelLabel: 'Cancel'
+  cancelLabel: 'Cancel',
+  confirmProps: {},
+  cancelProps: {}
 }
 
 export default ConfirmModal
