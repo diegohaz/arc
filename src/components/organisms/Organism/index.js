@@ -7,17 +7,14 @@ const Wrapper = styled.div`
   color: ${color('grayscale', 0)};
 `
 
-const Organism = ({ children, ...props }) => {
+const Organism = (props) => {
   return (
-    <Wrapper {...props}>
-      {children}
-    </Wrapper>
+    <Wrapper {...props}>content</Wrapper>
   )
 }
 
 Organism.propTypes = {
-  reverse: PropTypes.bool,
-  children: PropTypes.node
+  reverse: PropTypes.bool
 }
 
 export default Organism
