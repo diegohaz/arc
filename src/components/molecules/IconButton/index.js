@@ -10,9 +10,9 @@ const fadeIn = keyframes`
 `
 
 const buttonStyles = ({ hasText, right, responsive, breakpoint, collapsed }) => css`
-  max-width: ${hasText && !collapsed ? '100%' : 'calc(2.5em + 0.6em * 2)'};
+  max-width: ${hasText && !collapsed ? '100%' : '2.5em'};
   width: ${hasText ? 'auto' : '2.5em'};
-  padding: ${hasText ? '0 0.6em' : 0};
+  padding: ${hasText ? '0 0.4375em' : 0};
   flex: 0 0 2.5em;
   box-sizing: border-box;
   ${collapsed && css`
@@ -39,7 +39,7 @@ const buttonStyles = ({ hasText, right, responsive, breakpoint, collapsed }) => 
 `
 
 const textStyle = ({ responsive, breakpoint }) => css`
-  padding: 0.6em;
+  padding: 0.4375em;
   @media screen and (max-width: ${breakpoint}px) {
     display: ${responsive && 'none !important'};
   }

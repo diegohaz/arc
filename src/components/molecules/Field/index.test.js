@@ -28,3 +28,15 @@ it('renders error when passed in along with invalid', () => {
   const wrapper = wrap({ error: 'foo error', invalid: true })
   expect(wrapper.contains('foo error')).toBe(true)
 })
+
+it('renders label after input when type is checkbox', () => {
+  const wrapper = wrap({ type: 'checkbox', label: 'foo label' })
+  expect(wrapper.childAt(0).is('Input')).toBe(true)
+  expect(wrapper.childAt(1).is('Label')).toBe(true)
+})
+
+it('renders label after input when type is radio', () => {
+  const wrapper = wrap({ type: 'radio', label: 'foo label' })
+  expect(wrapper.childAt(0).is('Input')).toBe(true)
+  expect(wrapper.childAt(1).is('Label')).toBe(true)
+})

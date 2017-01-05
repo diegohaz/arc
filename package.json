@@ -6,12 +6,15 @@
   "scripts": {
     "start": "node .",
     "test": "jest",
-    "coverage": "npm test -- --coverage && opn coverage/lcov-report/index.html",
+    "coverage": "npm test -- --coverage",
+    "postcoverage": "opn coverage/lcov-report/index.html",
+    "lint": "eslint src src-clean .storybook webpack",
     "dev": "concurrently --kill-others 'nodemon --watch src' 'node webpack/webpack-dev-server'",
-    "lint": "eslint 'src/**/*.js' 'src-clean/**/*.js' 'webpack/**/*.js'",
-    "clean": "del 'dist/!(.git*|Procfile)**'",
-    "copy": "copyfiles -u 1 public/* public/**/* dist",
-    "build": "npm run clean && npm run copy && cross-env NODE_ENV=production webpack --config webpack/webpack.config",
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "build:clean": "del 'dist/!(.git*|Procfile)**'",
+    "build:copy": "copyfiles -u 1 public/* public/**/* dist",
+    "prebuild": "npm run build:clean && npm run build:copy",
+    "build": "cross-env NODE_ENV=production webpack --config webpack/webpack.config",
     "heroku-postbuild": "npm run build"
   },
   "jest": {
@@ -28,6 +31,7 @@
     }
   },
   "devDependencies": {
+    "@kadira/storybook": "^2.35.2",
     "babel-eslint": "^7.1.1",
     "babel-jest": "^18.0.0",
     "concurrently": "^3.1.0",
