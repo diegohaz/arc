@@ -1,6 +1,5 @@
 import omit from 'lodash/omit'
-import { takeEvery } from 'redux-saga'
-import { fork, call, take, race } from 'redux-saga/effects'
+import { fork, call, take, race, takeEvery } from 'redux-saga/effects'
 
 const requestPattern = /_REQUEST$/
 const successSuffix = '_SUCCESS'
@@ -28,7 +27,7 @@ export function* resolveOrReject ({ type, resolve, reject }) {
 }
 
 export function* watchRequestActions () {
-  yield call(takeEvery, matchesRequest, resolveOrReject)
+  yield takeEvery(matchesRequest, resolveOrReject)
 }
 
 export default function* () {

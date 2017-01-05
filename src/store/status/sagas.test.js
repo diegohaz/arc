@@ -1,5 +1,4 @@
-import { takeEvery } from 'redux-saga'
-import { take, call, fork, race } from 'redux-saga/effects'
+import { take, call, fork, race, takeEvery } from 'redux-saga/effects'
 import saga, * as sagas from './sagas'
 
 test('matchesRequest', () => {
@@ -78,8 +77,7 @@ describe('resolveOrReject', () => {
 
 test('watchRequestActions', () => {
   const generator = sagas.watchRequestActions()
-  expect(generator.next().value)
-    .toEqual(call(takeEvery, sagas.matchesRequest, sagas.resolveOrReject))
+  expect(generator.next().value).toEqual(takeEvery(sagas.matchesRequest, sagas.resolveOrReject))
 })
 
 test('saga', () => {
