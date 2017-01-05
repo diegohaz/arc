@@ -30,7 +30,6 @@ $ npm install # or yarn
 - [Clean source code](#clean-source-code)
 - [Components](#components)
   - [Storybook](#storybook)
-- [Storybook](#storybook)
 - [Containers](#containers)
 - [Store](#store)
   - [Store naming conventions](#store-naming-conventions)
