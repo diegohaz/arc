@@ -5,11 +5,14 @@
   "scripts": {
     "start": "node server",
     "test": "jest",
-    "coverage": "npm test -- --coverage && opn coverage/lcov-report/index.html",
-    "lint": "eslint 'src/**/*.js' 'src-clean/**/*.js' webpack.config.js server.js",
-    "clean": "del 'dist/!(.git*|Procfile)**'",
-    "copy": "copyfiles -u 1 public/* public/**/* dist",
-    "build": "npm run clean && npm run copy && cross-env NODE_ENV=production webpack"
+    "coverage": "npm test -- --coverage",
+    "postcoverage": "opn coverage/lcov-report/index.html",
+    "lint": "eslint src src-clean .storybook webpack.config.js server.js",
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "build:clean": "del 'dist/!(.git*|Procfile)**'",
+    "build:copy": "copyfiles -u 1 public/* public/**/* dist",
+    "prebuild": "npm run build:clean && npm run build:copy",
+    "build": "cross-env NODE_ENV=production webpack"
   },
   "jest": {
     "modulePathIgnorePatterns": [
@@ -26,6 +29,7 @@
     }
   },
   "devDependencies": {
+    "@kadira/storybook": "^2.35.2",
     "babel-core": "^6.21.0",
     "babel-eslint": "^7.1.1",
     "babel-jest": "^18.0.0",
