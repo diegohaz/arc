@@ -32,6 +32,7 @@ $ npm install # or yarn
 - [Storybook](#storybook)
 - [Containers](#containers)
 - [Store](#store)
+  - [Store naming conventions](#store-naming-conventions)
 
 ### Run
 
@@ -181,6 +182,14 @@ Here lives all the state management of the app.
 - `sagas` listen to the actions and are responsible for performing side effects, like data fetching, caching etc. [Learn more](https://github.com/yelouafi/redux-saga).
 
 To add a new store, just create a new folder with actions, reducer, selectors and/or sagas. Webpack will automatically import them to your project (how? See [`src/store/actions.js`](src/store/actions.js), [`src/store/reducer.js`](src/store/reducer.js), [`src/store/sagas.js`](src/store/sagas.js) and [`src/store/selectors.js`](src/store/selectors.js)).
+
+#### Store naming conventions
+
+The store on this boilerplate follows some naming conventions. You don't need to follow them, but it will work better if you do.
+
+- `actions` should start with the store name (e.g. `MODAL_OPEN` for `modal` store, `POST_LIST_REQUEST` for `post` store) and end with `REQUEST`, `SUCCESS` or `FAILURE` if this is an async operation;
+- `action creators` should have the same name of their respective actions, but in camelCase (e.g. `modalOpen`). Async actions should group `request`, `success` and `failure` in a object (e.g. `postList.request`, `postList.success`, `postList.failure`);
+- `worker sagas` should start with the operation name (e.g. `openModal`, `requestPostList`).
 
 ## Contributing
 
