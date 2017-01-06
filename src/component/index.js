@@ -1,135 +1,93 @@
-import fs from 'fs'
-import { Separator } from 'inquirer'
-import _ from 'lodash'
-import Base from '../base'
+import chalk from 'chalk'
+import { Base } from 'yeoman-generator'
+import autocomplete from 'inquirer-autocomplete-prompt'
+import { defaultTemplatePath, branchUrl, getFilePaths } from '../utils'
+import { findPascalPaths, getInfoFromPascalPath, replaceNameInPascalResource } from './helpers'
 
 export default class extends Base {
   constructor (...args) {
     super(...args)
-
-    this.components = {}
-    this.dependencies = {}
-    this.types = {}
-    this.names = {}
-    this.chosenComponents = []
-    this.componentsToCreate = []
-
-    this.option('all', {
-      desc: 'Display all components, not only the generic ones',
-      alias: 'A',
-      type: Boolean,
-      default: false
-    })
-
-    const listTypes = () => fs.readdirSync(this.templatePath('src/components'))
-      .filter((path) => fs.statSync(this.templatePath(`src/components/${path}`)).isDirectory())
-
-    const listComponents = (type) => fs.readdirSync(this.templatePath(`src/components/${type}`))
-      .filter((path) => this.options.all ? path !== 'index.js' : path.match(/^Generic/))
-
-    // Populate components and types
-    listTypes().forEach((type) => {
-      this.components[type] = listComponents(type)
-      this.components[type].forEach((component) => {
-        this.types[component] = type
-      })
-    })
-
-    // Populate dependencies
-    Object.keys(this.components).forEach((type) => {
-      this.components[type].forEach((component) => {
-        const path = this.templatePath(`src/components/${type}/${component}/index.js`)
-        const contents = this.fs.read(path)
-        const match = contents.match(/import \{ (.+) \} from 'components'/)
-        this.dependencies[component] = match ? match[1].split(', ') : []
-      })
-    })
+    this.env.adapter.promptModule.registerPrompt('autocomplete', autocomplete)
+    this.option('ours')
+    this.option('theirs')
+    this.option('containers')
+    this.type = this.options.containers ? 'container' : 'component'
+    this.components = this.getComponents()
   }
 
-  _getDependencies (component) {
-    const dependencies = this.dependencies[component].map((dependency) => {
-      return [ dependency, ...this._getDependencies(dependency) ]
-    })
-
-    return _.uniq(_.flatten(dependencies))
+  getComponents = () => {
+    const { ours, theirs } = this.options
+    const all = !ours && !theirs
+    const components = []
+    if (all || ours) {
+      components.push(...findPascalPaths(process.cwd()).map(getInfoFromPascalPath))
+    }
+    if (all || theirs) {
+      components.push(
+        ...findPascalPaths(defaultTemplatePath(`src/${this.type}s`), `src/${this.type}s`)
+          .map((path) => getInfoFromPascalPath(path, branchUrl()))
+      )
+    }
+    return components
   }
 
   prompting () {
-    const isJustADependency = (component) => this.chosenComponents.indexOf(component) < 0
+    const choices = this.components.map((component) => ({
+      name: `${component.name} ${chalk.gray(component.url)}`,
+      short: component.name,
+      value: component
+    }))
 
     const prompts = [{
-      type: 'checkbox',
-      name: 'components',
-      message: 'Which component(s) do you want to create?',
-      pageSize: 20,
-      choices: Object.keys(this.components).map((type) => {
-        return this.options.all
-          ? [ new Separator(type), ...this.components[type] ]
-          : this.components[type]
-      }).reduce((a, b) => [ ...a, ...b ], [])
+      type: 'autocomplete',
+      name: 'component',
+      message: `Which ${this.type} do you want to clone?`,
+      source: /* istanbul ignore next */ (answers, input) =>
+        Promise.resolve(
+          input ? choices.filter((choice) => choice.name.indexOf(input) >= 0) : choices
+        )
+    }, {
+      type: 'input',
+      name: 'name',
+      message: ({ component }) => `How do you want to name the ${component.name} ${this.type}?`,
+      default: ({ component }) => component.name
+    }, {
+      type: 'input',
+      name: 'folder',
+      message: ({ name }) => `In which folder do you want to put the ${name} ${this.type}?`,
+      default: ({ component }) => component.folder
     }]
 
-    return this.prompt(prompts).then(({ components }) => {
-      // Populate chosenComponents
-      this.chosenComponents = components
-      // Populate componentsToCreate
-      this.componentsToCreate = _.uniq(_.flatten([
-        ...components.map((component) => this._getDependencies(component)),
-        ...components
-      ]))
-
-      const prompts = this.componentsToCreate.map((component) => ({
-        type: 'input',
-        name: component,
-        message: `How to call the ${component} component?`,
-        default: isJustADependency(component) && this.config.get(component) || component
-      }))
-
-      return this.prompt(prompts)
-    }).then((names) => {
-      // Populate names
-      this.names = names
-
-      Object.keys(names).forEach((component) => {
-        if (component !== names[component] && isJustADependency(component)) {
-          this.config.set({ [component]: names[component] })
-        }
-      })
+    return this.prompt(prompts).then((answers) => {
+      this.answers = answers
     })
   }
 
   writing () {
-    this.componentsToCreate.forEach((component) => {
-      const type = this.types[component]
-      const name = this.names[component]
-      const tPath = (...args) => this.templatePath(`src/components/${type}/${component}`, ...args)
-      const dPath = (...args) => this.destinationPath(`src/components/${type}/${name}`, ...args)
+    const { name, folder, component } = this.answers
+    const isTheirs = component.url.indexOf('https') === 0
+    const templatePath = isTheirs ? defaultTemplatePath : this.destinationPath.bind(this)
 
-      if (this.fs.exists(dPath('index.js'))) {
-        return
-      }
+    if (component.isDir) {
+      const tPath = (...args) => templatePath(component.path, ...args)
+      const dPath = (...args) => this.destinationPath(folder, name, ...args)
+      const filePaths = getFilePaths(tPath())
+      this.fs.copy(tPath(), dPath())
 
-      let contents = this.fs.read(tPath('index.js'))
-      let testContents = this.fs.read(tPath('index.test.js'))
+      filePaths.forEach((filePath) => {
+        const contents = this.fs.read(dPath(filePath))
+        this.fs.write(dPath(filePath), replaceNameInPascalResource(contents, component.name, name))
 
-      Object.keys(this.names).forEach((component) => {
-        if (component !== this.names[component]) {
-          contents = this.replaceName(contents, component, this.names[component])
-          testContents = this.replaceName(testContents, component, this.names[component])
+        if (filePath.indexOf(component.name) >= 0 && component.name !== name) {
+          this.fs.move(dPath(filePath), dPath(filePath.replace(component.name, name)))
         }
       })
-
-      this.fs.copy(tPath(), dPath())
-      this.fs.write(dPath('index.js'), contents)
-      this.fs.write(dPath('index.test.js'), testContents)
-
-      if (this.fs.exists(dPath('../index.js'))) {
-        let indexContents = this.fs.read(dPath('../index.js'))
-        const indexLines = indexContents.trim().split('\n')
-        indexLines.push(`export ${name} from './${name}'`)
-        indexContents = indexLines.sort().join('\n') + '\n'
-        this.fs.write(dPath('../index.js'), indexContents)
-      }
-    })
+    } else {
+      const tPath = templatePath(component.path)
+      const dPath = this.destinationPath(folder, name + component.extension)
+      this.fs.copy(tPath, dPath)
+      const contents = this.fs.read(tPath)
+      this.fs.write(dPath, replaceNameInPascalResource(contents, component.name, name))
+    }
   }
 }

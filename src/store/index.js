@@ -1,114 +1,86 @@
+import chalk from 'chalk'
 import fs from 'fs'
-import _ from 'lodash'
-import pluralize from 'pluralize'
-import Base from '../base'
+import { Base } from 'yeoman-generator'
+import autocomplete from 'inquirer-autocomplete-prompt'
+import { defaultTemplatePath, branchUrl } from '../utils'
+import {
+  getStorePath,
+  findStorePaths,
+  getInfoFromStorePath,
+  transformName,
+  replaceNames
+} from './helpers'
 
 export default class extends Base {
   constructor (...args) {
     super(...args)
+    this.env.adapter.promptModule.registerPrompt('autocomplete', autocomplete)
+    this.option('ours')
+    this.option('theirs')
+    this.stores = this.getStores()
+  }
 
-    this.stores = fs.readdirSync(this.templatePath('src/store'))
-      .filter((path) => fs.statSync(this.templatePath(`src/store/${path}`)).isDirectory())
-
-    this.names = {}
-    this.storesToCreate = []
+  getStores = () => {
+    const { ours, theirs } = this.options
+    const all = !ours && !theirs
+    const stores = []
+    if (all || ours) {
+      stores.push(...findStorePaths(process.cwd()).map(getInfoFromStorePath))
+    }
+    if (all || theirs) {
+      stores.push(
+        ...findStorePaths(defaultTemplatePath())
+          .map((path) => getInfoFromStorePath(path, branchUrl()))
+      )
+    }
+    return stores
   }
 
   prompting () {
+    const choices = this.stores.map((store) => ({
+      name: `${store.name} ${chalk.gray(store.url)}`,
+      short: store.name,
+      value: store
+    }))
+
     const prompts = [{
-      type: 'checkbox',
-      name: 'stores',
-      message: 'Which store(s) do you want to create?',
-      pageSize: 20,
-      choices: this.stores
+      type: 'autocomplete',
+      name: 'store',
+      message: 'Which store do you want to clone?',
+      source: /* istanbul ignore next */ (answers, input) =>
+        Promise.resolve(
+          input ? choices.filter((choice) => choice.name.indexOf(input) >= 0) : choices
+        )
+    }, {
+      type: 'input',
+      name: 'name',
+      message: ({ store }) => `How do you want to name the ${store.name} store?`,
+      default: ({ store }) => store.name
     }]
 
-    return this.prompt(prompts).then(({ stores }) => {
-      this.storesToCreate = stores
-
-      const prompts = this.storesToCreate.map((store) => ({
-        type: 'input',
-        name: store,
-        message: `How to call the ${store} store?`,
-        default: store
-      }))
-
-      return this.prompt(prompts)
-    }).then((names) => {
-      this.names = names
+    return this.prompt(prompts).then((answers) => {
+      this.answers = answers
     })
   }
 
   writing () {
-    this.storesToCreate.forEach((component) => {
-      const name = this.names[component]
-      const camel = _.camelCase(name)
-      const pascal = _.upperFirst(camel)
-      const pascals = pluralize(pascal)
-      const constant = _.snakeCase(name).toUpperCase()
-      const originalCamel = _.camelCase(component)
-      const originalPascal = _.upperFirst(originalCamel)
-      const originalPascals = pluralize(originalPascal)
-      const originalConstant = _.snakeCase(component).toUpperCase()
+    const { name, store } = this.answers
+    const isTheirs = store.url.indexOf('https') === 0
+    const names = transformName(name)
+    const originalNames = transformName(store.name)
+    const dPath = (...args) => this.destinationPath(getStorePath(...args))
+    const tPath = (...args) => isTheirs
+      ? defaultTemplatePath(getStorePath(...args))
+      : dPath(...args)
 
-      const tPath = (...args) => this.templatePath(`src/store/${component}`, ...args)
-      const dPath = (...args) => this.destinationPath(`src/store/${name}`, ...args)
-
-      fs.readdirSync(tPath()).forEach((file) => {
-        let contents = this.fs.read(tPath(file))
-        contents = contents.replace(new RegExp(originalCamel, 'g'), camel)
-        contents = contents.replace(new RegExp(originalPascals, 'g'), pascals)
-        contents = contents.replace(new RegExp(originalPascal, 'g'), pascal)
-        contents = contents.replace(new RegExp(originalConstant, 'g'), constant)
-
-        this.fs.copy(tPath(file), dPath(file))
-        this.fs.write(dPath(file), contents)
-      })
-
-      if (this.fs.exists(dPath('../index.js'))) {
-        let contents = this.fs.read(dPath('../index.js'))
-        let lines = contents.split('\n')
-
-        // search imports
-        let importIndexes = lines.reduce((a, b, i) => {
-          b.match(/^import \S+ from '\./) && a.push(i)
-          return a
-        }, [])
-
-        if (importIndexes.length) {
-          const imports = importIndexes.map((i) => lines[i])
-          imports.push(`import ${camel} from './${name}/reducer'`)
-          lines = [
-            ...lines.slice(0, importIndexes[0]),
-            ...imports.sort(),
-            ...lines.slice(importIndexes[importIndexes.length - 1] + 1)
-          ]
-        } else {
-          const reducersIndex = lines.findIndex((l) => l.match(/^const reducer/))
-          if (reducersIndex >= 0) {
-            lines = [
-              ...lines.slice(0, reducersIndex),
-              `import ${camel} from './${name}/reducer'\n`,
-              ...lines.slice(reducersIndex)
-            ]
-          }
-        }
-
-        // search reducers declaration
-        const startOfReducers = lines.findIndex((l) => l.match(/^const reducer/))
-        const endOfReducers = lines.slice(startOfReducers).indexOf('}') + startOfReducers
-        const reducers = lines.slice(startOfReducers + 1, endOfReducers)
-          .map((l) => l.replace(',', ''))
-        reducers.push(`  ${camel}`)
-        lines = [
-          ...lines.slice(0, startOfReducers + 1),
-          ...reducers.sort().map((r, i) => i === reducers.length - 1 ? r : r + ','),
-          ...lines.slice(endOfReducers)
-        ]
-
-        contents = lines.join('\n')
-        this.fs.write(dPath('../index.js'), contents)
-      }
+    fs.readdirSync(tPath(store.name)).forEach((file) => {
+      const contents = replaceNames(
+        this.fs.read(tPath(store.name, file)),
+        originalNames,
+        names
+      )
+      this.fs.copy(tPath(store.name, file), dPath(name, file))
+      this.fs.write(dPath(name, file), contents)
     })
   }
 }
