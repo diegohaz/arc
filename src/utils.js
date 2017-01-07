@@ -1,5 +1,5 @@
 import path from 'path'
-import glob from 'glob-fs'
+import glob from 'glob'
 import fs from 'fs'
 
 export const templateListPath = path.join(__dirname, '../templates')
@@ -19,8 +19,5 @@ export const branchUrl = (branch = defaultBranch) =>
 export const resourceUrl = (resourcePath, branch = defaultBranch) =>
   `${branchUrl(branch)}/${resourcePath.replace(/^\/|\/?$/g, '')}`
 
-export const getFilePaths = (cwd) => {
-  const fs = glob({ gitignore: true })
-  const pattern = '**/*.{js,jsx,ts}'
-  return fs.readdirSync(pattern, { cwd })
-}
+export const getFilePaths = (cwd) =>
+  glob.sync('**/*.{js,jsx,ts}', { cwd })

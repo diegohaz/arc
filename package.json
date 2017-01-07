@@ -1,6 +1,6 @@
 {
   "name": "generator-arc",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "React app generator with Webpack, React Router, Jest, Redux, Server Side Rendering and more",
   "homepage": "https://github.com/diegohaz/arc",
   "repository": "diegohaz/arc",
@@ -44,7 +44,7 @@
   ],
   "dependencies": {
     "chalk": "^1.1.3",
-    "glob-fs": "^0.1.6",
+    "glob": "^7.1.1",
     "inquirer-autocomplete-prompt": "^0.3.0",
     "lodash": "^4.17.2",
     "pluralize": "^3.0.0",

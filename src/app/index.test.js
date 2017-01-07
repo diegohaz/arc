@@ -1,13 +1,13 @@
 import path from 'path'
-import glob from 'glob-fs'
+import glob from 'glob'
 import helpers from 'yeoman-test'
 import assert from 'yeoman-assert'
 
 const branches = ['master', 'redux', 'universal-redux']
 
 const getTemplateFiles = (...paths) => {
-  const fs = glob()
-  return fs.readdirSync('**/*', { cwd: path.join(__dirname, '../../templates', ...paths) })
+  const cwd = path.join(__dirname, '../../templates', ...paths)
+  return glob.sync('**/*', { cwd })
 }
 
 branches.forEach((branch) => {

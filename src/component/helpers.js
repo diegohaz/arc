@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import glob from 'glob-fs'
+import glob from 'glob'
 import path from 'path'
 
 // this function works, but might be hard to read, please refer to tests and comments
@@ -59,9 +59,9 @@ export const getInfoFromPascalPath = (pascalPath, baseUrl) => ({
 })
 
 export const findPascalPaths = (cwd, prependPath) => {
-  const fs = glob({ gitignore: true })
-  const pattern = '**/[:upper:]{*/*.,*.,.}{js,jsx,ts}'
-  return fs.readdirSync(pattern, { cwd }).reduce((array, currentPath) => {
+  const pattern = '**/[A-Z]{*/*.,*.,.}{js,jsx,ts}'
+  const ignore = ['**/node_modules/**']
+  return glob.sync(pattern, { cwd, ignore }).reduce((array, currentPath) => {
     const normalizedPath = getNormalizedPascalPath(prependPath && prependPath.replace
       ? `${prependPath.replace(/\/$/, '')}/${currentPath}`
       : currentPath

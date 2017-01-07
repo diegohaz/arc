@@ -80,21 +80,21 @@ test('getInfoFromPascalPath', () => {
 test('findPascalPaths', () => {
   expect(helpers.findPascalPaths(path.join(__dirname, '../../fixtures'))).toEqual([
     'B.js',
-    'FooBarBaz.js',
-    'FooBoo/foo/Bar.js',
-    'FooBoo/',
     'components/A.js',
     'components/App/',
-    'components/App/FooBar.js'
+    'components/App/FooBar.js',
+    'FooBarBaz.js',
+    'FooBoo/foo/Bar.js',
+    'FooBoo/'
   ])
   expect(helpers.findPascalPaths(path.join(__dirname, '../../fixtures'), 'foo/')).toEqual([
     'foo/B.js',
-    'foo/FooBarBaz.js',
-    'foo/FooBoo/foo/Bar.js',
-    'foo/FooBoo/',
     'foo/components/A.js',
     'foo/components/App/',
-    'foo/components/App/FooBar.js'
+    'foo/components/App/FooBar.js',
+    'foo/FooBarBaz.js',
+    'foo/FooBoo/foo/Bar.js',
+    'foo/FooBoo/'
   ])
 })
 
