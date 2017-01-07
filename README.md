@@ -27,9 +27,11 @@ Redux plus [Server Side Rendering](https://github.com/reactjs/redux/blob/master/
 
 Universal plus REST API.
 
-### yeoman-generator (soon)
+### [generator-arc](https://github.com/diegohaz/arc/tree/generator-arc)
 
-Generate components, redux stores, API endpoints and the entire project through a CLI utility (e.g. `$ yo arc:component`).
+Generate components, containers, redux stores and the entire project through a CLI utility.
+
+<p align="center"><img src="https://cloud.githubusercontent.com/assets/3068563/21744321/3e366fd2-d4fa-11e6-8262-c5bba9fc4b26.gif"></p>
 
 ## Forks
 
