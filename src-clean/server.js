@@ -1,7 +1,6 @@
 import React from 'react'
 import serialize from 'serialize-javascript'
 import styleSheet from 'styled-components/lib/models/StyleSheet'
-import csrf from 'csurf'
 import { renderToString, renderToStaticMarkup } from 'react-dom/server'
 import { Provider } from 'react-redux'
 import { createMemoryHistory, RouterContext, match } from 'react-router'
@@ -11,12 +10,9 @@ import express from 'services/express'
 import routes from 'routes'
 import configureStore from 'store/configure'
 import { env, port, ip } from 'config'
-import { setCsrfToken } from 'store/actions'
 import Html from 'components/Html'
 
 const router = new Router()
-
-router.use(csrf({ cookie: true }))
 
 router.use((req, res, next) => {
   if (env === 'development') {
@@ -26,8 +22,6 @@ router.use((req, res, next) => {
   const memoryHistory = createMemoryHistory(req.url)
   const store = configureStore({}, memoryHistory)
   const history = syncHistoryWithStore(memoryHistory, store)
-
-  store.dispatch(setCsrfToken(req.csrfToken()))
 
   match({ history, routes, location: req.url }, (error, redirectLocation, renderProps) => {
     if (redirectLocation) {
