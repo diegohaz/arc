@@ -74,10 +74,9 @@ const FeatureList = ({ ...props }) => {
         </StyledFeature>
         <StyledFeature
           icon="yeoman"
-          link="http://yeoman.io"
-          title="Yeoman Generator"
-          soon>
-          Generate components, redux stores, API endpoints and the entire app through command line.
+          link="https://github.com/diegohaz/arc/tree/generator-arc"
+          title="Yeoman Generator">
+          Generate components, containers, redux stores and the entire app through command line.
         </StyledFeature>
       </Grid>
     </div>
