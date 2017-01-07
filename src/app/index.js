@@ -30,5 +30,8 @@ export default class extends Base {
     })
 
     this.fs.copy(templatePath(this.branch, 'src-clean'), this.destinationPath('src'))
+    try {
+      this.fs.move(this.destinationPath('.npmignore'), this.destinationPath('.gitignore'))
+    } catch (e) {}
   }
 }
