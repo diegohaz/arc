@@ -243,7 +243,7 @@ import { SamplePage } from 'components'
 import { config } from './PostForm'
 
 class SamplePageContainer extends Component {
-  // called when POST /sampla-page
+  // called when POST /sample-page
   static post ({ req, store }) {
     return Promise.all([
       this.get({ store }),
