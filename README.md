@@ -1,8 +1,9 @@
 <p align="center">
   <img width="206" alt="arclogo2" src="https://cloud.githubusercontent.com/assets/3068563/19498653/f9b73170-9570-11e6-9183-61dce798abab.png"><br><br>
-  <a href="http://standardjs.com"><img src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square" alt="Standard Style" /></a>
+
   <a href="https://travis-ci.org/diegohaz/arc"><img src="https://img.shields.io/travis/diegohaz/arc/fullstack.svg?style=flat-square" alt="Build Status" /></a>
   <a href="https://codecov.io/gh/diegohaz/arc/branch/fullstack"><img src="https://img.shields.io/codecov/c/github/diegohaz/arc/fullstack.svg?style=flat-square" alt="Coverage Status" /></a>
+  <a href="https://gitter.im/atomic-react/Lobby"><img src="https://img.shields.io/badge/gitter-join%20chat-1dce73.svg?style=flat-square" alt="Gitter chat" /></a>
 </p>
 
 ## Fullstack
