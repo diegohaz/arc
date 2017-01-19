@@ -9,7 +9,7 @@
     "postcoverage": "opn coverage/lcov-report/index.html",
     "lint": "eslint src src-clean .storybook webpack.config.js server.js",
     "storybook": "start-storybook -p 9001 -c .storybook",
-    "build:clean": "del 'dist/!(.git*|Procfile)**'",
+    "build:clean": "del \"dist/!(.git*|Procfile)**\"",
     "build:copy": "copyfiles -u 1 public/* public/**/* dist",
     "prebuild": "npm run build:clean && npm run build:copy",
     "build": "cross-env NODE_ENV=production webpack"
