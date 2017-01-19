@@ -62,7 +62,6 @@
     "webpack-dev-server": "^1.16.2"
   },
   "dependencies": {
-    "arc-theme": "^0.2.2",
     "axios": "^0.15.3",
     "babel-polyfill": "^6.20.0",
     "history": "3.0.0",
@@ -80,6 +79,7 @@
     "redux-form": "^6.4.3",
     "redux-saga": "^0.14.1",
     "styled-components": "^1.2.1",
+    "styled-theme": "^0.2.1",
     "validator": "^6.2.0"
   }
 }

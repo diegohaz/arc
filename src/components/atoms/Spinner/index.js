@@ -1,6 +1,6 @@
 import { PropTypes } from 'react'
 import styled, { keyframes } from 'styled-components'
-import { color, reverseColor } from 'arc-theme'
+import { palette } from 'styled-theme'
 
 const spin = keyframes`
   0% { transform: rotate(0deg); }
@@ -9,8 +9,8 @@ const spin = keyframes`
 
 const Spinner = styled.div`
   position: relative;
-  border: 0.2em solid ${reverseColor('grayscale', 1)};
-  border-bottom-color: ${color(1)};
+  border: 0.2em solid ${palette('grayscale', 1, true)};
+  border-bottom-color: ${palette(1)};
   border-radius: 50%;
   margin: 0 auto;
   width: 1em;
@@ -19,12 +19,12 @@ const Spinner = styled.div`
 `
 
 Spinner.propTypes = {
-  color: PropTypes.string,
+  palette: PropTypes.string,
   reverse: PropTypes.bool
 }
 
 Spinner.defaultProps = {
-  color: 'primary'
+  palette: 'primary'
 }
 
 export default Spinner

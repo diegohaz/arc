@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import styled, { css } from 'styled-components'
-import { font, ifProps } from 'arc-theme'
+import { font, ifProp } from 'styled-theme'
 
 const opposites = {
   top: 'bottom',
@@ -19,7 +19,7 @@ export const perpendicularOpposite = (props) => opposites[perpendicular(props)]
 export const perpendicularAxis = ({ position }) =>
   position === 'left' || position === 'right' ? 'Y' : 'X'
 
-const backgroundColor = ifProps('reverse', 'rgba(255, 255, 255, 0.85)', 'rgba(0, 0, 0, 0.85)')
+const backgroundColor = ifProp('reverse', 'rgba(255, 255, 255, 0.85)', 'rgba(0, 0, 0, 0.85)')
 
 const styles = css`
   position: relative;
@@ -54,7 +54,7 @@ const styles = css`
     font-size: 0.8125rem;
     line-height: 1.5;
     text-align: center;
-    color: ${ifProps('reverse', 'black', 'white')};
+    color: ${ifProp('reverse', 'black', 'white')};
     background-color: ${backgroundColor};
     border-radius: 0.15384em;
     padding: 0.75em 1em;

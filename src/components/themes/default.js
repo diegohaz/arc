@@ -1,8 +1,8 @@
-import { reverse } from 'arc-theme'
+import { reversePalette } from 'styled-theme/composer'
 
 const theme = {}
 
-theme.colors = {
+theme.palette = {
   primary: ['#1976d2', '#2196f3', '#71bcf7', '#c2e2fb'],
   secondary: ['#c2185b', '#e91e63', '#f06292', '#f8bbd0'],
   danger: ['#d32f2f', '#f44336', '#f8877f', '#ffcdd2'],
@@ -12,7 +12,7 @@ theme.colors = {
   white: ['#fff', '#fff', '#eee']
 }
 
-theme.reverseColors = reverse(theme.colors)
+theme.reversePalette = reversePalette(theme.palette)
 
 theme.fonts = {
   primary: 'Helvetica Neue, Helvetica, Roboto, sans-serif',

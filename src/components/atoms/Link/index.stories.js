@@ -9,6 +9,6 @@ storiesOf('Link', module)
   .add('reverse', () => (
     <Link href="https://github.com/diegohaz/arc" reverse>ARc repository</Link>
   ))
-  .add('another color', () => (
-    <Link href="https://github.com/diegohaz/arc" color="secondary">ARc repository</Link>
+  .add('another palette', () => (
+    <Link href="https://github.com/diegohaz/arc" palette="secondary">ARc repository</Link>
   ))

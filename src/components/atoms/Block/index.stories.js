@@ -9,21 +9,21 @@ storiesOf('Block', module)
   .add('reverse', () => (
     <Block reverse>Officia aliqua reprehenderit fugiat occaecat quis non eiusmod.</Block>
   ))
-  .add('color', () => (
-    <Block color="primary">Officia aliqua reprehenderit fugiat occaecat quis non eiusmod.</Block>
+  .add('palette', () => (
+    <Block palette="primary">Officia aliqua reprehenderit fugiat occaecat quis non eiusmod.</Block>
   ))
-  .add('color reverse', () => (
-    <Block color="primary" reverse>
+  .add('palette reverse', () => (
+    <Block palette="primary" reverse>
       Officia aliqua reprehenderit fugiat occaecat quis non eiusmod.
     </Block>
   ))
-  .add('color transparent', () => (
-    <Block color="primary" transparent>
+  .add('palette transparent', () => (
+    <Block palette="primary" transparent>
       Officia aliqua reprehenderit fugiat occaecat quis non eiusmod.
     </Block>
   ))
-  .add('color transparent reverse', () => (
-    <Block color="primary" transparent reverse>
+  .add('palette transparent reverse', () => (
+    <Block palette="primary" transparent reverse>
       Officia aliqua reprehenderit fugiat occaecat quis non eiusmod.
     </Block>
   ))

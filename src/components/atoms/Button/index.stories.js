@@ -9,8 +9,8 @@ storiesOf('Button', module)
   .add('reverse', () => (
     <Button reverse>Hello</Button>
   ))
-  .add('another color', () => (
-    <Button color="secondary">Hello</Button>
+  .add('another palette', () => (
+    <Button palette="secondary">Hello</Button>
   ))
   .add('disabled', () => (
     <Button disabled>Hello</Button>

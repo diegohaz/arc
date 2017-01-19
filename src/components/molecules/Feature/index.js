@@ -38,7 +38,7 @@ const Feature = ({ icon, title, link, children, ...props, soon }) => {
         </Heading>
         <Paragraph>{children}</Paragraph>
       </Text>
-      {soon && <StyledBadge color="grayscale">soon</StyledBadge>}
+      {soon && <StyledBadge palette="grayscale">soon</StyledBadge>}
     </Wrapper>
   )
 }

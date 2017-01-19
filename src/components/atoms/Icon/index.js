@@ -1,13 +1,13 @@
 import React, { PropTypes } from 'react'
 import styled from 'styled-components'
-import { color, ifProps } from 'arc-theme'
+import { palette, ifProp } from 'styled-theme'
 
 export const fontSize = ({ height }) => height ? `${height / 16}rem` : '1.25em'
 
 const Wrapper = styled.span`
   display: inline-block;
   font-size: ${fontSize};
-  color: ${ifProps('color', color({ grayscale: 0 }, 1), 'currentcolor')};
+  color: ${ifProp('palette', palette({ grayscale: 0 }, 1), 'currentcolor')};
   width: 1em;
   height: 1em;
   margin: 0.1em;
@@ -29,7 +29,7 @@ const Icon = ({ icon, ...props }) => {
 Icon.propTypes = {
   icon: PropTypes.string.isRequired,
   height: PropTypes.number,
-  color: PropTypes.string,
+  palette: PropTypes.string,
   reverse: PropTypes.bool
 }
 
