@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import styled, { css } from 'styled-components'
-import { font, color, reverseColor, ifProps } from 'arc-theme'
+import { font, palette, ifProp } from 'styled-theme'
 
 export const fontSize = ({ height }) => `${height / 35.5555555556}rem`
 
@@ -11,11 +11,11 @@ const styles = css`
   margin: 0;
   box-sizing: border-box;
   font-size: ${fontSize};
-  padding: ${ifProps({ type: 'textarea' }, '0.4444444444em', '0 0.4444444444em')};
-  height: ${ifProps({ type: 'textarea' }, 'auto', '2.2222222222em')};
-  color: ${color('grayscale', 0)};
-  background-color: ${reverseColor('grayscale', 0)};
-  border: 1px solid ${ifProps('invalid', color('danger', 2), color('grayscale', 3))};
+  padding: ${ifProp({ type: 'textarea' }, '0.4444444444em', '0 0.4444444444em')};
+  height: ${ifProp({ type: 'textarea' }, 'auto', '2.2222222222em')};
+  color: ${palette('grayscale', 0)};
+  background-color: ${palette('grayscale', 0, true)};
+  border: 1px solid ${ifProp('invalid', palette('danger', 2), palette('grayscale', 3))};
   border-radius: 2px;
 
   &[type=checkbox], &[type=radio] {

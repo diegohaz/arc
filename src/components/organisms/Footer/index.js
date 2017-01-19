@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
-import { reverseColor } from 'arc-theme'
+import { palette } from 'styled-theme'
 
 import { Paragraph, Link, Icon } from 'components'
 
 const Wrapper = styled.div`
-  background-color: ${reverseColor('grayscale', 1)};
+  background-color: ${palette('grayscale', 1, true)};
   padding: 2rem;
 `
 

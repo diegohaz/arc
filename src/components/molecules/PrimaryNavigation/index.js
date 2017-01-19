@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import styled from 'styled-components'
-import { color } from 'arc-theme'
+import { palette } from 'styled-theme'
 
 import { Link } from 'components'
 
@@ -12,10 +12,10 @@ const Nav = styled.nav`
   }
   a {
     font-weight: 300;
-    color: ${color('grayscale', 2)};
+    color: ${palette('grayscale', 2)};
     font-size: 1.25rem;
     &.active {
-      color: ${color('grayscale', 0)};
+      color: ${palette('grayscale', 0)};
     }
   }
 `

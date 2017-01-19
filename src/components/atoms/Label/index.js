@@ -1,10 +1,10 @@
 import { PropTypes } from 'react'
 import styled from 'styled-components'
-import { font, color } from 'arc-theme'
+import { font, palette } from 'styled-theme'
 
 const Label = styled.label`
   font-family: ${font('primary')};
-  color: ${color('grayscale', 1)};
+  color: ${palette('grayscale', 1)};
   font-size: 1rem;
   line-height: 2em;
 `

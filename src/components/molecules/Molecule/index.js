@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react'
 import styled from 'styled-components'
-import { font, color } from 'arc-theme'
+import { font, palette } from 'styled-theme'
 
 const Wrapper = styled.div`
   font-family: ${font('primary')};
-  color: ${color('grayscale', 0)};
+  color: ${palette('grayscale', 0)};
 `
 
 const Molecule = ({ children, ...props }) => {

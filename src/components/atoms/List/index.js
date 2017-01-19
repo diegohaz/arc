@@ -1,13 +1,13 @@
 import React, { PropTypes } from 'react'
 import styled, { css } from 'styled-components'
-import { font, color } from 'arc-theme'
+import { font, palette } from 'styled-theme'
 
 const styles = css`
   font-family: ${font('primary')};
   margin: 1rem 0;
   padding-left: 1.6rem;
   line-height: 1.7rem;
-  color: ${color({ grayscale: 0 }, 1)};
+  color: ${palette({ grayscale: 0 }, 1)};
 `
 
 const Ol = styled.ol`${styles}`
@@ -20,12 +20,12 @@ const List = ({ ordered, children, ...props }) => {
 List.propTypes = {
   ordered: PropTypes.bool,
   children: PropTypes.any,
-  color: PropTypes.string,
+  palette: PropTypes.string,
   reverse: PropTypes.bool
 }
 
 List.defaultProps = {
-  color: 'grayscale'
+  palette: 'grayscale'
 }
 
 export default List

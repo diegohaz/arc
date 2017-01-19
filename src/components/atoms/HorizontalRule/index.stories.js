@@ -6,9 +6,9 @@ storiesOf('HorizontalRule', module)
   .add('default', () => (
     <HorizontalRule />
   ))
-  .add('color', () => (
-    <HorizontalRule color="primary" />
+  .add('palette', () => (
+    <HorizontalRule palette="primary" />
   ))
-  .add('color reverse', () => (
-    <HorizontalRule color="primary" reverse />
+  .add('palette reverse', () => (
+    <HorizontalRule palette="primary" reverse />
   ))
