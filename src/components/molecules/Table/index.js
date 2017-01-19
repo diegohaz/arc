@@ -25,9 +25,12 @@ const Table = ({ caption, head, foot, children, ...props, reverse }) => {
 
 Table.propTypes = {
   caption: PropTypes.string,
-  head: PropTypes.any,
-  foot: PropTypes.any,
-  children: PropTypes.any,
+  head: PropTypes.node,
+  foot: PropTypes.node,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]),
   reverse: PropTypes.bool
 }
 

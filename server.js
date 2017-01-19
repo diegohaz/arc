@@ -1,9 +1,10 @@
-var webpack = require('webpack')
-var WebpackDevServer = require('webpack-dev-server')
-var config = require('./webpack.config')
+/* eslint-disable */
+const webpack = require('webpack')
+const WebpackDevServer = require('webpack-dev-server')
+const config = require('./webpack.config')
 
-var ip = process.env.IP || '0.0.0.0'
-var port = process.env.PORT || 3000
+const ip = process.env.IP || '0.0.0.0'
+const port = process.env.PORT || 3000
 
 new WebpackDevServer(webpack(config), {
   publicPath: config.output.publicPath,
@@ -12,10 +13,10 @@ new WebpackDevServer(webpack(config), {
   stats: false,
   historyApiFallback: true,
   contentBase: 'public'
-}).listen(port, ip, function (err, result) {
+}).listen(port, ip, (err) => {
   if (err) {
     return console.log(err)
   }
 
-  console.log('Listening at http://' + ip + ':' + port)
+  console.log(`Listening at http://${ip}:${port}`)
 })
