@@ -1,33 +1,31 @@
 import axios from 'axios'
-import { stub, spy } from 'sinon'
 
-const request = spy()
-
-stub(axios, 'create', () => ({ request }))
+const request = jest.fn()
+axios.create = jest.fn(() => ({ request }))
 
 const api = require('.').default
 
 beforeEach(() => {
-  request.reset()
+  request.mockClear()
 })
 
 test('get', () => {
-  expect(request.called).toBe(false)
+  expect(request).not.toBeCalled()
   api.get('/test', { foo: 'bar' })
-  expect(request.calledWith({
+  expect(request).toBeCalledWith({
     method: 'get',
     url: '/test',
     foo: 'bar'
-  })).toBe(true)
+  })
 })
 
 test('post', () => {
-  expect(request.called).toBe(false)
+  expect(request).not.toBeCalled()
   api.post('/test', { title: 'test' }, { foo: 'bar' })
-  expect(request.calledWith({
+  expect(request).toBeCalledWith({
     method: 'post',
     url: '/test',
     foo: 'bar',
     data: { title: 'test' }
-  })).toBe(true)
+  })
 })
