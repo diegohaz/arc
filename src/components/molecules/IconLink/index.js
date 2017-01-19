@@ -23,7 +23,7 @@ const textStyle = ({ responsive }) => css`
 const StyledIcon = styled(Icon)`${iconStyles}`
 const Text = styled.span`${textStyle}`
 
-const IconLink = ({ height, icon, right, responsive, children, ...props, color, reverse }) => {
+const IconLink = ({ height, icon, right, responsive, children, ...props, palette, reverse }) => {
   const iconElement = (
     <StyledIcon
       height={height}
@@ -31,7 +31,7 @@ const IconLink = ({ height, icon, right, responsive, children, ...props, color, 
       hasText={!!children}
       right={right}
       responsive={responsive}
-      color={color}
+      palette={palette}
       reverse={reverse}
     />
   )
@@ -47,7 +47,7 @@ const IconLink = ({ height, icon, right, responsive, children, ...props, color, 
 IconLink.propTypes = {
   icon: PropTypes.string.isRequired,
   height: PropTypes.number,
-  color: PropTypes.string,
+  palette: PropTypes.string,
   reverse: PropTypes.bool,
   responsive: PropTypes.bool,
   right: PropTypes.bool,

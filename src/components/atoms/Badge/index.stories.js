@@ -9,6 +9,6 @@ storiesOf('Badge', module)
   .add('reverse', () => (
     <Badge reverse>Hello</Badge>
   ))
-  .add('another color', () => (
-    <Badge color="secondary">Hello</Badge>
+  .add('another palette', () => (
+    <Badge palette="secondary">Hello</Badge>
   ))
