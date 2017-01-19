@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { color } from 'arc-theme'
+import { palette } from 'styled-theme'
 
 import { Block, Paragraph, IconLink, IconButton, LogoImage, Tooltip } from 'components'
 
@@ -19,7 +19,7 @@ const Wrapper = styled(Block)`
 `
 
 const Text = styled(Paragraph)`
-  color: ${color('grayscale', 3)}
+  color: ${palette('grayscale', 3)}
   margin: 3rem auto;
   max-width: 800px;
   font-weight: 300;

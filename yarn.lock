@@ -226,12 +226,6 @@ aproba@^1.0.3:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/aproba/-/aproba-1.0.4.tgz#2713680775e7614c8ba186c065d4e2e52d1072c0"
 
-arc-theme@^0.2.2:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/arc-theme/-/arc-theme-0.2.2.tgz#d8da0a3c8f0e5f66d6a8a7acef32c8f69d6f61fe"
-  dependencies:
-    lodash "^4.17.4"
-
 are-we-there-yet@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/are-we-there-yet/-/are-we-there-yet-1.1.2.tgz#80e470e95a084794fe1899262c5667c6e88de1b3"
@@ -1757,6 +1751,10 @@ cookie-signature@1.0.6:
 cookie@0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.3.1.tgz#e7e0a1f9ef43b4c8ba925c5c5a96e806d16873bb"
+
+coolors-to-hex@^1.0.0:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/coolors-to-hex/-/coolors-to-hex-1.0.2.tgz#35f8bce0c935e9883f2cb54a91403619103bd2c9"
 
 copyfiles@^1.0.0:
   version "1.0.0"
@@ -6058,6 +6056,13 @@ styled-components@^1.2.1:
     is-function "^1.0.1"
     is-plain-object "^2.0.1"
     supports-color "^3.1.2"
+
+styled-theme@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/styled-theme/-/styled-theme-0.2.1.tgz#0da58d88509aa8084dc45478d083346f62ab810e"
+  dependencies:
+    coolors-to-hex "^1.0.0"
+    lodash "^4.17.4"
 
 supports-color@^0.2.0:
   version "0.2.0"

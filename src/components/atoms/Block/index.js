@@ -1,20 +1,20 @@
 import { PropTypes } from 'react'
 import styled from 'styled-components'
-import { font, color, reverseColor, ifProps } from 'arc-theme'
+import { font, palette, ifProp } from 'styled-theme'
 
 const Block = styled.div`
   font-family: ${font('primary')};
-  background-color: ${ifProps('transparent', 'transparent', reverseColor(0))};
-  color: ${color({ grayscale: 0 }, 1)};
+  background-color: ${ifProp('transparent', 'transparent', palette(0, true))};
+  color: ${palette({ grayscale: 0 }, 1)};
 `
 
 Block.propTypes = {
-  color: PropTypes.string,
+  palette: PropTypes.string,
   reverse: PropTypes.bool
 }
 
 Block.defaultProps = {
-  color: 'grayscale'
+  palette: 'grayscale'
 }
 
 export default Block
