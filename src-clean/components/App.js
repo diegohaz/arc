@@ -1,5 +1,7 @@
-import React, { PropTypes, Component } from 'react'
-import { injectGlobal } from 'styled-components'
+import React, { PropTypes } from 'react'
+import { injectGlobal, ThemeProvider } from 'styled-components'
+
+import theme from './themes/default'
 
 injectGlobal`
   body {
@@ -7,17 +9,16 @@ injectGlobal`
   }
 `
 
-class App extends Component {
-  static propTypes = {
-    children: PropTypes.any
-  }
+const App = ({ children }) => {
+  return (
+    <ThemeProvider theme={theme}>
+      {children}
+    </ThemeProvider>
+  )
+}
 
-  render () {
-    const { children } = this.props
-    return (
-      <div>{children}</div>
-    )
-  }
+App.propTypes = {
+  children: PropTypes.any
 }
 
 export default App
