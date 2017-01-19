@@ -6,11 +6,11 @@ storiesOf('Icon', module)
   .add('default', () => (
     <Icon icon="close" />
   ))
-  .add('color', () => (
-    <Icon icon="close" color="primary" />
+  .add('palette', () => (
+    <Icon icon="close" palette="primary" />
   ))
-  .add('color reverse', () => (
-    <Icon icon="close" color="primary" reverse />
+  .add('palette reverse', () => (
+    <Icon icon="close" palette="primary" reverse />
   ))
   .add('height', () => (
     <Icon icon="close" height={100} />

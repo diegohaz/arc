@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import styled, { css, injectGlobal } from 'styled-components'
 import ReactModal from 'react-modal'
-import { font, color, reverseColor } from 'arc-theme'
+import { font, palette } from 'styled-theme'
 
 import { Heading, IconButton } from 'components'
 
@@ -35,9 +35,9 @@ const ModalBox = styled(ReactModal)`
   flex-direction: column;
   font-family: ${font('primary')};
   font-size: 1rem;
-  background-color: ${reverseColor('grayscale', 0)};
+  background-color: ${palette('grayscale', 0, true)};
   border-radius: 0.125em;
-  color: ${color('grayscale', 0)};
+  color: ${palette('grayscale', 0)};
   top: calc(50% - 1rem);
   left: calc(50% - 1rem);
   right: auto;
@@ -100,7 +100,7 @@ const Modal = ({ children, title, closeable, onClose, ...props, reverse }) => {
       {hasHeader &&
         <Header>
           <StyledHeading level={2} reverse={reverse}>{title}</StyledHeading>
-          {closeable && <IconButton icon="close" onClick={onClose} color="white" reverse />}
+          {closeable && <IconButton icon="close" onClick={onClose} palette="white" reverse />}
         </Header>
       }
       <Content>

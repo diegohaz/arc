@@ -17,15 +17,15 @@ storiesOf('List', module)
       <li>Item 3</li>
     </List>
   ))
-  .add('color', () => (
-    <List color="primary">
+  .add('palette', () => (
+    <List palette="primary">
       <li>Item 1</li>
       <li>Item 2</li>
       <li>Item 3</li>
     </List>
   ))
-  .add('color reverse', () => (
-    <List color="primary" reverse>
+  .add('palette reverse', () => (
+    <List palette="primary" reverse>
       <li>Item 1</li>
       <li>Item 2</li>
       <li>Item 3</li>

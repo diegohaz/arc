@@ -9,6 +9,6 @@ storiesOf('Spinner', module)
   .add('reverse', () => (
     <Spinner reverse />
   ))
-  .add('another color', () => (
-    <Spinner color="secondary" />
+  .add('another palette', () => (
+    <Spinner palette="secondary" />
   ))
