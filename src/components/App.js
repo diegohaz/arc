@@ -34,10 +34,7 @@ const App = ({ children }) => {
 }
 
 App.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
-  ])
+  children: PropTypes.any
 }
 
 export default App

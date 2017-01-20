@@ -25,10 +25,7 @@ const GenericTemplate = ({ children, ...props }) => {
 }
 
 GenericTemplate.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
-  ]).isRequired
+  children: PropTypes.any.isRequired
 }
 
 export default GenericTemplate
