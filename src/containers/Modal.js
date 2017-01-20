@@ -1,19 +1,15 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { fromModal } from 'store/selectors'
 import { modalHide } from 'store/actions'
 
 import { Modal } from 'components'
 
-class ModalContainer extends Component {
-  static propTypes = {
-    name: PropTypes.string.isRequired,
-    isOpen: PropTypes.bool
-  }
+const ModalContainer = props => <Modal {...props} />
 
-  render () {
-    return <Modal {...this.props} />
-  }
+ModalContainer.propTypes = {
+  name: PropTypes.string.isRequired,
+  isOpen: PropTypes.bool
 }
 
 const mapStateToProps = (state, { name, isOpen }) => ({

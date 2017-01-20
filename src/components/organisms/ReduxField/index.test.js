@@ -2,7 +2,8 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import ReduxField from '.'
 
-let meta, input
+let meta
+let input
 const wrap = (props = {}) => shallow(<ReduxField {...{ meta, input, ...props }} />)
 
 beforeEach(() => {

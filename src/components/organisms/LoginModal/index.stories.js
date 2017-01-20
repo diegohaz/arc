@@ -8,5 +8,6 @@ storiesOf('LoginModal', module)
       onFacebookLogin={action('facebook')}
       onGoogleLogin={action('google')}
       onClose={action('closed')}
-      isOpen />
+      isOpen
+    />
   ))

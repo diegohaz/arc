@@ -1,15 +1,11 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { fromSocial } from 'store/selectors'
 import { modalShow, socialLogout } from 'store/actions'
 
 import { UserButton } from 'components'
 
-class UserButtonContainer extends Component {
-  render () {
-    return <UserButton {...this.props} />
-  }
-}
+const UserButtonContainer = props => <UserButton {...props} />
 
 const mapStateToProps = (state) => ({
   user: fromSocial.getUser(state)
