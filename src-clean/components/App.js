@@ -24,14 +24,18 @@ const App = ({ children }) => {
         ]}
         link={[
           { rel: 'icon', href: 'https://diegohaz.github.io/arc/icon.png' }
-        ]} />
+        ]}
+      />
       {children}
     </div>
   )
 }
 
 App.propTypes = {
-  children: PropTypes.any
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ])
 }
 
 export default App

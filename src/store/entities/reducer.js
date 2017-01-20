@@ -7,6 +7,7 @@ export default (state = initialState, action) => {
       if (Array.isArray(srcValue)) {
         return srcValue
       }
+      return undefined
     })
   }
   return state

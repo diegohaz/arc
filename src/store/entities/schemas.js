@@ -1,5 +1,5 @@
-import { POST_LIST_SUCCESS, POST_CREATE_SUCCESS } from '../post/actions'
 import { schema } from 'normalizr'
+import { POST_LIST_SUCCESS, POST_CREATE_SUCCESS } from '../post/actions'
 
 export const post = new schema.Entity('post')
 

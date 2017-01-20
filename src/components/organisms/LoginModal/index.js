@@ -20,13 +20,13 @@ class LoginModal extends Component {
     onClose: PropTypes.func.isRequired
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
     if (!this.props.user && nextProps.user) {
       this.props.onClose()
     }
   }
 
-  render () {
+  render() {
     const { onFacebookLogin, onGoogleLogin, ...props } = this.props
     return (
       <Modal title="Login" name="login" closeable {...props}>

@@ -44,7 +44,8 @@ describe('notFound', () => {
 })
 
 describe('authorOrAdmin', () => {
-  let user, entity
+  let user
+  let entity
 
   beforeEach(() => {
     user = {
@@ -54,7 +55,7 @@ describe('authorOrAdmin', () => {
     entity = {
       author: {
         id: 1,
-        equals (id) {
+        equals(id) {
           return id === this.id
         }
       }

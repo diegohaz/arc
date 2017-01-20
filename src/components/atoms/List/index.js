@@ -19,9 +19,12 @@ const List = ({ ordered, children, ...props }) => {
 
 List.propTypes = {
   ordered: PropTypes.bool,
-  children: PropTypes.any,
   palette: PropTypes.string,
-  reverse: PropTypes.bool
+  reverse: PropTypes.bool,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ])
 }
 
 List.defaultProps = {

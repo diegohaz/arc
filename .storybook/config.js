@@ -9,11 +9,11 @@ import theme from 'components/themes/default'
 const store = configureStore({})
 const req = require.context('components', true, /.stories.js$/)
 
-function loadStories () {
-  req.keys().forEach((filename) => req(filename))
+function loadStories() {
+  req.keys().forEach(filename => req(filename))
 }
 
-addDecorator((story) => (
+addDecorator(story => (
   <Provider store={store}>
     <ThemeProvider theme={theme}>{story()}</ThemeProvider>
   </Provider>

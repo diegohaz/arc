@@ -12,7 +12,7 @@ const postSchema = new Schema({
 })
 
 postSchema.methods = {
-  view (full) {
+  view(full) {
     const view = {
       // simple view
       id: this.id,
