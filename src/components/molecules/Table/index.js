@@ -27,10 +27,7 @@ Table.propTypes = {
   caption: PropTypes.string,
   head: PropTypes.node,
   foot: PropTypes.node,
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
-  ]),
+  children: PropTypes.any,
   reverse: PropTypes.bool
 }
 

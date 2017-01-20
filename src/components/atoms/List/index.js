@@ -21,10 +21,7 @@ List.propTypes = {
   ordered: PropTypes.bool,
   palette: PropTypes.string,
   reverse: PropTypes.bool,
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
-  ])
+  children: PropTypes.any
 }
 
 List.defaultProps = {
