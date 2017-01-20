@@ -48,10 +48,7 @@ Feature.propTypes = {
   icon: PropTypes.string,
   link: PropTypes.string,
   soon: PropTypes.bool,
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
-  ])
+  children: PropTypes.any
 }
 
 export default Feature
