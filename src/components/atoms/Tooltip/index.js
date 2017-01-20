@@ -15,7 +15,7 @@ export const opposite = ({ position }) => opposites[position]
 export const perpendicular = ({ position }) =>
   position === 'left' || position === 'right' ? 'top' : 'left'
 
-export const perpendicularOpposite = (props) => opposites[perpendicular(props)]
+export const perpendicularOpposite = props => opposites[perpendicular(props)]
 
 export const perpendicularAxis = ({ position }) =>
   position === 'left' || position === 'right' ? 'Y' : 'X'
@@ -62,16 +62,16 @@ const styles = css`
     ${opposite}: calc(100% + 2rem);
     ${({ align }) => {
       switch (align) {
-      case 'start': return css`
-        ${perpendicular}: 0;
-      `
-      case 'center': return css`
-        ${perpendicular}: 50%;
-        transform: translate${perpendicularAxis}(-50%);
-      `
-      case 'end': return css`
-        ${perpendicularOpposite}: 0;
-      `
+        case 'start': return css`
+          ${perpendicular}: 0;
+        `
+        case 'center': return css`
+          ${perpendicular}: 50%;
+          transform: translate${perpendicularAxis}(-50%);
+        `
+        default: return css`
+          ${perpendicularOpposite}: 0;
+        `
       }
     }}
   }
@@ -90,7 +90,7 @@ const styles = css`
 `
 
 const Tooltip = styled(({ position, align, reverse, children, theme, ...props }) =>
-  React.cloneElement(children, { tabIndex: 0, ...props })
+  React.cloneElement(children, props)
 )`${styles}`
 
 Tooltip.propTypes = {
@@ -103,7 +103,8 @@ Tooltip.propTypes = {
 
 Tooltip.defaultProps = {
   position: 'top',
-  align: 'center'
+  align: 'center',
+  tabIndex: 0
 }
 
 export default Tooltip

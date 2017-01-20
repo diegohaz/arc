@@ -15,7 +15,10 @@ const TableCell = ({ heading, children, ...props }) => {
 
 TableCell.propTypes = {
   heading: PropTypes.bool,
-  children: PropTypes.any
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ])
 }
 
 export default TableCell

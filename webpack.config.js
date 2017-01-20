@@ -1,12 +1,12 @@
-var path = require('path')
-var webpack = require('webpack')
-var HtmlWebpackPlugin = require('html-webpack-plugin')
+const path = require('path')
+const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-var ip = process.env.IP || '0.0.0.0'
-var port = process.env.PORT || 3000
-var DEBUG = process.env.NODE_ENV !== 'production'
+const ip = process.env.IP || '0.0.0.0'
+const port = process.env.PORT || 3000
+const DEBUG = process.env.NODE_ENV !== 'production'
 
-var config = {
+const config = {
   devtool: DEBUG ? 'eval' : false,
   entry: [
     path.join(__dirname, 'src')
@@ -21,7 +21,7 @@ var config = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': "'" + process.env.NODE_ENV + "'"
+      'process.env.NODE_ENV': `'${process.env.NODE_ENV}'`
     }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
@@ -43,7 +43,7 @@ var config = {
 
 if (DEBUG) {
   config.entry.unshift(
-    'webpack-dev-server/client?http://' + ip + ':' + port + '/',
+    `webpack-dev-server/client?http://${ip}:${port}/`,
     'webpack/hot/only-dev-server',
     'react-hot-loader/patch'
   )
