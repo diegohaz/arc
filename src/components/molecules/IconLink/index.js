@@ -1,27 +1,30 @@
 import React, { PropTypes } from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 import { Icon, Link } from 'components'
 
-const StyledLink = styled(Link)`
-`
+const fontSize = ({ height }) => height ? `${height / 3 / 16}rem` : '0.75em'
 
-const iconStyles = ({ height, hasText, right, responsive }) => css`
-  margin: ${hasText ? (right ? '0 0 0 0.25em' : '0 0.25em 0 0') : 0};
-  font-size: ${height ? `${height / 3 / 16}rem` : '0.75em'};
+const margin = ({ hasText, right }) => {
+  if (hasText) {
+    return right ? '0 0 0 0.25em' : '0 0.25em 0 0'
+  }
+  return 0
+}
+
+const StyledIcon = styled(Icon)`
+  font-size: ${fontSize};
+  margin: ${margin};
   @media screen and (max-width: 420px) {
-    margin: ${responsive && 0};
+    margin: ${({ responsive }) => responsive && 0};
   }
 `
 
-const textStyle = ({ responsive }) => css`
+const Text = styled.span`
   @media screen and (max-width: 420px) {
-    display: ${responsive && 'none'};
+    display: ${({ responsive }) => responsive && 'none'};
   }
 `
-
-const StyledIcon = styled(Icon)`${iconStyles}`
-const Text = styled.span`${textStyle}`
 
 const IconLink = ({ height, icon, right, responsive, children, ...props, palette, reverse }) => {
   const iconElement = (
@@ -36,11 +39,11 @@ const IconLink = ({ height, icon, right, responsive, children, ...props, palette
     />
   )
   return (
-    <StyledLink {...props}>
+    <Link {...props}>
       {right || iconElement}
       <Text responsive={responsive}>{children}</Text>
       {right && iconElement}
-    </StyledLink>
+    </Link>
   )
 }
 
@@ -51,7 +54,7 @@ IconLink.propTypes = {
   reverse: PropTypes.bool,
   responsive: PropTypes.bool,
   right: PropTypes.bool,
-  children: PropTypes.any
+  children: PropTypes.node
 }
 
 export default IconLink

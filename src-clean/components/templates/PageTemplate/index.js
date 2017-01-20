@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
@@ -9,14 +9,10 @@ const Wrapper = styled.div`
   height: 100%;
 `
 
-const PageTemplate = ({ children, ...props }) => {
+const PageTemplate = (props) => {
   return (
-    <Wrapper {...props}>{children}</Wrapper>
+    <Wrapper {...props} />
   )
-}
-
-PageTemplate.propTypes = {
-  children: PropTypes.any.isRequired
 }
 
 export default PageTemplate

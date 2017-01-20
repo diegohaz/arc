@@ -25,7 +25,8 @@ storiesOf('Table', module)
           <th>Heading 2</th>
           <th>Heading 3</th>
         </tr>
-      }>
+      }
+    >
       <tr>
         <td>Cell 1</td>
         <td>Cell 2</td>
@@ -46,7 +47,8 @@ storiesOf('Table', module)
           <td>Footer 2</td>
           <td>Footer 3</td>
         </tr>
-      }>
+      }
+    >
       <tr>
         <td>Cell 1</td>
         <td>Cell 2</td>
