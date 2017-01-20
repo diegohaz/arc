@@ -12,12 +12,12 @@ class LoginModalContainer extends Component {
     prepareFacebook: PropTypes.func.isRequired
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.props.prepareGoogle()
     this.props.prepareFacebook()
   }
 
-  render () {
+  render() {
     return <LoginModal {...this.props} />
   }
 }

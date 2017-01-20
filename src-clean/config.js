@@ -8,7 +8,7 @@ const config = {
   all: {
     env: process.env.NODE_ENV || 'development',
     baseUrl: `http://${ip}:${port}`,
-    apiUrl: `https://jsonplaceholder.typicode.com`,
+    apiUrl: 'https://jsonplaceholder.typicode.com',
     browser,
     ip,
     port

@@ -96,7 +96,8 @@ const Modal = ({ children, title, closeable, onClose, ...props, reverse }) => {
       contentLabel={title || 'Modal'}
       onRequestClose={onClose}
       hasHeader={hasHeader}
-      {...props}>
+      {...props}
+    >
       {hasHeader &&
         <Header>
           <StyledHeading level={2} reverse={reverse}>{title}</StyledHeading>

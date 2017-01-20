@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { reduxForm } from 'redux-form'
 import { fromForm } from 'store/selectors'
@@ -7,11 +7,7 @@ import { createValidator, required } from 'services/validation'
 
 import { PostForm } from 'components'
 
-class PostFormContainer extends Component {
-  render () {
-    return <PostForm {...this.props} />
-  }
-}
+const PostFormContainer = props => <PostForm {...props} />
 
 const onSubmit = (data, dispatch) => new Promise((resolve, reject) => {
   dispatch(postCreate.request(data, resolve, reject))

@@ -3,11 +3,11 @@ import React, { Component } from 'react'
 import { NotFoundPage } from 'components'
 
 class NotFoundPageContainer extends Component {
-  static get ({ res }) {
+  static get({ res }) {
     res.status(404)
   }
 
-  render () {
+  render() {
     return <NotFoundPage {...this.props} />
   }
 }

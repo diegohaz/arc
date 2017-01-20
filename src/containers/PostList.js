@@ -7,7 +7,7 @@ import { PostList } from 'components'
 
 class PostListContainer extends Component {
   static propTypes = {
-    list: PropTypes.array.isRequired,
+    list: PropTypes.arrayOf(PropTypes.object).isRequired,
     limit: PropTypes.number,
     loading: PropTypes.bool,
     request: PropTypes.func.isRequired
@@ -17,11 +17,11 @@ class PostListContainer extends Component {
     limit: 20
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.props.request()
   }
 
-  render () {
+  render() {
     const { list, loading } = this.props
     return <PostList {...{ list, loading }} />
   }

@@ -8,7 +8,7 @@ const Wrapper = styled.div`
   display: flex;
   padding: 1rem;
   box-sizing: border-box;
-  opacity: ${(props) => props.soon ? 0.4 : 1};
+  opacity: ${props => props.soon ? 0.4 : 1};
 `
 
 const StyledIcon = styled(Icon)`
@@ -34,7 +34,7 @@ const Feature = ({ icon, title, link, children, ...props, soon }) => {
       {icon && <StyledIcon icon={icon} height={64} />}
       <Text>
         <Heading level={2}>
-          {link && <Link href={link}>{title}</Link> || title}
+          {link ? <Link href={link}>{title}</Link> : title}
         </Heading>
         <Paragraph>{children}</Paragraph>
       </Text>
@@ -48,7 +48,10 @@ Feature.propTypes = {
   icon: PropTypes.string,
   link: PropTypes.string,
   soon: PropTypes.bool,
-  children: PropTypes.any
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ])
 }
 
 export default Feature

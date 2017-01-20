@@ -11,7 +11,7 @@ const getIn = (state, prefix) => {
     return !!find(state, (value) => !!value)
   } else if (Array.isArray(prefix)) {
     return !!find(pick(state, prefix), (value) => !!value)
-  } else if (state.hasOwnProperty(prefix)) {
+  } else if (Object.prototype.hasOwnProperty.call(state, prefix)) {
     return !!state[prefix]
   }
   return false

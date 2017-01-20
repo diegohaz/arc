@@ -12,7 +12,7 @@ export const matchesRequest = ({ type, resolve, reject }) => {
   return requestPattern.test(type)
 }
 
-export function* resolveOrReject ({ type, resolve, reject }) {
+export function* resolveOrReject({ type, resolve, reject }) {
   const prefix = type.replace(requestPattern, '')
   const { success, failure } = yield race({
     success: take(prefix + successSuffix),
@@ -26,7 +26,7 @@ export function* resolveOrReject ({ type, resolve, reject }) {
   }
 }
 
-export function* watchRequestActions () {
+export function* watchRequestActions() {
   yield takeEvery(matchesRequest, resolveOrReject)
 }
 

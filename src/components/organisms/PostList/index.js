@@ -13,13 +13,13 @@ const PostList = ({ list, loading, ...props }) => {
   return (
     <Wrapper {...props}>
       {loading && <div>Loading</div>}
-      {list.map((post, i) => <Post key={i} loading={loading} {...post} />)}
+      {list.map(post => <Post key={post.id} loading={loading} {...post} />)}
     </Wrapper>
   )
 }
 
 PostList.propTypes = {
-  list: PropTypes.array.isRequired,
+  list: PropTypes.arrayOf(PropTypes.object).isRequired,
   loading: PropTypes.bool
 }
 
