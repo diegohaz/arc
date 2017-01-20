@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import styled, { css } from 'styled-components'
-import { font, ifProp } from 'styled-theme'
+import { font } from 'styled-theme'
+import { ifProp } from 'styled-tools'
 
 const opposites = {
   top: 'bottom',
