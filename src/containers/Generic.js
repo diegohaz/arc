@@ -1,16 +1,11 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { fromStatus } from 'store/selectors'
 
-class GenericContainer extends Component {
-  static propTypes = {
-    loading: PropTypes.bool
-  }
+const GenericContainer = ({ loading }) => <div className={loading ? 'loading' : ''} />
 
-  render () {
-    const { loading } = this.props
-    return <div className={loading ? 'loading' : ''} />
-  }
+GenericContainer.propTypes = {
+  loading: PropTypes.bool
 }
 
 const mapStateToProps = (state) => ({

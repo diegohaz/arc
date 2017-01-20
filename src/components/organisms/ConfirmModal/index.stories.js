@@ -8,7 +8,8 @@ storiesOf('ConfirmModal', module)
       name="confirm"
       onConfirm={action('confirmed')}
       onClose={action('closed')}
-      isOpen />
+      isOpen
+    />
   ))
   .add('different button labels', () => (
     <ConfirmModal
@@ -17,7 +18,8 @@ storiesOf('ConfirmModal', module)
       cancelLabel="Bar"
       onConfirm={action('confirmed')}
       onClose={action('closed')}
-      isOpen />
+      isOpen
+    />
   ))
   .add('different button props', () => (
     <ConfirmModal
@@ -27,7 +29,8 @@ storiesOf('ConfirmModal', module)
       cancelProps={{ color: 'grayscale' }}
       onConfirm={action('confirmed')}
       onClose={action('closed')}
-      isOpen>
+      isOpen
+    >
       Do you really want to remove it?
     </ConfirmModal>
   ))

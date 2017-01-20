@@ -1,6 +1,6 @@
 import { take, put, call, fork } from 'redux-saga/effects'
-import * as actions from './actions'
 import api from 'services/api'
+import * as actions from './actions'
 import saga, * as sagas from './sagas'
 
 describe('createPost', () => {
