@@ -24,7 +24,8 @@ const App = ({ children }) => {
         ]}
         link={[
           { rel: 'icon', href: 'https://diegohaz.github.io/arc/icon.png' }
-        ]} />
+        ]}
+      />
       {children}
     </div>
   )

@@ -26,7 +26,8 @@ const App = ({ children }) => {
         ]}
         link={[
           { rel: 'icon', href: 'https://diegohaz.github.io/arc/icon.png' }
-        ]} />
+        ]}
+      />
       <ThemeProvider theme={theme}>{children}</ThemeProvider>
     </div>
   )

@@ -1,8 +1,9 @@
+/* eslint-disable react/no-danger */
 import React, { PropTypes } from 'react'
 import Helmet from 'react-helmet'
 
 const Html = ({ styles, assets, state, content }) => {
-  let helmet = Helmet.rewind()
+  const helmet = Helmet.rewind()
   const attrs = helmet.htmlAttributes.toComponent()
 
   return (

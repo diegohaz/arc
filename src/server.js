@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from 'react'
 import serialize from 'serialize-javascript'
 import styleSheet from 'styled-components/lib/models/StyleSheet'
@@ -41,11 +42,12 @@ router.use((req, res, next) => {
     const fetchData = () => new Promise((resolve, reject) => {
       const method = req.method.toLowerCase()
       const { params, location, components } = renderProps
-      let promises = []
+      const promises = []
 
       components.forEach((component) => {
         if (component) {
           while (component && !component[method]) {
+            // eslint-disable-next-line no-param-reassign
             component = component.WrappedComponent
           }
           component &&
@@ -75,7 +77,7 @@ router.use((req, res, next) => {
       res.send(doctype + html)
     }
 
-    fetchData().then(() => {
+    return fetchData().then(() => {
       render(configureStore(store.getState(), memoryHistory))
     }).catch((err) => {
       console.log(err)
