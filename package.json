@@ -68,6 +68,7 @@
     "react-router": "^3.0.0",
     "react-router-scroll": "^0.4.1",
     "styled-components": "^1.2.1",
-    "styled-theme": "^0.2.1"
+    "styled-theme": "^0.3.0",
+    "styled-tools": "^0.1.2"
   }
 }
