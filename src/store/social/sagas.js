@@ -36,7 +36,7 @@ export const appendFbRoot = () => {
 export const serviceAction = (suffix, service) => (action) =>
   action.type === `SOCIAL_LOGIN_${suffix}` && action.service === service
 
-export function* loginFacebook ({ scope = 'public_profile', fields = 'id,name', ...options } = {}) {
+export function* loginFacebook({ scope = 'public_profile', fields = 'id,name', ...options } = {}) {
   try {
     yield call(promises.fbLogin, { scope, ...options })
     const data = yield call(promises.fbGetMe, { fields })
@@ -47,13 +47,13 @@ export function* loginFacebook ({ scope = 'public_profile', fields = 'id,name', 
   }
 }
 
-export function* prepareFacebook ({ appId, version = 'v2.8', ...options }) {
+export function* prepareFacebook({ appId, version = 'v2.8', ...options }) {
   yield call(appendFbRoot)
   yield call(promises.loadScript, '//connect.facebook.net/en_US/sdk.js')
   yield call([window.FB, window.FB.init], { appId, version, ...options })
 }
 
-export function* watchSocialLoginFacebook () {
+export function* watchSocialLoginFacebook() {
   const { options } = yield take(serviceAction('PREPARE', 'facebook'))
   yield call(prepareFacebook, options)
   while (true) {
@@ -62,7 +62,7 @@ export function* watchSocialLoginFacebook () {
   }
 }
 
-export function* loginGoogle ({ scope = 'profile', ...options } = {}) {
+export function* loginGoogle({ scope = 'profile', ...options } = {}) {
   const auth2 = yield call(window.gapi.auth2.getAuthInstance)
   const user = yield call([auth2, auth2.signIn], { scope, ...options })
   const profile = yield call([user, user.getBasicProfile])
@@ -71,13 +71,13 @@ export function* loginGoogle ({ scope = 'profile', ...options } = {}) {
   yield put(socialLogin.success({ name, picture }))
 }
 
-export function* prepareGoogle ({ client_id, ...options }) {
+export function* prepareGoogle({ client_id, ...options }) {
   yield call(promises.loadScript, '//apis.google.com/js/platform.js')
   yield call(promises.loadGoogleAuth2)
   yield call(window.gapi.auth2.init, { client_id, ...options })
 }
 
-export function* watchSocialLoginGoogle () {
+export function* watchSocialLoginGoogle() {
   const { options } = yield take(serviceAction('PREPARE', 'google'))
   yield call(prepareGoogle, options)
   while (true) {

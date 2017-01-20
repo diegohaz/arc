@@ -1,17 +1,13 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { modalHide } from 'store/actions'
 
 import { ConfirmModal } from 'components'
 
-class ConfirmModalContainer extends Component {
-  static propTypes = {
-    name: PropTypes.string.isRequired
-  }
+const ConfirmModalContainer = props => <ConfirmModal {...props} />
 
-  render () {
-    return <ConfirmModal {...this.props} />
-  }
+ConfirmModalContainer.propTypes = {
+  name: PropTypes.string.isRequired
 }
 
 const mapDispatchToProps = (dispatch, { name }) => ({

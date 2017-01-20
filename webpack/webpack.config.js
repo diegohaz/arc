@@ -1,13 +1,13 @@
-var path = require('path')
-var webpack = require('webpack')
-var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin')
-var webpackIsomorphicToolsConfig = require('./webpack-isomorphic-tools')
+const path = require('path')
+const webpack = require('webpack')
+const WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin')
+const webpackIsomorphicToolsConfig = require('./webpack-isomorphic-tools')
 
-var ip = process.env.IP || '0.0.0.0'
-var port = (+process.env.PORT + 1) || 3001
-var DEBUG = process.env.NODE_ENV !== 'production'
+const ip = process.env.IP || '0.0.0.0'
+const port = (+process.env.PORT + 1) || 3001
+const DEBUG = process.env.NODE_ENV !== 'production'
 
-var config = {
+const config = {
   devtool: DEBUG ? 'eval' : false,
   entry: [
     'babel-polyfill',
@@ -16,14 +16,14 @@ var config = {
   output: {
     path: path.join(__dirname, '../dist'),
     filename: 'app.[hash].js',
-    publicPath: DEBUG ? 'http://' + ip + ':' + port + '/' : '/'
+    publicPath: DEBUG ? `http://${ip}:${port}/` : '/'
   },
   resolve: {
     modulesDirectories: ['src', 'node_modules']
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': "'" + process.env.NODE_ENV + "'"
+      'process.env.NODE_ENV': `'${process.env.NODE_ENV}'`
     })
   ],
   module: {
@@ -41,7 +41,7 @@ var config = {
 
 if (DEBUG) {
   config.entry.unshift(
-    'webpack-dev-server/client?http://' + ip + ':' + port + '/',
+    `webpack-dev-server/client?http://${ip}:${port}/`,
     'webpack/hot/only-dev-server',
     'react-hot-loader/patch'
   )

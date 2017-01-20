@@ -41,10 +41,13 @@ const PageTemplate = ({ header, hero, children, footer, ...props }) => {
 }
 
 PageTemplate.propTypes = {
-  header: PropTypes.any.isRequired,
-  hero: PropTypes.any,
-  children: PropTypes.any.isRequired,
-  footer: PropTypes.any.isRequired
+  header: PropTypes.node.isRequired,
+  hero: PropTypes.node,
+  footer: PropTypes.node.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired
 }
 
 export default PageTemplate
