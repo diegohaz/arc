@@ -27,7 +27,7 @@ const Field = ({ error, name, invalid, label, type, ...props }) => {
       {label && <Label htmlFor={inputProps.id}>{label}</Label>}
       {renderInputFirst || <Input {...inputProps} />}
       {invalid && error &&
-        <Error id={`${name}Error`} role="alert" palette="danger" transparent>
+        <Error id={`${name}Error`} role="alert" palette="danger">
           {error}
         </Error>
       }
