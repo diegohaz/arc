@@ -20,7 +20,7 @@ const StyledIconLink = styled(IconLink)`
 
 const Header = (props) => {
   return (
-    <Wrapper reverse {...props}>
+    <Wrapper opaque reverse {...props}>
       <StyledIconLink to="/" icon="arc" height={100} />
       <PrimaryNavigation reverse />
     </Wrapper>

@@ -5,13 +5,14 @@ import { ifProp } from 'styled-tools'
 
 const Block = styled.div`
   font-family: ${font('primary')};
-  background-color: ${ifProp('transparent', 'transparent', palette(0, true))};
+  background-color: ${ifProp('opaque', palette(0, true), 'transparent')};
   color: ${palette({ grayscale: 0 }, 1)};
 `
 
 Block.propTypes = {
   palette: PropTypes.string,
-  reverse: PropTypes.bool
+  reverse: PropTypes.bool,
+  opaque: PropTypes.bool
 }
 
 Block.defaultProps = {
