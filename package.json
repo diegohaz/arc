@@ -41,7 +41,7 @@
     "cross-env": "^3.1.4",
     "del-cli": "^0.2.1",
     "enzyme": "^2.7.0",
-    "eslint": "^3.13.1",
+    "eslint": "^3.14.0",
     "eslint-config-airbnb": "^14.0.0",
     "eslint-import-resolver-webpack": "^0.8.1",
     "eslint-plugin-import": "^2.2.0",
