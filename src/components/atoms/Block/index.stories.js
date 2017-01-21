@@ -17,13 +17,13 @@ storiesOf('Block', module)
       Officia aliqua reprehenderit fugiat occaecat quis non eiusmod.
     </Block>
   ))
-  .add('palette transparent', () => (
-    <Block palette="primary" transparent>
+  .add('palette opaque', () => (
+    <Block palette="primary" opaque>
       Officia aliqua reprehenderit fugiat occaecat quis non eiusmod.
     </Block>
   ))
-  .add('palette transparent reverse', () => (
-    <Block palette="primary" transparent reverse>
+  .add('palette opaque reverse', () => (
+    <Block palette="primary" opaque reverse>
       Officia aliqua reprehenderit fugiat occaecat quis non eiusmod.
     </Block>
   ))
