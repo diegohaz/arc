@@ -141,6 +141,12 @@ PRs are very appreciated. For bugs/features consider creating an issue before se
 - I'm not a native english speaker. If you find any typo or some text that could be written in a better way, please send a PR, even if it is only a punctuation;
 - If you forked or created another boilerplate based on this one with another features (using [`css-modules`](https://github.com/css-modules/css-modules) instead of [`styled-components`](https://github.com/styled-components/styled-components), for example), add that to the [Forks section](#forks) with the following pattern:
   - [arc-css-modules](https://github.com/username/arc-css-modules) - A short description
+  
+## Built with ARc
+
+*Built something cool with ARc? Send a PR adding it to this list:*
+
+- [replace-this](https://github.com/username/replace-this) - A short description
 
 ## Contributors
 
