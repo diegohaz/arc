@@ -28,7 +28,7 @@ const StyledBadge = styled(Badge)`
   right: 1rem;
 `
 
-const Feature = ({ icon, title, link, children, ...props, soon }) => {
+const Feature = ({ icon, title, link, children, ...props }) => {
   return (
     <Wrapper {...props}>
       {icon && <StyledIcon icon={icon} height={64} />}
@@ -38,7 +38,7 @@ const Feature = ({ icon, title, link, children, ...props, soon }) => {
         </Heading>
         <Paragraph>{children}</Paragraph>
       </Text>
-      {soon && <StyledBadge palette="grayscale">soon</StyledBadge>}
+      {props.soon && <StyledBadge palette="grayscale">soon</StyledBadge>}
     </Wrapper>
   )
 }

@@ -19,8 +19,8 @@ const StyledLink = styled(({ theme, reverse, palette, ...props }) =>
 )`${styles}`
 const Anchor = styled.a`${styles}`
 
-const Link = ({ ...props, to }) => {
-  if (to) {
+const Link = ({ ...props }) => {
+  if (props.to) {
     return <StyledLink {...props} />
   }
   return <Anchor {...props} />
