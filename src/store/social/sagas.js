@@ -50,7 +50,10 @@ export function* loginFacebook({ scope = 'public_profile', fields = 'id,name', .
 export function* prepareFacebook({ appId, version = 'v2.8', ...options }) {
   yield call(appendFbRoot)
   yield call(promises.loadScript, '//connect.facebook.net/en_US/sdk.js')
-  yield call([window.FB, window.FB.init], { appId, version, ...options })
+  // istanbul ignore else
+  if (window.FB) {
+    yield call([window.FB, window.FB.init], { appId, version, ...options })
+  }
 }
 
 export function* watchSocialLoginFacebook() {
@@ -73,8 +76,11 @@ export function* loginGoogle({ scope = 'profile', ...options } = {}) {
 
 export function* prepareGoogle({ client_id, ...options }) {
   yield call(promises.loadScript, '//apis.google.com/js/platform.js')
-  yield call(promises.loadGoogleAuth2)
-  yield call(window.gapi.auth2.init, { client_id, ...options })
+  // istanbul ignore else
+  if (window.gapi) {
+    yield call(promises.loadGoogleAuth2)
+    yield call(window.gapi.auth2.init, { client_id, ...options })
+  }
 }
 
 export function* watchSocialLoginGoogle() {
