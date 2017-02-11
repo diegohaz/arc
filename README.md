@@ -222,10 +222,11 @@ Prabhat_Sharma prabhatsharma https://github.com/prabhatsharma code
 Sven_Schmidt 0xsven https://github.com/0xsven bug code
 Sebastian ssmolinski9 https://github.com/ssmolinski9 tests
 Steven_Haddix steven-haddix https://github.com/steven-haddix code
+Ruslan_Kyba kybarg https://github.com/kybarg bug code
 Contributors END -->
 <!-- Contributors table START -->
-| [![Prabhat Sharma](https://avatars.githubusercontent.com/prabhatsharma?s=100)<br /><sub>Prabhat Sharma</sub>](https://github.com/prabhatsharma)<br />[💻](https://github.com/diegohaz/arc/commits?author=prabhatsharma) | [![Sven Schmidt](https://avatars.githubusercontent.com/0xsven?s=100)<br /><sub>Sven Schmidt</sub>](https://github.com/0xsven)<br />[🐛](https://github.com/diegohaz/arc/issues?q=author%3A0xsven) [💻](https://github.com/diegohaz/arc/commits?author=0xsven) | [![Sebastian](https://avatars.githubusercontent.com/ssmolinski9?s=100)<br /><sub>Sebastian</sub>](https://github.com/ssmolinski9)<br />[⚠️](https://github.com/diegohaz/arc/commits?author=ssmolinski9) | [![Steven Haddix](https://avatars.githubusercontent.com/steven-haddix?s=100)<br /><sub>Steven Haddix</sub>](https://github.com/steven-haddix)<br />[💻](https://github.com/diegohaz/arc/commits?author=steven-haddix) |
-| :---: | :---: | :---: | :---: |
+| [![Prabhat Sharma](https://avatars.githubusercontent.com/prabhatsharma?s=100)<br /><sub>Prabhat Sharma</sub>](https://github.com/prabhatsharma)<br />[💻](https://github.com/diegohaz/arc/commits?author=prabhatsharma) | [![Sven Schmidt](https://avatars.githubusercontent.com/0xsven?s=100)<br /><sub>Sven Schmidt</sub>](https://github.com/0xsven)<br />[🐛](https://github.com/diegohaz/arc/issues?q=author%3A0xsven) [💻](https://github.com/diegohaz/arc/commits?author=0xsven) | [![Sebastian](https://avatars.githubusercontent.com/ssmolinski9?s=100)<br /><sub>Sebastian</sub>](https://github.com/ssmolinski9)<br />[⚠️](https://github.com/diegohaz/arc/commits?author=ssmolinski9) | [![Steven Haddix](https://avatars.githubusercontent.com/steven-haddix?s=100)<br /><sub>Steven Haddix</sub>](https://github.com/steven-haddix)<br />[💻](https://github.com/diegohaz/arc/commits?author=steven-haddix) | [![Ruslan Kyba](https://avatars.githubusercontent.com/kybarg?s=100)<br /><sub>Ruslan Kyba</sub>](https://github.com/kybarg)<br />[🐛](https://github.com/diegohaz/arc/issues?q=author%3Akybarg) [💻](https://github.com/diegohaz/arc/commits?author=kybarg) |
+| :---: | :---: | :---: | :---: | :---: |
 <!-- Contributors table END -->
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification.
