@@ -13,7 +13,7 @@ import mongoose from 'services/mongoose'
 import api from 'api'
 import routes from 'routes'
 import configureStore from 'store/configure'
-import { env, port, ip, mongo } from 'config'
+import { env, port, ip, mongo, basename } from 'config'
 import Html from 'components/Html'
 
 const router = new Router()
@@ -27,11 +27,12 @@ router.use((req, res, next) => {
     global.webpackIsomorphicTools.refresh()
   }
 
-  const memoryHistory = createMemoryHistory(req.url)
+  const location = req.url.replace(basename, '')
+  const memoryHistory = createMemoryHistory({ basename })
   const store = configureStore({}, memoryHistory)
   const history = syncHistoryWithStore(memoryHistory, store)
 
-  match({ history, routes, location: req.url }, (error, redirectLocation, renderProps) => {
+  match({ history, routes, location }, (error, redirectLocation, renderProps) => {
     if (redirectLocation) {
       res.redirect(redirectLocation.pathname + redirectLocation.search)
     }

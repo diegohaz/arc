@@ -14,7 +14,7 @@ import mongoose from 'services/mongoose'
 import api from 'api'
 import routes from 'routes'
 import configureStore from 'store/configure'
-import { env, port, ip, mongo } from 'config'
+import { env, port, ip, mongo, basename } from 'config'
 import { setCsrfToken } from 'store/actions'
 import Html from 'components/Html'
 
@@ -31,13 +31,14 @@ router.use((req, res, next) => {
     global.webpackIsomorphicTools.refresh()
   }
 
-  const memoryHistory = createMemoryHistory(req.url)
+  const location = req.url.replace(basename, '')
+  const memoryHistory = createMemoryHistory({ basename })
   const store = configureStore({}, memoryHistory)
   const history = syncHistoryWithStore(memoryHistory, store)
 
   store.dispatch(setCsrfToken(req.csrfToken()))
 
-  match({ history, routes, location: req.url }, (error, redirectLocation, renderProps) => {
+  match({ history, routes, location }, (error, redirectLocation, renderProps) => {
     if (redirectLocation) {
       res.redirect(redirectLocation.pathname + redirectLocation.search)
     }
