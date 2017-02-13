@@ -17,7 +17,6 @@ const renderApp = () => (
     <Provider store={store}>
       <Router history={history} routes={routes} />
     </Provider>
-    <Router history={browserHistory} routes={routes} />
   </AppContainer>
 )
 
