@@ -64,13 +64,21 @@ describe('loginFacebook', () => {
   })
 })
 
-test('prepareFacebook', () => {
-  const generator = sagas.prepareFacebook({ appId: 'test', foo: 'bar' })
-  expect(generator.next().value).toEqual(call(sagas.appendFbRoot))
-  expect(generator.next().value)
-    .toEqual(call(sagas.promises.loadScript, '//connect.facebook.net/en_US/sdk.js'))
-  expect(generator.next().value)
-    .toEqual(call([window.FB, window.FB.init], { appId: 'test', version: 'v2.8', foo: 'bar' }))
+describe('prepareFacebook', () => {
+  it('calls success', () => {
+    const generator = sagas.prepareFacebook({ appId: 'test', foo: 'bar' })
+    expect(generator.next().value).toEqual(call(sagas.appendFbRoot))
+    expect(generator.next().value)
+      .toEqual(call(sagas.promises.loadScript, '//connect.facebook.net/en_US/sdk.js'))
+    expect(generator.next().value)
+      .toEqual(call([window.FB, window.FB.init], { appId: 'test', version: 'v2.8', foo: 'bar' }))
+  })
+
+  it('calls failure', () => {
+    const generator = sagas.prepareFacebook({ appId: 'test' })
+    expect(generator.next().value).toEqual(call(sagas.appendFbRoot))
+    expect(generator.throw('test').value).toEqual(put(actions.socialLogin.failure('test')))
+  })
 })
 
 test('watchSocialLoginFacebook', () => {
@@ -82,24 +90,41 @@ test('watchSocialLoginFacebook', () => {
   expect(generator.next(payload).value).toEqual(call(sagas.loginFacebook, 1))
 })
 
-test('loginGoogle', () => {
-  const generator = sagas.loginGoogle()
-  expect(generator.next().value).toEqual(call(window.gapi.auth2.getAuthInstance))
-  expect(generator.next(auth2).value).toEqual(call([auth2, auth2.signIn], { scope: 'profile' }))
-  expect(generator.next(user).value).toEqual(call([user, user.getBasicProfile]))
-  expect(generator.next(profile).value).toEqual(call([profile, profile.getName]))
-  expect(generator.next('name').value).toEqual(call([profile, profile.getImageUrl]))
-  expect(generator.next('imageUrl').value)
-    .toEqual(put(actions.socialLogin.success({ name: 'name', picture: 'imageUrl' })))
+describe('loginGoogle', () => {
+  it('calls success', () => {
+    const generator = sagas.loginGoogle()
+    expect(generator.next().value).toEqual(call(window.gapi.auth2.getAuthInstance))
+    expect(generator.next(auth2).value).toEqual(call([auth2, auth2.signIn], { scope: 'profile' }))
+    expect(generator.next(user).value).toEqual(call([user, user.getBasicProfile]))
+    expect(generator.next(profile).value).toEqual(call([profile, profile.getName]))
+    expect(generator.next('name').value).toEqual(call([profile, profile.getImageUrl]))
+    expect(generator.next('imageUrl').value)
+      .toEqual(put(actions.socialLogin.success({ name: 'name', picture: 'imageUrl' })))
+  })
+
+  it('calls failure', () => {
+    const generator = sagas.loginGoogle()
+    expect(generator.next().value).toEqual(call(window.gapi.auth2.getAuthInstance))
+    expect(generator.throw('test').value).toEqual(put(actions.socialLogin.failure('test')))
+  })
 })
 
-test('prepareGoogle', () => {
-  const generator = sagas.prepareGoogle({ client_id: 'test', foo: 'bar' })
-  expect(generator.next().value)
-    .toEqual(call(sagas.promises.loadScript, '//apis.google.com/js/platform.js'))
-  expect(generator.next().value).toEqual(call(sagas.promises.loadGoogleAuth2))
-  expect(generator.next().value)
-    .toEqual(call(window.gapi.auth2.init, { client_id: 'test', foo: 'bar' }))
+describe('prepareGoogle', () => {
+  it('calls success', () => {
+    const generator = sagas.prepareGoogle({ client_id: 'test', foo: 'bar' })
+    expect(generator.next().value)
+      .toEqual(call(sagas.promises.loadScript, '//apis.google.com/js/platform.js'))
+    expect(generator.next().value).toEqual(call(sagas.promises.loadGoogleAuth2))
+    expect(generator.next().value)
+      .toEqual(call(window.gapi.auth2.init, { client_id: 'test', foo: 'bar' }))
+  })
+
+  it('calls failure', () => {
+    const generator = sagas.prepareGoogle({ client_id: 'test' })
+    expect(generator.next().value)
+      .toEqual(call(sagas.promises.loadScript, '//apis.google.com/js/platform.js'))
+    expect(generator.throw('test').value).toEqual(put(actions.socialLogin.failure('test')))
+  })
 })
 
 test('watchSocialLoginGoogle', () => {
