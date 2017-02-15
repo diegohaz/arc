@@ -1,0 +1,942 @@
+exports[`Storyshots Atom default 1`] = `
+<span
+  className="elwRlF">
+  Hello
+</span>
+`;
+
+exports[`Storyshots Atom reverse 1`] = `
+<span
+  className="bsHSPV">
+  Hello
+</span>
+`;
+
+exports[`Storyshots Badge another palette 1`] = `
+<span
+  className="cxmjBS">
+  Hello
+</span>
+`;
+
+exports[`Storyshots Badge default 1`] = `
+<span
+  className="bnhZGf">
+  Hello
+</span>
+`;
+
+exports[`Storyshots Badge reverse 1`] = `
+<span
+  className="lhdWKd">
+  Hello
+</span>
+`;
+
+exports[`Storyshots Block default 1`] = `
+<div
+  className="dLGjyr">
+  Officia aliqua reprehenderit fugiat occaecat quis non eiusmod.
+</div>
+`;
+
+exports[`Storyshots Block palette 1`] = `
+<div
+  className="bAVnYq">
+  Officia aliqua reprehenderit fugiat occaecat quis non eiusmod.
+</div>
+`;
+
+exports[`Storyshots Block palette opaque 1`] = `
+<div
+  className="bOKpgL">
+  Officia aliqua reprehenderit fugiat occaecat quis non eiusmod.
+</div>
+`;
+
+exports[`Storyshots Block palette opaque reverse 1`] = `
+<div
+  className="fGUNfq">
+  Officia aliqua reprehenderit fugiat occaecat quis non eiusmod.
+</div>
+`;
+
+exports[`Storyshots Block palette reverse 1`] = `
+<div
+  className="keeJAZ">
+  Officia aliqua reprehenderit fugiat occaecat quis non eiusmod.
+</div>
+`;
+
+exports[`Storyshots Block reverse 1`] = `
+<div
+  className="emcHus">
+  Officia aliqua reprehenderit fugiat occaecat quis non eiusmod.
+</div>
+`;
+
+exports[`Storyshots Blockquote default 1`] = `
+<span>
+  Ullamco et reprehenderit magna cillum ullamco consectetur et enim aliqua.
+</span>
+`;
+
+exports[`Storyshots Blockquote reverse 1`] = `
+<span>
+  Ullamco et reprehenderit magna cillum ullamco consectetur et enim aliqua.
+</span>
+`;
+
+exports[`Storyshots Blockquote with cite 1`] = `
+<span>
+  Ullamco et reprehenderit magna cillum ullamco consectetur et enim aliqua.
+</span>
+`;
+
+exports[`Storyshots Button another palette 1`] = `
+<button
+  className="gUYCLV"
+  height={40}
+  type="button">
+  Hello
+</button>
+`;
+
+exports[`Storyshots Button default 1`] = `
+<button
+  className="cmJDOq"
+  height={40}
+  type="button">
+  Hello
+</button>
+`;
+
+exports[`Storyshots Button disabled 1`] = `
+<button
+  className="lnXGiM"
+  disabled={true}
+  height={40}
+  type="button">
+  Hello
+</button>
+`;
+
+exports[`Storyshots Button height 1`] = `
+<button
+  className="hcMoqy"
+  height={100}
+  type="button">
+  Hello
+</button>
+`;
+
+exports[`Storyshots Button link 1`] = `
+<a
+  className="cmJDOq"
+  height={40}
+  href="https://github.com/diegohaz/arc">
+  ARc repository
+</a>
+`;
+
+exports[`Storyshots Button reverse 1`] = `
+<button
+  className="fYStNK"
+  height={40}
+  type="button">
+  Hello
+</button>
+`;
+
+exports[`Storyshots Button transparent 1`] = `
+<button
+  className="fXRZis"
+  height={40}
+  type="button">
+  Hello
+</button>
+`;
+
+exports[`Storyshots Caption default 1`] = `
+<caption
+  className="fjbYxH">
+  Hello
+</caption>
+`;
+
+exports[`Storyshots Caption reverse 1`] = `
+<caption
+  className="ihyWcd">
+  Hello
+</caption>
+`;
+
+exports[`Storyshots Feature default 1`] = `
+<span>
+  Ullamco duis in labore consectetur ad exercitation esse esse duis mollit sint.
+</span>
+`;
+
+exports[`Storyshots Feature with icon 1`] = `
+<span>
+  Ullamco duis in labore consectetur ad exercitation esse esse duis mollit sint.
+</span>
+`;
+
+exports[`Storyshots Feature with link 1`] = `
+<span>
+  Ullamco duis in labore consectetur ad exercitation esse esse duis mollit sint.
+</span>
+`;
+
+exports[`Storyshots FeatureList default 1`] = `<span />`;
+
+exports[`Storyshots Field default 1`] = `<span />`;
+
+exports[`Storyshots Field invalid 1`] = `<span />`;
+
+exports[`Storyshots Field invalid with error message 1`] = `<span />`;
+
+exports[`Storyshots Field type checkbox 1`] = `<span />`;
+
+exports[`Storyshots Field type radio 1`] = `<span />`;
+
+exports[`Storyshots Field type radio invalid with error message 1`] = `<span />`;
+
+exports[`Storyshots Field type select 1`] = `<span />`;
+
+exports[`Storyshots Field type textarea 1`] = `<span />`;
+
+exports[`Storyshots Field with label 1`] = `<span />`;
+
+exports[`Storyshots Footer default 1`] = `<span />`;
+
+exports[`Storyshots GenericPage default 1`] = `<span />`;
+
+exports[`Storyshots Header default 1`] = `<span />`;
+
+exports[`Storyshots Heading default 1`] = `
+<h1
+  className="iTnwdf">
+  Id tempor duis non esse commodo fugiat excepteur nostrud.
+</h1>
+`;
+
+exports[`Storyshots Heading level 2 1`] = `
+<h2
+  className="hZLhVi">
+  Id tempor duis non esse commodo fugiat excepteur nostrud.
+</h2>
+`;
+
+exports[`Storyshots Heading level 3 1`] = `
+<h3
+  className="gqAOuV">
+  Id tempor duis non esse commodo fugiat excepteur nostrud.
+</h3>
+`;
+
+exports[`Storyshots Heading palette 1`] = `
+<h1
+  className="hdTlqq">
+  Id tempor duis non esse commodo fugiat excepteur nostrud.
+</h1>
+`;
+
+exports[`Storyshots Heading palette reverse 1`] = `
+<h1
+  className="eytbPX">
+  Id tempor duis non esse commodo fugiat excepteur nostrud.
+</h1>
+`;
+
+exports[`Storyshots Hero default 1`] = `<span />`;
+
+exports[`Storyshots HomePage default 1`] = `<span />`;
+
+exports[`Storyshots HorizontalRule default 1`] = `
+<hr
+  className="gBZkCc" />
+`;
+
+exports[`Storyshots HorizontalRule palette 1`] = `
+<hr
+  className="dWDUos" />
+`;
+
+exports[`Storyshots HorizontalRule palette reverse 1`] = `
+<hr
+  className="kMnSUj" />
+`;
+
+exports[`Storyshots Icon default 1`] = `
+<span
+  className="kHvkFu"
+  dangerouslySetInnerHTML={
+    Object {
+      "__html": Object {
+        "default": "file",
+      },
+    }
+  } />
+`;
+
+exports[`Storyshots Icon height 1`] = `
+<span
+  className="EmIQD"
+  dangerouslySetInnerHTML={
+    Object {
+      "__html": Object {
+        "default": "file",
+      },
+    }
+  }
+  height={100} />
+`;
+
+exports[`Storyshots Icon palette 1`] = `
+<span
+  className="gTIArF"
+  dangerouslySetInnerHTML={
+    Object {
+      "__html": Object {
+        "default": "file",
+      },
+    }
+  } />
+`;
+
+exports[`Storyshots Icon palette reverse 1`] = `
+<span
+  className="jvdaak"
+  dangerouslySetInnerHTML={
+    Object {
+      "__html": Object {
+        "default": "file",
+      },
+    }
+  } />
+`;
+
+exports[`Storyshots IconButton collapsed 1`] = `
+<span>
+  Hello
+</span>
+`;
+
+exports[`Storyshots IconButton default 1`] = `
+<span>
+  Hello
+</span>
+`;
+
+exports[`Storyshots IconButton height 1`] = `
+<span>
+  Hello
+</span>
+`;
+
+exports[`Storyshots IconButton responsive 1`] = `
+<span>
+  Decrease panel width
+</span>
+`;
+
+exports[`Storyshots IconButton responsive with breakpoint 1`] = `
+<span>
+  Decrease panel width to 300
+</span>
+`;
+
+exports[`Storyshots IconButton transparent 1`] = `
+<span>
+  Hello
+</span>
+`;
+
+exports[`Storyshots IconButton with icon on right 1`] = `
+<span>
+  Hello
+</span>
+`;
+
+exports[`Storyshots IconButton without text 1`] = `<span />`;
+
+exports[`Storyshots IconLink default 1`] = `
+<span>
+  Hello
+</span>
+`;
+
+exports[`Storyshots IconLink inside paragraph 1`] = `
+<p>
+  Consequat cupidatat id 
+  <span>
+    excepteur
+  </span>
+   ex nisi proident et sunt fugiat id pariatur.
+</p>
+`;
+
+exports[`Storyshots IconLink right 1`] = `
+<span>
+  Hello
+</span>
+`;
+
+exports[`Storyshots Input default 1`] = `
+<input
+  className="kKJXKj"
+  height={40}
+  type="text" />
+`;
+
+exports[`Storyshots Input height 1`] = `
+<input
+  className="lmSaIX"
+  height={100}
+  type="text" />
+`;
+
+exports[`Storyshots Input invalid 1`] = `
+<input
+  className="cZvgWZ"
+  height={40}
+  type="text" />
+`;
+
+exports[`Storyshots Input reverse 1`] = `
+<input
+  className="ejDirM"
+  height={40}
+  type="text" />
+`;
+
+exports[`Storyshots Input type checkbox 1`] = `
+<input
+  className="kKJXKj"
+  height={40}
+  type="checkbox" />
+`;
+
+exports[`Storyshots Input type radio 1`] = `
+<input
+  className="kKJXKj"
+  height={40}
+  type="radio" />
+`;
+
+exports[`Storyshots Input type select 1`] = `
+<select
+  className="kKJXKj"
+  height={40}
+  type="select">
+  <option>
+    Option 1
+  </option>
+  <option>
+    Option 2
+  </option>
+  <option>
+    Option 3
+  </option>
+</select>
+`;
+
+exports[`Storyshots Input type textarea 1`] = `
+<textarea
+  className="dLawbm"
+  height={40}
+  type="textarea" />
+`;
+
+exports[`Storyshots Label default 1`] = `
+<label
+  className="diRaeW">
+  Hello
+</label>
+`;
+
+exports[`Storyshots Label reverse 1`] = `
+<label
+  className="faOKoY">
+  Hello
+</label>
+`;
+
+exports[`Storyshots Link another palette 1`] = `
+<a
+  className="kHlHiD"
+  href="https://github.com/diegohaz/arc">
+  ARc repository
+</a>
+`;
+
+exports[`Storyshots Link default 1`] = `
+<a
+  className="irxOhc"
+  href="https://github.com/diegohaz/arc">
+  ARc repository
+</a>
+`;
+
+exports[`Storyshots Link reverse 1`] = `
+<a
+  className="kiagTD"
+  href="https://github.com/diegohaz/arc">
+  ARc repository
+</a>
+`;
+
+exports[`Storyshots List default 1`] = `
+<ul
+  className="hhXpSd">
+  <li>
+    Item 1
+  </li>
+  <li>
+    Item 2
+  </li>
+  <li>
+    Item 3
+  </li>
+</ul>
+`;
+
+exports[`Storyshots List ordered 1`] = `
+<ol
+  className="hhXpSd">
+  <li>
+    Item 1
+  </li>
+  <li>
+    Item 2
+  </li>
+  <li>
+    Item 3
+  </li>
+</ol>
+`;
+
+exports[`Storyshots List palette 1`] = `
+<ul
+  className="bzKeti">
+  <li>
+    Item 1
+  </li>
+  <li>
+    Item 2
+  </li>
+  <li>
+    Item 3
+  </li>
+</ul>
+`;
+
+exports[`Storyshots List palette reverse 1`] = `
+<ul
+  className="iWkfkQ">
+  <li>
+    Item 1
+  </li>
+  <li>
+    Item 2
+  </li>
+  <li>
+    Item 3
+  </li>
+</ul>
+`;
+
+exports[`Storyshots LogoImage default 1`] = `
+<img
+  alt="Logo"
+  src="file"
+  width={200} />
+`;
+
+exports[`Storyshots Modal closeable 1`] = `
+<span>
+  Ullamco et reprehenderit magna cillum ullamco consectetur et enim aliqua.
+</span>
+`;
+
+exports[`Storyshots Modal default 1`] = `
+<span>
+  Ullamco et reprehenderit magna cillum ullamco consectetur et enim aliqua.
+</span>
+`;
+
+exports[`Storyshots Modal reverse 1`] = `
+<span>
+  Ullamco et reprehenderit magna cillum ullamco consectetur et enim aliqua.
+</span>
+`;
+
+exports[`Storyshots Modal with title 1`] = `
+<span>
+  Ullamco et reprehenderit magna cillum ullamco consectetur et enim aliqua.
+</span>
+`;
+
+exports[`Storyshots Molecule default 1`] = `
+<span>
+  Hello
+</span>
+`;
+
+exports[`Storyshots Molecule reverse 1`] = `
+<span>
+  Hello
+</span>
+`;
+
+exports[`Storyshots NotFoundPage default 1`] = `<span />`;
+
+exports[`Storyshots Organism default 1`] = `<span />`;
+
+exports[`Storyshots Organism reverse 1`] = `<span />`;
+
+exports[`Storyshots Paragraph default 1`] = `
+<p
+  className="lfsEKW">
+  Nisi eu eiusmod cupidatat aute laboris commodo excepteur esse dolore incididunt incididunt aliquip pariatur est minim officia sit. Nulla pariatur duis duis quis commodo cupidatat voluptate enim culpa elit adipisicing do cupidatat sint anim. Cillum elit magna occaecat proident sit cupidatat ad quis sunt id culpa culpa. Ad duis nulla in incididunt amet consequat officia ad voluptate voluptate. Pariatur eiusmod ullamco cupidatat non magna officia aute magna deserunt qui aute dolor eu. Qui amet non ex cillum sunt ad velit consequat ipsum velit.
+</p>
+`;
+
+exports[`Storyshots Paragraph reverse 1`] = `
+<p
+  className="gDIzxS">
+  Nisi eu eiusmod cupidatat aute laboris commodo excepteur esse dolore incididunt incididunt aliquip pariatur est minim officia sit. Nulla pariatur duis duis quis commodo cupidatat voluptate enim culpa elit adipisicing do cupidatat sint anim. Cillum elit magna occaecat proident sit cupidatat ad quis sunt id culpa culpa. Ad duis nulla in incididunt amet consequat officia ad voluptate voluptate. Pariatur eiusmod ullamco cupidatat non magna officia aute magna deserunt qui aute dolor eu. Qui amet non ex cillum sunt ad velit consequat ipsum velit.
+</p>
+`;
+
+exports[`Storyshots PrimaryNavigation default 1`] = `<span />`;
+
+exports[`Storyshots PrimaryNavigation reverse 1`] = `<span />`;
+
+exports[`Storyshots SamplePage default 1`] = `<span />`;
+
+exports[`Storyshots Spinner another palette 1`] = `
+<div
+  className="iUnmcl" />
+`;
+
+exports[`Storyshots Spinner default 1`] = `
+<div
+  className="iEgoSv" />
+`;
+
+exports[`Storyshots Spinner reverse 1`] = `
+<div
+  className="iCsIuT" />
+`;
+
+exports[`Storyshots Table default 1`] = `
+<span>
+  <tr>
+    <td>
+      Cell 1
+    </td>
+    <td>
+      Cell 2
+    </td>
+    <td>
+      Cell 3
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Cell 1
+    </td>
+    <td>
+      Cell 2
+    </td>
+    <td>
+      Cell 3
+    </td>
+  </tr>
+</span>
+`;
+
+exports[`Storyshots Table with caption 1`] = `
+<span>
+  <tr>
+    <td>
+      Cell 1
+    </td>
+    <td>
+      Cell 2
+    </td>
+    <td>
+      Cell 3
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Cell 1
+    </td>
+    <td>
+      Cell 2
+    </td>
+    <td>
+      Cell 3
+    </td>
+  </tr>
+</span>
+`;
+
+exports[`Storyshots Table with foot 1`] = `
+<span>
+  <tr>
+    <td>
+      Cell 1
+    </td>
+    <td>
+      Cell 2
+    </td>
+    <td>
+      Cell 3
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Cell 1
+    </td>
+    <td>
+      Cell 2
+    </td>
+    <td>
+      Cell 3
+    </td>
+  </tr>
+</span>
+`;
+
+exports[`Storyshots Table with head 1`] = `
+<span>
+  <tr>
+    <td>
+      Cell 1
+    </td>
+    <td>
+      Cell 2
+    </td>
+    <td>
+      Cell 3
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Cell 1
+    </td>
+    <td>
+      Cell 2
+    </td>
+    <td>
+      Cell 3
+    </td>
+  </tr>
+</span>
+`;
+
+exports[`Storyshots TableCell default 1`] = `
+<table>
+  <thead>
+    <tr>
+      <th
+        className="jWKlrF">
+        Heading Cell 1
+      </th>
+      <th
+        className="jWKlrF">
+        Heading Cell 2
+      </th>
+      <th
+        className="jWKlrF">
+        Heading Cell 3
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td
+        className="jWKlrF">
+        Cell 1
+      </td>
+      <td
+        className="jWKlrF">
+        Cell 2
+      </td>
+      <td
+        className="jWKlrF">
+        Cell 3
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`Storyshots TableRow default 1`] = `
+<table>
+  <thead>
+    <tr
+      className="llvlUT">
+      <th>
+        Heading Cell 1
+      </th>
+      <th>
+        Heading Cell 2
+      </th>
+      <th>
+        Heading Cell 3
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      className="bPIZV">
+      <td>
+        Cell 1
+      </td>
+      <td>
+        Cell 2
+      </td>
+      <td>
+        Cell 3
+      </td>
+    </tr>
+    <tr
+      className="llvlUT">
+      <td>
+        Cell 1
+      </td>
+      <td>
+        Cell 2
+      </td>
+      <td>
+        Cell 3
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`Storyshots Tooltip align end 1`] = `
+<div
+  style={
+    Object {
+      "margin": 100,
+    }
+  }>
+  <a
+    className="hAcrkX"
+    data-title="Hello! How are you?"
+    href="#foo"
+    tabIndex={0}>
+    Hover me
+  </a>
+</div>
+`;
+
+exports[`Storyshots Tooltip align start 1`] = `
+<div
+  style={
+    Object {
+      "margin": 100,
+    }
+  }>
+  <a
+    className="fpJrXB"
+    data-title="Hello! How are you?"
+    href="#foo"
+    tabIndex={0}>
+    Hover me
+  </a>
+</div>
+`;
+
+exports[`Storyshots Tooltip default 1`] = `
+<div
+  style={
+    Object {
+      "margin": 100,
+    }
+  }>
+  <a
+    className="kiDJkX"
+    data-title="Hello"
+    href="#foo"
+    tabIndex={0}>
+    Hover me
+  </a>
+</div>
+`;
+
+exports[`Storyshots Tooltip position bottom 1`] = `
+<div
+  style={
+    Object {
+      "margin": 100,
+    }
+  }>
+  <a
+    className="dtIYye"
+    data-title="Hello"
+    href="#foo"
+    tabIndex={0}>
+    Hover me
+  </a>
+</div>
+`;
+
+exports[`Storyshots Tooltip position left 1`] = `
+<div
+  style={
+    Object {
+      "margin": 100,
+    }
+  }>
+  <a
+    className="gOtjMQ"
+    data-title="Hello"
+    href="#foo"
+    tabIndex={0}>
+    Hover me
+  </a>
+</div>
+`;
+
+exports[`Storyshots Tooltip position right 1`] = `
+<div
+  style={
+    Object {
+      "margin": 100,
+    }
+  }>
+  <a
+    className="qpXNK"
+    data-title="Hello"
+    href="#foo"
+    tabIndex={0}>
+    Hover me
+  </a>
+</div>
+`;
+
+exports[`Storyshots Tooltip reverse 1`] = `
+<div
+  style={
+    Object {
+      "margin": 100,
+    }
+  }>
+  <a
+    className="flIKgl"
+    data-title="Hello!"
+    href="#foo"
+    tabIndex={0}>
+    Hover me
+  </a>
+</div>
+`;
