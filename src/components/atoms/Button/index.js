@@ -51,10 +51,10 @@ const StyledLink = styled(({ disabled, transparent, reverse, palette, height, th
 const Anchor = styled.a`${styles}`
 const StyledButton = styled.button`${styles}`
 
-const Button = ({ type, ...props, to, href }) => {
-  if (to) {
+const Button = ({ type, ...props }) => {
+  if (props.to) {
     return <StyledLink {...props} />
-  } else if (href) {
+  } else if (props.href) {
     return <Anchor {...props} />
   }
   return <StyledButton {...props} type={type} />
