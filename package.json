@@ -23,12 +23,12 @@
       "node_modules"
     ],
     "moduleNameMapper": {
-      "^.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/test/fileMock.js",
-      "^components$": "<rootDir>/test/componentsMock.js"
+      "^.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__test__/fileMock.js",
+      "^components$": "<rootDir>/__test__/componentsMock.js"
     }
   },
   "devDependencies": {
-    "@kadira/storybook": "^2.35.2",
+    "@kadira/storybook": "^2.35.3",
     "babel-core": "^6.21.0",
     "babel-eslint": "^7.1.1",
     "babel-jest": "^18.0.0",
@@ -55,6 +55,7 @@
     "opn-cli": "^3.1.0",
     "raw-loader": "^0.5.1",
     "react-addons-test-utils": "^15.4.1",
+    "storyshots": "^3.2.1",
     "url-loader": "^0.5.7",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.3.0"
