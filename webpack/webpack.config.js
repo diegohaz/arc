@@ -6,6 +6,7 @@ const webpackIsomorphicToolsConfig = require('./webpack-isomorphic-tools')
 const ip = process.env.IP || '0.0.0.0'
 const port = (+process.env.PORT + 1) || 3001
 const DEBUG = process.env.NODE_ENV !== 'production'
+const PUBLIC_PATH = `/${process.env.PUBLIC_PATH || ''}/`.replace('//', '/')
 
 const config = {
   devtool: DEBUG ? 'eval' : false,
@@ -16,14 +17,15 @@ const config = {
   output: {
     path: path.join(__dirname, '../dist'),
     filename: 'app.[hash].js',
-    publicPath: DEBUG ? `http://${ip}:${port}/` : '/'
+    publicPath: DEBUG ? `http://${ip}:${port}/` : PUBLIC_PATH
   },
   resolve: {
-    modules: ['src', 'node_modules'],
+    modules: ['src', 'node_modules']
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': `'${process.env.NODE_ENV}'`
+      'process.env.NODE_ENV': `'${process.env.NODE_ENV}'`,
+      'process.env.PUBLIC_PATH': `'${PUBLIC_PATH}'`
     })
   ],
   module: {
@@ -33,7 +35,7 @@ const config = {
       { test: /\.jpg$/, loader: 'url-loader?prefix=images/&limit=8000&mimetype=image/jpeg' },
       { test: /\.woff$/, loader: 'url-loader?prefix=fonts/&limit=8000&mimetype=application/font-woff' },
       { test: /\.ttf$/, loader: 'file-loader?prefix=fonts/' },
-      { test: /\.eot$/, loader: 'file-loader?prefix=fonts/' },
+      { test: /\.eot$/, loader: 'file-loader?prefix=fonts/' }
     ]
   }
 }
