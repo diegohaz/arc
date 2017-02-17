@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { reduxForm } from 'redux-form'
-import { merge } from 'lodash'
+import merge from 'lodash/merge'
 import { fromForm, fromEntities } from 'store/selectors'
 import { postCreate, postRead, postUpdate } from 'store/actions'
 import { createValidator, required } from 'services/validation'
