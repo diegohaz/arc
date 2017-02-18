@@ -36,8 +36,8 @@ describe('readPost', () => {
 })
 
 describe('updatePost', () => {
-  const data = { id: 1, title: 'test'}
-  const newData = { id: 1, title: 'test 2'}
+  const data = { id: 1, title: 'test' }
+  const newData = { id: 1, title: 'test 2' }
 
   it('calls success', () => {
     const generator = sagas.updatePost(data, newData)
