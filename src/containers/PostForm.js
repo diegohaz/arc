@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { reduxForm } from 'redux-form'
-import merge from 'lodash/merge'
 import { fromForm, fromEntities } from 'store/selectors'
 import { postCreate, postRead, postUpdate } from 'store/actions'
 import { createValidator, required } from 'services/validation'
@@ -40,20 +39,18 @@ const validate = createValidator({
 
 const mapStateToProps = (state, { id }) => {
   if (id) {
-    return ({
-      initialValues: merge(
-        fromEntities.getDetail(state, 'post', id),
-        {
-          _csrf: fromForm.getCsrfToken(state)
-        }
-      )
-    })
+    return {
+      initialValues: {
+        _csrf: fromForm.getCsrfToken(state),
+        ...fromEntities.getDetail(state, 'post', id)
+      }
+    }
   }
-  return ({
+  return {
     initialValues: {
       _csrf: fromForm.getCsrfToken(state)
     }
-  })
+  }
 }
 
 const mapDispatchToProps = (dispatch, { id }) => ({
