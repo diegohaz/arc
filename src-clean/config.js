@@ -10,6 +10,8 @@ const config = {
     env: process.env.NODE_ENV || 'development',
     baseUrl: `http://${ip}:${port}${basename}`,
     apiUrl: `http://${ip}:${port}/api`,
+    graphqlUrl: `http://${ip}:${port}/api/graphql`,
+    serverGraphqlUrl: 'http://localhost:3000/api/graphql',
     mongo: {
       options: {
         db: {

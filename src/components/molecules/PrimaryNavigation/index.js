@@ -25,6 +25,7 @@ const PrimaryNavigation = (props) => {
     <Nav {...props}>
       <li><Link to="/" onlyActiveOnIndex activeClassName="active">Home</Link></li>
       <li><Link to="/sample-page" activeClassName="active">Sample page</Link></li>
+      <li><Link to="/graphql-page" activeClassName="active">GraphQL page</Link></li>
     </Nav>
   )
 }

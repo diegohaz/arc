@@ -4,4 +4,7 @@ yarn-error.log
 npm-debug.log
 node_modules
 coverage
-webpack/webpack-assets.json
+webpack/
+.idea/
+generators/
+templates/

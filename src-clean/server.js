@@ -1,26 +1,38 @@
 /* eslint-disable no-console */
+
+// Necessary for SSR
+import 'isomorphic-fetch'
+
 import React from 'react'
 import serialize from 'serialize-javascript'
 import styleSheet from 'styled-components/lib/models/StyleSheet'
 import cors from 'cors'
+import csrf from 'csurf'
 import { renderToString, renderToStaticMarkup } from 'react-dom/server'
-import { Provider } from 'react-redux'
+import { ApolloProvider, getDataFromTree } from 'react-apollo'
 import { createMemoryHistory, RouterContext, match } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 import { Router } from 'express'
-import express from 'services/express'
-import mongoose from 'services/mongoose'
-import api from 'api'
-import routes from 'routes'
-import configureStore from 'store/configure'
-import { env, port, ip, mongo, basename } from 'config'
-import Html from 'components/Html'
+
+
+import express from './services/express'
+import mongoose from './services/mongoose'
+import api from './api'
+import routes from './routes'
+import configureStore from './store/configure'
+import { env, port, ip, mongo, basename } from './config'
+import { setCsrfToken } from './store/actions'
+import Html from './components/Html'
+import { getClient } from './store/apollo'
+import { handleError } from './services/logger/index'
 
 const router = new Router()
 
 mongoose.connect(mongo.uri)
 
 router.use('/api', cors(), api)
+
+router.use(csrf({ cookie: true }))
 
 router.use((req, res, next) => {
   if (env === 'development') {
@@ -31,6 +43,8 @@ router.use((req, res, next) => {
   const memoryHistory = createMemoryHistory({ basename })
   const store = configureStore({}, memoryHistory)
   const history = syncHistoryWithStore(memoryHistory, store)
+
+  store.dispatch(setCsrfToken(req.csrfToken()))
 
   match({ history, routes, location }, (error, redirectLocation, renderProps) => {
     if (redirectLocation) {
@@ -62,27 +76,45 @@ router.use((req, res, next) => {
     })
 
     const render = (store) => {
-      const content = renderToString(
-        <Provider store={store}>
+      const apolloClient = getClient()
+
+      const app = (
+        <ApolloProvider store={store} client={apolloClient}>
           <RouterContext {...renderProps} />
-        </Provider>
+        </ApolloProvider>
       )
 
-      const styles = styleSheet.rules().map(rule => rule.cssText).join('\n')
-      const initialState = store.getState()
-      const assets = global.webpackIsomorphicTools.assets()
-      const state = `window.__INITIAL_STATE__ = ${serialize(initialState)}`
-      const markup = <Html {...{ styles, assets, state, content }} />
-      const doctype = '<!doctype html>\n'
-      const html = renderToStaticMarkup(markup)
+      getDataFromTree(app)
+        .then(() => {
 
-      res.send(doctype + html)
+          const content = renderToString(app)
+
+          const styles = styleSheet.rules().map(rule => rule.cssText).join('\n')
+          const initialState = store.getState()
+          const assets = global.webpackIsomorphicTools.assets()
+          const state = `window.__INITIAL_STATE__ = ${serialize(initialState)}`
+          const markup = (<Html
+            {...{
+              styles,
+              assets,
+              state,
+              content
+            }}
+          />)
+          const doctype = '<!doctype html>\n'
+          const html = renderToStaticMarkup(markup)
+
+          res.send(doctype + html)
+        })
+        .catch((err) => {
+          handleError(err)
+        })
     }
 
     return fetchData().then(() => {
       render(configureStore(store.getState(), memoryHistory))
     }).catch((err) => {
-      console.log(err)
+      handleError(err)
       res.status(500).end()
     })
   })

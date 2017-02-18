@@ -10,6 +10,8 @@ const config = {
     env: process.env.NODE_ENV || 'development',
     baseUrl: `http://${ip}:${port}${basename}`,
     apiUrl: `http://${ip}:${port}/api`,
+    graphqlUrl: `http://${ip}:${port}/api/graphql`,
+    serverGraphqlUrl: 'http://localhost:3000/api/graphql',
     fbAppId: '991453140998882',
     googleClientId: '464712936089-q953apdu1bjiqtcjndktnnk1ts4f2cgv.apps.googleusercontent.com',
     mongo: {

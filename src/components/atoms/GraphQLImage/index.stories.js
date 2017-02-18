@@ -1,8 +1,8 @@
 import React from 'react'
 import { storiesOf } from '@kadira/storybook'
-import { SamplePage } from 'components'
+import GraphQLImage from '.'
 
-storiesOf('SamplePage', module)
+storiesOf('GraphQLImage', module)
   .add('default', () => (
-    <SamplePage />
+    <GraphQLImage width={200} />
   ))

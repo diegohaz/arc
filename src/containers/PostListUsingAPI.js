@@ -27,10 +27,12 @@ class PostListContainer extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  list: fromEntities.getList(state, 'post', fromPost.getList(state)),
-  loading: fromStatus.isLoading(state, POST_LIST)
-})
+const mapStateToProps = (state) => {
+  return {
+    list: fromEntities.getList(state, 'post', fromPost.getList(state)),
+    loading: fromStatus.isLoading(state, POST_LIST)
+  }
+}
 
 const mapDispatchToProps = (dispatch, { limit }) => ({
   request: () => dispatch(postList.request(limit))
