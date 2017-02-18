@@ -3,5 +3,5 @@ import { shallow } from 'enzyme'
 import PostPage from '.'
 
 it('renders', () => {
-  shallow(<PostPage />)
+  shallow(<PostPage id={1} />)
 })

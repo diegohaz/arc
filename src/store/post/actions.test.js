@@ -40,18 +40,17 @@ test('postCreate', () => {
   })
 })
 
-
 test('postRead', () => {
-  expect(actions.postRead.request(1)).toEqual({
+  expect(actions.postRead.request(3)).toEqual({
     type: actions.POST_READ_REQUEST,
-    id: 1
+    id: 3
   })
 
-  expect(actions.postRead.success(2)).toEqual({
+  expect(actions.postRead.success({ id: 1, title: 'test' })).toEqual({
     type: actions.POST_READ_SUCCESS,
     data: {
-      id: 2,
-      title: 'test 2'
+      id: 1,
+      title: 'test'
     }
   })
 

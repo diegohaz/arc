@@ -14,7 +14,7 @@ const PostUpdatePage = ({ id }) => {
 }
 
 PostUpdatePage.propTypes = {
-  id: PropTypes.any.isRequired
+  id: PropTypes.number.isRequired
 }
 
 export default PostUpdatePage
