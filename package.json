@@ -63,12 +63,16 @@
     "webpack-dev-server": "^2.3.0"
   },
   "dependencies": {
+    "apollo-client": "^0.8.7",
     "axios": "^0.15.3",
     "babel-polyfill": "^6.20.0",
+    "graphql-tag": "^1.2.4",
     "history": "3.0.0",
     "lodash": "^4.17.4",
+    "minilog": "^3.1.0",
     "normalizr": "^3.0.1",
     "react": "^15.4.1",
+    "react-apollo": "^0.11.1",
     "react-dom": "^15.4.1",
     "react-hot-loader": "^3.0.0-beta.6",
     "react-modal": "^1.6.5",

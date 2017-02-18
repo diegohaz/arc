@@ -2,10 +2,12 @@ import camelCase from 'lodash/camelCase'
 import { combineReducers } from 'redux'
 import { routerReducer as routing } from 'react-router-redux'
 import { reducer as form } from 'redux-form'
+import { getClient } from './apollo'
 
 const reducers = {
   routing,
-  form
+  form,
+  apollo: getClient().reducer()
 }
 
 const req = require.context('.', true, /\.\/.+\/reducer\.js$/)
