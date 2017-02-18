@@ -11,7 +11,7 @@
     "lint": "eslint src src-clean .storybook",
     "dev": "concurrently --kill-others \"nodemon --watch src\" \"node webpack/webpack-dev-server\"",
     "storybook": "start-storybook -p 9001 -c .storybook",
-    "build:clean": "del \"dist/!(.git*|Procfile)**\"",
+    "build:clean": "del-cli \"dist/!(.git*|Procfile)**\"",
     "build:copy": "copyfiles -u 1 public/* public/**/* dist",
     "prebuild": "npm run build:clean && npm run build:copy",
     "build": "cross-env NODE_ENV=production webpack --config webpack/webpack.config",
