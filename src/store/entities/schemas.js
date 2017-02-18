@@ -7,5 +7,5 @@ export const actionsMeta = {
   [POST_LIST_SUCCESS]: { property: 'list', schema: [post] },
   [POST_CREATE_SUCCESS]: { property: 'data', schema: post },
   [POST_READ_SUCCESS]: { property: 'data', schema: post },
-  [POST_UPDATE_SUCCESS]: { property: 'data', schema: post }
+  [POST_UPDATE_SUCCESS]: { property: 'newData', schema: post }
 }
