@@ -1,8 +1,8 @@
 import { take, put, call, fork } from 'redux-saga/effects'
 import api from 'services/api'
 import {
-  postList, postCreate, postRead, postUpdate,
-  POST_LIST_REQUEST, POST_CREATE_REQUEST, POST_READ_REQUEST, POST_UPDATE_REQUEST
+  postList, postCreate, postRead, postUpdate, postDelete,
+  POST_LIST_REQUEST, POST_CREATE_REQUEST, POST_READ_REQUEST, POST_UPDATE_REQUEST, POST_DELETE_REQUEST
 } from './actions'
 
 export function* createPost(newData) {
@@ -31,6 +31,16 @@ export function* updatePost(oldData, newData) {
     yield put(postUpdate.failure(e))
   }
 }
+
+export function* deletePost(id) {
+  try {
+    const { data } = yield call(api.delete, `/posts/${id}`)
+    yield put(postDelete.success(data))
+  } catch (e) {
+    yield put(postDelete.failure(e))
+  }
+}
+
 
 export function* listPosts(limit) {
   try {
@@ -63,6 +73,13 @@ export function* watchPostUpdateRequest() {
   }
 }
 
+export function* watchPostDeleteRequest() {
+  while (true) {
+    const { id } = yield take(POST_DELETE_REQUEST)
+    yield call(deletePost, id)
+  }
+}
+
 export function* watchPostListRequest() {
   while (true) {
     const { limit } = yield take(POST_LIST_REQUEST)
@@ -74,5 +91,6 @@ export default function* () {
   yield fork(watchPostCreateRequest)
   yield fork(watchPostReadRequest)
   yield fork(watchPostUpdateRequest)
+  yield fork(watchPostDeleteRequest)
   yield fork(watchPostListRequest)
 }
