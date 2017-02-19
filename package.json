@@ -82,6 +82,7 @@
     "redux": "^3.6.0",
     "redux-form": "^6.4.3",
     "redux-saga": "^0.14.1",
+    "redux-thunk": "^2.2.0",
     "styled-components": "^1.2.1",
     "styled-theme": "^0.3.0",
     "styled-tools": "^0.1.2",
