@@ -1,16 +1,35 @@
-import React from 'react'
+import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { reduxForm } from 'redux-form'
-import { fromForm } from 'store/selectors'
-import { postCreate } from 'store/actions'
+import { fromForm, fromEntities } from 'store/selectors'
+import { postCreate, postRead, postUpdate } from 'store/actions'
 import { createValidator, required } from 'services/validation'
 
 import { PostForm } from 'components'
 
-const PostFormContainer = props => <PostForm {...props} />
+class PostFormContainer extends Component {
+  static propTypes = {
+    id: PropTypes.any,
+    request: PropTypes.func.isRequired
+  }
 
-const onSubmit = (data, dispatch) => new Promise((resolve, reject) => {
-  dispatch(postCreate.request(data, resolve, reject))
+  componentDidMount() {
+    if (this.props.id) {
+      this.props.request()
+    }
+  }
+
+  render() {
+    const props = this.props
+    return <PostForm {...props} />
+  }
+}
+
+const onSubmit = (data, dispatch, state) => new Promise((resolve, reject) => {
+  if (data.id) {
+    return dispatch(postUpdate.request(state.initialValues, data, resolve, reject))
+  }
+  return dispatch(postCreate.request(data, resolve, reject))
 })
 
 const validate = createValidator({
@@ -18,18 +37,33 @@ const validate = createValidator({
   body: [required]
 })
 
-const mapStateToProps = (state) => ({
-  initialValues: {
-    _csrf: fromForm.getCsrfToken(state)
+const mapStateToProps = (state, { id }) => {
+  if (id) {
+    return {
+      initialValues: {
+        _csrf: fromForm.getCsrfToken(state),
+        ...fromEntities.getDetail(state, 'post', id)
+      }
+    }
   }
+  return {
+    initialValues: {
+      _csrf: fromForm.getCsrfToken(state)
+    }
+  }
+}
+
+const mapDispatchToProps = (dispatch, { id }) => ({
+  request: () => dispatch(postRead.request(id))
 })
 
 export const config = {
   form: 'PostForm',
   fields: ['title', 'body'],
-  destroyOnUnmount: false,
+  enableReinitialize: true,
+  destroyOnUnmount: true,
   onSubmit,
   validate
 }
 
-export default connect(mapStateToProps)(reduxForm(config)(PostFormContainer))
+export default connect(mapStateToProps, mapDispatchToProps)(reduxForm(config)(PostFormContainer))

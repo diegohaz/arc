@@ -1,6 +1,9 @@
 import { take, put, call, fork } from 'redux-saga/effects'
 import api from 'services/api'
-import { postList, postCreate, POST_LIST_REQUEST, POST_CREATE_REQUEST } from './actions'
+import {
+  postList, postCreate, postRead, postUpdate, postDelete,
+  POST_LIST_REQUEST, POST_CREATE_REQUEST, POST_READ_REQUEST, POST_UPDATE_REQUEST, POST_DELETE_REQUEST
+} from './actions'
 
 export function* createPost(newData) {
   try {
@@ -10,6 +13,34 @@ export function* createPost(newData) {
     yield put(postCreate.failure(e))
   }
 }
+
+export function* readPost(id) {
+  try {
+    const { data } = yield call(api.get, `/posts/${id}`)
+    yield put(postRead.success(data))
+  } catch (e) {
+    yield put(postRead.failure(e))
+  }
+}
+
+export function* updatePost(oldData, newData) {
+  try {
+    const { data } = yield call(api.put, `/posts/${oldData.id}`, newData)
+    yield put(postUpdate.success(data, newData))
+  } catch (e) {
+    yield put(postUpdate.failure(e))
+  }
+}
+
+export function* deletePost(id) {
+  try {
+    const { data } = yield call(api.delete, `/posts/${id}`)
+    yield put(postDelete.success(data))
+  } catch (e) {
+    yield put(postDelete.failure(e))
+  }
+}
+
 
 export function* listPosts(limit) {
   try {
@@ -28,6 +59,27 @@ export function* watchPostCreateRequest() {
   }
 }
 
+export function* watchPostReadRequest() {
+  while (true) {
+    const { id } = yield take(POST_READ_REQUEST)
+    yield call(readPost, id)
+  }
+}
+
+export function* watchPostUpdateRequest() {
+  while (true) {
+    const { data, newData } = yield take(POST_UPDATE_REQUEST)
+    yield call(updatePost, data, newData)
+  }
+}
+
+export function* watchPostDeleteRequest() {
+  while (true) {
+    const { id } = yield take(POST_DELETE_REQUEST)
+    yield call(deletePost, id)
+  }
+}
+
 export function* watchPostListRequest() {
   while (true) {
     const { limit } = yield take(POST_LIST_REQUEST)
@@ -37,5 +89,8 @@ export function* watchPostListRequest() {
 
 export default function* () {
   yield fork(watchPostCreateRequest)
+  yield fork(watchPostReadRequest)
+  yield fork(watchPostUpdateRequest)
+  yield fork(watchPostDeleteRequest)
   yield fork(watchPostListRequest)
 }

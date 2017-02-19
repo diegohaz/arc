@@ -10,21 +10,26 @@ const Form = styled.form`
   padding: 1rem;
 `
 
-const PostForm = ({ handleSubmit, submitting }) => {
+const PostForm = ({ id, handleSubmit, submitting }) => {
   return (
     <Form method="POST" onSubmit={handleSubmit}>
-      <Heading level={2}>Create a post</Heading>
+      <Heading level={2}>{id ? 'Update' : 'Create'} a post</Heading>
       <Field name="_csrf" type="hidden" component="input" />
       <Field name="title" label="Title" component={ReduxField} />
       <Field name="body" label="Body" type="textarea" component={ReduxField} />
-      <Button type="submit" disabled={submitting}>Create</Button>
+      <Button type="submit" disabled={submitting}>{id ? 'Update' : 'Create'}</Button>
     </Form>
   )
 }
 
 PostForm.propTypes = {
+  id: PropTypes.any,
   handleSubmit: PropTypes.func.isRequired,
   submitting: PropTypes.bool
+}
+
+PostForm.defaultProps = {
+  id: null
 }
 
 export default PostForm

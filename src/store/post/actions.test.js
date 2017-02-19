@@ -39,3 +39,23 @@ test('postCreate', () => {
     error: 'test'
   })
 })
+
+test('postRead', () => {
+  expect(actions.postRead.request(3)).toEqual({
+    type: actions.POST_READ_REQUEST,
+    id: 3
+  })
+
+  expect(actions.postRead.success({ id: 1, title: 'test' })).toEqual({
+    type: actions.POST_READ_SUCCESS,
+    data: {
+      id: 1,
+      title: 'test'
+    }
+  })
+
+  expect(actions.postRead.failure('test')).toEqual({
+    type: actions.POST_READ_FAILURE,
+    error: 'test'
+  })
+})

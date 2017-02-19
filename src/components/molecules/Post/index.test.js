@@ -2,17 +2,17 @@ import React from 'react'
 import { mount, shallow } from 'enzyme'
 import Post from '.'
 
-const wrap = (props = {}) => shallow(<Post title="test title" body="test body" {...props} />)
+const wrap = (props = {}) => shallow(<Post id={1} title="test title" body="test body" {...props} />)
 
 it('mounts with different combination of props', () => {
-  const wrapMounted = (props = {}) => mount(<Post title="a" body="b" {...props} />)
+  const wrapMounted = (props = {}) => mount(<Post id={1} title="a" body="b" {...props} />)
   wrapMounted()
   wrapMounted({ loading: true })
 })
 
 it('renders props when passed in', () => {
-  const wrapper = wrap({ id: 'foo' })
-  expect(wrapper.find({ id: 'foo' })).toHaveLength(1)
+  const wrapper = wrap({ foo: 'bar' })
+  expect(wrapper.find({ foo: 'bar' })).toHaveLength(1)
 })
 
 it('renders title', () => {
