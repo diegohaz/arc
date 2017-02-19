@@ -1,16 +1,27 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import { routerMiddleware } from 'react-router-redux'
-import thunk from 'redux-thunk'
+import ReduxThunk from 'redux-thunk'
 import createSagaMiddleware from 'redux-saga'
 import reducer from './reducer'
 import sagas from './sagas'
+
+import { getClient } from './apollo'
 
 const configureStore = (initialState, history) => {
   const hasWindow = typeof window !== 'undefined'
   const sagaMiddleware = createSagaMiddleware()
 
+  const apolloClient = getClient()
+
+  const middlewares = [
+    sagaMiddleware,
+    routerMiddleware(history),
+    apolloClient.middleware(),
+    ReduxThunk.withExtraArgument(apolloClient)
+  ]
+
   const finalCreateStore = compose(
-    applyMiddleware(thunk, sagaMiddleware, routerMiddleware(history)),
+    applyMiddleware(...middlewares),
     hasWindow && window.devToolsExtension ? window.devToolsExtension() : (f) => f
   )(createStore)
 

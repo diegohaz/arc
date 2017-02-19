@@ -36,6 +36,7 @@
     "no-confusing-arrow": 0,
     "no-unused-vars": 0,
     "no-constant-condition": 0,
+    "padded-blocks": "off",
     "jsx-a11y/html-has-lang": 0,
     "import/no-dynamic-require": 0,
     "import/no-extraneous-dependencies": 0,

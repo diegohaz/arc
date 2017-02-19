@@ -10,16 +10,17 @@ const Wrapper = styled.div`
 `
 
 const PostList = ({ list, loading, ...props }) => {
+
   return (
     <Wrapper {...props}>
       {loading && <div>Loading</div>}
-      {list.map(post => <Post key={post.id} loading={loading} {...post} />)}
+      {list && list.map(post => <Post key={post.id} loading={loading} {...post} />)}
     </Wrapper>
   )
 }
 
 PostList.propTypes = {
-  list: PropTypes.arrayOf(PropTypes.object).isRequired,
+  list: PropTypes.arrayOf(PropTypes.object),
   loading: PropTypes.bool
 }
 
