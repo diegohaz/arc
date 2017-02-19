@@ -10,6 +10,8 @@ const config = {
     env: process.env.NODE_ENV || 'development',
     baseUrl: `http://${ip}:${port}${basename}`,
     apiUrl: 'https://jsonplaceholder.typicode.com',
+    graphqlUrl: `http://${ip}:${port}/api/graphql`,
+    serverGraphqlUrl: `http://${ip}:${port}/api/graphql`,
     basename,
     browser,
     ip,

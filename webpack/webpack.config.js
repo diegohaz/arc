@@ -9,7 +9,7 @@ const DEBUG = process.env.NODE_ENV !== 'production'
 const PUBLIC_PATH = `/${process.env.PUBLIC_PATH || ''}/`.replace('//', '/')
 
 const config = {
-  devtool: DEBUG ? 'eval' : false,
+  devtool: DEBUG ? 'eval-source-map' : false,
   entry: [
     'babel-polyfill',
     path.join(__dirname, '../src/client')
