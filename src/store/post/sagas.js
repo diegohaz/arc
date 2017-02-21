@@ -4,7 +4,7 @@ import { postList, postCreate, POST_LIST_REQUEST, POST_CREATE_REQUEST } from './
 
 export function* createPost(newData) {
   try {
-    const { data } = yield call(api.post, '/posts', newData)
+    const data = yield call(api.post, '/posts', newData)
     yield put(postCreate.success(data))
   } catch (e) {
     yield put(postCreate.failure(e))
@@ -13,8 +13,7 @@ export function* createPost(newData) {
 
 export function* listPosts(limit) {
   try {
-    const params = { _limit: limit }
-    const { data } = yield call(api.get, '/posts', { params })
+    const data = yield call(api.get, `/posts?_limit=${limit}`)
     yield put(postList.success(data))
   } catch (e) {
     yield put(postList.failure(e))

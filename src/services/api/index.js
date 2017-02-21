@@ -1,18 +1,51 @@
-import axios from 'axios'
+import fetch from 'isomorphic-fetch'
 import { apiUrl } from 'config'
 
-const facade = {}
+const api = {}
+const headers = {}
 
-const api = axios.create({ baseURL: apiUrl })
+api.request = (endpoint, method, settings, body) => {
+  const url = (endpoint.indexOf(apiUrl) === -1) ? apiUrl + endpoint : endpoint
 
-facade.request = (config) => api.request(config)
+  return fetch(url, api.init(method, settings, body))
+    .then(api.checkStatus)
+    .then(response => response)
+    .catch(error => Promise.reject(error))
+}
+
+api.init = (method = 'GET', settings = {}, body = null) => {
+  headers.Accept = 'application/json'
+  headers['Content-Type'] = 'application/json'
+  if (settings.accessToken) { headers.Authorization = `Bearer ${settings.accessToken}` }
+  if (settings.locale) { headers['Accept-Language'] = settings.locale }
+
+  const fetchInit = { method, headers }
+
+  if (body) { fetchInit.body = JSON.stringify(body) }
+
+  return fetchInit
+}
+
+api.checkStatus = (response) => {
+  if (response.ok) {
+    return response.json()
+  }
+
+  return response.json()
+    .then((error) => {
+      throw new Error(`${response.statusText} (${response.status}) error occurred downstream: ${error.message}`)
+    })
+}
+
+api.setToken = token => (headers.Authorization = `Bearer ${token}`)
+api.unsetToken = () => (headers.Authorization = null)
 
 ;['delete', 'get', 'head'].forEach((method) => {
-  facade[method] = (url, config) => facade.request({ ...config, method, url })
+  api[method] = (url, settings) => api.request(url, method, settings)
 })
 
 ;['post', 'put', 'patch'].forEach((method) => {
-  facade[method] = (url, data, config) => facade.request({ ...config, method, url, data })
+  api[method] = (url, data, settings) => api.request(url, method, settings, data)
 })
 
-export default facade
+export default api
