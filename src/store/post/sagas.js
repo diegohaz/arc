@@ -13,8 +13,7 @@ export function* createPost(newData) {
 
 export function* listPosts(limit) {
   try {
-    const params = { _limit: limit }
-    const { data } = yield call(api.get, '/posts', { params })
+    const data = yield call(api.get, `/posts?_limit=${limit}`)
     yield put(postList.success(data))
   } catch (e) {
     yield put(postList.failure(e))

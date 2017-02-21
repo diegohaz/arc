@@ -9,7 +9,7 @@ describe('createPost', () => {
   it('calls success', () => {
     const generator = sagas.createPost(data)
     expect(generator.next().value).toEqual(call(api.post, '/posts', data))
-    expect(generator.next({ data }).value).toEqual(put(actions.postCreate.success(data)))
+    expect(generator.next(data).value).toEqual(put(actions.postCreate.success(data)))
   })
 
   it('calls failure', () => {
@@ -24,13 +24,13 @@ describe('listPosts', () => {
 
   it('calls success', () => {
     const generator = sagas.listPosts(1)
-    expect(generator.next().value).toEqual(call(api.get, '/posts', { params: { _limit: 1 } }))
-    expect(generator.next({ data }).value).toEqual(put(actions.postList.success(data)))
+    expect(generator.next().value).toEqual(call(api.get, '/posts?_limit=1'))
+    expect(generator.next(data).value).toEqual(put(actions.postList.success(data)))
   })
 
   it('calls failure', () => {
     const generator = sagas.listPosts(1)
-    expect(generator.next().value).toEqual(call(api.get, '/posts', { params: { _limit: 1 } }))
+    expect(generator.next().value).toEqual(call(api.get, '/posts?_limit=1'))
     expect(generator.throw('test').value).toEqual(put(actions.postList.failure('test')))
   })
 })
