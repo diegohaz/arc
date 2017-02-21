@@ -36,7 +36,7 @@
   "devDependencies": {
     "@kadira/storybook": "^2.35.2",
     "babel-eslint": "^7.1.1",
-    "babel-jest": "^18.0.0",
+    "babel-jest": "^19.0.0",
     "concurrently": "^3.1.0",
     "enzyme": "^2.7.0",
     "eslint": "^3.14.0",
@@ -46,7 +46,7 @@
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-no-unused-vars-rest": "^1.0.4",
     "eslint-plugin-react": "^6.9.0",
-    "jest-cli": "^18.1.0",
+    "jest-cli": "^19.0.0",
     "mockgoose": "^6.0.8",
     "nock": "^9.0.2",
     "nodemon": "^1.11.0",
