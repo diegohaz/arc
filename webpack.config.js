@@ -1,5 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
+const WebpackMd5Hash = require('webpack-md5-hash')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const ip = process.env.IP || '0.0.0.0'
@@ -7,17 +8,16 @@ const port = process.env.PORT || 3000
 const DEBUG = process.env.NODE_ENV !== 'production'
 const PUBLIC_PATH = `/${process.env.PUBLIC_PATH || ''}/`.replace('//', '/')
 
+const isVendor = ({ userRequest }) => (
+  userRequest &&
+  userRequest.indexOf('node_modules') >= 0 &&
+  userRequest.match(/\.js$/)
+)
+
 const config = {
   devtool: DEBUG ? 'eval' : false,
   entry: {
-    app: [path.join(__dirname, 'src')],
-    vendor: [
-      'history',
-      'react',
-      'react-dom',
-      'react-router',
-      'styled-components'
-    ]
+    app: [path.join(__dirname, 'src')]
   },
   output: {
     path: path.join(__dirname, 'dist'),
@@ -31,16 +31,6 @@ const config = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': `'${process.env.NODE_ENV}'`,
       'process.env.PUBLIC_PATH': `'${PUBLIC_PATH}'`
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      filename: '[name].[chunkhash].js',
-      minChunks: Infinity
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'meta',
-      chunks: ['vendor'],
-      filename: '[name].[hash].js'
     }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
@@ -71,7 +61,14 @@ if (DEBUG) {
     new webpack.HotModuleReplacementPlugin()
   ])
 } else {
+  config.output.filename = '[name].[chunkHash].js'
+
   config.plugins = config.plugins.concat([
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      minChunks: isVendor
+    }),
+    new WebpackMd5Hash(),
     new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } })
   ])
 }

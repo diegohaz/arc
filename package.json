@@ -57,7 +57,8 @@
     "react-addons-test-utils": "^15.4.1",
     "url-loader": "^0.5.7",
     "webpack": "^2.2.1",
-    "webpack-dev-server": "^2.3.0"
+    "webpack-dev-server": "^2.3.0",
+    "webpack-md5-hash": "^0.0.5"
   },
   "dependencies": {
     "history": "3.0.0",
