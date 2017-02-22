@@ -42,7 +42,6 @@ const config = {
       chunks: ['vendor'],
       filename: '[name].[hash].js'
     }),
-    new webpack.NamedModulesPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: path.join(__dirname, '/public/index.html')
@@ -68,6 +67,7 @@ if (DEBUG) {
   )
 
   config.plugins = config.plugins.concat([
+    new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin()
   ])
 } else {
