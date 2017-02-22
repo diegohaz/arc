@@ -29,8 +29,8 @@ const config = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': `'${process.env.NODE_ENV}'`,
-      'process.env.PUBLIC_PATH': `'${PUBLIC_PATH}'`
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+      'process.env.PUBLIC_PATH': JSON.stringify(PUBLIC_PATH)
     }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
