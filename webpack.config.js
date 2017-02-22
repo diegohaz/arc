@@ -9,12 +9,19 @@ const PUBLIC_PATH = `/${process.env.PUBLIC_PATH || ''}/`.replace('//', '/')
 
 const config = {
   devtool: DEBUG ? 'eval' : false,
-  entry: [
-    path.join(__dirname, 'src')
-  ],
+  entry: {
+    app: [path.join(__dirname, 'src')],
+    vendor: [
+      'history',
+      'react',
+      'react-dom',
+      'react-router',
+      'styled-components'
+    ]
+  },
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'app.[hash].js',
+    filename: '[name].[hash].js',
     publicPath: PUBLIC_PATH
   },
   resolve: {
@@ -25,6 +32,17 @@ const config = {
       'process.env.NODE_ENV': `'${process.env.NODE_ENV}'`,
       'process.env.PUBLIC_PATH': `'${PUBLIC_PATH}'`
     }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      filename: '[name].[chunkhash].js',
+      minChunks: Infinity
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'meta',
+      chunks: ['vendor'],
+      filename: '[name].[hash].js'
+    }),
+    new webpack.NamedModulesPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: path.join(__dirname, '/public/index.html')
@@ -43,7 +61,7 @@ const config = {
 }
 
 if (DEBUG) {
-  config.entry.unshift(
+  config.entry.app.unshift(
     `webpack-dev-server/client?http://${ip}:${port}/`,
     'webpack/hot/only-dev-server',
     'react-hot-loader/patch'
