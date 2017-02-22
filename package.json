@@ -60,7 +60,8 @@
     "redux-mock-store": "^1.2.1",
     "url-loader": "^0.5.7",
     "webpack": "^2.2.1",
-    "webpack-dev-server": "^2.3.0"
+    "webpack-dev-server": "^2.3.0",
+    "webpack-md5-hash": "^0.0.5"
   },
   "dependencies": {
     "axios": "^0.15.3",
