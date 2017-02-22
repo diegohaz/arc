@@ -7,13 +7,13 @@ const headers = {}
 api.request = (endpoint, method, settings, body) => {
   const url = (endpoint.indexOf(apiUrl) === -1) ? apiUrl + endpoint : endpoint
 
-  return fetch(url, api.init(method, settings, body))
+  return fetch(url, api.configureRequest(method, settings, body))
     .then(api.checkStatus)
     .then(response => response)
     .catch(error => Promise.reject(error))
 }
 
-api.init = (method = 'GET', settings = {}, body = null) => {
+api.configureRequest = (method = 'GET', settings = {}, body = null) => {
   headers.Accept = 'application/json'
   headers['Content-Type'] = 'application/json'
   if (settings.accessToken) { headers.Authorization = `Bearer ${settings.accessToken}` }
