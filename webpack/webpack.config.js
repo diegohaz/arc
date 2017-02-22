@@ -1,5 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
+const WebpackMd5Hash = require('webpack-md5-hash')
 const WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin')
 const webpackIsomorphicToolsConfig = require('./webpack-isomorphic-tools')
 
@@ -8,15 +9,20 @@ const port = (+process.env.PORT + 1) || 3001
 const DEBUG = process.env.NODE_ENV !== 'production'
 const PUBLIC_PATH = `/${process.env.PUBLIC_PATH || ''}/`.replace('//', '/')
 
+const isVendor = ({ userRequest }) => (
+  userRequest &&
+  userRequest.indexOf('node_modules') >= 0 &&
+  userRequest.match(/\.js$/)
+)
+
 const config = {
   devtool: DEBUG ? 'eval' : false,
-  entry: [
-    'babel-polyfill',
-    path.join(__dirname, '../src/client')
-  ],
+  entry: {
+    app: ['babel-polyfill', path.join(__dirname, '../src/client')]
+  },
   output: {
     path: path.join(__dirname, '../dist'),
-    filename: 'app.[hash].js',
+    filename: '[name].[hash].js',
     publicPath: DEBUG ? `http://${ip}:${port}/` : PUBLIC_PATH
   },
   resolve: {
@@ -41,18 +47,26 @@ const config = {
 }
 
 if (DEBUG) {
-  config.entry.unshift(
+  config.entry.app.unshift(
     `webpack-dev-server/client?http://${ip}:${port}/`,
     'webpack/hot/only-dev-server',
     'react-hot-loader/patch'
   )
 
   config.plugins = config.plugins.concat([
+    new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new WebpackIsomorphicToolsPlugin(webpackIsomorphicToolsConfig)
   ])
 } else {
+  config.output.filename = '[name].[chunkHash].js'
+
   config.plugins = config.plugins.concat([
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      minChunks: isVendor
+    }),
+    new WebpackMd5Hash(),
     new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }),
     new WebpackIsomorphicToolsPlugin(webpackIsomorphicToolsConfig)
   ])
