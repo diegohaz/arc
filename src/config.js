@@ -1,4 +1,4 @@
-import merge from 'lodash/merge'
+const merge = require('lodash/merge')
 
 const browser = typeof window !== 'undefined'
 
@@ -18,4 +18,3 @@ const config = {
 }
 
 module.exports = merge(config.all, config[config.all.env])
-export default module.exports
