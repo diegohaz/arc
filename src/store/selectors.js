@@ -1,5 +1,4 @@
-import upperFirst from 'lodash/upperFirst'
-import forIn from 'lodash/forIn'
+const upperFirst = require('lodash/upperFirst')
 
 const req = require.context('.', true, /\.\/.+\/selectors\.js$/)
 
@@ -11,7 +10,8 @@ req.keys().forEach((key) => {
 
   module.exports[fromName] = {}
 
-  forIn(selectors, (selector, name) => {
+  Object.keys(selectors).forEach((name) => {
+    const selector = selectors[name]
     if (typeof selector === 'function') {
       module.exports[fromName][name] = (state, ...args) => selector(getState(state), ...args)
     }
