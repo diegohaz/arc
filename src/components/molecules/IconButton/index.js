@@ -81,11 +81,11 @@ IconButton.propTypes = {
   collapsed: PropTypes.bool,
   right: PropTypes.bool,
   height: PropTypes.number,
-  children: PropTypes.node
+  children: PropTypes.node,
 }
 
 IconButton.defaultProps = {
-  breakpoint: 420
+  breakpoint: 420,
 }
 
 export default IconButton

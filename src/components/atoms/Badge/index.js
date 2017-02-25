@@ -14,11 +14,11 @@ const Badge = styled.span`
 
 Badge.propTypes = {
   palette: PropTypes.string,
-  reverse: PropTypes.bool
+  reverse: PropTypes.bool,
 }
 
 Badge.defaultProps = {
-  palette: 'primary'
+  palette: 'primary',
 }
 
 export default Badge

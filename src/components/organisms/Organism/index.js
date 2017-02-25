@@ -14,7 +14,7 @@ const Organism = (props) => {
 }
 
 Organism.propTypes = {
-  reverse: PropTypes.bool
+  reverse: PropTypes.bool,
 }
 
 export default Organism
