@@ -1,31 +1,20 @@
-import axios from 'axios'
-
-const request = jest.fn()
-axios.create = jest.fn(() => ({ request }))
-
-const api = require('.').default
+const { get, post } = require('.').default
+global.fetch = jest.fn().mockImplementation(() => Promise.resolve({ ok: true, id: '123' }))
 
 beforeEach(() => {
-  request.mockClear()
+  global.fetch.mockClear()
 })
 
 test('get', () => {
-  expect(request).not.toBeCalled()
-  api.get('/test', { foo: 'bar' })
-  expect(request).toBeCalledWith({
-    method: 'get',
-    url: '/test',
-    foo: 'bar'
+  expect(global.fetch).not.toBeCalled()
+  get('/test').then(response => {
+    expect(response.id).toBe('123')
   })
 })
 
 test('post', () => {
-  expect(request).not.toBeCalled()
-  api.post('/test', { title: 'test' }, { foo: 'bar' })
-  expect(request).toBeCalledWith({
-    method: 'post',
-    url: '/test',
-    foo: 'bar',
-    data: { title: 'test' }
+  expect(global.fetch).not.toBeCalled()
+  post('/test', { title: 'test' }, { foo: 'bar' }).then(response => {
+    expect(response.id).toBe('123')
   })
 })
