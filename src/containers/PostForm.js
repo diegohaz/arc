@@ -1,6 +1,6 @@
 import React from 'react'
 import { reduxForm } from 'redux-form'
-import { postCreate } from 'store/actions'
+import { postCreateRequest } from 'store/actions'
 import { createValidator, required } from 'services/validation'
 
 import { PostForm } from 'components'
@@ -8,7 +8,7 @@ import { PostForm } from 'components'
 const PostFormContainer = props => <PostForm {...props} />
 
 const onSubmit = (data, dispatch) => new Promise((resolve, reject) => {
-  dispatch(postCreate.request(data, resolve, reject))
+  dispatch(postCreateRequest(data, resolve, reject))
 })
 
 const validate = createValidator({
