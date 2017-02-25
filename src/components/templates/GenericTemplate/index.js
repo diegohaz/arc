@@ -25,7 +25,7 @@ const GenericTemplate = ({ children, ...props }) => {
 }
 
 GenericTemplate.propTypes = {
-  children: PropTypes.any.isRequired
+  children: PropTypes.any.isRequired,
 }
 
 export default GenericTemplate

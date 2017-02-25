@@ -1,6 +1,6 @@
 require('babel-polyfill')
 require('babel-core/register')({
-  plugins: ['transform-es2015-modules-commonjs']
+  plugins: ['transform-es2015-modules-commonjs'],
 })
 
 const WebpackIsomorphicTools = require('webpack-isomorphic-tools')

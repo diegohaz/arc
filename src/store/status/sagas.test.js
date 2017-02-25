@@ -20,17 +20,17 @@ describe('resolveOrReject', () => {
   const action = {
     type: 'SOMETHING_REQUEST',
     resolve: () => {},
-    reject: () => {}
+    reject: () => {},
   }
 
   it('calls success', () => {
     const generator = sagas.resolveOrReject(action)
     expect(generator.next().value).toEqual(race({
       success: take('SOMETHING_SUCCESS'),
-      failure: take('SOMETHING_FAILURE')
+      failure: take('SOMETHING_FAILURE'),
     }))
     expect(generator.next({
-      success: { type: 'SOMETHING_SUCCESS', foo: 'bar', baz: 1 }
+      success: { type: 'SOMETHING_SUCCESS', foo: 'bar', baz: 1 },
     }).value).toEqual(call(action.resolve, { foo: 'bar', baz: 1 }))
     expect(generator.next().done).toBe(true)
   })
@@ -39,7 +39,7 @@ describe('resolveOrReject', () => {
     const generator = sagas.resolveOrReject({ ...action, resolve: 1 })
     expect(generator.next().value).toEqual(race({
       success: take('SOMETHING_SUCCESS'),
-      failure: take('SOMETHING_FAILURE')
+      failure: take('SOMETHING_FAILURE'),
     }))
     expect(generator.next({ success: {} }).done).toBe(true)
   })
@@ -48,10 +48,10 @@ describe('resolveOrReject', () => {
     const generator = sagas.resolveOrReject(action)
     expect(generator.next().value).toEqual(race({
       success: take('SOMETHING_SUCCESS'),
-      failure: take('SOMETHING_FAILURE')
+      failure: take('SOMETHING_FAILURE'),
     }))
     expect(generator.next({
-      failure: { type: 'SOMETHING_FAILURE', foo: 'bar', baz: 1 }
+      failure: { type: 'SOMETHING_FAILURE', foo: 'bar', baz: 1 },
     }).value).toEqual(call(action.reject, { foo: 'bar', baz: 1 }))
     expect(generator.next().done).toBe(true)
   })
@@ -60,7 +60,7 @@ describe('resolveOrReject', () => {
     const generator = sagas.resolveOrReject({ ...action, reject: 1 })
     expect(generator.next().value).toEqual(race({
       success: take('SOMETHING_SUCCESS'),
-      failure: take('SOMETHING_FAILURE')
+      failure: take('SOMETHING_FAILURE'),
     }))
     expect(generator.next({ failure: {} }).done).toBe(true)
   })
@@ -69,7 +69,7 @@ describe('resolveOrReject', () => {
     const generator = sagas.resolveOrReject({ ...action, resolve: 1, reject: 1 })
     expect(generator.next().value).toEqual(race({
       success: take('SOMETHING_SUCCESS'),
-      failure: take('SOMETHING_FAILURE')
+      failure: take('SOMETHING_FAILURE'),
     }))
     expect(generator.next({ resolve: {} }).done).toBe(true)
   })

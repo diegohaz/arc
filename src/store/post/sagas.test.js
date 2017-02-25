@@ -9,29 +9,28 @@ describe('createPost', () => {
   it('calls success', () => {
     const generator = sagas.createPost(data)
     expect(generator.next().value).toEqual(call(api.post, '/posts', data))
-    expect(generator.next({ data }).value).toEqual(put(actions.postCreate.success(data)))
+    expect(generator.next({ data }).value).toEqual(put(actions.postCreateSuccess(data)))
   })
 
   it('calls failure', () => {
     const generator = sagas.createPost(data)
     expect(generator.next().value).toEqual(call(api.post, '/posts', data))
-    expect(generator.throw('test').value).toEqual(put(actions.postCreate.failure('test')))
+    expect(generator.throw('test').value).toEqual(put(actions.postCreateFailure('test')))
   })
 })
 
-describe('listPosts', () => {
-  const data = [1, 2, 3]
-
+describe('readPostList', () => {
   it('calls success', () => {
-    const generator = sagas.listPosts(1)
+    const data = [1, 2, 3]
+    const generator = sagas.readPostList({ _limit: 1 })
     expect(generator.next().value).toEqual(call(api.get, '/posts', { params: { _limit: 1 } }))
-    expect(generator.next({ data }).value).toEqual(put(actions.postList.success(data)))
+    expect(generator.next({ data }).value).toEqual(put(actions.postListReadSuccess(data)))
   })
 
   it('calls failure', () => {
-    const generator = sagas.listPosts(1)
+    const generator = sagas.readPostList({ _limit: 1 })
     expect(generator.next().value).toEqual(call(api.get, '/posts', { params: { _limit: 1 } }))
-    expect(generator.throw('test').value).toEqual(put(actions.postList.failure('test')))
+    expect(generator.throw('test').value).toEqual(put(actions.postListReadFailure('test')))
   })
 })
 
@@ -42,15 +41,15 @@ test('watchPostCreateRequest', () => {
   expect(generator.next(payload).value).toEqual(call(sagas.createPost, ...Object.values(payload)))
 })
 
-test('watchPostListRequest', () => {
-  const payload = { limit: 1 }
-  const generator = sagas.watchPostListRequest()
-  expect(generator.next().value).toEqual(take(actions.POST_LIST_REQUEST))
-  expect(generator.next(payload).value).toEqual(call(sagas.listPosts, ...Object.values(payload)))
+test('watchPostListReadRequest', () => {
+  const payload = { params: { _limit: 1 } }
+  const generator = sagas.watchPostListReadRequest()
+  expect(generator.next().value).toEqual(take(actions.POST_LIST_READ_REQUEST))
+  expect(generator.next(payload).value).toEqual(call(sagas.readPostList, ...Object.values(payload)))
 })
 
 test('saga', () => {
   const generator = saga()
   expect(generator.next().value).toEqual(fork(sagas.watchPostCreateRequest))
-  expect(generator.next().value).toEqual(fork(sagas.watchPostListRequest))
+  expect(generator.next().value).toEqual(fork(sagas.watchPostListReadRequest))
 })

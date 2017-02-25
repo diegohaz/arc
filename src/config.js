@@ -15,7 +15,7 @@ const config = {
     basename,
     browser,
     ip,
-    port
+    port,
   },
   test: {},
   development: {},
@@ -23,8 +23,8 @@ const config = {
     ip: process.env.IP || '0.0.0.0',
     port: process.env.PORT || 8080,
     baseUrl: 'https://arc.diegohaz.com',
-    apiUrl: 'https://jsonplaceholder.typicode.com'
-  }
+    apiUrl: 'https://jsonplaceholder.typicode.com',
+  },
 }
 
 module.exports = merge(config.all, config[config.all.env])

@@ -30,7 +30,7 @@ const PrimaryNavigation = (props) => {
 }
 
 PrimaryNavigation.propTypes = {
-  reverse: PropTypes.bool
+  reverse: PropTypes.bool,
 }
 
 export default PrimaryNavigation

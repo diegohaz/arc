@@ -42,14 +42,14 @@ ConfirmModal.propTypes = {
   confirmLabel: PropTypes.string,
   cancelLabel: PropTypes.string,
   confirmProps: PropTypes.object,
-  cancelProps: PropTypes.object
+  cancelProps: PropTypes.object,
 }
 
 ConfirmModal.defaultProps = {
   confirmLabel: 'Confirm',
   cancelLabel: 'Cancel',
   confirmProps: {},
-  cancelProps: {}
+  cancelProps: {},
 }
 
 export default ConfirmModal

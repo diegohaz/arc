@@ -22,10 +22,10 @@ const App = ({ children }) => {
           { property: 'og:image', content: 'https://diegohaz.github.io/arc/thumbnail.png' },
           { property: 'og:image:type', content: 'image/png' },
           { property: 'og:image:width', content: '1200' },
-          { property: 'og:image:height', content: '630' }
+          { property: 'og:image:height', content: '630' },
         ]}
         link={[
-          { rel: 'icon', href: 'https://diegohaz.github.io/arc/icon.png' }
+          { rel: 'icon', href: 'https://diegohaz.github.io/arc/icon.png' },
         ]}
       />
       <ThemeProvider theme={theme}>{children}</ThemeProvider>
@@ -34,7 +34,7 @@ const App = ({ children }) => {
 }
 
 App.propTypes = {
-  children: PropTypes.any
+  children: PropTypes.any,
 }
 
 export default App

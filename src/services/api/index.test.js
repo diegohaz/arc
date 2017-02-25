@@ -15,7 +15,7 @@ test('get', () => {
   expect(request).toBeCalledWith({
     method: 'get',
     url: '/test',
-    foo: 'bar'
+    foo: 'bar',
   })
 })
 
@@ -26,6 +26,6 @@ test('post', () => {
     method: 'post',
     url: '/test',
     foo: 'bar',
-    data: { title: 'test' }
+    data: { title: 'test' },
   })
 })

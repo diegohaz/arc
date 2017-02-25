@@ -10,14 +10,14 @@ window.gapi = {
   load: () => {},
   auth2: {
     init: () => auth2,
-    getAuthInstance: () => auth2
-  }
+    getAuthInstance: () => auth2,
+  },
 }
 
 window.FB = {
   init: () => {},
   login: (cb) => cb({ authResponse: 'foo' }),
-  api: (endpoint, options, cb) => cb()
+  api: (endpoint, options, cb) => cb(),
 }
 
 describe('promises', () => {
@@ -49,10 +49,10 @@ describe('loginFacebook', () => {
       .toEqual(call(sagas.promises.fbLogin, { scope: 'public_profile' }))
     expect(generator.next().value).toEqual(call(sagas.promises.fbGetMe, { fields: 'id,name' }))
     expect(generator.next({ id: '123', name: 'name' }).value)
-      .toEqual(put(actions.socialLogin.success({
+      .toEqual(put(actions.socialLoginSuccess({
         id: '123',
         name: 'name',
-        picture: 'https://graph.facebook.com/123/picture?type=normal'
+        picture: 'https://graph.facebook.com/123/picture?type=normal',
       })))
   })
 
@@ -60,7 +60,7 @@ describe('loginFacebook', () => {
     const generator = sagas.loginFacebook()
     expect(generator.next().value)
       .toEqual(call(sagas.promises.fbLogin, { scope: 'public_profile' }))
-    expect(generator.throw('test').value).toEqual(put(actions.socialLogin.failure('test')))
+    expect(generator.throw('test').value).toEqual(put(actions.socialLoginFailure('test')))
   })
 })
 
@@ -77,7 +77,7 @@ describe('prepareFacebook', () => {
   it('calls failure', () => {
     const generator = sagas.prepareFacebook({ appId: 'test' })
     expect(generator.next().value).toEqual(call(sagas.appendFbRoot))
-    expect(generator.throw('test').value).toEqual(put(actions.socialLogin.failure('test')))
+    expect(generator.throw('test').value).toEqual(put(actions.socialLoginFailure('test')))
   })
 })
 
@@ -99,13 +99,13 @@ describe('loginGoogle', () => {
     expect(generator.next(profile).value).toEqual(call([profile, profile.getName]))
     expect(generator.next('name').value).toEqual(call([profile, profile.getImageUrl]))
     expect(generator.next('imageUrl').value)
-      .toEqual(put(actions.socialLogin.success({ name: 'name', picture: 'imageUrl' })))
+      .toEqual(put(actions.socialLoginSuccess({ name: 'name', picture: 'imageUrl' })))
   })
 
   it('calls failure', () => {
     const generator = sagas.loginGoogle()
     expect(generator.next().value).toEqual(call(window.gapi.auth2.getAuthInstance))
-    expect(generator.throw('test').value).toEqual(put(actions.socialLogin.failure('test')))
+    expect(generator.throw('test').value).toEqual(put(actions.socialLoginFailure('test')))
   })
 })
 
@@ -123,7 +123,7 @@ describe('prepareGoogle', () => {
     const generator = sagas.prepareGoogle({ client_id: 'test' })
     expect(generator.next().value)
       .toEqual(call(sagas.promises.loadScript, '//apis.google.com/js/platform.js'))
-    expect(generator.throw('test').value).toEqual(put(actions.socialLogin.failure('test')))
+    expect(generator.throw('test').value).toEqual(put(actions.socialLoginFailure('test')))
   })
 })
 

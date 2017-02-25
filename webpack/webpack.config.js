@@ -18,21 +18,21 @@ const isVendor = ({ userRequest }) => (
 const config = {
   devtool: DEBUG ? 'eval' : false,
   entry: {
-    app: ['babel-polyfill', path.join(__dirname, '../src/client')]
+    app: ['babel-polyfill', path.join(__dirname, '../src/client')],
   },
   output: {
     path: path.join(__dirname, '../dist'),
     filename: '[name].[hash].js',
-    publicPath: DEBUG ? `http://${ip}:${port}/` : PUBLIC_PATH
+    publicPath: DEBUG ? `http://${ip}:${port}/` : PUBLIC_PATH,
   },
   resolve: {
-    modules: ['src', 'node_modules']
+    modules: ['src', 'node_modules'],
   },
   plugins: [
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-      'process.env.PUBLIC_PATH': JSON.stringify(PUBLIC_PATH)
-    })
+      'process.env.PUBLIC_PATH': JSON.stringify(PUBLIC_PATH),
+    }),
   ],
   module: {
     rules: [
@@ -41,9 +41,9 @@ const config = {
       { test: /\.jpg$/, loader: 'url-loader?prefix=images/&limit=8000&mimetype=image/jpeg' },
       { test: /\.woff$/, loader: 'url-loader?prefix=fonts/&limit=8000&mimetype=application/font-woff' },
       { test: /\.ttf$/, loader: 'file-loader?prefix=fonts/' },
-      { test: /\.eot$/, loader: 'file-loader?prefix=fonts/' }
-    ]
-  }
+      { test: /\.eot$/, loader: 'file-loader?prefix=fonts/' },
+    ],
+  },
 }
 
 if (DEBUG) {
@@ -56,7 +56,7 @@ if (DEBUG) {
   config.plugins = config.plugins.concat([
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new WebpackIsomorphicToolsPlugin(webpackIsomorphicToolsConfig)
+    new WebpackIsomorphicToolsPlugin(webpackIsomorphicToolsConfig),
   ])
 } else {
   config.output.filename = '[name].[chunkHash].js'
@@ -64,11 +64,11 @@ if (DEBUG) {
   config.plugins = config.plugins.concat([
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      minChunks: isVendor
+      minChunks: isVendor,
     }),
     new WebpackMd5Hash(),
     new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }),
-    new WebpackIsomorphicToolsPlugin(webpackIsomorphicToolsConfig)
+    new WebpackIsomorphicToolsPlugin(webpackIsomorphicToolsConfig),
   ])
 }
 

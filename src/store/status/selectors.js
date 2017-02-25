@@ -3,7 +3,7 @@ import pick from 'lodash/pick'
 
 export const initialState = {
   loading: {},
-  error: {}
+  error: {},
 }
 
 const getIn = (state, prefix) => {

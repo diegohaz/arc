@@ -40,11 +40,11 @@ Field.propTypes = {
   invalid: PropTypes.bool,
   error: PropTypes.string,
   label: PropTypes.string,
-  type: PropTypes.string
+  type: PropTypes.string,
 }
 
 Field.defaultProps = {
-  type: 'text'
+  type: 'text',
 }
 
 export default Field

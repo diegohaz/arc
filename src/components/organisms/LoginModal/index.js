@@ -17,7 +17,7 @@ class LoginModal extends Component {
     user: PropTypes.object,
     onFacebookLogin: PropTypes.func.isRequired,
     onGoogleLogin: PropTypes.func.isRequired,
-    onClose: PropTypes.func.isRequired
+    onClose: PropTypes.func.isRequired,
   }
 
   componentWillReceiveProps(nextProps) {

@@ -6,13 +6,13 @@ export default (state = initialState, action) => {
     case MODAL_SHOW:
       return {
         ...state,
-        [action.name]: true
+        [action.name]: true,
       }
     case MODAL_HIDE:
       if (action.name) {
         return {
           ...state,
-          [action.name]: false
+          [action.name]: false,
         }
       }
       return initialState

@@ -7,7 +7,7 @@ export default (state = initialState, action) => {
     case FORM_SET_CSRF_TOKEN:
       return {
         ...state,
-        csrfToken: action.token
+        csrfToken: action.token,
       }
     default:
       return reducer(state, action)
