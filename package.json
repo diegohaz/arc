@@ -1,6 +1,6 @@
 {
   "name": "generator-arc",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "description": "React app generator with Webpack, React Router, Jest, Redux, Server Side Rendering and more",
   "homepage": "https://github.com/diegohaz/arc",
   "repository": {
