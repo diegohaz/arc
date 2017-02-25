@@ -2,7 +2,7 @@ import React, { PropTypes, Component } from 'react'
 import { connect } from 'react-redux'
 import { fbAppId, googleClientId } from 'config'
 import { fromSocial } from 'store/selectors'
-import { socialLogin, modalHide } from 'store/actions'
+import { socialLoginPrepare, socialLoginRequest, modalHide } from 'store/actions'
 
 import { LoginModal } from 'components'
 
@@ -27,10 +27,10 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  prepareGoogle: () => dispatch(socialLogin.prepare('google', { client_id: googleClientId })),
-  prepareFacebook: () => dispatch(socialLogin.prepare('facebook', { appId: fbAppId })),
-  onFacebookLogin: () => dispatch(socialLogin.request('facebook')),
-  onGoogleLogin: () => dispatch(socialLogin.request('google')),
+  prepareGoogle: () => dispatch(socialLoginPrepare('google', { client_id: googleClientId })),
+  prepareFacebook: () => dispatch(socialLoginPrepare('facebook', { appId: fbAppId })),
+  onFacebookLogin: () => dispatch(socialLoginRequest('facebook')),
+  onGoogleLogin: () => dispatch(socialLoginRequest('google')),
   onClose: () => dispatch(modalHide('login'))
 })
 

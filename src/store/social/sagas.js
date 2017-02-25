@@ -1,5 +1,5 @@
 import { take, put, call, fork } from 'redux-saga/effects'
-import { socialLogin } from './actions'
+import * as actions from './actions'
 
 export const promises = {
   fbLogin: (options) => new Promise((resolve, reject) => {
@@ -41,9 +41,9 @@ export function* loginFacebook({ scope = 'public_profile', fields = 'id,name', .
     yield call(promises.fbLogin, { scope, ...options })
     const data = yield call(promises.fbGetMe, { fields })
     const picture = `https://graph.facebook.com/${data.id}/picture?type=normal`
-    yield put(socialLogin.success({ ...data, picture }))
+    yield put(actions.socialLoginSuccess({ ...data, picture }))
   } catch (e) {
-    yield put(socialLogin.failure(e))
+    yield put(actions.socialLoginFailure(e))
   }
 }
 
@@ -53,7 +53,7 @@ export function* prepareFacebook({ appId, version = 'v2.8', ...options }) {
     yield call(promises.loadScript, '//connect.facebook.net/en_US/sdk.js')
     yield call([window.FB, window.FB.init], { appId, version, ...options })
   } catch (e) {
-    yield put(socialLogin.failure(e))
+    yield put(actions.socialLoginFailure(e))
   }
 }
 
@@ -73,9 +73,9 @@ export function* loginGoogle({ scope = 'profile', ...options } = {}) {
     const profile = yield call([user, user.getBasicProfile])
     const name = yield call([profile, profile.getName])
     const picture = yield call([profile, profile.getImageUrl])
-    yield put(socialLogin.success({ name, picture }))
+    yield put(actions.socialLoginSuccess({ name, picture }))
   } catch (e) {
-    yield put(socialLogin.failure(e))
+    yield put(actions.socialLoginFailure(e))
   }
 }
 
@@ -85,7 +85,7 @@ export function* prepareGoogle({ client_id, ...options }) {
     yield call(promises.loadGoogleAuth2)
     yield call(window.gapi.auth2.init, { client_id, ...options })
   } catch (e) {
-    yield put(socialLogin.failure(e))
+    yield put(actions.socialLoginFailure(e))
   }
 }
 
