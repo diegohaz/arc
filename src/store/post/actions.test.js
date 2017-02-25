@@ -1,41 +1,43 @@
 import * as actions from './actions'
 
-test('postList', () => {
-  expect(actions.postList.request(3)).toEqual({
-    type: actions.POST_LIST_REQUEST,
-    limit: 3
-  })
-
-  expect(actions.postList.success([1, 2, 3])).toEqual({
-    type: actions.POST_LIST_SUCCESS,
-    list: [1, 2, 3]
-  })
-
-  expect(actions.postList.failure('test')).toEqual({
-    type: actions.POST_LIST_FAILURE,
-    error: 'test'
+test('postCreateRequest', () => {
+  expect(actions.postCreateRequest({ title: 'test' })).toEqual({
+    type: actions.POST_CREATE_REQUEST,
+    data: { title: 'test' },
   })
 })
 
-test('postCreate', () => {
-  expect(actions.postCreate.request({ id: 1, title: 'test' })).toEqual({
-    type: actions.POST_CREATE_REQUEST,
-    data: {
-      id: 1,
-      title: 'test'
-    }
-  })
-
-  expect(actions.postCreate.success({ id: 2, title: 'test 2' })).toEqual({
+test('postCreateSuccess', () => {
+  expect(actions.postCreateSuccess({ id: 1, title: 'test' })).toEqual({
     type: actions.POST_CREATE_SUCCESS,
-    data: {
-      id: 2,
-      title: 'test 2'
-    }
+    detail: { id: 1, title: 'test' },
   })
+})
 
-  expect(actions.postCreate.failure('test')).toEqual({
+test('postCreateFailure', () => {
+  expect(actions.postCreateFailure('error')).toEqual({
     type: actions.POST_CREATE_FAILURE,
-    error: 'test'
+    error: 'error',
+  })
+})
+
+test('postListReadRequest', () => {
+  expect(actions.postListReadRequest({ fields: 'test' })).toEqual({
+    type: actions.POST_LIST_READ_REQUEST,
+    params: { fields: 'test' },
+  })
+})
+
+test('postListReadSuccess', () => {
+  expect(actions.postListReadSuccess([1, 2, 3])).toEqual({
+    type: actions.POST_LIST_READ_SUCCESS,
+    list: [1, 2, 3],
+  })
+})
+
+test('postListReadFailure', () => {
+  expect(actions.postListReadFailure('error')).toEqual({
+    type: actions.POST_LIST_READ_FAILURE,
+    error: 'error',
   })
 })

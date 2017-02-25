@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react'
 import { connect } from 'react-redux'
 import { fromEntities, fromPost, fromStatus } from 'store/selectors'
-import { postList, POST_LIST } from 'store/actions'
+import { postListReadRequest, POST_LIST_READ } from 'store/actions'
 
 import { PostList } from 'components'
 
@@ -29,11 +29,11 @@ class PostListContainer extends Component {
 
 const mapStateToProps = (state) => ({
   list: fromEntities.getList(state, 'post', fromPost.getList(state)),
-  loading: fromStatus.isLoading(state, POST_LIST)
+  loading: fromStatus.isLoading(state, POST_LIST_READ)
 })
 
 const mapDispatchToProps = (dispatch, { limit }) => ({
-  request: () => dispatch(postList.request(limit))
+  request: () => dispatch(postListReadRequest({ _limit: limit }))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostListContainer)

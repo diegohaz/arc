@@ -2,23 +2,56 @@ import { initialState } from './selectors'
 import * as actions from './actions'
 import reducer from './reducer'
 
-const altState = {
-  ...initialState,
-  list: [6, 7, 8]
-}
-
 it('returns the initial state', () => {
   expect(reducer(undefined, {})).toEqual(initialState)
 })
 
-it('handles POST_LIST_SUCCESS', () => {
-  const action = { type: actions.POST_LIST_SUCCESS, list: [1, 2, 3] }
-  expect(reducer(initialState, action)).toEqual({ ...initialState, list: [1, 2, 3] })
-  expect(reducer(altState, action)).toEqual({ ...altState, list: [1, 2, 3] })
+describe('POST_CREATE_SUCCESS', () => {
+  it('adds the new data to the initial state', () => {
+    expect(reducer(initialState, {
+      type: actions.POST_CREATE_SUCCESS,
+      detail: 1,
+    })).toEqual({
+      ...initialState,
+      list: [1],
+    })
+  })
+
+  it('prepends the new data to an existing state', () => {
+    expect(reducer({
+      ...initialState,
+      list: [1, 2],
+    }, {
+      type: actions.POST_CREATE_SUCCESS,
+      detail: 3,
+    })).toEqual({
+      ...initialState,
+      list: [3, 1, 2],
+    })
+  })
 })
 
-it('handles POST_CREATE_SUCCESS', () => {
-  const action = { type: actions.POST_CREATE_SUCCESS, data: 3 }
-  expect(reducer(initialState, action)).toEqual({ ...initialState, list: [3] })
-  expect(reducer(altState, action)).toEqual({ ...initialState, list: [3, 6, 7, 8] })
+describe('POST_LIST_READ_SUCCESS', () => {
+  it('sets list in the initial state', () => {
+    expect(reducer(initialState, {
+      type: actions.POST_LIST_READ_SUCCESS,
+      list: [1, 2, 3],
+    })).toEqual({
+      ...initialState,
+      list: [1, 2, 3],
+    })
+  })
+
+  it('overrides list in an existing state', () => {
+    expect(reducer({
+      ...initialState,
+      list: [1, 2, 3],
+    }, {
+      type: actions.POST_LIST_READ_SUCCESS,
+      list: [3, 2, 1],
+    })).toEqual({
+      ...initialState,
+      list: [3, 2, 1],
+    })
+  })
 })
