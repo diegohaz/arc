@@ -15,8 +15,8 @@ new WebpackDevServer(webpack(config), {
   contentBase: 'public',
   compress: true,
   headers: {
-    'Access-Control-Allow-Origin': '*'
-  }
+    'Access-Control-Allow-Origin': '*',
+  },
 }).listen(port, ip, function (err) {
   if (err) {
     return console.log(err)
