@@ -54,7 +54,7 @@ IconLink.propTypes = {
   reverse: PropTypes.bool,
   responsive: PropTypes.bool,
   right: PropTypes.bool,
-  children: PropTypes.node
+  children: PropTypes.node,
 }
 
 export default IconLink

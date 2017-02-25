@@ -12,11 +12,11 @@ const Block = styled.div`
 Block.propTypes = {
   palette: PropTypes.string,
   reverse: PropTypes.bool,
-  opaque: PropTypes.bool
+  opaque: PropTypes.bool,
 }
 
 Block.defaultProps = {
-  palette: 'grayscale'
+  palette: 'grayscale',
 }
 
 export default Block

@@ -3,7 +3,7 @@ import { combineReducers } from 'redux'
 import { routerReducer as routing } from 'react-router-redux'
 
 const reducers = {
-  routing
+  routing,
 }
 
 const req = require.context('.', true, /\.\/.+\/reducer\.js$/)

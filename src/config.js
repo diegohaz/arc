@@ -15,30 +15,30 @@ const config = {
     mongo: {
       options: {
         db: {
-          safe: true
-        }
-      }
+          safe: true,
+        },
+      },
     },
     basename,
     browser,
     ip,
-    port
+    port,
   },
   test: {
     mongo: {
       uri: `mongodb://${ip}/arc-test`,
       options: {
-        debug: false
-      }
-    }
+        debug: false,
+      },
+    },
   },
   development: {
     mongo: {
       uri: `mongodb://${ip}/arc-dev`,
       options: {
-        debug: true
-      }
-    }
+        debug: true,
+      },
+    },
   },
   production: {
     ip: process.env.IP || '0.0.0.0',
@@ -46,9 +46,9 @@ const config = {
     baseUrl: 'https://arc.diegohaz.com',
     apiUrl: 'https://arc.diegohaz.com/api',
     mongo: {
-      uri: process.env.MONGODB_URI || 'mongodb://localhost/arc'
-    }
-  }
+      uri: process.env.MONGODB_URI || 'mongodb://localhost/arc',
+    },
+  },
 }
 
 module.exports = merge(config.all, config[config.all.env])

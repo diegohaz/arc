@@ -6,7 +6,7 @@ beforeEach(() => {
   res = {
     status: jest.fn(() => res),
     json: jest.fn(() => res),
-    end: jest.fn(() => res)
+    end: jest.fn(() => res),
   }
 })
 
@@ -50,15 +50,15 @@ describe('authorOrAdmin', () => {
   beforeEach(() => {
     user = {
       id: 1,
-      role: 'user'
+      role: 'user',
     }
     entity = {
       author: {
         id: 1,
         equals(id) {
           return id === this.id
-        }
-      }
+        },
+      },
     }
   })
 

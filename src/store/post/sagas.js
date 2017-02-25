@@ -1,41 +1,40 @@
 import { take, put, call, fork } from 'redux-saga/effects'
 import api from 'services/api'
-import { postList, postCreate, POST_LIST_REQUEST, POST_CREATE_REQUEST } from './actions'
+import * as actions from './actions'
 
 export function* createPost(newData) {
   try {
     const { data } = yield call(api.post, '/posts', newData)
-    yield put(postCreate.success(data))
+    yield put(actions.postCreateSuccess(data))
   } catch (e) {
-    yield put(postCreate.failure(e))
+    yield put(actions.postCreateFailure(e))
   }
 }
 
-export function* listPosts(limit) {
+export function* readPostList(params) {
   try {
-    const params = { limit }
     const { data } = yield call(api.get, '/posts', { params })
-    yield put(postList.success(data))
+    yield put(actions.postListReadSuccess(data))
   } catch (e) {
-    yield put(postList.failure(e))
+    yield put(actions.postListReadFailure(e))
   }
 }
 
 export function* watchPostCreateRequest() {
   while (true) {
-    const { data } = yield take(POST_CREATE_REQUEST)
+    const { data } = yield take(actions.POST_CREATE_REQUEST)
     yield call(createPost, data)
   }
 }
 
-export function* watchPostListRequest() {
+export function* watchPostListReadRequest() {
   while (true) {
-    const { limit } = yield take(POST_LIST_REQUEST)
-    yield call(listPosts, limit)
+    const { params } = yield take(actions.POST_LIST_READ_REQUEST)
+    yield call(readPostList, params)
   }
 }
 
 export default function* () {
   yield fork(watchPostCreateRequest)
-  yield fork(watchPostListRequest)
+  yield fork(watchPostListReadRequest)
 }

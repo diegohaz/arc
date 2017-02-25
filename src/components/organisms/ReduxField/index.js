@@ -11,11 +11,11 @@ const ReduxField = ({ meta, input, ...props }) => {
 ReduxField.propTypes = {
   meta: PropTypes.shape({
     touched: PropTypes.bool,
-    error: PropTypes.string
+    error: PropTypes.string,
   }).isRequired,
   input: PropTypes.shape({
-    name: PropTypes.string.isRequired
-  }).isRequired
+    name: PropTypes.string.isRequired,
+  }).isRequired,
 }
 
 export default ReduxField

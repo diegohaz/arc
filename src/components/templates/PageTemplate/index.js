@@ -44,7 +44,7 @@ PageTemplate.propTypes = {
   header: PropTypes.node.isRequired,
   hero: PropTypes.node,
   footer: PropTypes.node.isRequired,
-  children: PropTypes.any.isRequired
+  children: PropTypes.any.isRequired,
 }
 
 export default PageTemplate

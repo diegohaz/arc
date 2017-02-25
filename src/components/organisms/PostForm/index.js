@@ -24,7 +24,7 @@ const PostForm = ({ handleSubmit, submitting }) => {
 
 PostForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
-  submitting: PropTypes.bool
+  submitting: PropTypes.bool,
 }
 
 export default PostForm

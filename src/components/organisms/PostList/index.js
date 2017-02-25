@@ -20,7 +20,7 @@ const PostList = ({ list, loading, ...props }) => {
 
 PostList.propTypes = {
   list: PropTypes.arrayOf(PropTypes.object).isRequired,
-  loading: PropTypes.bool
+  loading: PropTypes.bool,
 }
 
 export default PostList

@@ -9,11 +9,11 @@ const Atom = styled.span`
 
 Atom.propTypes = {
   palette: PropTypes.string,
-  reverse: PropTypes.bool
+  reverse: PropTypes.bool,
 }
 
 Atom.defaultProps = {
-  palette: 'grayscale'
+  palette: 'grayscale',
 }
 
 export default Atom

@@ -2,13 +2,13 @@ import mongoose, { Schema } from 'mongoose'
 
 const postSchema = new Schema({
   title: {
-    type: String
+    type: String,
   },
   body: {
-    type: String
-  }
+    type: String,
+  },
 }, {
-  timestamps: true
+  timestamps: true,
 })
 
 postSchema.methods = {
@@ -19,14 +19,14 @@ postSchema.methods = {
       title: this.title,
       body: this.body,
       createdAt: this.createdAt,
-      updatedAt: this.updatedAt
+      updatedAt: this.updatedAt,
     }
 
     return full ? {
-      ...view
+      ...view,
       // add properties for a full view
     } : view
-  }
+  },
 }
 
 module.exports = mongoose.model('Post', postSchema)

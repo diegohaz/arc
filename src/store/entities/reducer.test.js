@@ -5,8 +5,8 @@ const altState = {
   ...initialState,
   foo: {
     id: 1,
-    bars: [1, 2, 3]
-  }
+    bars: [1, 2, 3],
+  },
 }
 
 it('returns the initial state', () => {
@@ -19,7 +19,7 @@ it('handles actions', () => {
     ...altState,
     foo: {
       ...altState.foo,
-      bars: [4]
-    }
+      bars: [4],
+    },
   })
 })

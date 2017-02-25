@@ -16,7 +16,7 @@ export default (routes) => {
   if (env === 'production') {
     app.set('forceSSLOptions', {
       enable301Redirects: true,
-      trustXFPHeader: true
+      trustXFPHeader: true,
     })
     app.use(forceSSL)
   }

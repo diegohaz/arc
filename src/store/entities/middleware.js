@@ -1,7 +1,7 @@
 import { normalize } from 'normalizr'
 import { actionsMeta } from './schemas'
 
-const middleware = (store) => (next) => (action) => {
+const middleware = store => next => (action) => {
   const types = Object.keys(actionsMeta)
   if (types.indexOf(action.type) >= 0) {
     const meta = actionsMeta[action.type]

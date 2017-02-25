@@ -30,7 +30,7 @@ Html.propTypes = {
   styles: PropTypes.string.isRequired,
   assets: PropTypes.object.isRequired,
   state: PropTypes.string.isRequired,
-  content: PropTypes.string.isRequired
+  content: PropTypes.string.isRequired,
 }
 
 export default Html

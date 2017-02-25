@@ -5,15 +5,15 @@ const config = {
   assets: {
     images: {
       extensions: ['jpeg', 'jpg', 'png', 'gif', 'svg'],
-      parser: WebpackIsomorphicToolsPlugin.url_loader_parser
+      parser: WebpackIsomorphicToolsPlugin.url_loader_parser,
     },
     fonts: {
       extensions: ['woff', 'woff2', 'ttf', 'eot'],
-      parser: WebpackIsomorphicToolsPlugin.url_loader_parser
-    }
+      parser: WebpackIsomorphicToolsPlugin.url_loader_parser,
+    },
   },
   modulesDirectories: ['src', 'node_modules'],
-  patch_require: true
+  patch_require: true,
 }
 
 module.exports = config

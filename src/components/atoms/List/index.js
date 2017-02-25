@@ -21,11 +21,11 @@ List.propTypes = {
   ordered: PropTypes.bool,
   palette: PropTypes.string,
   reverse: PropTypes.bool,
-  children: PropTypes.any
+  children: PropTypes.any,
 }
 
 List.defaultProps = {
-  palette: 'grayscale'
+  palette: 'grayscale',
 }
 
 export default List
