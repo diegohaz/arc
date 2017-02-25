@@ -5,7 +5,7 @@ import { reducer as form } from 'redux-form'
 
 const reducers = {
   routing,
-  form
+  form,
 }
 
 const req = require.context('.', true, /\.\/.+\/reducer\.js$/)

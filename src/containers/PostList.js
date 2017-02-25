@@ -10,11 +10,11 @@ class PostListContainer extends Component {
     list: PropTypes.arrayOf(PropTypes.object).isRequired,
     limit: PropTypes.number,
     loading: PropTypes.bool,
-    request: PropTypes.func.isRequired
+    request: PropTypes.func.isRequired,
   }
 
   static defaultProps = {
-    limit: 20
+    limit: 20,
   }
 
   componentDidMount() {
@@ -29,11 +29,11 @@ class PostListContainer extends Component {
 
 const mapStateToProps = (state) => ({
   list: fromEntities.getList(state, 'post', fromPost.getList(state)),
-  loading: fromStatus.isLoading(state, POST_LIST_READ)
+  loading: fromStatus.isLoading(state, POST_LIST_READ),
 })
 
 const mapDispatchToProps = (dispatch, { limit }) => ({
-  request: () => dispatch(postListReadRequest({ _limit: limit }))
+  request: () => dispatch(postListReadRequest({ _limit: limit })),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostListContainer)

@@ -28,7 +28,7 @@ Table.propTypes = {
   head: PropTypes.node,
   foot: PropTypes.node,
   children: PropTypes.any,
-  reverse: PropTypes.bool
+  reverse: PropTypes.bool,
 }
 
 export default Table

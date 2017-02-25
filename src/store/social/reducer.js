@@ -6,12 +6,12 @@ export default (state = initialState, action) => {
     case SOCIAL_LOGIN_SUCCESS:
       return {
         ...state,
-        user: action.user
+        user: action.user,
       }
     case SOCIAL_LOGOUT:
       return {
         ...state,
-        user: initialState.user
+        user: initialState.user,
       }
     default:
       return state

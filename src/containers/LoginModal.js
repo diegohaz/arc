@@ -9,7 +9,7 @@ import { LoginModal } from 'components'
 class LoginModalContainer extends Component {
   static propTypes = {
     prepareGoogle: PropTypes.func.isRequired,
-    prepareFacebook: PropTypes.func.isRequired
+    prepareFacebook: PropTypes.func.isRequired,
   }
 
   componentDidMount() {
@@ -23,7 +23,7 @@ class LoginModalContainer extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  user: fromSocial.getUser(state)
+  user: fromSocial.getUser(state),
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -31,7 +31,7 @@ const mapDispatchToProps = (dispatch) => ({
   prepareFacebook: () => dispatch(socialLoginPrepare('facebook', { appId: fbAppId })),
   onFacebookLogin: () => dispatch(socialLoginRequest('facebook')),
   onGoogleLogin: () => dispatch(socialLoginRequest('google')),
-  onClose: () => dispatch(modalHide('login'))
+  onClose: () => dispatch(modalHide('login')),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginModalContainer)

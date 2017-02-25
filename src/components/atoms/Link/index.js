@@ -29,11 +29,11 @@ const Link = ({ ...props }) => {
 Link.propTypes = {
   palette: PropTypes.string,
   reverse: PropTypes.bool,
-  to: PropTypes.string
+  to: PropTypes.string,
 }
 
 Link.defaultProps = {
-  palette: 'primary'
+  palette: 'primary',
 }
 
 export default Link

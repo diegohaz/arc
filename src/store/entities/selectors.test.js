@@ -12,8 +12,8 @@ const altState = {
       id: 2,
       title: 'test 2',
       description: 'test 2',
-    }
-  }
+    },
+  },
 }
 
 test('initialState', () => {

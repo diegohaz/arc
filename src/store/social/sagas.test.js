@@ -10,14 +10,14 @@ window.gapi = {
   load: () => {},
   auth2: {
     init: () => auth2,
-    getAuthInstance: () => auth2
-  }
+    getAuthInstance: () => auth2,
+  },
 }
 
 window.FB = {
   init: () => {},
   login: (cb) => cb({ authResponse: 'foo' }),
-  api: (endpoint, options, cb) => cb()
+  api: (endpoint, options, cb) => cb(),
 }
 
 describe('promises', () => {
@@ -52,7 +52,7 @@ describe('loginFacebook', () => {
       .toEqual(put(actions.socialLoginSuccess({
         id: '123',
         name: 'name',
-        picture: 'https://graph.facebook.com/123/picture?type=normal'
+        picture: 'https://graph.facebook.com/123/picture?type=normal',
       })))
   })
 

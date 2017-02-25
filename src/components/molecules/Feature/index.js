@@ -48,7 +48,7 @@ Feature.propTypes = {
   icon: PropTypes.string,
   link: PropTypes.string,
   soon: PropTypes.bool,
-  children: PropTypes.any
+  children: PropTypes.any,
 }
 
 export default Feature

@@ -13,12 +13,12 @@ const onSubmit = (data, dispatch) => new Promise((resolve, reject) => {
 
 const validate = createValidator({
   title: [required],
-  body: [required]
+  body: [required],
 })
 
 export default reduxForm({
   form: 'PostForm',
   destroyOnUnmount: false,
   onSubmit,
-  validate
+  validate,
 })(PostFormContainer)

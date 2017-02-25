@@ -5,20 +5,20 @@ const altState = {
     FETCH_USER: false,
     FETCH_USERS: true,
     CREATE_USER: false,
-    UPDATE_USER: true
+    UPDATE_USER: true,
   },
   error: {
     FETCH_USER: false,
     FETCH_USERS: false,
     CREATE_USER: true,
-    UPDATE_USER: true
-  }
+    UPDATE_USER: true,
+  },
 }
 
 test('initialState', () => {
   expect(selectors.initialState).toEqual({
     loading: {},
-    error: {}
+    error: {},
   })
 })
 

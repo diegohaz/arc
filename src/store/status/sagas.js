@@ -16,7 +16,7 @@ export function* resolveOrReject({ type, resolve, reject }) {
   const prefix = type.replace(requestPattern, '')
   const { success, failure } = yield race({
     success: take(prefix + successSuffix),
-    failure: take(prefix + failureSuffix)
+    failure: take(prefix + failureSuffix),
   })
 
   if (success && typeof resolve === 'function') {

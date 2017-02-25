@@ -116,7 +116,7 @@ Modal.propTypes = {
   title: PropTypes.string,
   closeable: PropTypes.bool,
   reverse: PropTypes.bool,
-  onClose: PropTypes.func.isRequired
+  onClose: PropTypes.func.isRequired,
 }
 
 export default Modal

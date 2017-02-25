@@ -24,7 +24,7 @@ export const promises = {
     js.onload = resolve
     js.onerror = reject
     document.head.appendChild(js)
-  })
+  }),
 }
 
 export const appendFbRoot = () => {
