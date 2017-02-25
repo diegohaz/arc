@@ -9,10 +9,10 @@ const wrap = (props = {}) => shallow(<ReduxField {...{ meta, input, ...props }} 
 beforeEach(() => {
   meta = {
     touched: false,
-    error: null
+    error: null,
   }
   input = {
-    name: 'test'
+    name: 'test',
   }
 })
 

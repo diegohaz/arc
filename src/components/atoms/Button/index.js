@@ -68,13 +68,13 @@ Button.propTypes = {
   height: PropTypes.number,
   type: PropTypes.string,
   to: PropTypes.string,
-  href: PropTypes.string
+  href: PropTypes.string,
 }
 
 Button.defaultProps = {
   palette: 'primary',
   type: 'button',
-  height: 40
+  height: 40,
 }
 
 export default Button

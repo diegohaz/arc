@@ -17,7 +17,7 @@ const Molecule = ({ children, ...props }) => {
 
 Molecule.propTypes = {
   reverse: PropTypes.bool,
-  children: PropTypes.node
+  children: PropTypes.node,
 }
 
 export default Molecule

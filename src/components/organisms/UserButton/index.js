@@ -32,10 +32,10 @@ const UserButton = ({ user, onLogin, onLogout, ...props }) => {
 
 UserButton.propTypes = {
   user: PropTypes.shape({
-    picture: PropTypes.string.isRequired
+    picture: PropTypes.string.isRequired,
   }),
   onLogin: PropTypes.func.isRequired,
-  onLogout: PropTypes.func.isRequired
+  onLogout: PropTypes.func.isRequired,
 }
 
 export default UserButton

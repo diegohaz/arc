@@ -12,7 +12,7 @@ const Caption = styled.caption`
 `
 
 Caption.propTypes = {
-  reverse: PropTypes.bool
+  reverse: PropTypes.bool,
 }
 
 export default Caption

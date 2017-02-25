@@ -46,12 +46,12 @@ Input.propTypes = {
   type: PropTypes.string,
   reverse: PropTypes.bool,
   height: PropTypes.number,
-  invalid: PropTypes.bool
+  invalid: PropTypes.bool,
 }
 
 Input.defaultProps = {
   type: 'text',
-  height: 40
+  height: 40,
 }
 
 export default Input

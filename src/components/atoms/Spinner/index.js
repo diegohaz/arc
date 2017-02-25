@@ -20,11 +20,11 @@ const Spinner = styled.div`
 
 Spinner.propTypes = {
   palette: PropTypes.string,
-  reverse: PropTypes.bool
+  reverse: PropTypes.bool,
 }
 
 Spinner.defaultProps = {
-  palette: 'primary'
+  palette: 'primary',
 }
 
 export default Spinner

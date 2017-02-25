@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import { routerMiddleware } from 'react-router-redux'
 import createSagaMiddleware from 'redux-saga'
-import entitiesMiddleware from './entities/middleware'
+import middlewares from './middlewares'
 import reducer from './reducer'
 import sagas from './sagas'
 
@@ -10,7 +10,7 @@ const configureStore = (initialState, history) => {
   const sagaMiddleware = createSagaMiddleware()
 
   const finalCreateStore = compose(
-    applyMiddleware(entitiesMiddleware, sagaMiddleware, routerMiddleware(history)),
+    applyMiddleware(...middlewares, sagaMiddleware, routerMiddleware(history)),
     hasWindow && window.devToolsExtension ? window.devToolsExtension() : (f) => f
   )(createStore)
 

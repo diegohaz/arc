@@ -4,7 +4,7 @@ import reducer from './reducer'
 
 const altState = {
   ...initialState,
-  user: 5
+  user: 5,
 }
 
 it('returns the initial state', () => {

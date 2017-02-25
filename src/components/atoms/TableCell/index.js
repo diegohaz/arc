@@ -15,7 +15,7 @@ const TableCell = ({ heading, children, ...props }) => {
 
 TableCell.propTypes = {
   heading: PropTypes.bool,
-  children: PropTypes.any
+  children: PropTypes.any,
 }
 
 export default TableCell

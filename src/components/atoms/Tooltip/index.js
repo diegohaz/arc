@@ -7,7 +7,7 @@ const opposites = {
   top: 'bottom',
   right: 'left',
   bottom: 'top',
-  left: 'right'
+  left: 'right',
 }
 
 export const opposite = ({ position }) => opposites[position]
@@ -98,13 +98,13 @@ Tooltip.propTypes = {
   align: PropTypes.oneOf(['start', 'center', 'end']),
   reverse: PropTypes.bool,
   'data-title': PropTypes.string.isRequired,
-  children: PropTypes.element.isRequired
+  children: PropTypes.element.isRequired,
 }
 
 Tooltip.defaultProps = {
   position: 'top',
   align: 'center',
-  tabIndex: 0
+  tabIndex: 0,
 }
 
 export default Tooltip

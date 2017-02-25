@@ -31,7 +31,7 @@ Icon.propTypes = {
   icon: PropTypes.string.isRequired,
   height: PropTypes.number,
   palette: PropTypes.string,
-  reverse: PropTypes.bool
+  reverse: PropTypes.bool,
 }
 
 export default Icon

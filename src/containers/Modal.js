@@ -9,15 +9,15 @@ const ModalContainer = props => <Modal {...props} />
 
 ModalContainer.propTypes = {
   name: PropTypes.string.isRequired,
-  isOpen: PropTypes.bool
+  isOpen: PropTypes.bool,
 }
 
 const mapStateToProps = (state, { name, isOpen }) => ({
-  isOpen: isOpen || fromModal.isOpen(state, name)
+  isOpen: isOpen || fromModal.isOpen(state, name),
 })
 
 const mapDispatchToProps = (dispatch, { name }) => ({
-  onClose: () => dispatch(modalHide(name))
+  onClose: () => dispatch(modalHide(name)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ModalContainer)
