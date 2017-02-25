@@ -10,7 +10,7 @@ const TableRow = styled.tr`
 
 TableRow.propTypes = {
   filled: PropTypes.bool,
-  reverse: PropTypes.bool
+  reverse: PropTypes.bool,
 }
 
 export default TableRow

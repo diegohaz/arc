@@ -35,7 +35,7 @@ const Blockquote = ({ cite, children, ...props }) => {
 Blockquote.propTypes = {
   cite: PropTypes.string,
   children: PropTypes.node,
-  reverse: PropTypes.bool
+  reverse: PropTypes.bool,
 }
 
 export default Blockquote

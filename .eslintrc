@@ -22,7 +22,7 @@
   },
   "rules": {
     "semi": [2, "never"],
-    "comma-dangle": 0,
+    "comma-dangle": [2, "always-multiline"],
     "max-len": 0,
     "no-shadow": 0,
     "arrow-body-style": 0,
@@ -36,7 +36,7 @@
     "import/prefer-default-export": 0,
     "react/require-default-props": 0,
     "react/forbid-prop-types": 0,
-    "react/jsx-filename-extension": ["error", {"extensions": [".js", ".jsx"]}],
-    "no-unused-vars-rest/no-unused-vars": ["error", {"ignoreDestructuredVarsWithRest": true}]
+    "react/jsx-filename-extension": [2, {"extensions": [".js", ".jsx"]}],
+    "no-unused-vars-rest/no-unused-vars": [2, {"ignoreDestructuredVarsWithRest": true}]
   }
 }

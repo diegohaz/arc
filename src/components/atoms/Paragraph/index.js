@@ -11,7 +11,7 @@ const Paragraph = styled.p`
 `
 
 Paragraph.propTypes = {
-  reverse: PropTypes.bool
+  reverse: PropTypes.bool,
 }
 
 export default Paragraph

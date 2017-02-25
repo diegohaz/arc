@@ -10,11 +10,11 @@ const HorizontalRule = styled.hr`
 
 HorizontalRule.propTypes = {
   palette: PropTypes.string,
-  reverse: PropTypes.bool
+  reverse: PropTypes.bool,
 }
 
 HorizontalRule.defaultProps = {
-  palette: 'grayscale'
+  palette: 'grayscale',
 }
 
 export default HorizontalRule
