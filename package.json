@@ -98,7 +98,7 @@
     "url-loader": "^0.5.7",
     "validator": "^7.0.0",
     "webpack": "^2.2.1",
-    "webpack-isomorphic-tools": "^2.6.5",
+    "webpack-isomorphic-tools": "^3.0.0",
     "webpack-md5-hash": "^0.0.5"
   }
 }
