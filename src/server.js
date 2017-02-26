@@ -25,7 +25,7 @@ router.use((req, res, next) => {
   }
 
   const location = req.url.replace(basename, '')
-  const memoryHistory = createMemoryHistory(location)
+  const memoryHistory = createMemoryHistory({ entries: [location], basename })
   const store = configureStore({}, memoryHistory)
   const history = syncHistoryWithStore(memoryHistory, store)
 

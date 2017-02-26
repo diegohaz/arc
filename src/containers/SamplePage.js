@@ -20,6 +20,7 @@ class SamplePageContainer extends Component {
   }
 
   render() {
+    console.log(this.props.router.location)
     return <SamplePage />
   }
 }
