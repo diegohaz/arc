@@ -70,6 +70,7 @@
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.4",
     "normalizr": "^3.0.1",
+    "query-string": "^4.3.2",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "react-hot-loader": "^3.0.0-beta.6",
@@ -83,6 +84,7 @@
     "styled-components": "^1.2.1",
     "styled-theme": "^0.3.0",
     "styled-tools": "^0.1.2",
-    "validator": "^7.0.0"
+    "validator": "^7.0.0",
+    "whatwg-fetch": "^2.0.2"
   }
 }

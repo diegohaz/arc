@@ -5264,7 +5264,7 @@ qs@^6.1.0, qs@^6.2.0, qs@~6.3.0:
   version "6.3.1"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.3.1.tgz#918c0b3bcd36679772baf135b1acb4c1651ed79d"
 
-query-string@^4.1.0:
+query-string@^4.1.0, query-string@^4.3.2:
   version "4.3.2"
   resolved "https://registry.yarnpkg.com/query-string/-/query-string-4.3.2.tgz#ec0fd765f58a50031a3968c2431386f8947a5cdd"
   dependencies:
@@ -6666,7 +6666,7 @@ whatwg-encoding@^1.0.1:
   dependencies:
     iconv-lite "0.4.13"
 
-whatwg-fetch@>=0.10.0:
+whatwg-fetch@>=0.10.0, whatwg-fetch@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-2.0.2.tgz#fe294d1d89e36c5be8b3195057f2e4bc74fc980e"
 
