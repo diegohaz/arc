@@ -4,7 +4,7 @@ import * as actions from './actions'
 
 export function* createResource(newData) {
   try {
-    const { data } = yield call(api.post, '/resources', newData)
+    const data = yield call(api.post, '/resources', newData)
     yield put(actions.resourceCreateSuccess(data))
   } catch (e) {
     yield put(actions.resourceCreateFailure(e))
@@ -13,7 +13,7 @@ export function* createResource(newData) {
 
 export function* readResourceList(params) {
   try {
-    const { data } = yield call(api.get, '/resources', { params })
+    const data = yield call(api.get, '/resources', { params })
     yield put(actions.resourceListReadSuccess(data))
   } catch (e) {
     yield put(actions.resourceListReadFailure(e))
@@ -22,7 +22,7 @@ export function* readResourceList(params) {
 
 export function* readResourceDetail(needle) {
   try {
-    const { data } = yield call(api.get, `/resources/${needle}`)
+    const data = yield call(api.get, `/resources/${needle}`)
     yield put(actions.resourceDetailReadSuccess(needle, data))
   } catch (e) {
     yield put(actions.resourceDetailReadFailure(needle, e))
@@ -31,7 +31,7 @@ export function* readResourceDetail(needle) {
 
 export function* updateResource(needle, newData) {
   try {
-    const { data } = yield call(api.put, `/resources/${needle}`, newData)
+    const data = yield call(api.put, `/resources/${needle}`, newData)
     yield put(actions.resourceUpdateSuccess(needle, data))
   } catch (e) {
     yield put(actions.resourceUpdateFailure(needle, e))

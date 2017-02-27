@@ -9,7 +9,7 @@ describe('createResource', () => {
   it('calls success', () => {
     const generator = sagas.createResource(data)
     expect(generator.next().value).toEqual(call(api.post, '/resources', data))
-    expect(generator.next({ data }).value).toEqual(put(actions.resourceCreateSuccess(data)))
+    expect(generator.next(data).value).toEqual(put(actions.resourceCreateSuccess(data)))
   })
 
   it('calls failure', () => {
@@ -24,7 +24,7 @@ describe('readResourceList', () => {
     const data = [1, 2, 3]
     const generator = sagas.readResourceList({ _limit: 1 })
     expect(generator.next().value).toEqual(call(api.get, '/resources', { params: { _limit: 1 } }))
-    expect(generator.next({ data }).value).toEqual(put(actions.resourceListReadSuccess(data)))
+    expect(generator.next(data).value).toEqual(put(actions.resourceListReadSuccess(data)))
   })
 
   it('calls failure', () => {
@@ -39,7 +39,7 @@ describe('readResourceDetail', () => {
     const data = { id: 1 }
     const generator = sagas.readResourceDetail(1)
     expect(generator.next().value).toEqual(call(api.get, '/resources/1'))
-    expect(generator.next({ data }).value).toEqual(put(actions.resourceDetailReadSuccess(1, data)))
+    expect(generator.next(data).value).toEqual(put(actions.resourceDetailReadSuccess(1, data)))
   })
 
   it('calls failure', () => {
@@ -54,7 +54,7 @@ describe('updateResource', () => {
     const data = { id: 1 }
     const generator = sagas.updateResource(1, { title: 'foo' })
     expect(generator.next().value).toEqual(call(api.put, '/resources/1', { title: 'foo' }))
-    expect(generator.next({ data }).value).toEqual(put(actions.resourceUpdateSuccess(1, data)))
+    expect(generator.next(data).value).toEqual(put(actions.resourceUpdateSuccess(1, data)))
   })
 
   it('calls failure', () => {

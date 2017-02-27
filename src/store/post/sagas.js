@@ -4,7 +4,7 @@ import * as actions from './actions'
 
 export function* createPost(newData) {
   try {
-    const { data } = yield call(api.post, '/posts', newData)
+    const data = yield call(api.post, '/posts', newData)
     yield put(actions.postCreateSuccess(data))
   } catch (e) {
     yield put(actions.postCreateFailure(e))
@@ -13,7 +13,7 @@ export function* createPost(newData) {
 
 export function* readPostList(params) {
   try {
-    const { data } = yield call(api.get, '/posts', { params })
+    const data = yield call(api.get, '/posts', { params })
     yield put(actions.postListReadSuccess(data))
   } catch (e) {
     yield put(actions.postListReadFailure(e))
