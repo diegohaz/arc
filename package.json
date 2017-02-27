@@ -67,7 +67,6 @@
   "dependencies": {
     "babel-polyfill": "^6.20.0",
     "history": "3.0.0",
-    "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.4",
     "normalizr": "^3.0.1",
     "query-string": "^4.3.2",
