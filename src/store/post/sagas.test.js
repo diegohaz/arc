@@ -9,7 +9,7 @@ describe('createPost', () => {
   it('calls success', () => {
     const generator = sagas.createPost(data)
     expect(generator.next().value).toEqual(call(api.post, '/posts', data))
-    expect(generator.next({ data }).value).toEqual(put(actions.postCreateSuccess(data)))
+    expect(generator.next(data).value).toEqual(put(actions.postCreateSuccess(data)))
   })
 
   it('calls failure', () => {
@@ -24,7 +24,7 @@ describe('readPostList', () => {
     const data = [1, 2, 3]
     const generator = sagas.readPostList({ _limit: 1 })
     expect(generator.next().value).toEqual(call(api.get, '/posts', { params: { _limit: 1 } }))
-    expect(generator.next({ data }).value).toEqual(put(actions.postListReadSuccess(data)))
+    expect(generator.next(data).value).toEqual(put(actions.postListReadSuccess(data)))
   })
 
   it('calls failure', () => {
