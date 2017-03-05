@@ -35,7 +35,7 @@
     "babel-loader": "^6.2.10",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.23.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.3.0",
-    "babel-preset-latest": "^6.22.0",
+    "babel-preset-env": "^1.2.0",
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-1": "^6.16.0",
     "copyfiles": "^1.0.0",
