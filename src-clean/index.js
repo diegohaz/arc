@@ -11,7 +11,7 @@ const history = useRouterHistory(createHistory)({ basename: process.env.PUBLIC_P
 
 const renderApp = () => (
   <AppContainer>
-    <Router history={history} routes={routes} />
+    <Router key={Math.random()} history={history} routes={routes} />
   </AppContainer>
 )
 
