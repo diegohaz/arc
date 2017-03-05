@@ -20,7 +20,7 @@ const root = document.getElementById('app')
 const renderApp = () => (
   <AppContainer>
     <Provider store={store}>
-      <Router history={history} routes={routes} />
+      <Router key={Math.random()} history={history} routes={routes} />
     </Provider>
   </AppContainer>
 )
