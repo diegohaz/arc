@@ -4,7 +4,7 @@ import { Slider } from 'components'
 
 storiesOf('Slider', module)
   .add('default', () => (
-    <Slider min={0} max={10} step={0.05} defaultValue={5} />
+    <Slider />
   ))
   .add('reverse', () => (
     <Slider reverse min={0} max={10} step={0.05} defaultValue={5} />
@@ -12,9 +12,6 @@ storiesOf('Slider', module)
   .add('disabled', () => (
     <Slider disabled min={0} max={10} step={0.05} defaultValue={5} />
   ))
-  .add('transparent', () => (
-    <Slider transparent min={0} max={10} step={0.05} defaultValue={5} />
-  ))
   .add('responsive with breakpoint', () => (
-    <Slider min={0} max={10} step={0.05} defaultValue={5} breakpoint={450} responsive />
+    <Slider responsive min={0} max={10} step={0.05} defaultValue={5} breakpoint={450} />
   ))
