@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react'
 import styled from 'styled-components'
 import { font, palette } from 'styled-theme'
 import { ifProp, get } from 'styled-tools'
-import { uniqueId } from 'lodash'
 
 export const fontSize = ({ height }) => `${height / 35.5555555556}rem`
 
@@ -82,7 +81,7 @@ const Range = styled.input`
   }
 
   ${''/* Track */}
-  
+
   &::-webkit-slider-runnable-track {
     width: 100%;
     height: ${barHeight};
@@ -129,11 +128,10 @@ const Text = styled.span`
 
 const Slider = ({ min, max, defaultValue, step, ...props }) => {
   const { breakpoint, responsive } = props
-  const name = (props.name || uniqueId())
   return (
     <Wrapper {...props}>
       <Text className="text" responsive={responsive} breakpoint={breakpoint}>{min}</Text>
-      <Range name={name} min={min} max={max} defaultValue={defaultValue} step={step} {...props} />
+      <Range min={min} max={max} defaultValue={defaultValue} step={step} {...props} />
       <Text className="text" responsive={responsive} breakpoint={breakpoint}>{max}</Text>
     </Wrapper>
   )
@@ -152,6 +150,10 @@ Slider.propTypes = {
 }
 
 Slider.defaultProps = {
+  min: 0,
+  max: 2,
+  defaultValue: 1,
+  step: 1,
   palette: 'primary',
   type: 'range',
   breakpoint: 420,
