@@ -126,19 +126,19 @@ const Text = styled.span`
   }
 `
 
-const Slider = ({ min, max, defaultValue, step, ...props }) => {
+const Slider = ({ id, min, max, defaultValue, step, ...props }) => {
   const { breakpoint, responsive } = props
   return (
     <Wrapper {...props}>
-      <Text className="text" responsive={responsive} breakpoint={breakpoint}>{min}</Text>
-      <Range min={min} max={max} defaultValue={defaultValue} step={step} {...props} />
-      <Text className="text" responsive={responsive} breakpoint={breakpoint}>{max}</Text>
+      <Text responsive={responsive} breakpoint={breakpoint}>{min}</Text>
+      <Range id={id} min={min} max={max} defaultValue={defaultValue} step={step} {...props} />
+      <Text responsive={responsive} breakpoint={breakpoint}>{max}</Text>
     </Wrapper>
   )
 }
 
 Slider.propTypes = {
-  name: PropTypes.string,
+  id: PropTypes.string,
   min: PropTypes.number,
   max: PropTypes.number,
   defaultValue: PropTypes.number,
