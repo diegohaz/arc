@@ -41,6 +41,12 @@ $ npm install # or yarn
 
 Once you have installed the dependencies, you can use `npm run dev` to run a development server.
 
+If you are using **Windows** and see this error: `MongoError: failed to connect to server [0.0.0.0:27017] on first connect` please modify the `config.js` file in the `src` directory by changing **line 4** to say:
+
+```javascript
+const ip = process.env.IP || '127.0.0.1'
+```
+
 ### Deploy
 
 Use `npm run build` to transpile the code into the `dist` folder. Then, you can deploy it everywhere.
@@ -291,7 +297,7 @@ PRs are very appreciated. For bugs/features consider creating an issue before se
 - I'm not a native english speaker. If you find any typo or some text that could be written in a better way, please send a PR, even if it is only a punctuation;
 - If you forked or created another boilerplate based on this one with another features (using [`css-modules`](https://github.com/css-modules/css-modules) instead of [`styled-components`](https://github.com/styled-components/styled-components), for example), add that to the [Forks section](#forks) with the following pattern:
   - [arc-css-modules](https://github.com/username/arc-css-modules) - A short description
-  
+
 ## Built with ARc
 
 *Built something cool with ARc? Send a PR adding it to this list:*
