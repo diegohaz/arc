@@ -108,7 +108,7 @@ This is possible because all components are dynamically exported on [`src/compon
 import { Button, Hero, HomePage, PageTemplate } from 'components'
 ```
 
-To understand better the Atomic Design methodology, you can refer to the [`src/components`](src/components) folder here and the [Pattern Lab Demo](http://demo.patternlab.io/), which this project is based on. Basically, you can think this way:
+To better understand the Atomic Design methodology, you can refer to the [`src/components`](src/components) folder here and the [Pattern Lab Demo](http://demo.patternlab.io/), which this project is based on. Basically, you can think this way:
 
 - An **atom** is a native html tag or a React Component that renders an html tag (e.g [`Input`](src/components/atoms/Input/index.js));
 - A **molecule** is a group of atoms (e.g. [`Field`](src/components/molecules/Field/index.js));
@@ -118,7 +118,7 @@ To understand better the Atomic Design methodology, you can refer to the [`src/c
 
 #### Storybook
 
-I highly recommend you to incorporate [react-storybook](https://github.com/storybooks/react-storybook) on your development process. It really improves productivity and developer experience. Actually, most of the time you can just use the storybook instead of the real webapp while creating components.
+I highly recommend you to incorporate [react-storybook](https://github.com/storybooks/react-storybook) on your development process. It really improves productivity and the developer experience. Actually, most of the time you can just use the storybook instead of the real webapp while creating components.
 
 This already comes with the boilerplate and you can simply use `npm run storybook` to get it running. But, if you don't want that, just run:
 ```sh
@@ -267,19 +267,19 @@ In order to make the forms work on the server side, this is combined with [redux
 
 ## Contributing
 
-When issuing, use the following patterns in the title for better understanding:
+When submitting an issue, use the following patterns in the title for better understanding:
 ```bash
 [v0.3.1-redux] Something wrong is not right # the v0.3.1 release of the redux branch
 [redux] Something wrong is not right # the actual code of the redux branch
 Something wrong is right # general, related to master or not directly related to any branch
 ```
 
-PRs are very appreciated. For bugs/features consider creating an issue before sending a PR. But there're other things you can contribute directly:
+PRs are very appreciated. For bugs/features consider creating an issue before sending a PR. But there are other things you can contribute directly:
 
 - I'm not a native english speaker. If you find any typo or some text that could be written in a better way, please send a PR, even if it is only a punctuation;
 - If you forked or created another boilerplate based on this one with another features (using [`css-modules`](https://github.com/css-modules/css-modules) instead of [`styled-components`](https://github.com/styled-components/styled-components), for example), add that to the [Forks section](#forks) with the following pattern:
   - [arc-css-modules](https://github.com/username/arc-css-modules) - A short description
-  
+
 ## Built with ARc
 
 *Built something cool with ARc? Send a PR adding it to this list:*
@@ -295,19 +295,20 @@ Prabhat_Sharma prabhatsharma https://github.com/prabhatsharma code
 Sven_Schmidt 0xsven https://github.com/0xsven bug code
 Sebastian ssmolinski9 https://github.com/ssmolinski9 tests
 Steven_Haddix steven-haddix https://github.com/steven-haddix code
-Ruslan_Kyba kybarg https://github.com/kybarg bug code
+Ruslan_Kyba kybarg https://github.com/kybarg bug code doc
 Abhishek_Shende osdevisnot https://github.com/osdevisnot code
 Gueorgui_Agapov 7s4r https://github.com/7s4r code
 Santino santino https://github.com/santino code
 Sebastian_MacDonald Optissimum https://github.com/Optissimum code tests
 Ryan_Garant protoEvangelion https://github.com/protoEvangelion code
+Dennis_Bochen dennisbochen https://github.com/dennisbochen doc
 Contributors END -->
 <!-- Contributors table START -->
-| [<img src="https://avatars.githubusercontent.com/prabhatsharma?s=100" width="100" alt="Prabhat Sharma" /><br /><sub>Prabhat Sharma</sub>](https://github.com/prabhatsharma)<br />[💻](https://github.com/diegohaz/arc/commits?author=prabhatsharma) | [<img src="https://avatars.githubusercontent.com/0xsven?s=100" width="100" alt="Sven Schmidt" /><br /><sub>Sven Schmidt</sub>](https://github.com/0xsven)<br />[🐛](https://github.com/diegohaz/arc/issues?q=author%3A0xsven) [💻](https://github.com/diegohaz/arc/commits?author=0xsven) | [<img src="https://avatars.githubusercontent.com/ssmolinski9?s=100" width="100" alt="Sebastian" /><br /><sub>Sebastian</sub>](https://github.com/ssmolinski9)<br />[⚠️](https://github.com/diegohaz/arc/commits?author=ssmolinski9) | [<img src="https://avatars.githubusercontent.com/steven-haddix?s=100" width="100" alt="Steven Haddix" /><br /><sub>Steven Haddix</sub>](https://github.com/steven-haddix)<br />[💻](https://github.com/diegohaz/arc/commits?author=steven-haddix) | [<img src="https://avatars.githubusercontent.com/kybarg?s=100" width="100" alt="Ruslan Kyba" /><br /><sub>Ruslan Kyba</sub>](https://github.com/kybarg)<br />[🐛](https://github.com/diegohaz/arc/issues?q=author%3Akybarg) [💻](https://github.com/diegohaz/arc/commits?author=kybarg) | [<img src="https://avatars.githubusercontent.com/osdevisnot?s=100" width="100" alt="Abhishek Shende" /><br /><sub>Abhishek Shende</sub>](https://github.com/osdevisnot)<br />[💻](https://github.com/diegohaz/arc/commits?author=osdevisnot) | [<img src="https://avatars.githubusercontent.com/7s4r?s=100" width="100" alt="Gueorgui Agapov" /><br /><sub>Gueorgui Agapov</sub>](https://github.com/7s4r)<br />[💻](https://github.com/diegohaz/arc/commits?author=7s4r) |
+| [<img src="https://avatars.githubusercontent.com/prabhatsharma?s=100" width="100" alt="Prabhat Sharma" /><br /><sub>Prabhat Sharma</sub>](https://github.com/prabhatsharma)<br />[💻](https://github.com/diegohaz/arc/commits?author=prabhatsharma) | [<img src="https://avatars.githubusercontent.com/0xsven?s=100" width="100" alt="Sven Schmidt" /><br /><sub>Sven Schmidt</sub>](https://github.com/0xsven)<br />[🐛](https://github.com/diegohaz/arc/issues?q=author%3A0xsven) [💻](https://github.com/diegohaz/arc/commits?author=0xsven) | [<img src="https://avatars.githubusercontent.com/ssmolinski9?s=100" width="100" alt="Sebastian" /><br /><sub>Sebastian</sub>](https://github.com/ssmolinski9)<br />[⚠️](https://github.com/diegohaz/arc/commits?author=ssmolinski9) | [<img src="https://avatars.githubusercontent.com/steven-haddix?s=100" width="100" alt="Steven Haddix" /><br /><sub>Steven Haddix</sub>](https://github.com/steven-haddix)<br />[💻](https://github.com/diegohaz/arc/commits?author=steven-haddix) | [<img src="https://avatars.githubusercontent.com/kybarg?s=100" width="100" alt="Ruslan Kyba" /><br /><sub>Ruslan Kyba</sub>](https://github.com/kybarg)<br />[🐛](https://github.com/diegohaz/arc/issues?q=author%3Akybarg) [💻](https://github.com/diegohaz/arc/commits?author=kybarg) [📖](https://github.com/diegohaz/arc/commits?author=kybarg) | [<img src="https://avatars.githubusercontent.com/osdevisnot?s=100" width="100" alt="Abhishek Shende" /><br /><sub>Abhishek Shende</sub>](https://github.com/osdevisnot)<br />[💻](https://github.com/diegohaz/arc/commits?author=osdevisnot) | [<img src="https://avatars.githubusercontent.com/7s4r?s=100" width="100" alt="Gueorgui Agapov" /><br /><sub>Gueorgui Agapov</sub>](https://github.com/7s4r)<br />[💻](https://github.com/diegohaz/arc/commits?author=7s4r) |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 
-| [<img src="https://avatars.githubusercontent.com/santino?s=100" width="100" alt="Santino" /><br /><sub>Santino</sub>](https://github.com/santino)<br />[💻](https://github.com/diegohaz/arc/commits?author=santino) | [<img src="https://avatars.githubusercontent.com/Optissimum?s=100" width="100" alt="Sebastian MacDonald" /><br /><sub>Sebastian MacDonald</sub>](https://github.com/Optissimum)<br />[💻](https://github.com/diegohaz/arc/commits?author=Optissimum) [⚠️](https://github.com/diegohaz/arc/commits?author=Optissimum) | [<img src="https://avatars.githubusercontent.com/protoEvangelion?s=100" width="100" alt="Ryan Garant" /><br /><sub>Ryan Garant</sub>](https://github.com/protoEvangelion)<br />[💻](https://github.com/diegohaz/arc/commits?author=protoEvangelion) |
-| :---: | :---: | :---: |
+| [<img src="https://avatars.githubusercontent.com/santino?s=100" width="100" alt="Santino" /><br /><sub>Santino</sub>](https://github.com/santino)<br />[💻](https://github.com/diegohaz/arc/commits?author=santino) | [<img src="https://avatars.githubusercontent.com/Optissimum?s=100" width="100" alt="Sebastian MacDonald" /><br /><sub>Sebastian MacDonald</sub>](https://github.com/Optissimum)<br />[💻](https://github.com/diegohaz/arc/commits?author=Optissimum) [⚠️](https://github.com/diegohaz/arc/commits?author=Optissimum) | [<img src="https://avatars.githubusercontent.com/protoEvangelion?s=100" width="100" alt="Ryan Garant" /><br /><sub>Ryan Garant</sub>](https://github.com/protoEvangelion)<br />[💻](https://github.com/diegohaz/arc/commits?author=protoEvangelion) | [<img src="https://avatars.githubusercontent.com/dennisbochen?s=100" width="100" alt="Dennis Bochen" /><br /><sub>Dennis Bochen</sub>](https://github.com/dennisbochen)<br />[📖](https://github.com/diegohaz/arc/commits?author=dennisbochen) |
+| :---: | :---: | :---: | :---: |
 <!-- Contributors table END -->
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification.
