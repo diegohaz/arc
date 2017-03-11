@@ -68,7 +68,7 @@
     "react-dom": "^15.4.1",
     "react-hot-loader": "^3.0.0-beta.6",
     "react-modal": "^1.6.5",
-    "react-router": "^3.0.0",
+    "react-router": "^4.0.0",
     "styled-components": "^1.2.1",
     "styled-theme": "^0.3.0",
     "styled-tools": "^0.1.2"
