@@ -36,15 +36,15 @@ Generate components, containers, redux stores and the entire project through a C
 
 ## Forks
 
-*Did you fork this repo and made something different? Add it to this section and send a PR.*
+*Did you fork this repo and make something different? Add it to this section and send a PR.*
 
 ## Why
 
-I've been a web developer for the past 14 years, and after dealing with IE vs. Netscape wars, `<table>` layouts and flash websites I can say we live now the best moment in web development. Web components are awesome and React makes it better.
+I've been a web developer for the past 14 years and after dealing with IE vs. Netscape wars, `<table>` layouts and flash websites, I can say that we are now living in the best moment in web development. Web components are awesome and React makes it better.
 
-React stimulates you to create very small and pure components. However, as your project grows, you will have an increasing components folder. At some point, this will be really huge and hard to maintain.
+React encourages you to create very small and pure components. However, as your project grows, you will have an increasingly complex components folder. At some point, this will be really huge and hard to maintain.
 
-I had a React project with more than 100 components in the `components` folder. The first approach I tried to organize it was separating the components by domain (described [here](http://marmelab.com/blog/2015/12/17/react-directory-structure.html)), but I did realize that most of my components didn't belong to any domain, they were shared, so my problems were just moved to the `commons` folder.
+I had a React project with more than 100 components in the `components` folder. The first approach I tried to organize it was separating the components by domain (described [here](http://marmelab.com/blog/2015/12/17/react-directory-structure.html)), but I realized that most of my components didn't belong to any domain, but were shared. This meant that my problems just moved to the `commons` folder.
 
 The [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/) approach comes handy to solve this problem because it considers the reusability through composition, *which is actually what React is*. You will have your minimal/stylish components in one folder, pages in another and so on.
 
@@ -110,7 +110,7 @@ This is possible because all components are dynamically exported on [`src/compon
 import { Button, Hero, HomePage, PageTemplate } from 'components'
 ```
 
-To understand better the Atomic Design methodology, you can refer to the [`src/components`](src/components) folder here and the [Pattern Lab Demo](http://demo.patternlab.io/), which this project is based on. Basically, you can think this way:
+To better understand the Atomic Design methodology, you can refer to the [`src/components`](src/components) folder here and the [Pattern Lab Demo](http://demo.patternlab.io/), which this project is based on. Basically, you can think this way:
 
 - An **atom** is a native html tag or a React Component that renders an html tag (e.g [`Input`](src/components/atoms/Input/index.js));
 - A **molecule** is a group of atoms (e.g. [`Field`](src/components/molecules/Field/index.js));
@@ -120,7 +120,7 @@ To understand better the Atomic Design methodology, you can refer to the [`src/c
 
 #### Storybook
 
-I highly recommend you to incorporate [react-storybook](https://github.com/storybooks/react-storybook) on your development process. It really improves productivity and developer experience. Actually, most of the time you can just use the storybook instead of the real webapp while creating components.
+I highly recommend you to incorporate [react-storybook](https://github.com/storybooks/react-storybook) on your development process. It really improves productivity and the developer experience. Actually, most of the time you can just use the storybook instead of the real webapp while creating components.
 
 This already comes with the boilerplate and you can simply use `npm run storybook` to get it running. But, if you don't want that, just run:
 ```sh
@@ -130,19 +130,19 @@ npm u -S @kadira/storybook # remove storybook dependency
 
 ## Contributing
 
-When issuing, use the following patterns in the title for better understanding:
+When submitting an issue, use the following patterns in the title for better understanding:
 ```bash
 [v0.3.1-redux] Something wrong is not right # the v0.3.1 release of the redux branch
 [redux] Something wrong is not right # the actual code of the redux branch
 Something wrong is right # general, related to master or not directly related to any branch
 ```
 
-PRs are very appreciated. For bugs/features consider creating an issue before sending a PR. But there're other things you can contribute directly:
+PRs are very appreciated. For bugs/features consider creating an issue before sending a PR. But there are other things you can contribute directly:
 
 - I'm not a native english speaker. If you find any typo or some text that could be written in a better way, please send a PR, even if it is only a punctuation;
 - If you forked or created another boilerplate based on this one with another features (using [`css-modules`](https://github.com/css-modules/css-modules) instead of [`styled-components`](https://github.com/styled-components/styled-components), for example), add that to the [Forks section](#forks) with the following pattern:
   - [arc-css-modules](https://github.com/username/arc-css-modules) - A short description
-  
+
 ## Built with ARc
 
 *Built something cool with ARc? Send a PR adding it to this list:*
