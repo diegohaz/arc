@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react'
-import { injectGlobal } from 'styled-components'
+import { injectGlobal, ThemeProvider } from 'styled-components'
 import Helmet from 'react-helmet'
+
+import theme from './themes/default'
 
 injectGlobal`
   body {
@@ -26,16 +28,13 @@ const App = ({ children }) => {
           { rel: 'icon', href: 'https://diegohaz.github.io/arc/icon.png' },
         ]}
       />
-      {children}
+      <ThemeProvider theme={theme}>{children}</ThemeProvider>
     </div>
   )
 }
 
 App.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]),
+  children: PropTypes.any,
 }
 
 export default App
