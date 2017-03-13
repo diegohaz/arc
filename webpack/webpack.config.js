@@ -18,7 +18,7 @@ const isVendor = ({ userRequest }) => (
 const config = {
   devtool: DEBUG ? 'eval' : false,
   entry: {
-    app: ['babel-polyfill', path.join(__dirname, '../src/client')],
+    app: [path.join(__dirname, '../src/client')],
   },
   output: {
     path: path.join(__dirname, '../dist'),
