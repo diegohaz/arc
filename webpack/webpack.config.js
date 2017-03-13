@@ -2,6 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const WebpackMd5Hash = require('webpack-md5-hash')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 
 const ip = process.env.IP || '0.0.0.0'
 const port = process.env.PORT || 3000
@@ -36,6 +37,7 @@ const config = {
       filename: 'index.html',
       template: path.join(__dirname, '../public/index.html'),
     }),
+    new ProgressBarPlugin(),
   ],
   module: {
     rules: [
