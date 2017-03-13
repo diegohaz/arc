@@ -3,16 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "node server",
+    "start": "node webpack/webpack-dev-server",
     "test": "cross-env NODE_ENV=test jest",
     "coverage": "npm test -- --coverage",
     "postcoverage": "opn coverage/lcov-report/index.html",
     "lint": "eslint src src-clean .storybook",
+    "dev": "npm start",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "build:clean": "rimraf \"dist/!(.git*|Procfile)**\"",
     "build:copy": "copyfiles -u 1 public/* public/**/* dist",
     "prebuild": "npm run build:clean && npm run build:copy",
-    "build": "cross-env NODE_ENV=production webpack"
+    "build": "cross-env NODE_ENV=production webpack --config webpack/webpack.config"
   },
   "jest": {
     "modulePathIgnorePatterns": [

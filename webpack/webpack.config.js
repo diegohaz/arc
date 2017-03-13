@@ -17,10 +17,10 @@ const isVendor = ({ userRequest }) => (
 const config = {
   devtool: DEBUG ? 'eval' : false,
   entry: {
-    app: ['babel-polyfill', path.join(__dirname, 'src')],
+    app: [path.join(__dirname, '../src')],
   },
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, '../dist'),
     filename: '[name].[hash].js',
     publicPath: PUBLIC_PATH,
   },
@@ -34,7 +34,7 @@ const config = {
     }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: path.join(__dirname, '/public/index.html'),
+      template: path.join(__dirname, '../public/index.html'),
     }),
   ],
   module: {
