@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const WebpackMd5Hash = require('webpack-md5-hash')
 const WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin')
 const webpackIsomorphicToolsConfig = require('./webpack-isomorphic-tools')
+const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 
 const ip = process.env.IP || '0.0.0.0'
 const port = (+process.env.PORT + 1) || 3001
@@ -33,6 +34,7 @@ const config = {
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
       'process.env.PUBLIC_PATH': JSON.stringify(PUBLIC_PATH),
     }),
+    new ProgressBarPlugin(),
   ],
   module: {
     rules: [
