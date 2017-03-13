@@ -19,5 +19,5 @@ new WebpackDevServer(webpack(config), {
     return console.log(err)
   }
 
-  console.log(`webpack: http://${ip}:${port}`)
+  console.log(`\nwebpack: http://${ip}:${port}`)
 })
