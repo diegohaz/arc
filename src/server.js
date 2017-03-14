@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+import 'babel-polyfill'
 import React from 'react'
 import serialize from 'serialize-javascript'
 import styleSheet from 'styled-components/lib/models/StyleSheet'
@@ -11,7 +12,7 @@ import { Router } from 'express'
 import express from 'services/express'
 import routes from 'routes'
 import configureStore from 'store/configure'
-import { env, port, ip, basename } from 'config'
+import { port, ip, basename } from 'config'
 import { setCsrfToken } from 'store/actions'
 import Html from 'components/Html'
 
@@ -20,10 +21,6 @@ const router = new Router()
 router.use(csrf({ cookie: true }))
 
 router.use((req, res, next) => {
-  if (env === 'development') {
-    global.webpackIsomorphicTools.refresh()
-  }
-
   const location = req.url.replace(basename, '')
   const memoryHistory = createMemoryHistory({ basename })
   const store = configureStore({}, memoryHistory)
@@ -69,9 +66,10 @@ router.use((req, res, next) => {
 
       const styles = styleSheet.rules().map(rule => rule.cssText).join('\n')
       const initialState = store.getState()
-      const assets = global.webpackIsomorphicTools.assets()
+      const assets = global.stats.assetsByChunkName
+      const publicPath = global.stats.publicPath
       const state = `window.__INITIAL_STATE__ = ${serialize(initialState)}`
-      const markup = <Html {...{ styles, assets, state, content }} />
+      const markup = <Html {...{ styles, assets, state, content, publicPath }} />
       const doctype = '<!doctype html>\n'
       const html = renderToStaticMarkup(markup)
 

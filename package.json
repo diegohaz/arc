@@ -2,19 +2,24 @@
   "name": "arc",
   "version": "0.1.0",
   "private": true,
-  "main": "src",
+  "main": "dist/server",
   "scripts": {
     "start": "node .",
     "test": "cross-env NODE_ENV=test jest",
     "coverage": "npm test -- --coverage",
     "postcoverage": "opn coverage/lcov-report/index.html",
     "lint": "eslint src src-clean .storybook",
-    "dev": "concurrently --kill-others \"nodemon --watch src\" \"node webpack/webpack-dev-server\"",
     "storybook": "start-storybook -p 9001 -c .storybook",
+    "predev": "npm run build:server:dev",
+    "dev": "concurrently --kill-others 'node webpack/webpack-dev-server' 'nodemon --watch src,webpack,dist'",
     "build:clean": "rimraf \"dist/!(.git*|Procfile)**\"",
-    "build:copy": "copyfiles -u 1 public/* public/**/* dist",
+    "build:copy": "copyfiles public/* public/**/* dist",
     "prebuild": "npm run build:clean && npm run build:copy",
-    "build": "cross-env NODE_ENV=production webpack --config webpack/webpack.config",
+    "build:client": "cross-env NODE_ENV=production webpack --config webpack/webpack.client.config",
+    "build:server": "cross-env NODE_ENV=production webpack --config webpack/webpack.server.config",
+    "build:client:dev": "cross-env NODE_ENV=development webpack --config webpack/webpack.client.config",
+    "build:server:dev": "cross-env NODE_ENV=development webpack --config webpack/webpack.server.config",
+    "build": "npm run build:client; npm run build:server",
     "heroku-postbuild": "npm run build"
   },
   "jest": {
@@ -47,10 +52,13 @@
     "eslint-plugin-react": "^6.9.0",
     "jest-cli": "^19.0.0",
     "nodemon": "^1.11.0",
+    "npm-run-all": "^4.0.2",
     "opn-cli": "^3.1.0",
     "react-addons-test-utils": "^15.4.1",
     "redux-mock-store": "^1.2.1",
-    "webpack-dev-server": "^2.3.0"
+    "webpack-dev-middleware": "^1.10.1",
+    "webpack-dev-server": "^2.3.0",
+    "webpack-node-externals": "^1.5.4"
   },
   "dependencies": {
     "axios": "^0.15.3",
