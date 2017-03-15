@@ -1,14 +1,17 @@
 import { EventEmitter } from 'events'
-import mockgoose from 'mockgoose'
+import { Mockgoose } from 'mockgoose'
 import mongoose from '../src/services/mongoose'
 import { mongo } from '../src/config'
 
 EventEmitter.defaultMaxListeners = Infinity
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 300000
 
-beforeAll(async () => {
-  await mockgoose(mongoose)
-  mongoose.connect(mongo.uri)
+const mockgoose = new Mockgoose(mongoose)
+
+beforeAll(() => {
+  mockgoose.prepareStorage().then(() => {
+    mongoose.connect(mongo.uri)
+  })
 })
 
 afterAll(() => {
