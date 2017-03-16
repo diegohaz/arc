@@ -64,7 +64,7 @@
     "webpack-md5-hash": "^0.0.5"
   },
   "dependencies": {
-    "history": "3.0.0",
+    "history": "4.6.1",
     "lodash": "^4.17.4",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
