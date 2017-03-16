@@ -1,4 +1,5 @@
 import { Post } from '.'
+import '../../../test/db'
 
 let post
 
