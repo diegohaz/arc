@@ -1,6 +1,7 @@
-import request from 'supertest-as-promised'
+import request from 'supertest'
 import express from 'services/express'
 import routes, { Post } from '.'
+import '../../../test/db'
 
 const app = express(routes)
 

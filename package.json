@@ -5,7 +5,7 @@
   "main": "src",
   "scripts": {
     "start": "node .",
-    "test": "cross-env NODE_ENV=test jest",
+    "test": "cross-env NODE_ENV=test jest --runInBand",
     "coverage": "npm test -- --coverage",
     "postcoverage": "opn coverage/lcov-report/index.html",
     "lint": "eslint src src-clean .storybook",
@@ -18,7 +18,6 @@
     "heroku-postbuild": "npm run build"
   },
   "jest": {
-    "setupTestFrameworkScriptFile": "<rootDir>/test/setup.js",
     "modulePathIgnorePatterns": [
       "<rootDir>/src-clean"
     ],
@@ -54,7 +53,6 @@
     "react-addons-test-utils": "^15.4.1",
     "redux-mock-store": "^1.2.1",
     "supertest": "^2.0.1",
-    "supertest-as-promised": "^4.0.2",
     "webpack-dev-server": "^2.3.0"
   },
   "dependencies": {
