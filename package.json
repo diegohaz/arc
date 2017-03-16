@@ -5,7 +5,7 @@
   "main": "src",
   "scripts": {
     "start": "node .",
-    "test": "cross-env NODE_ENV=test jest --runInBand",
+    "test": "cross-env NODE_ENV=test jest --runInBand --forceExit",
     "coverage": "npm test -- --coverage",
     "postcoverage": "opn coverage/lcov-report/index.html",
     "lint": "eslint src src-clean .storybook",
