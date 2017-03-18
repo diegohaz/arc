@@ -14,13 +14,10 @@ new WebpackDevServer(webpack(config), {
   historyApiFallback: true,
   contentBase: 'public',
   compress: true,
-  headers: {
-    'Access-Control-Allow-Origin': '*',
-  },
-}).listen(port, ip, function (err) {
+}).listen(port, ip, (err) => {
   if (err) {
     return console.log(err)
   }
 
-  console.log(`Listening at http://${ip}:${port}`)
+  console.log(`\nwebpack: http://${ip}:${port}`)
 })

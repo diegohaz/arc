@@ -100,7 +100,7 @@ app.listen(port, (error) => {
   if (error) {
     console.error(error)
   } else {
-    console.info(`Listening on http://${ip}:${port}`)
+    console.info(`local: http://${ip}:${port}`)
   }
 })
 

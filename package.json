@@ -84,6 +84,7 @@
     "morgan": "^1.7.0",
     "normalizr": "^3.0.1",
     "querymen": "^2.1.1",
+    "progress-bar-webpack-plugin": "^1.9.3",
     "raw-loader": "^0.5.1",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
