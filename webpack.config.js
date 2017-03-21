@@ -33,11 +33,13 @@ const runServerConfig = (serverConfig, prod) => () => ({
   plugins: [
     function run() {
       this.plugin('done', stats => {
+        console.log(this.options)
         const { output } = this.options
-        const data = stats.toJson({ modules: false })
+        const { client } = stats.toJson({ modules: false }).assetsByChunkName
         const assets = {
-          js: output.publicPath + data.assetsByChunkName.client[0],
-          css: output.publicPath + data.assetsByChunkName.client[1],
+          js: [].concat(client)
+            .filter(path => !/map$/.test(path))
+            .map(path => output.publicPath + path),
         }
         fs.writeFileSync(assetsPath, JSON.stringify(assets))
         if (!watching) {
@@ -59,7 +61,10 @@ const startServer = () => () => ({
       this.plugin('done', () => {
         const promise = serverPid ? fkill(serverPid) : Promise.resolve()
         promise.then(() => {
-          serverPid = spawn('node', ['.']).pid
+          const server = spawn('node', ['.'])
+          serverPid = server.pid
+          server.stdout.on('data', data => console.log(`stdout: ${data}`))
+          server.stderr.on('data', data => console.log(`stderr: ${data}`))
           console.log(serverPid)
         })
       })
@@ -80,7 +85,6 @@ const baseConfig = (name) => group([
       loaders: ['babel-loader'],
       cacheContext: {
         env: process.env.NODE_ENV,
-        name,
       },
     }),
   ]),

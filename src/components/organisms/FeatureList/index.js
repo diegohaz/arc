@@ -24,7 +24,8 @@ const StyledFeature = styled(Feature)`
 
 const FeatureList = ({ ...props }) => (
   <div {...props}>
-    <StyledHeading>Basic Stack includes</StyledHeading>
+    <StyledHeading>Basic Stack includes231232131</StyledHeading>
+    dsadsad1231dasdasda
     <Grid>
       <StyledFeature
         icon="react"
