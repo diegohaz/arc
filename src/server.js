@@ -66,10 +66,10 @@ router.use((req, res, next) => {
 
       const styles = styleSheet.rules().map(rule => rule.cssText).join('\n')
       const initialState = store.getState()
-      const assets = global.stats.assetsByChunkName
-      const publicPath = global.stats.publicPath
+      const assets = global.assets
+      console.log(assets)
       const state = `window.__INITIAL_STATE__ = ${serialize(initialState)}`
-      const markup = <Html {...{ styles, assets, state, content, publicPath }} />
+      const markup = <Html {...{ styles, assets, state, content }} />
       const doctype = '<!doctype html>\n'
       const html = renderToStaticMarkup(markup)
 
