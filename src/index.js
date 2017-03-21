@@ -2,7 +2,6 @@ import 'babel-polyfill'
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
-import { AppContainer } from 'react-hot-loader'
 import { createHistory } from 'history'
 import { Router, useRouterHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
@@ -16,11 +15,9 @@ const history = syncHistoryWithStore(baseHistory, store)
 const root = document.getElementById('app')
 
 const renderApp = () => (
-  <AppContainer>
-    <Provider store={store}>
-      <Router key={Math.random()} history={history} routes={routes} />
-    </Provider>
-  </AppContainer>
+  <Provider store={store}>
+    <Router key={Math.random()} history={history} routes={routes} />
+  </Provider>
 )
 
 render(renderApp(), root)
