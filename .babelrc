@@ -6,18 +6,20 @@
     "react",
     "stage-1"
   ],
-  "plugins": [
-    "react-hot-loader/babel"
-  ],
   "env": {
-    "production": {
+    "development": {
       "plugins": [
-        "transform-react-remove-prop-types"
+        "transform-es2015-modules-commonjs"
       ]
     },
     "test": {
       "plugins": [
         "transform-es2015-modules-commonjs"
+      ]
+    },
+    "production": {
+      "plugins": [
+        "transform-react-remove-prop-types"
       ]
     }
   }

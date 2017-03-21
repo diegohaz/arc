@@ -6,9 +6,9 @@ module.exports = new Proxy({}, {
 
     Mock.displayName = property
     Mock.propTypes = {
-      children: PropTypes.any
+      children: PropTypes.any,
     }
 
     return Mock
-  }
+  },
 })
