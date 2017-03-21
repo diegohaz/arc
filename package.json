@@ -48,7 +48,7 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-no-unused-vars-rest": "^1.0.4",
-    "eslint-plugin-react": "6.10.0",
+    "eslint-plugin-react": "^6.10.3",
     "file-loader": "^0.10.0",
     "html-webpack-plugin": "^2.26.0",
     "jest-cli": "^19.0.0",
