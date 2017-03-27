@@ -33,6 +33,8 @@ const config = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
       'process.env.PUBLIC_PATH': JSON.stringify(PUBLIC_PATH),
+      'process.env.IP': JSON.stringify(ip),
+      'process.env.PORT': JSON.stringify(process.env.PORT),
     }),
     new ProgressBarPlugin(),
   ],
