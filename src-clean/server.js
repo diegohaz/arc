@@ -32,6 +32,7 @@ router.use((req, res) => {
 
   const fetchData = () => new Promise((resolve, reject) => {
     const branch = matchRoutes(routes, req.url)
+    const method = req.method.toLowerCase()
 
     const promises = branch.map(({ route, match }) => {
       let component = route.component
@@ -49,7 +50,7 @@ router.use((req, res) => {
       }
     })
 
-    return Promise.all(promises).then(resolve).catch(reject)
+    Promise.all(promises).then(resolve).catch(reject)
   })
 
   const render = (store) => {

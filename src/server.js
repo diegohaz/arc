@@ -5,6 +5,7 @@ import styleSheet from 'styled-components/lib/models/StyleSheet'
 import csrf from 'csurf'
 import { renderToString, renderToStaticMarkup } from 'react-dom/server'
 import { Provider } from 'react-redux'
+import { matchRoutes } from 'react-router-config'
 import { matchPath } from 'react-router-dom'
 import { ConnectedRouter, push } from 'react-router-redux'
 import createHistory from 'history/createMemoryHistory'
@@ -35,25 +36,23 @@ router.use((req, res) => {
   const context = {}
 
   const fetchData = () => new Promise((resolve, reject) => {
-    const promises = []
+    const branch = matchRoutes(routes, req.url)
     const method = req.method.toLowerCase()
 
-    routes.some(route => {
-      const match = matchPath(req.url, route)
-      if (match) {
-        let component = route.component
-        if (component) {
-          while (component && !component[method]) {
-            // eslint-disable-next-line no-param-reassign
-            component = component.WrappedComponent
-          }
-          component &&
-          component[method] &&
-          promises.push(component[method]({ req, res, ...match, store }))
-        }
-      }
+    const promises = branch.map(({ route, match }) => {
+      let component = route.component
 
-      return match
+      if (component) {
+        while (component && !component[method]) {
+          // eslint-disable-next-line no-param-reassign
+          component = component.WrappedComponent
+        }
+        return component &&
+          component[method] &&
+          component[method]({ req, res, ...match, store })
+      } else {
+        return Promise.resolve(null)
+      }
     })
 
     Promise.all(promises).then(resolve).catch(reject)
