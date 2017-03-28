@@ -1,16 +1,34 @@
 import React from 'react'
-import { Route, IndexRoute } from 'react-router'
+import { Route, Switch } from 'react-router'
 
 import App from 'components/App'
 import { HomePage } from 'components'
 import { SamplePage, NotFoundPage } from 'containers'
 
-const routes = (
-  <Route path="/" component={App}>
-    <IndexRoute component={HomePage} />
-    <Route path="/sample-page" component={SamplePage} />
-    <Route path="*" component={NotFoundPage} />
-  </Route>
+export const routes = [
+  {
+    path: '/',
+    exact: true,
+    component: HomePage,
+  },
+  {
+    path: '/sample-page',
+    component: SamplePage,
+  },
+  {
+    path: '*',
+    component: NotFoundPage,
+  },
+]
+
+const AppRoutes = () => (
+  <App>
+    <Switch>
+      {routes.map(route => (
+        <Route key={route.path} {...route} />
+      ))}
+    </Switch>
+  </App>
 )
 
-export default routes
+export default AppRoutes

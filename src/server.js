@@ -5,11 +5,12 @@ import styleSheet from 'styled-components/lib/models/StyleSheet'
 import csrf from 'csurf'
 import { renderToString, renderToStaticMarkup } from 'react-dom/server'
 import { Provider } from 'react-redux'
-import { createMemoryHistory, RouterContext, match } from 'react-router'
-import { syncHistoryWithStore } from 'react-router-redux'
+import { matchPath } from 'react-router-dom'
+import { ConnectedRouter, push } from 'react-router-redux'
+import createHistory from 'history/createMemoryHistory'
 import { Router } from 'express'
 import express from 'services/express'
-import routes from 'routes'
+import AppRoutes, { routes } from 'routes'
 import configureStore from 'store/configure'
 import { env, port, ip, basename } from 'config'
 import { setCsrfToken } from 'store/actions'
@@ -19,33 +20,28 @@ const router = new Router()
 
 router.use(csrf({ cookie: true }))
 
-router.use((req, res, next) => {
+router.use((req, res) => {
   if (env === 'development') {
     global.webpackIsomorphicTools.refresh()
   }
 
   const location = req.url.replace(basename, '')
-  const memoryHistory = createMemoryHistory({ basename })
-  const store = configureStore({}, memoryHistory)
-  const history = syncHistoryWithStore(memoryHistory, store)
+  const history = createHistory()
+  const store = configureStore({}, history)
 
   store.dispatch(setCsrfToken(req.csrfToken()))
+  store.dispatch(push(req.url))
 
-  match({ history, routes, location }, (error, redirectLocation, renderProps) => {
-    if (redirectLocation) {
-      res.redirect(redirectLocation.pathname + redirectLocation.search)
-    }
+  const context = {}
 
-    if (error || !renderProps) {
-      return next(error)
-    }
+  const fetchData = () => new Promise((resolve, reject) => {
+    const promises = []
+    const method = req.method.toLowerCase()
 
-    const fetchData = () => new Promise((resolve, reject) => {
-      const method = req.method.toLowerCase()
-      const { params, location, components } = renderProps
-      const promises = []
-
-      components.forEach((component) => {
+    routes.some(route => {
+      const match = matchPath(req.url, route)
+      if (match) {
+        let component = route.component
         if (component) {
           while (component && !component[method]) {
             // eslint-disable-next-line no-param-reassign
@@ -53,20 +49,32 @@ router.use((req, res, next) => {
           }
           component &&
           component[method] &&
-          promises.push(component[method]({ req, res, params, location, store }))
+          promises.push(component[method]({ req, res, ...match, store }))
         }
-      })
+      }
 
-      Promise.all(promises).then(resolve).catch(reject)
+      return match
     })
 
-    const render = (store) => {
-      const content = renderToString(
-        <Provider store={store}>
-          <RouterContext {...renderProps} />
-        </Provider>
-      )
+    Promise.all(promises).then(resolve).catch(reject)
+  })
 
+  const render = (store) => {
+    const content = renderToString(
+      <Provider store={store}>
+        <ConnectedRouter
+          context={context}
+          history={history}
+          location={location}
+        >
+          <AppRoutes />
+        </ConnectedRouter>
+      </Provider>
+    )
+
+    if (context.url) {
+      res.redirect(context.status, context.url)
+    } else {
       const styles = styleSheet.rules().map(rule => rule.cssText).join('\n')
       const initialState = store.getState()
       const assets = global.webpackIsomorphicTools.assets()
@@ -77,13 +85,13 @@ router.use((req, res, next) => {
 
       res.send(doctype + html)
     }
+  }
 
-    return fetchData().then(() => {
-      render(configureStore(store.getState(), memoryHistory))
-    }).catch((err) => {
-      console.log(err)
-      res.status(500).end()
-    })
+  return fetchData().then(() => {
+    render(configureStore(store.getState(), history))
+  }).catch((err) => {
+    console.log(err)
+    res.status(500).end()
   })
 })
 

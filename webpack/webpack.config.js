@@ -52,14 +52,15 @@ const config = {
 
 if (DEBUG) {
   config.entry.app.unshift(
+    'react-hot-loader/patch',
     `webpack-dev-server/client?http://${ip}:${port}/`,
-    'webpack/hot/only-dev-server',
-    'react-hot-loader/patch'
+    'webpack/hot/only-dev-server'
   )
 
   config.plugins = config.plugins.concat([
-    new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
     new WebpackIsomorphicToolsPlugin(webpackIsomorphicToolsConfig),
   ])
 } else {
