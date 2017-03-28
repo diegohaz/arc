@@ -5,7 +5,6 @@ import styleSheet from 'styled-components/lib/models/StyleSheet'
 import { renderToString, renderToStaticMarkup } from 'react-dom/server'
 import { Provider } from 'react-redux'
 import { matchRoutes } from 'react-router-config'
-import { matchPath } from 'react-router-dom'
 import { ConnectedRouter, push } from 'react-router-redux'
 import createHistory from 'history/createMemoryHistory'
 import { Router } from 'express'
@@ -45,9 +44,9 @@ router.use((req, res) => {
         return component &&
           component[method] &&
           component[method]({ req, res, ...match, store })
-      } else {
-        return Promise.resolve(null)
       }
+
+      return Promise.resolve(null)
     })
 
     Promise.all(promises).then(resolve).catch(reject)
