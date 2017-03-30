@@ -5,7 +5,7 @@ const WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin')
 const webpackIsomorphicToolsConfig = require('./webpack-isomorphic-tools')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 
-const ip = process.env.IP || '0.0.0.0'
+const ip = process.env.IP || 'localhost'
 const port = (+process.env.PORT + 1) || 3001
 const DEBUG = process.env.NODE_ENV !== 'production'
 const PUBLIC_PATH = `/${process.env.PUBLIC_PATH || ''}/`.replace('//', '/')

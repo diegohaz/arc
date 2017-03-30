@@ -1,7 +1,7 @@
 const merge = require('lodash/merge')
 
 const browser = typeof window !== 'undefined'
-const ip = process.env.IP || '0.0.0.0'
+const ip = process.env.IP || 'localhost'
 const port = process.env.PORT || 3000
 const basename = `/${process.env.PUBLIC_PATH || ''}`.replace('//', '/')
 
@@ -39,7 +39,7 @@ const config = {
     },
   },
   production: {
-    ip: process.env.IP || '0.0.0.0',
+    ip: process.env.IP || 'localhost',
     port: process.env.PORT || 8080,
     baseUrl: 'https://arc.diegohaz.com',
     apiUrl: 'https://arc.diegohaz.com/api',

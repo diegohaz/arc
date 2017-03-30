@@ -3,7 +3,7 @@ const webpack = require('webpack')
 const WebpackDevServer = require('webpack-dev-server')
 const config = require('./webpack.config')
 
-const ip = process.env.IP || '0.0.0.0'
+const ip = process.env.IP || 'localhost'
 const port = (+process.env.PORT + 1) || 3001
 
 new WebpackDevServer(webpack(config), {

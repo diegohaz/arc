@@ -41,12 +41,6 @@ $ npm install # or yarn
 
 Once you have installed the dependencies, you can use `npm run dev` to run a development server.
 
-If you are using **Windows** and see this error: `MongoError: failed to connect to server [0.0.0.0:27017] on first connect` please modify the `config.js` file in the `src` directory by changing **line 4** to say:
-
-```javascript
-const ip = process.env.IP || '127.0.0.1'
-```
-
 ### Deploy
 
 Use `npm run build` to transpile the code into the `dist` folder. Then, you can deploy it everywhere.
