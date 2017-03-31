@@ -6,12 +6,13 @@ import { AppContainer } from 'react-hot-loader'
 import createHistory from 'history/createBrowserHistory'
 import { ConnectedRouter } from 'react-router-redux'
 import configureStore from 'store/configure'
+import { basename } from 'config'
 
 import AppRoutes from 'routes'
 
 // eslint-disable-next-line no-underscore-dangle
 const initialState = window.__INITIAL_STATE__
-const history = createHistory()
+const history = createHistory({ basename })
 const store = configureStore(initialState, history)
 const root = document.getElementById('app')
 

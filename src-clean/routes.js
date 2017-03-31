@@ -15,8 +15,16 @@ export const routes = [
 const AppRoutes = () => (
   <App>
     <Switch>
-      {routes.map(route => (
-        <Route key={route.path} {...route} />
+      {routes.map((route) => (
+        <Route
+          key={route.path}
+          path={route.path}
+          exact={route.exact}
+          strict={route.strict}
+          render={(props) => (
+            <route.component {...props} route={route} />
+          )}
+        />
       ))}
     </Switch>
   </App>
