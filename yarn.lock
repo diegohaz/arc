@@ -5757,12 +5757,12 @@ react-router-config@^1.0.0-beta.1:
   version "1.0.0-beta.1"
   resolved "https://registry.yarnpkg.com/react-router-config/-/react-router-config-1.0.0-beta.1.tgz#e83158d6b1179b99d8077d0248e529c1049222e4"
 
-react-router-dom@4.0.0-beta.8:
-  version "4.0.0-beta.8"
-  resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-4.0.0-beta.8.tgz#907a5a0a36e9190652c80f2feead0eadbbba262e"
+react-router-dom@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-4.0.0.tgz#4fa4418e14b8cfc5bcc0bdea0c4083fb8c2aef10"
   dependencies:
     history "^4.5.1"
-    react-router "^4.0.0-beta.8"
+    react-router "^4.0.0"
 
 react-router-redux@5.0.0-alpha.4:
   version "5.0.0-alpha.4"
@@ -5770,16 +5770,6 @@ react-router-redux@5.0.0-alpha.4:
   dependencies:
     history "^4.5.1"
     react-router "^4.0.0"
-
-react-router@4.0.0-beta.8, react-router@^4.0.0-beta.8:
-  version "4.0.0-beta.8"
-  resolved "https://registry.yarnpkg.com/react-router/-/react-router-4.0.0-beta.8.tgz#368cfe540d23d5d23419b42fb915d465f268b66b"
-  dependencies:
-    history "^4.6.0"
-    invariant "^2.2.2"
-    loose-envify "^1.3.1"
-    path-to-regexp "^1.5.3"
-    warning "^3.0.0"
 
 react-router@^4.0.0:
   version "4.0.0"
