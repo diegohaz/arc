@@ -1,3 +1,4 @@
+import 'react-hot-loader/patch'
 import React from 'react'
 import { render } from 'react-dom'
 import { createHistory } from 'history'
