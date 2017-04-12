@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Switch } from 'react-router'
+import { Switch } from 'react-router'
 import { renderRoutes } from 'react-router-config'
 
 import App from 'components/App'
