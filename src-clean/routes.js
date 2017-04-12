@@ -1,5 +1,6 @@
 import React from 'react'
 import { Route, Switch } from 'react-router'
+import { renderRoutes } from 'react-router-config'
 
 import App from 'components/App'
 import { HomePage } from 'components'
@@ -15,17 +16,7 @@ export const routes = [
 const AppRoutes = () => (
   <App>
     <Switch>
-      {routes.map((route) => (
-        <Route
-          key={route.path}
-          path={route.path}
-          exact={route.exact}
-          strict={route.strict}
-          render={(props) => (
-            <route.component {...props} route={route} />
-          )}
-        />
-      ))}
+      {renderRoutes(routes)}
     </Switch>
   </App>
 )
