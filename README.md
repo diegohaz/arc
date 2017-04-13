@@ -28,7 +28,6 @@ $ npm install # or yarn
 - [Run](#run)
 - [Deploy](#deploy)
 - [Source code](#source-code)
-- [Clean source code](#clean-source-code)
 - [Components](#components)
   - [Storybook](#storybook)
 - [Containers](#containers)
@@ -52,16 +51,6 @@ Because of [webpack's config](https://github.com/diegohaz/arc/blob/5c752968c52d0
 import { Button, HomePage } from 'components' // src/components
 import App from 'components/App' // src/components/App
 import routes from 'routes' // src/routes
-```
-
-### Clean source code
-
-If you want to start with a clean and minimal source code without the predefined components and tests, just use the `src-clean` folder instead by renaming it to `src` (and removing or renaming the older one to something like `src-example`).
-
-Also, you might want to remove unnecessary dependencies:
-```sh
-npm u -S react-modal # used by src/components/molecules/Modal
-npm u -S normalizr # used by src/store/entities
 ```
 
 ### Components
