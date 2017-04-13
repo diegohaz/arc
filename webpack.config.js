@@ -11,8 +11,9 @@ const {
 
 const host = process.env.HOST || 'localhost'
 const port = process.env.PORT || 3000
+const sourceDir = process.env.SOURCE || 'src'
 const publicPath = `/${process.env.PUBLIC_PATH || ''}/`.replace('//', '/')
-const sourcePath = path.join(process.cwd(), 'src')
+const sourcePath = path.join(process.cwd(), sourceDir)
 const outputPath = path.join(process.cwd(), 'dist')
 
 const babel = () => () => ({
@@ -44,10 +45,14 @@ const config = createConfig([
   ]),
   happypack([
     babel(),
-  ]),
+  ], {
+    cacheContext: {
+      sourceDir,
+    },
+  }),
   () => ({
     resolve: {
-      modules: ['src', 'node_modules'],
+      modules: [sourceDir, 'node_modules'],
     },
     module: {
       rules: [

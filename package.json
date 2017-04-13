@@ -6,23 +6,25 @@
     "start": "npm run dev",
     "env:dev": "cross-env NODE_ENV=development",
     "env:prod": "cross-env NODE_ENV=production",
+    "env:example": "cross-env SOURCE=src-example",
     "test": "jest",
     "coverage": "npm test -- --coverage",
     "postcoverage": "opn coverage/lcov-report/index.html",
-    "lint": "eslint src src-clean test .storybook webpack.config.js",
+    "lint": "eslint src src-example test .storybook webpack.config.js",
     "storybook": "start-storybook -p 9001 -c .storybook",
+    "storybook:example": "npm run env:example -- npm run storybook",
     "dev": "npm run env:dev -- webpack-dev-server --progress",
+    "dev:example": "npm run env:example -- npm run dev",
     "build:clean": "rimraf \"dist/!(.git*|Procfile)**\"",
     "build:copy": "copyfiles -u 1 public/* public/**/* dist",
     "prebuild": "npm run build:clean && npm run build:copy",
-    "build": "npm run env:prod -- webpack --progress"
+    "build": "npm run env:prod -- webpack --progress",
+    "build:example": "npm run env:example -- npm run build"
   },
   "jest": {
-    "modulePathIgnorePatterns": [
-      "<rootDir>/src-clean"
-    ],
     "moduleDirectories": [
       "src",
+      "src-example",
       "node_modules"
     ],
     "moduleNameMapper": {
