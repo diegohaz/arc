@@ -1,4 +1,4 @@
-import { PropTypes } from 'react'
+import PropTypes from 'prop-types'
 import styled, { keyframes } from 'styled-components'
 import { palette } from 'styled-theme'
 

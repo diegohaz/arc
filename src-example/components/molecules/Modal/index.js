@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import styled, { css, injectGlobal } from 'styled-components'
 import ReactModal from 'react-modal'
 import { font, palette } from 'styled-theme'
