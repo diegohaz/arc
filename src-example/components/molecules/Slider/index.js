@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { font, palette } from 'styled-theme'
-import { ifProp, get } from 'styled-tools'
+import { ifProp, prop } from 'styled-tools'
 
 export const fontSize = ({ height }) => `${height / 35.5555555556}rem`
 
@@ -122,7 +122,7 @@ const Range = styled.input`
 
 const Text = styled.span`
   padding: 0.4375em;
-  @media screen and (max-width: ${get('breakpoint')}px) {
+  @media screen and (max-width: ${prop('breakpoint')}px) {
     display: ${ifProp('responsive', 'none !important')};
   }
 `
