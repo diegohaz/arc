@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { css, keyframes } from 'styled-components'
-import { ifProp, get } from 'styled-tools'
+import { ifProp, prop } from 'styled-tools'
 
 import { Icon, Button } from 'components'
 
@@ -33,7 +33,7 @@ const StyledButton = styled(Button)`
     }
   `)}
   ${ifProp('responsive', css`
-    @media screen and (max-width: ${get('breakpoint')}px) {
+    @media screen and (max-width: ${prop('breakpoint')}px) {
       width: auto;
       flex: 0 !important;
     }
@@ -42,7 +42,7 @@ const StyledButton = styled(Button)`
 
 const Text = styled.span`
   padding: 0.4375em;
-  @media screen and (max-width: ${get('breakpoint')}px) {
+  @media screen and (max-width: ${prop('breakpoint')}px) {
     display: ${ifProp('responsive', 'none !important')};
   }
 `
