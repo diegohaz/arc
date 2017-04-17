@@ -1,3 +1,4 @@
+// https://github.com/diegohaz/arc/wiki/Testing-redux-modules
 import { createStore } from 'redux'
 import reducer from './reducer'
 import { modalShow, modalHide } from './actions'
