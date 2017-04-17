@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { injectGlobal, ThemeProvider } from 'styled-components'
 
+// https://github.com/diegohaz/arc/wiki/Styling
 import theme from './themes/default'
 
 injectGlobal`
