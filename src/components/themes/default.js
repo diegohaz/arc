@@ -1,3 +1,4 @@
+// https://github.com/diegohaz/arc/wiki/Styling
 import { reversePalette } from 'styled-theme/composer'
 
 const theme = {}
