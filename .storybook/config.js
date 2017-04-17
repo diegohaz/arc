@@ -1,3 +1,4 @@
+// https://github.com/diegohaz/arc/wiki/Storybook
 import React from 'react'
 import { configure, addDecorator } from '@kadira/storybook'
 import { ThemeProvider } from 'styled-components'

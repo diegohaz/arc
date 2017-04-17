@@ -1,3 +1,4 @@
+// https://github.com/diegohaz/arc/wiki/Testing-components
 import React from 'react'
 import PropTypes from 'prop-types'
 
