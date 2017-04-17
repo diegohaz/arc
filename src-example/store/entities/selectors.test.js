@@ -1,3 +1,4 @@
+// https://github.com/diegohaz/arc/wiki/Selectors#unit-testing-selectors
 import values from 'lodash/values'
 import * as selectors from './selectors'
 

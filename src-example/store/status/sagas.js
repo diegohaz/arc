@@ -1,3 +1,4 @@
+// https://github.com/diegohaz/arc/wiki/Sagas
 import omit from 'lodash/omit'
 import { fork, call, take, race, takeEvery } from 'redux-saga/effects'
 

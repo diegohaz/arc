@@ -1,3 +1,4 @@
+// https://github.com/diegohaz/arc/wiki/Reducers
 import camelCase from 'lodash/camelCase'
 import { combineReducers } from 'redux'
 import { routerReducer as routing } from 'react-router-redux'

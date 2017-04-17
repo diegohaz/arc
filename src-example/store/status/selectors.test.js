@@ -1,3 +1,4 @@
+// https://github.com/diegohaz/arc/wiki/Selectors#unit-testing-selectors
 import * as selectors from './selectors'
 
 const altState = {

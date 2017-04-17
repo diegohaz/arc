@@ -1,3 +1,4 @@
+// https://github.com/diegohaz/arc/wiki/Reducers
 import findIndex from 'lodash/findIndex'
 import { initialState } from './selectors'
 import {

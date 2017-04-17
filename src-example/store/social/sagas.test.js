@@ -1,3 +1,4 @@
+// https://github.com/diegohaz/arc/wiki/Sagas#unit-testing-sagas
 import { put, call, fork } from 'redux-saga/effects'
 import * as actions from './actions'
 import saga, * as sagas from './sagas'

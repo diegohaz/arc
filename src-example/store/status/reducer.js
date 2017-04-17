@@ -1,3 +1,4 @@
+// https://github.com/diegohaz/arc/wiki/Reducers
 import { initialState, getLoadingState, getErrorState } from './selectors'
 
 export default (state = initialState, action) => {

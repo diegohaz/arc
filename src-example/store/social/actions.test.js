@@ -1,3 +1,4 @@
+// https://github.com/diegohaz/arc/wiki/Actions#unit-testing-actions
 import * as actions from './actions'
 
 test('socialLoginPrepare', () => {

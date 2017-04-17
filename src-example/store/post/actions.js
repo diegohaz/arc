@@ -1,3 +1,4 @@
+// https://github.com/diegohaz/arc/wiki/Actions
 export const POST_CREATE = 'POST_CREATE'
 export const POST_CREATE_REQUEST = 'POST_CREATE_REQUEST'
 export const POST_CREATE_SUCCESS = 'POST_CREATE_SUCCESS'

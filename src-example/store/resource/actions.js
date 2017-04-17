@@ -1,3 +1,4 @@
+// https://github.com/diegohaz/arc/wiki/Actions
 export const RESOURCE_CREATE = 'RESOURCE_CREATE'
 export const RESOURCE_CREATE_REQUEST = 'RESOURCE_CREATE_REQUEST'
 export const RESOURCE_CREATE_SUCCESS = 'RESOURCE_CREATE_SUCCESS'

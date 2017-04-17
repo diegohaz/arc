@@ -1,3 +1,4 @@
+// https://github.com/diegohaz/arc/wiki/Redux-modules
 import { createStore, applyMiddleware, compose } from 'redux'
 import { routerMiddleware } from 'react-router-redux'
 import createSagaMiddleware from 'redux-saga'
@@ -9,9 +10,10 @@ import sagas from './sagas'
 const devtools = isDev && isBrowser && window.devToolsExtension
   ? window.devToolsExtension
   : () => fn => fn
-const sagaMiddleware = createSagaMiddleware()
 
 const configureStore = (initialState, history, services = {}) => {
+  const sagaMiddleware = createSagaMiddleware()
+
   const enhancers = [
     applyMiddleware(
       ...middlewares,

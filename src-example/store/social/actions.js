@@ -1,3 +1,4 @@
+// https://github.com/diegohaz/arc/wiki/Actions
 export const SOCIAL_LOGIN = 'SOCIAL_LOGIN'
 export const SOCIAL_LOGIN_PREPARE = 'SOCIAL_LOGIN_PREPARE'
 export const SOCIAL_LOGIN_REQUEST = 'SOCIAL_LOGIN_REQUEST'

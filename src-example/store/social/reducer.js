@@ -1,3 +1,4 @@
+// https://github.com/diegohaz/arc/wiki/Reducers
 import { initialState } from './selectors'
 import { SOCIAL_LOGIN_SUCCESS, SOCIAL_LOGOUT } from './actions'
 

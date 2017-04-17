@@ -1,3 +1,4 @@
+// https://github.com/diegohaz/arc/wiki/Selectors
 import find from 'lodash/find'
 import pick from 'lodash/pick'
 

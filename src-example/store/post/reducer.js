@@ -1,3 +1,4 @@
+// https://github.com/diegohaz/arc/wiki/Reducers
 import { initialState } from './selectors'
 import { POST_CREATE_SUCCESS, POST_LIST_READ_SUCCESS } from './actions'
 

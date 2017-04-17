@@ -1,3 +1,4 @@
+// https://github.com/diegohaz/arc/wiki/Selectors
 export const initialState = {
   list: [],
 }

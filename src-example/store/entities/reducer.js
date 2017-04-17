@@ -1,3 +1,4 @@
+// https://github.com/diegohaz/arc/wiki/Reducers
 import mergeWith from 'lodash/mergeWith'
 import { initialState } from './selectors'
 

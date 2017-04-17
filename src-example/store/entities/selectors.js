@@ -1,3 +1,4 @@
+// https://github.com/diegohaz/arc/wiki/Selectors
 import { denormalize } from 'normalizr'
 import * as schemas from './schemas'
 

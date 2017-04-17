@@ -1,3 +1,4 @@
+// https://github.com/diegohaz/arc/wiki/Reducers
 import { initialState } from './selectors'
 import { MODAL_SHOW, MODAL_HIDE } from './actions'
 

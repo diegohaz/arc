@@ -1,3 +1,4 @@
+// https://github.com/diegohaz/arc/wiki/Reducers#unit-testing-reducers
 import { initialState, getLoadingState, getErrorState } from './selectors'
 import reducer from './reducer'
 
