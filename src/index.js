@@ -1,4 +1,3 @@
-// https://github.com/diegohaz/arc/wiki/Atomic-Design
 import 'react-hot-loader/patch'
 import React from 'react'
 import { render } from 'react-dom'
