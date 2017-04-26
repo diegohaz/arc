@@ -71,14 +71,14 @@
     "webpack-md5-hash": "^0.0.5"
   },
   "dependencies": {
-    "history": "3.0.0",
+    "history": "^4.6.1",
     "lodash": "^4.17.4",
     "prop-types": "^15.5.8",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-hot-loader": "3.0.0-beta.6",
     "react-modal": "^1.6.5",
-    "react-router": "^3.0.5",
+    "react-router-dom": "^4.1.1",
     "styled-components": "^1.4.4",
     "styled-theme": "^0.3.0",
     "styled-tools": "^0.1.2"
