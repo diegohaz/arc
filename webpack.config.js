@@ -67,7 +67,9 @@ const config = createConfig([
     devServer({
       contentBase: 'public',
       stats: 'errors-only',
-      publicPath,
+      historyApiFallback: {
+        index: publicPath,
+      },
       host,
       port,
     }),

@@ -2,6 +2,7 @@
 import React from 'react'
 import { configure, addDecorator } from '@kadira/storybook'
 import { ThemeProvider } from 'styled-components'
+import { BrowserRouter } from 'react-router-dom'
 
 import theme from 'components/themes/default'
 
@@ -12,7 +13,9 @@ function loadStories() {
 }
 
 addDecorator(story => (
-  <ThemeProvider theme={theme}>{story()}</ThemeProvider>
+  <BrowserRouter>
+    <ThemeProvider theme={theme}>{story()}</ThemeProvider>
+  </BrowserRouter>
 ))
 
 configure(loadStories, module)
