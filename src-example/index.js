@@ -4,29 +4,30 @@ import 'babel-polyfill'
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
-import { createHistory } from 'history'
-import { Router, useRouterHistory } from 'react-router'
-import { syncHistoryWithStore } from 'react-router-redux'
+import { ConnectedRouter } from 'react-router-redux'
+import createHistory from 'history/createBrowserHistory'
 import configureStore from 'store/configure'
 import api from 'services/api'
-import routes from 'routes'
 
-const baseHistory = useRouterHistory(createHistory)({ basename: process.env.PUBLIC_PATH })
-const store = configureStore({}, baseHistory, { api: api.create() })
-const history = syncHistoryWithStore(baseHistory, store)
-const root = document.getElementById('app')
+import App from 'components/App'
+
+const history = createHistory({ basename: process.env.PUBLIC_PATH })
+const store = configureStore({}, history, { api: api.create() })
 
 const renderApp = () => (
   <Provider store={store}>
-    <Router key={Math.random()} history={history} routes={routes} />
+    <ConnectedRouter history={history}>
+      <App />
+    </ConnectedRouter>
   </Provider>
 )
 
+const root = document.getElementById('app')
 render(renderApp(), root)
 
 if (module.hot) {
-  module.hot.accept('routes', () => {
-    require('routes')
+  module.hot.accept('components/App', () => {
+    require('components/App')
     render(renderApp(), root)
   })
 }
