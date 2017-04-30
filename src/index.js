@@ -6,12 +6,13 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'react-router-redux'
 import createHistory from 'history/createBrowserHistory'
+
+import { basename } from 'config'
 import configureStore from 'store/configure'
 import api from 'services/api'
-
 import App from 'components/App'
 
-const history = createHistory({ basename: process.env.PUBLIC_PATH })
+const history = createHistory({ basename })
 const store = configureStore({}, history, { api: api.create() })
 
 const renderApp = () => (
