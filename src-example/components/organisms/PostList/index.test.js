@@ -16,6 +16,6 @@ it('renders props when passed in', () => {
 })
 
 it('renders loading when passed in', () => {
-  const wrapper = wrap({ loading: true })
+  const wrapper = wrap({ loading: true, list: [] })
   expect(wrapper.contains('Loading')).toBe(true)
 })
