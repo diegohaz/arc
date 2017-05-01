@@ -1,11 +1,9 @@
 // https://github.com/diegohaz/arc/wiki/Reducers
 import camelCase from 'lodash/camelCase'
 import { combineReducers } from 'redux'
-import { routerReducer as router } from 'react-router-redux'
 import { reducer as form } from 'redux-form'
 
 const reducers = {
-  router,
   form,
 }
 

@@ -5614,14 +5614,6 @@ react-router-dom@^4.1.1:
     prop-types "^15.5.4"
     react-router "^4.1.1"
 
-react-router-redux@5.0.0-alpha.6:
-  version "5.0.0-alpha.6"
-  resolved "https://registry.yarnpkg.com/react-router-redux/-/react-router-redux-5.0.0-alpha.6.tgz#7418663c2ecd3c51be856fcf28f3d1deecc1a576"
-  dependencies:
-    history "^4.5.1"
-    prop-types "^15.5.4"
-    react-router "^4.1.1"
-
 react-router@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/react-router/-/react-router-4.1.1.tgz#d448f3b7c1b429a6fbb03395099949c606b1fe95"
@@ -6353,17 +6345,11 @@ strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
 
-style-loader@0.13.1:
+style-loader@0.13.1, style-loader@^0.13.1:
   version "0.13.1"
   resolved "https://registry.yarnpkg.com/style-loader/-/style-loader-0.13.1.tgz#468280efbc0473023cd3a6cd56e33b5a1d7fc3a9"
   dependencies:
     loader-utils "^0.2.7"
-
-style-loader@^0.13.1:
-  version "0.13.2"
-  resolved "https://registry.yarnpkg.com/style-loader/-/style-loader-0.13.2.tgz#74533384cf698c7104c7951150b49717adc2f3bb"
-  dependencies:
-    loader-utils "^1.0.2"
 
 styled-components@^1.4.4:
   version "1.4.5"

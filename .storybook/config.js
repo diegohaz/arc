@@ -2,15 +2,13 @@
 import React from 'react'
 import { configure, addDecorator } from '@kadira/storybook'
 import { Provider } from 'react-redux'
-import { ConnectedRouter } from 'react-router-redux'
-import createHistory from 'history/createBrowserHistory'
+import { BrowserRouter } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import configureStore from 'store/configure'
 import api from 'services/api'
 import theme from 'components/themes/default'
 
-const history = createHistory()
-const store = configureStore({}, history, { api: api.create() })
+const store = configureStore({}, { api: api.create() })
 const req = require.context('components', true, /.stories.js$/)
 
 function loadStories() {
@@ -19,9 +17,9 @@ function loadStories() {
 
 addDecorator(story => (
   <Provider store={store}>
-    <ConnectedRouter history={history}>
+    <BrowserRouter>
       <ThemeProvider theme={theme}>{story()}</ThemeProvider>
-    </ConnectedRouter>
+    </BrowserRouter>
   </Provider>
 ))
 
