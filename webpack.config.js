@@ -36,7 +36,7 @@ const config = createConfig([
   }),
   defineConstants({
     'process.env.NODE_ENV': process.env.NODE_ENV,
-    'process.env.PUBLIC_PATH': publicPath,
+    'process.env.PUBLIC_PATH': publicPath.replace(/\/$/, ''),
   }),
   addPlugins([
     new HtmlWebpackPlugin({
@@ -47,10 +47,11 @@ const config = createConfig([
   happypack([
     babel(),
   ], {
-    cacheContext: {
-      sourceDir,
-    },
+    cacheContext: { sourceDir },
   }),
+  addPlugins([
+    new webpack.ProgressPlugin(),
+  ]),
   () => ({
     resolve: {
       modules: [sourceDir, 'node_modules'],
@@ -67,9 +68,8 @@ const config = createConfig([
     devServer({
       contentBase: 'public',
       stats: 'errors-only',
-      historyApiFallback: {
-        index: publicPath,
-      },
+      historyApiFallback: { index: publicPath },
+      headers: { 'Access-Control-Allow-Origin': '*' },
       host,
       port,
     }),

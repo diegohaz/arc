@@ -13,12 +13,12 @@
     "lint": "eslint src src-example test .storybook webpack.config.js",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "storybook:example": "npm run env:example -- npm run storybook",
-    "dev": "npm run env:dev -- webpack-dev-server --progress",
+    "dev": "npm run env:dev -- webpack-dev-server",
     "dev:example": "npm run env:example -- npm run dev",
     "build:clean": "rimraf \"dist/!(.git*|Procfile)**\"",
     "build:copy": "copyfiles -u 1 public/* public/**/* dist",
     "prebuild": "npm run build:clean && npm run build:copy",
-    "build": "npm run env:prod -- webpack --progress",
+    "build": "npm run env:prod -- webpack",
     "build:example": "npm run env:example -- npm run build"
   },
   "jest": {
@@ -59,7 +59,6 @@
     "eslint-plugin-no-unused-vars-rest": "^1.0.6",
     "eslint-plugin-react": "^6.10.3",
     "file-loader": "^0.11.0",
-    "happypack": "^3.0.3",
     "html-webpack-plugin": "^2.26.0",
     "jest-cli": "^19.0.0",
     "opn-cli": "^3.1.0",
@@ -71,8 +70,7 @@
     "webpack": "^2.3.3",
     "webpack-blocks-happypack": "^0.1.3",
     "webpack-blocks-split-vendor": "^0.1.2",
-    "webpack-dev-server": "^2.3.0",
-    "webpack-md5-hash": "^0.0.5"
+    "webpack-dev-server": "^2.3.0"
   },
   "dependencies": {
     "babel-polyfill": "^6.20.0",
