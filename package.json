@@ -85,7 +85,6 @@
     "react-modal": "^1.6.5",
     "react-redux": "^5.0.1",
     "react-router-dom": "^4.1.1",
-    "react-router-redux": "5.0.0-alpha.6",
     "redux": "^3.6.0",
     "redux-form": "^6.4.3",
     "redux-saga": "^0.14.1",
