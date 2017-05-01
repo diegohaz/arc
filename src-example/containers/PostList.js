@@ -11,15 +11,15 @@ class PostListContainer extends Component {
     list: PropTypes.arrayOf(PropTypes.object).isRequired,
     limit: PropTypes.number,
     loading: PropTypes.bool,
-    request: PropTypes.func.isRequired,
+    readList: PropTypes.func.isRequired,
   }
 
   static defaultProps = {
     limit: 20,
   }
 
-  componentDidMount() {
-    this.props.request()
+  componentWillMount() {
+    this.props.readList()
   }
 
   render() {
@@ -34,7 +34,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch, { limit }) => ({
-  request: () => dispatch(postListReadRequest({ _limit: limit })),
+  readList: () => dispatch(postListReadRequest({ _limit: limit })),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostListContainer)

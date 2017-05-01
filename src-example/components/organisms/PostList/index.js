@@ -13,8 +13,8 @@ const Wrapper = styled.div`
 const PostList = ({ list, loading, ...props }) => {
   return (
     <Wrapper {...props}>
-      {loading && <div>Loading</div>}
-      {list.map(post => <Post key={post.id} loading={loading} {...post} />)}
+      {!list.length && loading && <div>Loading</div>}
+      {list.map(post => <Post key={post.id} {...post} />)}
     </Wrapper>
   )
 }
