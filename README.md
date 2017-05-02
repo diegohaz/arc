@@ -8,35 +8,22 @@
 
 **ARc** (Atomic React) is a React starter kit based on the [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/) methodology. It's progressive, which means that you can start with the basic boilerplate and try the other features when you are comfortable.
 
-See the [demo](https://arc.js.org).
+- **[Demo](https://arc.js.org)**
+- **[Documentation](https://github.com/diegohaz/arc/wiki)**
 
 ## Branches
 
-### [master](https://github.com/diegohaz/arc)
+- ### [master](https://github.com/diegohaz/arc)
 
-The basic stack with [React](https://facebook.github.io/react/), [Webpack](https://github.com/webpack/webpack), [react-router](https://github.com/ReactTraining/react-router) and [Jest](https://facebook.github.io/jest/).
+  The basic stack with [React](https://facebook.github.io/react/), [Webpack](https://github.com/webpack/webpack), [react-router](https://github.com/ReactTraining/react-router) and [Jest](https://facebook.github.io/jest/).
 
-### [redux](https://github.com/diegohaz/arc/tree/redux)
+  - ### [redux](https://github.com/diegohaz/arc/tree/redux)
 
-Master plus [redux](https://github.com/reactjs/redux), [redux-saga](https://github.com/yelouafi/redux-saga) and [redux-form](https://github.com/erikras/redux-form).
+    Master plus [redux](https://github.com/reactjs/redux), [redux-saga](https://github.com/yelouafi/redux-saga) and [redux-form](https://github.com/erikras/redux-form).
 
-### [universal-redux](https://github.com/diegohaz/arc/tree/universal-redux)
+    - ### [redux-ssr](https://github.com/diegohaz/arc/tree/redux-ssr)
 
-Redux plus [Server Side Rendering](https://github.com/reactjs/redux/blob/master/docs/recipes/ServerRendering.md) (*everything works with javascript disabled, even the forms*).
-
-### [fullstack](https://github.com/diegohaz/arc/tree/fullstack)
-
-Universal plus REST API.
-
-### [generator-arc](https://github.com/diegohaz/arc/tree/generator-arc)
-
-Generate components, containers, redux stores and the entire project through a CLI utility.
-
-<p align="center"><img src="https://cloud.githubusercontent.com/assets/3068563/21744321/3e366fd2-d4fa-11e6-8262-c5bba9fc4b26.gif"></p>
-
-## Forks
-
-*Did you fork this repo and make something different? Add it to this section and send a PR.*
+      Redux plus [Server Side Rendering](https://github.com/reactjs/redux/blob/master/docs/recipes/ServerRendering.md)
 
 ## Why
 
@@ -48,75 +35,40 @@ I had a React project with more than 100 components in the `components` folder. 
 
 The [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/) approach comes handy to solve this problem because it considers the reusability through composition, *which is actually what React is*. You will have your minimal/stylish components in one folder, pages in another and so on.
 
-## Download
+## Setup
 
-Just clone the repository and remove the `.git` folder:
+### 1. Get the source code
 
+Just clone one of the ARc [branches](#branches):
 ```sh
-$ git clone https://github.com/diegohaz/arc my-app
+$ git clone -b master https://github.com/diegohaz/arc.git my-app
 $ cd my-app
-$ rm -rf .git
-$ npm install # or yarn
 ```
 
-## Usage
-
-- [Run](#run)
-- [Deploy](#deploy)
-- [Source code](#source-code)
-- [Components](#components)
-  - [Storybook](#storybook)
-
-### Run
-
-Once you have installed the dependencies, you can use `npm start` to run a development server.
-
-### Deploy
-
-Use `npm run build` to transpile the code into the `dist` folder. Then, you can deploy it everywhere.
-
-### Source code
-
-The source code should be placed in `src`; public/static files should be placed in `public` so they can be included in the build process.
-
-Because of [webpack's config](https://github.com/diegohaz/arc/blob/5c752968c52d013f7218b514021eae08f6ddf07c/webpack.config.js#L19-L21), we can import our source modules without relative paths.
-```js
-import { Button, HomePage } from 'components' // src/components
-import App from 'components/App' // src/components/App
-import routes from 'routes' // src/routes
-```
-
-### Components
-
-This project leverages the [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/) methodology to create a scalable and easy to maintain component folder structure. See [why](https://github.com/diegohaz/arc#why).
-
-However, Atomic Design should be a solution, **not another problem**. If you want to create a component and don't know where to put it (`atoms`, `molecules`, `organisms` etc.), **do not worry, do not think too much, just put it anywhere**. After you realize what it is, just move the component folder to the right place. Everything else should work.
-
-<p align="center"><img src="https://cloud.githubusercontent.com/assets/3068563/21237760/6b941f76-c2e7-11e6-92e3-bbb7c82b3622.gif"></p>
-
-This is possible because all components are dynamically exported on [`src/components/index.js`](src/components/index.js) and imported in a way that Atomic Design structure doesn't matter:
-
-```js
-import { Button, Hero, HomePage, PageTemplate } from 'components'
-```
-
-To better understand the Atomic Design methodology, you can refer to the [`src/components`](src/components) folder here and the [Pattern Lab Demo](http://demo.patternlab.io/), which this project is based on. Basically, you can think this way:
-
-- An **atom** is a native html tag or a React Component that renders an html tag (e.g [`Input`](src/components/atoms/Input/index.js));
-- A **molecule** is a group of atoms (e.g. [`Field`](src/components/molecules/Field/index.js));
-- An **organism** is a group of atoms, molecules and/or other organisms (e.g. [`Form`](https://github.com/diegohaz/arc/blob/redux/src/components/organisms/PostForm/index.js));
-- A **page** is... a page, where you will put mostly organisms (e.g. [`HomePage`](src/components/pages/HomePage/index.js));
-- A **template** is a layout to be used on pages, see [why templates are good practice](https://github.com/diegohaz/arc/issues/20#issuecomment-265934388).
-
-#### Storybook
-
-I highly recommend you to incorporate [react-storybook](https://github.com/storybooks/react-storybook) on your development process. It really improves productivity and the developer experience. Actually, most of the time you can just use the storybook instead of the real webapp while creating components.
-
-This already comes with the boilerplate and you can simply use `npm run storybook` to get it running. But, if you don't want that, just run:
+You will probably want to remove ARc git history and start a brand new repository:
 ```sh
-rm -rf .storybook # remove .storybook folder
-npm u -S @kadira/storybook # remove storybook dependency
+$ rm -rf .git
+$ git init
 ```
+
+### 2. Install dependencies
+
+```sh
+$ npm install
+```
+
+### 3. Run the app
+
+```sh
+$ npm run dev
+```
+
+It will start the development server with [HMR](https://webpack.github.io/docs/hot-module-replacement) on top of it.
+
+> [http://localhost:3000](http://localhost:3000) — Development server<br>
+> [http://localhost:3001](http://localhost:3001) — Webpack assets server (for `redux-ssr` only)<br>
+
+Now you can open [http://localhost:3000](http://localhost:3000) in browser and start developing.
 
 ## Contributing
 
@@ -132,12 +84,6 @@ PRs are very appreciated. For bugs/features consider creating an issue before se
 - I'm not a native english speaker. If you find any typo or some text that could be written in a better way, please send a PR, even if it is only a punctuation;
 - If you forked or created another boilerplate based on this one with another features (using [`css-modules`](https://github.com/css-modules/css-modules) instead of [`styled-components`](https://github.com/styled-components/styled-components), for example), add that to the [Forks section](#forks) with the following pattern:
   - [arc-css-modules](https://github.com/username/arc-css-modules) - A short description
-
-## Built with ARc
-
-*Built something cool with ARc? Send a PR adding it to this list:*
-
-- [replace-this](https://github.com/username/replace-this) - A short description
 
 ## Contributors
 
