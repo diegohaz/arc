@@ -7,11 +7,11 @@ import { UserButton } from 'components'
 
 const UserButtonContainer = props => <UserButton {...props} />
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   user: fromSocial.getUser(state),
 })
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   onLogin: () => dispatch(modalShow('login')),
   onLogout: () => dispatch(socialLogout()),
 })

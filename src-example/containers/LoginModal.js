@@ -23,11 +23,11 @@ class LoginModalContainer extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   user: fromSocial.getUser(state),
 })
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   prepareGoogle: () => dispatch(socialLoginPrepare('google', { client_id: googleClientId })),
   prepareFacebook: () => dispatch(socialLoginPrepare('facebook', { appId: fbAppId })),
   onFacebookLogin: () => dispatch(socialLoginRequest('facebook')),

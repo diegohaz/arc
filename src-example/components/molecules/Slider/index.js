@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { font, palette } from 'styled-theme'
 import { ifProp, prop } from 'styled-tools'
 
-export const fontSize = ({ height }) => `${height / 35.5555555556}rem`
+const fontSize = ({ height }) => `${height / 35.5555555556}rem`
 
 const thumbColor = ({ disabled }) =>
   palette(disabled ? 2 : 1)

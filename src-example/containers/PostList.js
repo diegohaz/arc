@@ -31,7 +31,7 @@ class PostListContainer extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   list: fromEntities.getList(state, 'post', fromPost.getList(state)),
   loading: fromStatus.isLoading(state, POST_LIST_READ),
 })
