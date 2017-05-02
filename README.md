@@ -1,8 +1,8 @@
 <p align="center">
   <img alt="arclogo" src="https://cloud.githubusercontent.com/assets/3068563/23199029/55e9d55a-f8aa-11e6-91a2-74b82db3813c.png"><br><br>
   <a href="https://github.com/diegohaz/arc/releases/latest"><img src="https://github-release-version.herokuapp.com/github/diegohaz/arc/release.svg?style=flat-square" alt="Latest release" /></a>
-  <a href="https://travis-ci.org/diegohaz/arc"><img src="https://img.shields.io/travis/diegohaz/arc/redux.svg?style=flat-square" alt="Build Status" /></a>
-  <a href="https://codecov.io/gh/diegohaz/arc/branch/redux"><img src="https://img.shields.io/codecov/c/github/diegohaz/arc/redux.svg?style=flat-square" alt="Coverage Status" /></a>
+  <a href="https://travis-ci.org/diegohaz/arc"><img src="https://img.shields.io/travis/diegohaz/arc/redux-ssr.svg?style=flat-square" alt="Build Status" /></a>
+  <a href="https://codecov.io/gh/diegohaz/arc/branch/redux-ssr"><img src="https://img.shields.io/codecov/c/github/diegohaz/arc/redux-ssr.svg?style=flat-square" alt="Coverage Status" /></a>
   <a href="https://gitter.im/diegohaz/arc"><img src="https://img.shields.io/badge/gitter-join%20chat-1dce73.svg?style=flat-square" alt="Gitter chat" /></a>
 </p>
 
@@ -31,7 +31,7 @@
 
 Just clone one of the ARc [branches](#branches):
 ```sh
-$ git clone -b redux https://github.com/diegohaz/arc.git my-app
+$ git clone -b redux-ssr https://github.com/diegohaz/arc.git my-app
 $ cd my-app
 ```
 
