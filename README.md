@@ -6,7 +6,7 @@
   <a href="https://gitter.im/diegohaz/arc"><img src="https://img.shields.io/badge/gitter-join%20chat-1dce73.svg?style=flat-square" alt="Gitter chat" /></a>
 </p>
 
-## Redux
+## `redux-ssr`
 
 - **[Demo](https://arc.js.org)**
 - **[Documentation](https://github.com/diegohaz/arc/wiki)**
