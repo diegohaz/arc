@@ -13,15 +13,15 @@
 
 ## Branches
 
-- ### [master](https://github.com/diegohaz/arc)
-
+- ### [`master`](https://github.com/diegohaz/arc)
+`
   The basic stack with [React](https://facebook.github.io/react/), [Webpack](https://github.com/webpack/webpack), [react-router](https://github.com/ReactTraining/react-router) and [Jest](https://facebook.github.io/jest/).
 
-  - ### [redux](https://github.com/diegohaz/arc/tree/redux)
+  - ### [`redux`](https://github.com/diegohaz/arc/tree/redux)
 
     Master plus [redux](https://github.com/reactjs/redux), [redux-saga](https://github.com/yelouafi/redux-saga) and [redux-form](https://github.com/erikras/redux-form).
 
-    - ### [redux-ssr](https://github.com/diegohaz/arc/tree/redux-ssr)
+    - ### [`redux-ssr`](https://github.com/diegohaz/arc/tree/redux-ssr)
 
       Redux plus [Server Side Rendering](https://github.com/reactjs/redux/blob/master/docs/recipes/ServerRendering.md)
 
@@ -79,11 +79,7 @@ When submitting an issue, use the following patterns in the title for better und
 Something wrong is right # general, related to master or not directly related to any branch
 ```
 
-PRs are very appreciated. For bugs/features consider creating an issue before sending a PR. But there are other things you can contribute directly:
-
-- I'm not a native english speaker. If you find any typo or some text that could be written in a better way, please send a PR, even if it is only a punctuation;
-- If you forked or created another boilerplate based on this one with another features (using [`css-modules`](https://github.com/css-modules/css-modules) instead of [`styled-components`](https://github.com/styled-components/styled-components), for example), add that to the [Forks section](#forks) with the following pattern:
-  - [arc-css-modules](https://github.com/username/arc-css-modules) - A short description
+PRs are very appreciated. For bugs/features consider creating an issue before sending a PR.
 
 ## Contributors
 
