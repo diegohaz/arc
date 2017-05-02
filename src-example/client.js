@@ -11,7 +11,9 @@ import configureStore from 'store/configure'
 import api from 'services/api'
 import App from 'components/App'
 
-const store = configureStore({}, { api: api.create() })
+// eslint-disable-next-line no-underscore-dangle
+const initialState = window.__INITIAL_STATE__
+const store = configureStore(initialState, { api: api.create() })
 
 const renderApp = () => (
   <Provider store={store}>

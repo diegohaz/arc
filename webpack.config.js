@@ -1,21 +1,29 @@
 // https://github.com/diegohaz/arc/wiki/Webpack
 const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const devServer = require('@webpack-blocks/dev-server2')
 const splitVendor = require('webpack-blocks-split-vendor')
 const happypack = require('webpack-blocks-happypack')
+const serverSourceMap = require('webpack-blocks-server-source-map')
+const nodeExternals = require('webpack-node-externals')
+const AssetsByTypePlugin = require('webpack-assets-by-type-plugin')
+const ChildConfigPlugin = require('webpack-child-config-plugin')
+const SpawnPlugin = require('webpack-spawn-plugin')
 
 const {
   addPlugins, createConfig, entryPoint, env, setOutput,
-  sourceMaps, defineConstants, webpack,
+  sourceMaps, defineConstants, webpack, group,
 } = require('@webpack-blocks/webpack2')
 
 const host = process.env.HOST || 'localhost'
-const port = process.env.PORT || 3000
+const port = (+process.env.PORT + 1) || 3001
 const sourceDir = process.env.SOURCE || 'src'
 const publicPath = `/${process.env.PUBLIC_PATH || ''}/`.replace('//', '/')
 const sourcePath = path.join(process.cwd(), sourceDir)
-const outputPath = path.join(process.cwd(), 'dist')
+const outputPath = path.join(process.cwd(), 'dist/public')
+const assetsPath = path.join(process.cwd(), 'dist/assets.json')
+const clientEntryPath = path.join(sourcePath, 'client.js')
+const serverEntryPath = path.join(sourcePath, 'server.js')
+const devDomain = `http://${host}:${port}/`
 
 const babel = () => () => ({
   module: {
@@ -25,10 +33,7 @@ const babel = () => () => ({
   },
 })
 
-const config = createConfig([
-  entryPoint({
-    app: sourcePath,
-  }),
+const base = name => group([
   setOutput({
     filename: '[name].[hash].js',
     path: outputPath,
@@ -38,12 +43,6 @@ const config = createConfig([
     'process.env.NODE_ENV': process.env.NODE_ENV,
     'process.env.PUBLIC_PATH': publicPath.replace(/\/$/, ''),
   }),
-  addPlugins([
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: path.join(process.cwd(), 'public/index.html'),
-    }),
-  ]),
   happypack([
     babel(),
   ], {
@@ -53,6 +52,7 @@ const config = createConfig([
     new webpack.ProgressPlugin(),
   ]),
   () => ({
+    name,
     resolve: {
       modules: [sourceDir, 'node_modules'],
     },
@@ -65,6 +65,54 @@ const config = createConfig([
   }),
 
   env('development', [
+    setOutput({
+      publicPath: devDomain,
+    }),
+  ]),
+])
+
+const server = createConfig([
+  base('server'),
+  entryPoint({ server: serverEntryPath }),
+  setOutput({
+    filename: '../[name].js',
+    libraryTarget: 'commonjs2',
+  }),
+  addPlugins([
+    new webpack.BannerPlugin({
+      banner: 'global.assets = require("./assets.json");',
+      raw: true,
+    }),
+  ]),
+  () => ({
+    target: 'node',
+    externals: [nodeExternals()],
+    stats: 'errors-only',
+  }),
+
+  env('development', [
+    serverSourceMap(),
+    addPlugins([
+      new SpawnPlugin('npm', ['start']),
+    ]),
+    () => ({
+      watch: true,
+    }),
+  ]),
+])
+
+const client = createConfig([
+  base('client'),
+  entryPoint({ client: clientEntryPath }),
+  addPlugins([
+    new AssetsByTypePlugin({ path: assetsPath }),
+    new ChildConfigPlugin(server),
+  ]),
+
+  env('development', [
+    setOutput({
+      filename: '[name].js',
+    }),
     devServer({
       contentBase: 'public',
       stats: 'errors-only',
@@ -87,4 +135,4 @@ const config = createConfig([
   ]),
 ])
 
-module.exports = config
+module.exports = client

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { fetchState } from 'react-router-server'
 import { fromEntities, fromPost, fromStatus } from 'store/selectors'
 import { postListReadRequest, POST_LIST_READ } from 'store/actions'
 
@@ -12,6 +13,7 @@ class PostListContainer extends Component {
     limit: PropTypes.number,
     loading: PropTypes.bool,
     readList: PropTypes.func.isRequired,
+    done: PropTypes.func.isRequired,
   }
 
   static defaultProps = {
@@ -19,7 +21,8 @@ class PostListContainer extends Component {
   }
 
   componentWillMount() {
-    this.props.readList()
+    const { done } = this.props
+    this.props.readList(done)
   }
 
   render() {
@@ -34,7 +37,9 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch, { limit }) => ({
-  readList: () => dispatch(postListReadRequest({ _limit: limit })),
+  readList: done => dispatch(postListReadRequest({ _limit: limit }, done, done)),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostListContainer)
+const withDone = fetchState(null, actions => ({ done: actions.done }))
+
+export default withDone(connect(mapStateToProps, mapDispatchToProps)(PostListContainer))
