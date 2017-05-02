@@ -81,34 +81,6 @@ Something wrong is right # general, related to master or not directly related to
 
 PRs are very appreciated. For bugs/features consider creating an issue before sending a PR.
 
-## Contributors
-
-Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
-
-<!-- Contributors START
-Prabhat_Sharma prabhatsharma https://github.com/prabhatsharma code
-Sven_Schmidt 0xsven https://github.com/0xsven bug code
-Sebastian ssmolinski9 https://github.com/ssmolinski9 tests
-Steven_Haddix steven-haddix https://github.com/steven-haddix code
-Ruslan_Kyba kybarg https://github.com/kybarg bug code doc
-Abhishek_Shende osdevisnot https://github.com/osdevisnot code
-Gueorgui_Agapov 7s4r https://github.com/7s4r code
-Santino santino https://github.com/santino code
-Sebastian_MacDonald Optissimum https://github.com/Optissimum code tests
-Ryan_Garant protoEvangelion https://github.com/protoEvangelion code
-Dennis_Bochen dennisbochen https://github.com/dennisbochen doc
-Contributors END -->
-<!-- Contributors table START -->
-| [<img src="https://avatars.githubusercontent.com/prabhatsharma?s=100" width="100" alt="Prabhat Sharma" /><br /><sub>Prabhat Sharma</sub>](https://github.com/prabhatsharma)<br />[💻](https://github.com/diegohaz/arc/commits?author=prabhatsharma) | [<img src="https://avatars.githubusercontent.com/0xsven?s=100" width="100" alt="Sven Schmidt" /><br /><sub>Sven Schmidt</sub>](https://github.com/0xsven)<br />[🐛](https://github.com/diegohaz/arc/issues?q=author%3A0xsven) [💻](https://github.com/diegohaz/arc/commits?author=0xsven) | [<img src="https://avatars.githubusercontent.com/ssmolinski9?s=100" width="100" alt="Sebastian" /><br /><sub>Sebastian</sub>](https://github.com/ssmolinski9)<br />[⚠️](https://github.com/diegohaz/arc/commits?author=ssmolinski9) | [<img src="https://avatars.githubusercontent.com/steven-haddix?s=100" width="100" alt="Steven Haddix" /><br /><sub>Steven Haddix</sub>](https://github.com/steven-haddix)<br />[💻](https://github.com/diegohaz/arc/commits?author=steven-haddix) | [<img src="https://avatars.githubusercontent.com/kybarg?s=100" width="100" alt="Ruslan Kyba" /><br /><sub>Ruslan Kyba</sub>](https://github.com/kybarg)<br />[🐛](https://github.com/diegohaz/arc/issues?q=author%3Akybarg) [💻](https://github.com/diegohaz/arc/commits?author=kybarg) [📖](https://github.com/diegohaz/arc/commits?author=kybarg) | [<img src="https://avatars.githubusercontent.com/osdevisnot?s=100" width="100" alt="Abhishek Shende" /><br /><sub>Abhishek Shende</sub>](https://github.com/osdevisnot)<br />[💻](https://github.com/diegohaz/arc/commits?author=osdevisnot) | [<img src="https://avatars.githubusercontent.com/7s4r?s=100" width="100" alt="Gueorgui Agapov" /><br /><sub>Gueorgui Agapov</sub>](https://github.com/7s4r)<br />[💻](https://github.com/diegohaz/arc/commits?author=7s4r) |
-| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-
-| [<img src="https://avatars.githubusercontent.com/santino?s=100" width="100" alt="Santino" /><br /><sub>Santino</sub>](https://github.com/santino)<br />[💻](https://github.com/diegohaz/arc/commits?author=santino) | [<img src="https://avatars.githubusercontent.com/Optissimum?s=100" width="100" alt="Sebastian MacDonald" /><br /><sub>Sebastian MacDonald</sub>](https://github.com/Optissimum)<br />[💻](https://github.com/diegohaz/arc/commits?author=Optissimum) [⚠️](https://github.com/diegohaz/arc/commits?author=Optissimum) | [<img src="https://avatars.githubusercontent.com/protoEvangelion?s=100" width="100" alt="Ryan Garant" /><br /><sub>Ryan Garant</sub>](https://github.com/protoEvangelion)<br />[💻](https://github.com/diegohaz/arc/commits?author=protoEvangelion) | [<img src="https://avatars.githubusercontent.com/dennisbochen?s=100" width="100" alt="Dennis Bochen" /><br /><sub>Dennis Bochen</sub>](https://github.com/dennisbochen)<br />[📖](https://github.com/diegohaz/arc/commits?author=dennisbochen) |
-| :---: | :---: | :---: | :---: |
-<!-- Contributors table END -->
-
-This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification.
-Contributions of any kind welcome!
-
 ## License
 
 MIT © [Diego Haz](https://github.com/diegohaz)
