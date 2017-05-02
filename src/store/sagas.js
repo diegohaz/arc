@@ -1,5 +1,5 @@
 // https://github.com/diegohaz/arc/wiki/Sagas
-import { fork } from 'redux-saga/effects'
+import { all, fork } from 'redux-saga/effects'
 
 const req = require.context('.', true, /\.\/.+\/sagas\.js$/)
 
@@ -10,5 +10,5 @@ req.keys().forEach((key) => {
 })
 
 export default function* (services = {}) {
-  yield sagas.map(saga => fork(saga, services))
+  yield all(sagas.map(saga => fork(saga, services)))
 }
