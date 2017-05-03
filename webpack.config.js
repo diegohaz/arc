@@ -35,7 +35,7 @@ const babel = () => () => ({
 
 const base = name => group([
   setOutput({
-    filename: '[name].[hash].js',
+    filename: '[name].js',
     path: outputPath,
     publicPath,
   }),
@@ -110,9 +110,6 @@ const client = createConfig([
   ]),
 
   env('development', [
-    setOutput({
-      filename: '[name].js',
-    }),
     devServer({
       contentBase: 'public',
       stats: 'errors-only',
