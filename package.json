@@ -10,8 +10,8 @@
     "test": "jest",
     "coverage": "npm test -- --coverage",
     "postcoverage": "opn coverage/lcov-report/index.html",
-    "lint": "eslint src src-example test .storybook webpack.config.js",
-    "storybook": "start-storybook -p 9001 -c .storybook",
+    "lint": "eslint src src-example private webpack.config.js",
+    "storybook": "start-storybook -p 9001 -c private/storybook",
     "storybook:example": "npm run env:example -- npm run storybook",
     "dev": "npm run env:dev -- webpack-dev-server",
     "dev:example": "npm run env:example -- npm run dev",
@@ -28,10 +28,10 @@
       "node_modules"
     ],
     "moduleNameMapper": {
-      "^.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/test/fileMock.js",
-      "^(components|containers)$": "<rootDir>/test/componentsMock.js",
-      "^(store|\\.\\.)\\/selectors$": "<rootDir>/test/selectorsMock.js",
-      "^(store|\\.\\.)\\/actions$": "<rootDir>/test/actionsMock.js"
+      "^.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/private/jest/fileMock.js",
+      "^(components|containers)$": "<rootDir>/private/jest/componentsMock.js",
+      "^(store|\\.\\.)\\/selectors$": "<rootDir>/private/jest/selectorsMock.js",
+      "^(store|\\.\\.)\\/actions$": "<rootDir>/private/jest/actionsMock.js"
     }
   },
   "devDependencies": {
