@@ -30,7 +30,7 @@ const config = createConfig([
     app: sourcePath,
   }),
   setOutput({
-    filename: '[name].[hash].js',
+    filename: '[name].js',
     path: outputPath,
     publicPath,
   }),
