@@ -1,64 +1,113 @@
 import React from 'react'
 import styled from 'styled-components'
-import { palette } from 'styled-theme'
+import { palette, size } from 'styled-theme'
 
-import { Block, Paragraph, IconLink, IconButton, LogoImage, Tooltip } from 'components'
+import {
+  Block,
+  Paragraph,
+  IconLink,
+  IconButton,
+  LogoImage,
+  PreformattedText,
+  Heading,
+} from 'components'
 
 const Wrapper = styled(Block)`
   display: flex;
+  justify-content: center;
+  padding: 2rem;
+  box-sizing: border-box;
+  @media screen and (max-width: 640px) {
+    padding: 0.25rem;
+    padding-bottom: 2rem;
+  }
+`
+
+const InnerWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  max-width: ${size('maxWidth')};
+  @media screen and (max-width: 640px) {
+    flex-wrap: wrap;
+  }
+`
+
+const Section = styled.section`
+  display: flex;
   flex-direction: column;
   align-items: center;
-  height: calc(100vh - 3.75rem);
-  max-height: 700px;
-  padding: 2rem 6rem;
+  padding: 2rem;
   box-sizing: border-box;
-  text-align: center;
+  overflow: auto;
+  &:first-child {
+    flex: none;
+  }
   @media screen and (max-width: 640px) {
-    padding: 1rem;
+    padding: 0.25rem;
+    width: 100%;
   }
 `
 
 const Text = styled(Paragraph)`
-  color: ${palette('grayscale', 3)}
-  margin: 3rem auto;
-  max-width: 800px;
+  color: ${palette('grayscale', 3, true)};
   font-weight: 300;
   font-size: 1.35rem;
   line-height: 1.35em;
-  letter-spacing: 0.07em;
+  width: 100%;
+  letter-spacing: 0.05em;
   @media screen and (max-width: 640px) {
+    text-align: center;
     font-size: 1rem;
   }
 `
 
-const Logo = styled(LogoImage)`
-  flex: 1;
-  width: 100%;
-  min-height: 1px;
+const ButtonGroup = styled.div`
+  margin-top: 2rem;
+  display: flex;
+  > :not(:first-child) {
+    margin-left: 0.5rem;
+  }
 `
 
-const StyledIconButton = styled(IconButton)`
-  flex: none;
+const Instructions = styled.div`
+  width: 100%;
+  margin-top: 2rem;
+  @media screen and (max-width: 640px) {
+    margin-top: 1rem;
+  }
 `
 
 const Hero = (props) => {
   return (
     <Wrapper opaque reverse {...props}>
-      <Logo />
-      <Text>
-        <strong>ARc</strong> is a <IconLink reverse icon="react" href="https://facebook.github.io/react/">React</IconLink> starter kit based on the <IconLink reverse icon="atomic-design" href="http://bradfrost.com/blog/post/atomic-web-design/">Atomic Design</IconLink> methodology. It&apos;s <strong>progressive</strong>, which means that you can start with the basic boilerplate and try the other features when you are comfortable.
-      </Text>
-      <Tooltip data-title="Just a fancy tooltip 😊" reverse>
-        <StyledIconButton
-          icon="github"
-          href="https://github.com/diegohaz/arc"
-          height={50}
-          transparent
-          reverse
-        >
-          View on GitHub
-        </StyledIconButton>
-      </Tooltip>
+      <InnerWrapper>
+        <Section>
+          <LogoImage width={200} />
+          <ButtonGroup>
+            <IconButton icon="github" href="https://github.com/diegohaz/arc">GitHub</IconButton>
+            <IconButton icon="docs" href="https://github.com/diegohaz/arc/wiki">Docs</IconButton>
+          </ButtonGroup>
+        </Section>
+        <Section>
+          <Text>
+            <strong>ARc</strong> is a <IconLink reverse icon="react" href="https://facebook.github.io/react/">React</IconLink> starter kit based on the <IconLink reverse icon="atomic-design" href="http://bradfrost.com/blog/post/atomic-web-design/">Atomic Design</IconLink> methodology. It&apos;s <strong>progressive</strong>, which means that you can start with the basic boilerplate and try the other features when you are comfortable.
+          </Text>
+          <Instructions>
+            <Heading level={2} reverse>Install</Heading>
+            <PreformattedText block reverse>
+              git clone -b master https://github.com/diegohaz/arc my-app
+            </PreformattedText>
+            <IconLink
+              icon="docs"
+              right
+              reverse
+              href="https://github.com/diegohaz/arc/wiki/Setup"
+            >
+              Learn more
+            </IconLink>
+          </Instructions>
+        </Section>
+      </InnerWrapper>
     </Wrapper>
   )
 }
