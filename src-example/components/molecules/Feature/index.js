@@ -1,15 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { ifProp } from 'styled-tools'
 
-import { Icon, Link, Paragraph, Heading, Badge } from 'components'
+import { Icon, Link, Paragraph, Heading, Badge, PreformattedText } from 'components'
 
 const Wrapper = styled.div`
   position: relative;
   display: flex;
   padding: 1rem;
   box-sizing: border-box;
-  opacity: ${props => props.soon ? 0.4 : 1};
+  opacity: ${ifProp('soon', 0.4, 1)};
 `
 
 const StyledIcon = styled(Icon)`
@@ -18,7 +19,8 @@ const StyledIcon = styled(Icon)`
 
 const Text = styled.div`
   margin-left: 1rem;
-  & > :first-child {
+  overflow: auto;
+  > :first-child {
     margin: 0;
   }
 `
@@ -29,7 +31,7 @@ const StyledBadge = styled(Badge)`
   right: 1rem;
 `
 
-const Feature = ({ icon, title, link, children, ...props }) => {
+const Feature = ({ icon, title, link, code, children, ...props }) => {
   return (
     <Wrapper {...props}>
       {icon && <StyledIcon icon={icon} height={64} />}
@@ -38,6 +40,7 @@ const Feature = ({ icon, title, link, children, ...props }) => {
           {link ? <Link href={link}>{title}</Link> : title}
         </Heading>
         <Paragraph>{children}</Paragraph>
+        {code && <PreformattedText block>{code}</PreformattedText>}
       </Text>
       {props.soon && <StyledBadge palette="grayscale">soon</StyledBadge>}
     </Wrapper>
@@ -50,6 +53,7 @@ Feature.propTypes = {
   link: PropTypes.string,
   soon: PropTypes.bool,
   children: PropTypes.any,
+  code: PropTypes.node,
 }
 
 export default Feature
