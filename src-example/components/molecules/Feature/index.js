@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { ifProp } from 'styled-tools'
 
 import { Icon, Link, Paragraph, Heading, Badge } from 'components'
 
@@ -9,7 +10,7 @@ const Wrapper = styled.div`
   display: flex;
   padding: 1rem;
   box-sizing: border-box;
-  opacity: ${props => props.soon ? 0.4 : 1};
+  opacity: ${ifProp('soon', 0.4, 1)};
 `
 
 const StyledIcon = styled(Icon)`
@@ -18,7 +19,8 @@ const StyledIcon = styled(Icon)`
 
 const Text = styled.div`
   margin-left: 1rem;
-  & > :first-child {
+  overflow: auto;
+  > :first-child {
     margin: 0;
   }
 `
