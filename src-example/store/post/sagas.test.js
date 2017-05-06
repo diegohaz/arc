@@ -53,7 +53,7 @@ test('watchPostCreateRequest', () => {
   expect(generator.next().value)
     .toEqual(take(actions.POST_CREATE_REQUEST))
   expect(generator.next(payload).value)
-    .toEqual(call(sagas.createPost, api, ...Object.values(payload)))
+    .toEqual(call(sagas.createPost, api, 1))
 })
 
 test('watchPostListReadRequest', () => {
@@ -62,7 +62,7 @@ test('watchPostListReadRequest', () => {
   expect(generator.next().value)
     .toEqual(take(actions.POST_LIST_READ_REQUEST))
   expect(generator.next(payload).value)
-    .toEqual(call(sagas.readPostList, api, ...Object.values(payload)))
+    .toEqual(call(sagas.readPostList, api, { _limit: 1 }))
 })
 
 test('saga', () => {
