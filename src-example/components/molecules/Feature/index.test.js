@@ -19,6 +19,11 @@ it('renders title', () => {
   expect(wrapper.contains('Test')).toBe(true)
 })
 
+it('renders code', () => {
+  const wrapper = wrap({ code: 'npm run build' })
+  expect(wrapper.contains('npm run build')).toBe(true)
+})
+
 it('renders icon when passed in', () => {
   const wrapper = wrap({ icon: 'test' })
   expect(wrapper.find({ icon: 'test' })).toHaveLength(1)
