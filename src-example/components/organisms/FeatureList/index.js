@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { Feature, Link, Heading, PreformattedText, Paragraph } from 'components'
+import { Feature, Link, Heading, Paragraph } from 'components'
 
 const Grid = styled.div`
   display: flex;
@@ -39,41 +39,33 @@ const FeatureList = ({ ...props }) => (
         icon="react"
         link="https://facebook.github.io/react"
         title="React"
+        code={'<MyComponent attr="value" />'}
       >
         The Facebook&apos;s JavaScript library for building user interfaces using components.
-        <PreformattedText block wrap>
-          {'<MyComponent attr="value" />'}
-        </PreformattedText>
       </StyledFeature>
       <StyledFeature
         icon="react-router"
         link="https://github.com/ReactTraining/react-router"
         title="React Router"
+        code={'<Route path="/sample-page" />'}
       >
         The most popular declarative routing library for React and React Native.
-        <PreformattedText block wrap>
-          {'<Route path="/sample-page" />'}
-        </PreformattedText>
       </StyledFeature>
       <StyledFeature
         icon="webpack"
         link="https://webpack.github.io/"
         title="Webpack"
+        code="npm run build"
       >
         The awesome module bundler with <Link href="https://webpack.github.io/docs/hot-module-replacement.html">Hot Module Replacement</Link> enabled.
-        <PreformattedText block>
-          npm run build
-        </PreformattedText>
       </StyledFeature>
       <StyledFeature
         icon="jest"
         link="https://facebook.github.io/jest"
         title="Jest"
+        code="npm run test"
       >
         The great testing framework used by Facebook to test all their Javascript code.
-        <PreformattedText block>
-          npm run test
-        </PreformattedText>
       </StyledFeature>
     </Grid>
     <StyledHeading>Optional features</StyledHeading>
@@ -85,21 +77,17 @@ const FeatureList = ({ ...props }) => (
         icon="redux"
         link="https://github.com/diegohaz/arc/tree/redux"
         title="Redux"
+        code="git clone -b redux https://github.com/diegohaz/arc my-app"
       >
         The predictable state container for JavaScript apps.
-        <PreformattedText block>
-          git clone -b redux https://github.com/diegohaz/arc my-app
-        </PreformattedText>
       </StyledFeature>
       <StyledFeature
         icon="dist"
         link="https://github.com/diegohaz/arc/tree/redux-ssr"
         title="Server Side Rendering"
+        code="git clone -b redux-ssr https://github.com/diegohaz/arc my-app"
       >
         Write once and run both on server and client.
-        <PreformattedText block>
-          git clone -b redux-ssr https://github.com/diegohaz/arc my-app
-        </PreformattedText>
       </StyledFeature>
     </Grid>
   </div>
