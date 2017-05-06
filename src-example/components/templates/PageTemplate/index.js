@@ -2,6 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { size } from 'styled-theme'
 
 const Wrapper = styled.div`
   display: flex;
@@ -27,7 +28,7 @@ const Content = styled.section`
   width: 100%;
   box-sizing: border-box;
   margin: 2rem auto;
-  max-width: 920px;
+  max-width: ${size('maxWidth')};
 `
 
 const Footer = styled.footer`

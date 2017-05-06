@@ -10,6 +10,7 @@ import {
   LogoImage,
   PreformattedText,
   Heading,
+  Tooltip,
 } from 'components'
 
 const Wrapper = styled(Block)`
@@ -38,7 +39,6 @@ const Section = styled.section`
   align-items: center;
   padding: 2rem;
   box-sizing: border-box;
-  overflow: auto;
   &:first-child {
     flex: none;
   }
@@ -82,10 +82,14 @@ const Hero = (props) => {
     <Wrapper opaque reverse {...props}>
       <InnerWrapper>
         <Section>
-          <LogoImage width={200} />
+          <LogoImage width={170} />
           <ButtonGroup>
-            <IconButton icon="github" href="https://github.com/diegohaz/arc">GitHub</IconButton>
-            <IconButton icon="docs" href="https://github.com/diegohaz/arc/wiki">Docs</IconButton>
+            <Tooltip reverse data-title="Just a fancy tooltip 😄">
+              <IconButton icon="github" href="https://github.com/diegohaz/arc">GitHub</IconButton>
+            </Tooltip>
+            <Tooltip reverse data-title="Another tooltip aligned differently" align="end" position="bottom">
+              <IconButton icon="docs" href="https://github.com/diegohaz/arc/wiki">Docs</IconButton>
+            </Tooltip>
           </ButtonGroup>
         </Section>
         <Section>
@@ -94,7 +98,7 @@ const Hero = (props) => {
           </Text>
           <Instructions>
             <Heading level={2} reverse>Install</Heading>
-            <PreformattedText block reverse>
+            <PreformattedText block reverse wrap>
               git clone -b master https://github.com/diegohaz/arc my-app
             </PreformattedText>
             <IconLink
