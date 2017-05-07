@@ -1,5 +1,6 @@
 // https://github.com/diegohaz/arc/wiki/Reducers
 import findIndex from 'lodash/findIndex'
+import get from 'lodash/get'
 import { initialState } from './selectors'
 import {
   RESOURCE_CREATE_SUCCESS,
@@ -12,25 +13,24 @@ import {
 } from './actions'
 
 
-const updateOrDeleteReducer = (state, action) => {
-  const needleIsObject = typeof action.needle === 'object'
+const updateOrDeleteReducer = (state, { type, payload, meta }) => {
+  const needle = get(payload, 'needle', get(meta, 'request.needle'))
+  const needleIsObject = typeof needle === 'object'
   const index = needleIsObject
-    ? findIndex(state.list, action.needle)
-    : state.list.indexOf(action.needle)
+    ? findIndex(state.list, needle)
+    : state.list.indexOf(needle)
 
   if (index < 0) {
     return state
   }
 
-  switch (action.type) {
+  switch (type) {
     case RESOURCE_UPDATE_SUCCESS:
       return {
         ...state,
         list: [
           ...state.list.slice(0, index),
-          typeof action.needle === 'object'
-            ? { ...state.list[index], ...action.detail }
-            : action.detail,
+          needleIsObject ? { ...state.list[index], ...payload } : payload,
           ...state.list.slice(index + 1),
         ],
       }
@@ -45,12 +45,12 @@ const updateOrDeleteReducer = (state, action) => {
   }
 }
 
-export default (state = initialState, action) => {
-  switch (action.type) {
+export default (state = initialState, { type, payload, meta }) => {
+  switch (type) {
     case RESOURCE_CREATE_SUCCESS:
       return {
         ...state,
-        list: [action.detail, ...state.list],
+        list: [payload, ...state.list],
       }
 
     case RESOURCE_LIST_READ_REQUEST:
@@ -61,7 +61,7 @@ export default (state = initialState, action) => {
     case RESOURCE_LIST_READ_SUCCESS:
       return {
         ...state,
-        list: action.list,
+        list: payload,
       }
 
     case RESOURCE_DETAIL_READ_REQUEST:
@@ -72,12 +72,12 @@ export default (state = initialState, action) => {
     case RESOURCE_DETAIL_READ_SUCCESS:
       return {
         ...state,
-        detail: action.detail,
+        detail: payload,
       }
 
     case RESOURCE_UPDATE_SUCCESS:
     case RESOURCE_DELETE_SUCCESS:
-      return updateOrDeleteReducer(state, action)
+      return updateOrDeleteReducer(state, { type, payload, meta })
 
     default:
       return state
