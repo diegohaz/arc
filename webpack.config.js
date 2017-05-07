@@ -45,9 +45,7 @@ const base = name => group([
   }),
   happypack([
     babel(),
-  ], {
-    cacheContext: { sourceDir },
-  }),
+  ]),
   addPlugins([
     new webpack.ProgressPlugin(),
   ]),
