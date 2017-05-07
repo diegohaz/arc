@@ -57,14 +57,14 @@ const base = () => group([
     'process.env.NODE_ENV': process.env.NODE_ENV,
     'process.env.PUBLIC_PATH': publicPath.replace(/\/$/, ''),
   }),
+  addPlugins([
+    new webpack.ProgressPlugin(),
+  ]),
   happypack([
     babel(),
   ]),
   assets(),
   resolveModules(sourceDir),
-  addPlugins([
-    new webpack.ProgressPlugin(),
-  ]),
 
   env('development', [
     setOutput({
