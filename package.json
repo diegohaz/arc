@@ -75,6 +75,7 @@
   "dependencies": {
     "babel-polyfill": "^6.20.0",
     "history": "^4.6.1",
+    "load-js": "^1.2.0",
     "lodash": "^4.17.4",
     "normalizr": "^3.0.1",
     "prop-types": "^15.5.8",

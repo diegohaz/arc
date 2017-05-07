@@ -28,8 +28,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  prepareGoogle: () => dispatch(socialLoginPrepare('google', { client_id: googleClientId })),
-  prepareFacebook: () => dispatch(socialLoginPrepare('facebook', { appId: fbAppId })),
+  prepareGoogle: () => dispatch(socialLoginPrepare('google', { clientId: googleClientId })),
+  prepareFacebook: () => dispatch(socialLoginPrepare('facebook', { clientId: fbAppId })),
   onFacebookLogin: () => dispatch(socialLoginRequest('facebook')),
   onGoogleLogin: () => dispatch(socialLoginRequest('google')),
   onClose: () => dispatch(modalHide('login')),

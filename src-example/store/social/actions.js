@@ -6,26 +6,39 @@ export const SOCIAL_LOGIN_SUCCESS = 'SOCIAL_LOGIN_SUCCESS'
 export const SOCIAL_LOGIN_FAILURE = 'SOCIAL_LOGIN_FAILURE'
 export const SOCIAL_LOGOUT = 'SOCIAL_LOGOUT'
 
-export const socialLoginPrepare = (service, options) => ({
+export const socialLoginPrepare = (service, { clientId, ...options } = {}) => ({
   type: SOCIAL_LOGIN_PREPARE,
-  service,
-  options,
+  payload: {
+    service,
+    clientId,
+    ...options,
+  },
 })
 
-export const socialLoginRequest = (service, options) => ({
+export const socialLoginRequest = (service, { clientId, ...options } = {}) => ({
   type: SOCIAL_LOGIN_REQUEST,
-  service,
-  options,
+  payload: {
+    service,
+    clientId,
+    ...options,
+  },
 })
 
-export const socialLoginSuccess = user => ({
+export const socialLoginSuccess = (user, request) => ({
   type: SOCIAL_LOGIN_SUCCESS,
-  user,
+  payload: user,
+  meta: {
+    request,
+  },
 })
 
-export const socialLoginFailure = error => ({
+export const socialLoginFailure = (error, request) => ({
   type: SOCIAL_LOGIN_FAILURE,
-  error,
+  error: true,
+  payload: error,
+  meta: {
+    request,
+  },
 })
 
 export const socialLogout = () => ({ type: SOCIAL_LOGOUT })
