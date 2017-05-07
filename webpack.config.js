@@ -33,7 +33,21 @@ const babel = () => () => ({
   },
 })
 
-const base = name => group([
+const assets = () => () => ({
+  module: {
+    rules: [
+      { test: /\.(png|jpe?g|svg|woff2?|ttf|eot)$/, loader: 'url-loader?limit=8000' },
+    ],
+  },
+})
+
+const resolveModules = modules => () => ({
+  resolve: {
+    modules: [].concat(modules, ['node_modules']),
+  },
+})
+
+const base = () => group([
   setOutput({
     filename: '[name].js',
     path: outputPath,
@@ -46,21 +60,11 @@ const base = name => group([
   happypack([
     babel(),
   ]),
+  assets(),
+  resolveModules(sourceDir),
   addPlugins([
     new webpack.ProgressPlugin(),
   ]),
-  () => ({
-    name,
-    resolve: {
-      modules: [sourceDir, 'node_modules'],
-    },
-    module: {
-      rules: [
-        { test: /\.(png|jpe?g|svg)$/, loader: 'url-loader?&limit=8000' },
-        { test: /\.(woff2?|ttf|eot)$/, loader: 'url-loader?&limit=8000' },
-      ],
-    },
-  }),
 
   env('development', [
     setOutput({
@@ -70,7 +74,7 @@ const base = name => group([
 ])
 
 const server = createConfig([
-  base('server'),
+  base(),
   entryPoint({ server: serverEntryPath }),
   setOutput({
     filename: '../[name].js',
@@ -100,7 +104,7 @@ const server = createConfig([
 ])
 
 const client = createConfig([
-  base('client'),
+  base(),
   entryPoint({ client: clientEntryPath }),
   addPlugins([
     new AssetsByTypePlugin({ path: assetsPath }),
