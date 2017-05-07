@@ -11,7 +11,7 @@ describe('POST_CREATE_SUCCESS', () => {
   it('adds the new data to the initial state', () => {
     expect(reducer(initialState, {
       type: actions.POST_CREATE_SUCCESS,
-      detail: 1,
+      payload: 1,
     })).toEqual({
       ...initialState,
       list: [1],
@@ -24,7 +24,7 @@ describe('POST_CREATE_SUCCESS', () => {
       list: [1, 2],
     }, {
       type: actions.POST_CREATE_SUCCESS,
-      detail: 3,
+      payload: 3,
     })).toEqual({
       ...initialState,
       list: [3, 1, 2],
@@ -36,7 +36,7 @@ describe('POST_LIST_READ_SUCCESS', () => {
   it('sets list in the initial state', () => {
     expect(reducer(initialState, {
       type: actions.POST_LIST_READ_SUCCESS,
-      list: [1, 2, 3],
+      payload: [1, 2, 3],
     })).toEqual({
       ...initialState,
       list: [1, 2, 3],
@@ -49,7 +49,7 @@ describe('POST_LIST_READ_SUCCESS', () => {
       list: [1, 2, 3],
     }, {
       type: actions.POST_LIST_READ_SUCCESS,
-      list: [3, 2, 1],
+      payload: [3, 2, 1],
     })).toEqual({
       ...initialState,
       list: [3, 2, 1],

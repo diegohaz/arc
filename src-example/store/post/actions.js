@@ -6,19 +6,30 @@ export const POST_CREATE_FAILURE = 'POST_CREATE_FAILURE'
 
 export const postCreateRequest = (data, resolve, reject) => ({
   type: POST_CREATE_REQUEST,
-  data,
-  resolve,
-  reject,
+  payload: {
+    data,
+  },
+  meta: {
+    resolve,
+    reject,
+  },
 })
 
-export const postCreateSuccess = detail => ({
+export const postCreateSuccess = (detail, request) => ({
   type: POST_CREATE_SUCCESS,
-  detail,
+  payload: detail,
+  meta: {
+    request,
+  },
 })
 
-export const postCreateFailure = error => ({
+export const postCreateFailure = (error, request) => ({
   type: POST_CREATE_FAILURE,
-  error,
+  error: true,
+  payload: error,
+  meta: {
+    request,
+  },
 })
 
 export const POST_LIST_READ = 'POST_LIST_READ'
@@ -28,17 +39,28 @@ export const POST_LIST_READ_FAILURE = 'POST_LIST_READ_FAILURE'
 
 export const postListReadRequest = (params, resolve, reject) => ({
   type: POST_LIST_READ_REQUEST,
-  params,
-  resolve,
-  reject,
+  payload: {
+    params,
+  },
+  meta: {
+    resolve,
+    reject,
+  },
 })
 
-export const postListReadSuccess = list => ({
+export const postListReadSuccess = (list, request) => ({
   type: POST_LIST_READ_SUCCESS,
-  list,
+  payload: list,
+  meta: {
+    request,
+  },
 })
 
-export const postListReadFailure = error => ({
+export const postListReadFailure = (error, request) => ({
   type: POST_LIST_READ_FAILURE,
-  error,
+  error: true,
+  payload: error,
+  meta: {
+    request,
+  },
 })
