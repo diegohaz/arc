@@ -53,13 +53,11 @@ const config = createConfig([
     'process.env.PUBLIC_PATH': publicPath.replace(/\/$/, ''),
   }),
   addPlugins([
+    new webpack.ProgressPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: path.join(process.cwd(), 'public/index.html'),
     }),
-  ]),
-  addPlugins([
-    new webpack.ProgressPlugin(),
   ]),
   happypack([
     babel(),
