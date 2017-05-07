@@ -11,7 +11,7 @@ describe('RESOURCE_CREATE_SUCCESS', () => {
   it('adds the new data to the initial state', () => {
     expect(reducer(initialState, {
       type: actions.RESOURCE_CREATE_SUCCESS,
-      detail: 1,
+      payload: 1,
     })).toEqual({
       ...initialState,
       list: [1],
@@ -24,7 +24,7 @@ describe('RESOURCE_CREATE_SUCCESS', () => {
       list: [1, 2],
     }, {
       type: actions.RESOURCE_CREATE_SUCCESS,
-      detail: 3,
+      payload: 3,
     })).toEqual({
       ...initialState,
       list: [3, 1, 2],
@@ -53,7 +53,7 @@ describe('RESOURCE_LIST_READ_SUCCESS', () => {
   it('sets list in the initial state', () => {
     expect(reducer(initialState, {
       type: actions.RESOURCE_LIST_READ_SUCCESS,
-      list: [1, 2, 3],
+      payload: [1, 2, 3],
     })).toEqual({
       ...initialState,
       list: [1, 2, 3],
@@ -66,7 +66,7 @@ describe('RESOURCE_LIST_READ_SUCCESS', () => {
       list: [1, 2, 3],
     }, {
       type: actions.RESOURCE_LIST_READ_SUCCESS,
-      list: [3, 2, 1],
+      payload: [3, 2, 1],
     })).toEqual({
       ...initialState,
       list: [3, 2, 1],
@@ -95,7 +95,7 @@ describe('RESOURCE_DETAIL_READ_SUCCESS', () => {
   it('sets detail in the initial state', () => {
     expect(reducer(initialState, {
       type: actions.RESOURCE_DETAIL_READ_SUCCESS,
-      detail: 1,
+      payload: 1,
     })).toEqual({
       ...initialState,
       detail: 1,
@@ -108,7 +108,7 @@ describe('RESOURCE_DETAIL_READ_SUCCESS', () => {
       detail: 1,
     }, {
       type: actions.RESOURCE_DETAIL_READ_SUCCESS,
-      detail: 2,
+      payload: 2,
     })).toEqual({
       ...initialState,
       detail: 2,
@@ -123,8 +123,12 @@ describe('RESOURCE_UPDATE_SUCCESS', () => {
       list: [4, 5, 6],
     }, {
       type: actions.RESOURCE_UPDATE_SUCCESS,
-      needle: 5,
-      detail: 8,
+      payload: 8,
+      meta: {
+        request: {
+          needle: 5,
+        },
+      },
     })).toEqual({
       ...initialState,
       list: [4, 8, 6],
@@ -137,8 +141,14 @@ describe('RESOURCE_UPDATE_SUCCESS', () => {
       list: [{ id: 1, title: 'test' }, { id: 2, title: 'test2' }],
     }, {
       type: actions.RESOURCE_UPDATE_SUCCESS,
-      needle: { id: 2 },
-      detail: { title: 'test3' },
+      payload: {
+        title: 'test3',
+      },
+      meta: {
+        request: {
+          needle: { id: 2 },
+        },
+      },
     })).toEqual({
       ...initialState,
       list: [{ id: 1, title: 'test' }, { id: 2, title: 'test3' }],
@@ -151,8 +161,10 @@ describe('RESOURCE_UPDATE_SUCCESS', () => {
       list: [{ id: 1, title: 'test' }, { id: 2, title: 'test2' }],
     }, {
       type: actions.RESOURCE_UPDATE_SUCCESS,
-      needle: { id: 3 },
-      detail: { title: 'test3' },
+      payload: {
+        needle: { id: 3 },
+        detail: { title: 'test3' },
+      },
     })).toEqual({
       ...initialState,
       list: [{ id: 1, title: 'test' }, { id: 2, title: 'test2' }],
@@ -173,7 +185,11 @@ describe('RESOURCE_DELETE_SUCCESS', () => {
       list: [1, 2, 3],
     }, {
       type: actions.RESOURCE_DELETE_SUCCESS,
-      needle: 2,
+      meta: {
+        request: {
+          needle: 2,
+        },
+      },
     })).toEqual({
       ...initialState,
       list: [1, 3],

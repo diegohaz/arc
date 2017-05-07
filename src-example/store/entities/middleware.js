@@ -1,13 +1,12 @@
 import { normalize } from 'normalizr'
-import { actionsMeta } from './schemas'
+import { actions } from './schemas'
 
 const middleware = store => next => (action) => {
-  const types = Object.keys(actionsMeta)
+  const types = Object.keys(actions)
   if (types.indexOf(action.type) >= 0) {
-    const meta = actionsMeta[action.type]
-    const { result, entities } = normalize(action[meta.property], meta.schema)
+    const { result, entities } = normalize(action.payload, actions[action.type])
     store.dispatch({ type: 'ENTITIES_RECEIVE', entities })
-    return next({ ...action, [meta.property]: result })
+    return next({ ...action, payload: result })
   }
   return next(action)
 }
