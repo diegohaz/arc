@@ -4,7 +4,10 @@ import styled from 'styled-components'
 import { palette } from 'styled-theme'
 import { ifProp } from 'styled-tools'
 
-const fontSize = ({ height }) => height ? `${height / 16}rem` : '1.25em'
+const fontSize = ({ width, height }) => {
+  const size = width || height
+  return size ? `${size / 16}rem` : '1.25em'
+}
 
 const Wrapper = styled.span`
   display: inline-block;
@@ -30,6 +33,7 @@ const Icon = ({ icon, ...props }) => {
 
 Icon.propTypes = {
   icon: PropTypes.string.isRequired,
+  width: PropTypes.number,
   height: PropTypes.number,
   palette: PropTypes.string,
   reverse: PropTypes.bool,

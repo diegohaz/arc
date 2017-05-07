@@ -11,10 +11,16 @@ const Wrapper = styled.div`
   padding: 1rem;
   box-sizing: border-box;
   opacity: ${ifProp('soon', 0.4, 1)};
+  @media screen and (max-width: 640px) {
+    padding: 0.5rem;
+  }
 `
 
 const StyledIcon = styled(Icon)`
   flex: none;
+  @media screen and (max-width: 640px) {
+    width: 32px;
+  }
 `
 
 const Text = styled.div`
@@ -29,12 +35,16 @@ const StyledBadge = styled(Badge)`
   position: absolute;
   top: 1rem;
   right: 1rem;
+  @media screen and (max-width: 640px) {
+    top: 0.5rem;
+    right: 0.5rem;
+  }
 `
 
 const Feature = ({ icon, title, link, code, children, ...props }) => {
   return (
     <Wrapper {...props}>
-      {icon && <StyledIcon icon={icon} height={64} />}
+      {icon && <StyledIcon icon={icon} width={64} />}
       <Text>
         <Heading level={2}>
           {link ? <Link href={link}>{title}</Link> : title}
