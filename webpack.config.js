@@ -25,6 +25,20 @@ const babel = () => () => ({
   },
 })
 
+const assets = () => () => ({
+  module: {
+    rules: [
+      { test: /\.(png|jpe?g|svg|woff2?|ttf|eot)$/, loader: 'url-loader?limit=8000' },
+    ],
+  },
+})
+
+const resolveModules = modules => () => ({
+  resolve: {
+    modules: [].concat(modules, ['node_modules']),
+  },
+})
+
 const config = createConfig([
   entryPoint({
     app: sourcePath,
@@ -44,23 +58,14 @@ const config = createConfig([
       template: path.join(process.cwd(), 'public/index.html'),
     }),
   ]),
-  happypack([
-    babel(),
-  ]),
   addPlugins([
     new webpack.ProgressPlugin(),
   ]),
-  () => ({
-    resolve: {
-      modules: [sourceDir, 'node_modules'],
-    },
-    module: {
-      rules: [
-        { test: /\.(png|jpe?g|svg)$/, loader: 'url-loader?&limit=8000' },
-        { test: /\.(woff2?|ttf|eot)$/, loader: 'url-loader?&limit=8000' },
-      ],
-    },
-  }),
+  happypack([
+    babel(),
+  ]),
+  assets(),
+  resolveModules(sourceDir),
 
   env('development', [
     devServer({
