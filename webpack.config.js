@@ -46,9 +46,7 @@ const config = createConfig([
   ]),
   happypack([
     babel(),
-  ], {
-    cacheContext: { sourceDir },
-  }),
+  ]),
   addPlugins([
     new webpack.ProgressPlugin(),
   ]),
