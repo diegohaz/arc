@@ -9,7 +9,7 @@ const Grid = styled.div`
   > * {
     width: calc(50% - 2rem);
     @media screen and (max-width: 640px) {
-      width: calc(100% - 1rem);
+      width: 100%;
     }
   }
 `
@@ -21,10 +21,16 @@ const StyledHeading = styled(Heading)`
 const Description = styled(Paragraph)`
   text-align: center;
   margin: 2rem;
+  @media screen and (max-width: 640px) {
+    margin: 1rem;
+  }
 `
 
 const StyledFeature = styled(Feature)`
   margin: 1rem;
+  @media screen and (max-width: 640px) {
+    margin: 0;
+  }
 `
 
 const FeatureList = ({ ...props }) => (
@@ -87,7 +93,7 @@ const FeatureList = ({ ...props }) => (
         title="Server Side Rendering"
         code="git clone -b redux-ssr https://github.com/diegohaz/arc my-app"
       >
-        Write once and run both on server and client.
+        Write once and run on both server and client.
       </StyledFeature>
     </Grid>
   </div>

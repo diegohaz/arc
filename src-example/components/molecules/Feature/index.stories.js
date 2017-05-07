@@ -23,3 +23,8 @@ storiesOf('Feature', module)
       Ullamco duis in labore consectetur ad exercitation esse esse duis mollit sint.
     </Feature>
   ))
+  .add('with soon', () => (
+    <Feature soon title="ARc">
+      Ullamco duis in labore consectetur ad exercitation esse esse duis mollit sint.
+    </Feature>
+  ))

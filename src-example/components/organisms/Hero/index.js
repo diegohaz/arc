@@ -19,8 +19,8 @@ const Wrapper = styled(Block)`
   padding: 2rem;
   box-sizing: border-box;
   @media screen and (max-width: 640px) {
-    padding: 0.25rem;
-    padding-bottom: 2rem;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
   }
 `
 
