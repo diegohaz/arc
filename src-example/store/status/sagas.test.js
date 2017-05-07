@@ -5,72 +5,84 @@ import saga, * as sagas from './sagas'
 test('matchesRequest', () => {
   const resolve = () => {}
   const reject = () => {}
-  expect(sagas.matchesRequest({ type: 'SOMETHING_REQUEST' })).toBe(false)
-  expect(sagas.matchesRequest({ type: 'SOMETHING_REQUEST', resolve })).toBe(true)
-  expect(sagas.matchesRequest({ type: 'SOMETHING_REQUEST', reject })).toBe(true)
-  expect(sagas.matchesRequest({ type: 'SOMETHING_REQUEST', resolve, reject })).toBe(true)
-  expect(sagas.matchesRequest({ type: 'ANOTHER_THING_REQUEST', resolve })).toBe(true)
-  expect(sagas.matchesRequest({ type: 'SOMETHING_SUCCESS' })).toBe(false)
-  expect(sagas.matchesRequest({ type: 'SOMETHING_SUCCESS', resolve })).toBe(false)
-  expect(sagas.matchesRequest({ type: 'SOMETHING_SUCCESS', reject })).toBe(false)
-  expect(sagas.matchesRequest({ type: 'SOMETHING_SUCCESS', resolve, reject })).toBe(false)
-  expect(sagas.matchesRequest({ type: 'REQUEST', resolve, reject })).toBe(false)
+  expect(sagas.matchesRequest({ type: 'FOO_REQUEST' })).toBe(false)
+  expect(sagas.matchesRequest({ type: 'FOO_REQUEST', meta: {} })).toBe(false)
+  expect(sagas.matchesRequest({ type: 'FOO_REQUEST', meta: { resolve } })).toBe(true)
+  expect(sagas.matchesRequest({ type: 'FOO_REQUEST', meta: { reject } })).toBe(true)
+  expect(sagas.matchesRequest({ type: 'FOO_REQUEST', meta: { resolve, reject } })).toBe(true)
+  expect(sagas.matchesRequest({ type: 'BAR_REQUEST', meta: { resolve } })).toBe(true)
+  expect(sagas.matchesRequest({ type: 'FOO_SUCCESS' })).toBe(false)
+  expect(sagas.matchesRequest({ type: 'FOO_SUCCESS', meta: { resolve } })).toBe(false)
+  expect(sagas.matchesRequest({ type: 'FOO_SUCCESS', meta: { reject } })).toBe(false)
+  expect(sagas.matchesRequest({ type: 'FOO_SUCCESS', meta: { resolve, reject } })).toBe(false)
+  expect(sagas.matchesRequest({ type: 'REQUEST', meta: { resolve, reject } })).toBe(false)
 })
 
 describe('resolveOrReject', () => {
-  const action = {
-    type: 'SOMETHING_REQUEST',
-    resolve: () => {},
-    reject: () => {},
+  const requestAction = {
+    type: 'FOO_REQUEST',
+    meta: {
+      resolve: () => {},
+      reject: () => {},
+    },
   }
 
   it('calls success', () => {
-    const generator = sagas.resolveOrReject(action)
+    const generator = sagas.resolveOrReject(requestAction)
+    const successAction = {
+      type: 'FOO_SUCCESS',
+      payload: {
+        foo: 'bar',
+        baz: 'qux',
+      },
+    }
     expect(generator.next().value).toEqual(race({
-      success: take('SOMETHING_SUCCESS'),
-      failure: take('SOMETHING_FAILURE'),
+      success: take('FOO_SUCCESS'),
+      failure: take('FOO_FAILURE'),
     }))
-    expect(generator.next({
-      success: { type: 'SOMETHING_SUCCESS', foo: 'bar', baz: 1 },
-    }).value).toEqual(call(action.resolve, { foo: 'bar', baz: 1 }))
+    expect(generator.next({ success: successAction }).value)
+      .toEqual(call(requestAction.meta.resolve, successAction.payload))
     expect(generator.next().done).toBe(true)
   })
 
   it('ends if resolve is not a function', () => {
-    const generator = sagas.resolveOrReject({ ...action, resolve: 1 })
+    const generator = sagas.resolveOrReject({ ...requestAction, meta: { resolve: 1 } })
     expect(generator.next().value).toEqual(race({
-      success: take('SOMETHING_SUCCESS'),
-      failure: take('SOMETHING_FAILURE'),
+      success: take('FOO_SUCCESS'),
+      failure: take('FOO_FAILURE'),
     }))
     expect(generator.next({ success: {} }).done).toBe(true)
   })
 
   it('calls failure', () => {
-    const generator = sagas.resolveOrReject(action)
+    const generator = sagas.resolveOrReject(requestAction)
+    const rejectAction = {
+      type: 'FOO_FAILURE',
+      payload: new Error(),
+    }
     expect(generator.next().value).toEqual(race({
-      success: take('SOMETHING_SUCCESS'),
-      failure: take('SOMETHING_FAILURE'),
+      success: take('FOO_SUCCESS'),
+      failure: take('FOO_FAILURE'),
     }))
-    expect(generator.next({
-      failure: { type: 'SOMETHING_FAILURE', foo: 'bar', baz: 1 },
-    }).value).toEqual(call(action.reject, { foo: 'bar', baz: 1 }))
+    expect(generator.next({ failure: rejectAction }).value)
+      .toEqual(call(requestAction.meta.reject, rejectAction.payload))
     expect(generator.next().done).toBe(true)
   })
 
   it('ends if reject is not a function', () => {
-    const generator = sagas.resolveOrReject({ ...action, reject: 1 })
+    const generator = sagas.resolveOrReject({ ...requestAction, meta: { reject: 1 } })
     expect(generator.next().value).toEqual(race({
-      success: take('SOMETHING_SUCCESS'),
-      failure: take('SOMETHING_FAILURE'),
+      success: take('FOO_SUCCESS'),
+      failure: take('FOO_FAILURE'),
     }))
     expect(generator.next({ failure: {} }).done).toBe(true)
   })
 
   it('ends if neither resolve or reject are functions', () => {
-    const generator = sagas.resolveOrReject({ ...action, resolve: 1, reject: 1 })
+    const generator = sagas.resolveOrReject({ ...requestAction, meta: { resolve: 1, reject: 1 } })
     expect(generator.next().value).toEqual(race({
-      success: take('SOMETHING_SUCCESS'),
-      failure: take('SOMETHING_FAILURE'),
+      success: take('FOO_SUCCESS'),
+      failure: take('FOO_FAILURE'),
     }))
     expect(generator.next({ resolve: {} }).done).toBe(true)
   })
