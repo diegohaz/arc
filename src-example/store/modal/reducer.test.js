@@ -16,7 +16,9 @@ it('returns the initial state', () => {
 it('handles MODAL_SHOW', () => {
   const action = {
     type: actions.MODAL_SHOW,
-    name: 'test',
+    payload: {
+      name: 'test',
+    },
   }
   const state = {
     ...initialState,
@@ -28,7 +30,8 @@ it('handles MODAL_SHOW', () => {
 
 it('handles MODAL_HIDE', () => {
   const action = { type: actions.MODAL_HIDE }
+  const payload = { name: 'modal1' }
   expect(reducer(initialState, action)).toEqual(initialState)
   expect(reducer(altState, action)).toEqual(initialState)
-  expect(reducer(altState, { ...action, name: 'modal1' })).toEqual({ ...altState, modal1: false })
+  expect(reducer(altState, { ...action, payload })).toEqual({ ...altState, modal1: false })
 })
