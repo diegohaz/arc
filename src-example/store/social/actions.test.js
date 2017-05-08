@@ -2,32 +2,56 @@
 import * as actions from './actions'
 
 test('socialLoginPrepare', () => {
-  expect(actions.socialLoginPrepare('facebook', 1)).toEqual({
+  expect(actions.socialLoginPrepare('facebook')).toEqual({
     type: actions.SOCIAL_LOGIN_PREPARE,
-    service: 'facebook',
-    options: 1,
+    payload: {
+      service: 'facebook',
+    },
+  })
+
+  expect(actions.socialLoginPrepare('facebook', { clientId: 'foo' })).toEqual({
+    type: actions.SOCIAL_LOGIN_PREPARE,
+    payload: {
+      service: 'facebook',
+      clientId: 'foo',
+    },
   })
 })
 
 test('socialLoginRequest', () => {
-  expect(actions.socialLoginRequest('facebook', 1)).toEqual({
+  expect(actions.socialLoginRequest('facebook')).toEqual({
     type: actions.SOCIAL_LOGIN_REQUEST,
-    service: 'facebook',
-    options: 1,
+    payload: {
+      service: 'facebook',
+    },
+  })
+  expect(actions.socialLoginRequest('facebook', { clientId: 'foo' })).toEqual({
+    type: actions.SOCIAL_LOGIN_REQUEST,
+    payload: {
+      service: 'facebook',
+      clientId: 'foo',
+    },
   })
 })
 
 test('socialLoginSuccess', () => {
-  expect(actions.socialLoginSuccess(1)).toEqual({
+  expect(actions.socialLoginSuccess(1, 'foo')).toEqual({
     type: actions.SOCIAL_LOGIN_SUCCESS,
-    user: 1,
+    payload: 1,
+    meta: {
+      request: 'foo',
+    },
   })
 })
 
 test('socialLoginFailure', () => {
-  expect(actions.socialLoginFailure('test')).toEqual({
+  expect(actions.socialLoginFailure('test', 'foo')).toEqual({
     type: actions.SOCIAL_LOGIN_FAILURE,
-    error: 'test',
+    error: true,
+    payload: 'test',
+    meta: {
+      request: 'foo',
+    },
   })
 })
 

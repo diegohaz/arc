@@ -7,9 +7,7 @@ import { PostForm } from 'components'
 
 const PostFormContainer = props => <PostForm {...props} />
 
-const onSubmit = (data, dispatch) => new Promise((resolve, reject) => {
-  dispatch(postCreateRequest(data, resolve, reject))
-})
+const onSubmit = (data, dispatch) => dispatch(postCreateRequest(data))
 
 const validate = createValidator({
   title: [required],

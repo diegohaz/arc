@@ -13,7 +13,6 @@ class PostListContainer extends Component {
     limit: PropTypes.number,
     loading: PropTypes.bool,
     readList: PropTypes.func.isRequired,
-    done: PropTypes.func.isRequired,
   }
 
   static defaultProps = {
@@ -21,8 +20,7 @@ class PostListContainer extends Component {
   }
 
   componentWillMount() {
-    const { done } = this.props
-    this.props.readList(done)
+    this.props.readList()
   }
 
   render() {
@@ -36,8 +34,8 @@ const mapStateToProps = state => ({
   loading: fromStatus.isLoading(state, POST_LIST_READ),
 })
 
-const mapDispatchToProps = (dispatch, { limit }) => ({
-  readList: done => dispatch(postListReadRequest({ _limit: limit }, done, done)),
+const mapDispatchToProps = (dispatch, { limit, done }) => ({
+  readList: () => dispatch(postListReadRequest({ _limit: limit }, done)),
 })
 
 const withDone = fetchState(null, actions => ({ done: actions.done }))

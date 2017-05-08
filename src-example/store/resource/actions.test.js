@@ -1,113 +1,175 @@
 // https://github.com/diegohaz/arc/wiki/Actions#unit-testing-actions
 import * as actions from './actions'
 
+const done = () => {}
+
 test('resourceCreateRequest', () => {
-  expect(actions.resourceCreateRequest({ title: 'test' })).toEqual({
+  expect(actions.resourceCreateRequest({ title: 'test' }, done)).toEqual({
     type: actions.RESOURCE_CREATE_REQUEST,
-    data: { title: 'test' },
+    payload: {
+      data: {
+        title: 'test',
+      },
+    },
+    meta: {
+      done,
+    },
   })
 })
 
 test('resourceCreateSuccess', () => {
-  expect(actions.resourceCreateSuccess({ id: 1, title: 'test' })).toEqual({
+  expect(actions.resourceCreateSuccess({ id: 1, title: 'test' }, 'foo')).toEqual({
     type: actions.RESOURCE_CREATE_SUCCESS,
-    detail: { id: 1, title: 'test' },
+    payload: { id: 1, title: 'test' },
+    meta: {
+      request: 'foo',
+    },
   })
 })
 
 test('resourceCreateFailure', () => {
-  expect(actions.resourceCreateFailure('error')).toEqual({
+  expect(actions.resourceCreateFailure('error', 'foo')).toEqual({
     type: actions.RESOURCE_CREATE_FAILURE,
-    error: 'error',
+    error: true,
+    payload: 'error',
+    meta: {
+      request: 'foo',
+    },
   })
 })
 
 test('resourceListReadRequest', () => {
-  expect(actions.resourceListReadRequest({ fields: 'test' })).toEqual({
+  expect(actions.resourceListReadRequest({ fields: 'test' }, done)).toEqual({
     type: actions.RESOURCE_LIST_READ_REQUEST,
-    params: { fields: 'test' },
+    payload: {
+      params: {
+        fields: 'test',
+      },
+    },
+    meta: {
+      done,
+    },
   })
 })
 
 test('resourceListReadSuccess', () => {
-  expect(actions.resourceListReadSuccess([1, 2, 3])).toEqual({
+  expect(actions.resourceListReadSuccess([1, 2, 3], 'foo')).toEqual({
     type: actions.RESOURCE_LIST_READ_SUCCESS,
-    list: [1, 2, 3],
+    payload: [1, 2, 3],
+    meta: {
+      request: 'foo',
+    },
   })
 })
 
 test('resourceListReadFailure', () => {
-  expect(actions.resourceListReadFailure('error')).toEqual({
+  expect(actions.resourceListReadFailure('error', 'foo')).toEqual({
     type: actions.RESOURCE_LIST_READ_FAILURE,
-    error: 'error',
+    error: true,
+    payload: 'error',
+    meta: {
+      request: 'foo',
+    },
   })
 })
 
 test('resourceDetailReadRequest', () => {
-  expect(actions.resourceDetailReadRequest(1)).toEqual({
+  expect(actions.resourceDetailReadRequest(1, done)).toEqual({
     type: actions.RESOURCE_DETAIL_READ_REQUEST,
-    needle: 1,
+    payload: {
+      needle: 1,
+    },
+    meta: {
+      done,
+    },
   })
 })
 
 test('resourceDetailReadSuccess', () => {
-  expect(actions.resourceDetailReadSuccess(1, { id: 1, title: 'test' })).toEqual({
+  expect(actions.resourceDetailReadSuccess({ id: 1, title: 'test' }, 'foo')).toEqual({
     type: actions.RESOURCE_DETAIL_READ_SUCCESS,
-    needle: 1,
-    detail: { id: 1, title: 'test' },
+    payload: { id: 1, title: 'test' },
+    meta: {
+      request: 'foo',
+    },
   })
 })
 
 test('resourceDetailReadFailure', () => {
-  expect(actions.resourceDetailReadFailure(1, 'error')).toEqual({
+  expect(actions.resourceDetailReadFailure('error', 'foo')).toEqual({
     type: actions.RESOURCE_DETAIL_READ_FAILURE,
-    needle: 1,
-    error: 'error',
+    error: true,
+    payload: 'error',
+    meta: {
+      request: 'foo',
+    },
   })
 })
 
 test('resourceUpdateRequest', () => {
-  expect(actions.resourceUpdateRequest(1, { title: 'test' })).toEqual({
+  expect(actions.resourceUpdateRequest(1, { title: 'test' }, done)).toEqual({
     type: actions.RESOURCE_UPDATE_REQUEST,
-    needle: 1,
-    data: { title: 'test' },
+    payload: {
+      needle: 1,
+      data: {
+        title: 'test',
+      },
+    },
+    meta: {
+      done,
+    },
   })
 })
 
 test('resourceUpdateSuccess', () => {
-  expect(actions.resourceUpdateSuccess(1, { id: 1, title: 'test' })).toEqual({
+  expect(actions.resourceUpdateSuccess({ id: 1, title: 'test' }, 'foo')).toEqual({
     type: actions.RESOURCE_UPDATE_SUCCESS,
-    needle: 1,
-    detail: { id: 1, title: 'test' },
+    payload: { id: 1, title: 'test' },
+    meta: {
+      request: 'foo',
+    },
   })
 })
 
 test('resourceUpdateFailure', () => {
-  expect(actions.resourceUpdateFailure(1, 'error')).toEqual({
+  expect(actions.resourceUpdateFailure('error', 'foo')).toEqual({
     type: actions.RESOURCE_UPDATE_FAILURE,
-    needle: 1,
-    error: 'error',
+    error: true,
+    payload: 'error',
+    meta: {
+      request: 'foo',
+    },
   })
 })
 
 test('resourceDeleteRequest', () => {
-  expect(actions.resourceDeleteRequest(1)).toEqual({
+  expect(actions.resourceDeleteRequest(1, done)).toEqual({
     type: actions.RESOURCE_DELETE_REQUEST,
-    needle: 1,
+    payload: {
+      needle: 1,
+    },
+    meta: {
+      done,
+    },
   })
 })
 
 test('resourceDeleteSuccess', () => {
-  expect(actions.resourceDeleteSuccess(1)).toEqual({
+  expect(actions.resourceDeleteSuccess('foo')).toEqual({
     type: actions.RESOURCE_DELETE_SUCCESS,
-    needle: 1,
+    meta: {
+      request: 'foo',
+    },
   })
 })
 
 test('resourceDeleteFailure', () => {
-  expect(actions.resourceDeleteFailure(1, 'error')).toEqual({
+  expect(actions.resourceDeleteFailure('error', 'foo')).toEqual({
     type: actions.RESOURCE_DELETE_FAILURE,
-    needle: 1,
-    error: 'error',
+    error: true,
+    payload: 'error',
+    meta: {
+      request: 'foo',
+    },
   })
 })

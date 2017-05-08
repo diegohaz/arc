@@ -4,6 +4,7 @@ import { injectGlobal, ThemeProvider } from 'styled-components'
 import Helmet from 'react-helmet'
 
 import { HomePage, SamplePage, NotFoundPage } from 'components'
+import { GoogleTagManager } from 'containers'
 
 // https://github.com/diegohaz/arc/wiki/Styling
 import theme from './themes/default'
@@ -28,6 +29,7 @@ const App = () => {
         <meta property="og:image:height" content="630" />
         <link rel="icon" href="https://arc.js.org/icon.png" />
       </Helmet>
+      <GoogleTagManager />
       <ThemeProvider theme={theme}>
         <Switch>
           <Route path="/" component={HomePage} exact />

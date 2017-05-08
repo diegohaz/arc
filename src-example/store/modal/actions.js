@@ -4,10 +4,14 @@ export const MODAL_HIDE = 'MODAL_HIDE'
 
 export const modalShow = name => ({
   type: MODAL_SHOW,
-  name,
+  payload: {
+    name,
+  },
 })
 
 export const modalHide = name => ({
   type: MODAL_HIDE,
-  name,
+  payload: {
+    name,
+  },
 })

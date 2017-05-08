@@ -2,18 +2,18 @@
 import { initialState } from './selectors'
 import { MODAL_SHOW, MODAL_HIDE } from './actions'
 
-export default (state = initialState, action) => {
-  switch (action.type) {
+export default (state = initialState, { type, payload = {} }) => {
+  switch (type) {
     case MODAL_SHOW:
       return {
         ...state,
-        [action.name]: true,
+        [payload.name]: true,
       }
     case MODAL_HIDE:
-      if (action.name) {
+      if (payload.name) {
         return {
           ...state,
-          [action.name]: false,
+          [payload.name]: false,
         }
       }
       return initialState
