@@ -1,11 +1,10 @@
 // https://github.com/diegohaz/arc/wiki/Actions#unit-testing-actions
 import * as actions from './actions'
 
-const resolve = () => {}
-const reject = () => {}
+const done = () => {}
 
 test('resourceCreateRequest', () => {
-  expect(actions.resourceCreateRequest({ title: 'test' }, resolve, reject)).toEqual({
+  expect(actions.resourceCreateRequest({ title: 'test' }, done)).toEqual({
     type: actions.RESOURCE_CREATE_REQUEST,
     payload: {
       data: {
@@ -13,8 +12,7 @@ test('resourceCreateRequest', () => {
       },
     },
     meta: {
-      resolve,
-      reject,
+      done,
     },
   })
 })
@@ -41,7 +39,7 @@ test('resourceCreateFailure', () => {
 })
 
 test('resourceListReadRequest', () => {
-  expect(actions.resourceListReadRequest({ fields: 'test' }, resolve, reject)).toEqual({
+  expect(actions.resourceListReadRequest({ fields: 'test' }, done)).toEqual({
     type: actions.RESOURCE_LIST_READ_REQUEST,
     payload: {
       params: {
@@ -49,8 +47,7 @@ test('resourceListReadRequest', () => {
       },
     },
     meta: {
-      resolve,
-      reject,
+      done,
     },
   })
 })
@@ -77,14 +74,13 @@ test('resourceListReadFailure', () => {
 })
 
 test('resourceDetailReadRequest', () => {
-  expect(actions.resourceDetailReadRequest(1, resolve, reject)).toEqual({
+  expect(actions.resourceDetailReadRequest(1, done)).toEqual({
     type: actions.RESOURCE_DETAIL_READ_REQUEST,
     payload: {
       needle: 1,
     },
     meta: {
-      resolve,
-      reject,
+      done,
     },
   })
 })
@@ -111,7 +107,7 @@ test('resourceDetailReadFailure', () => {
 })
 
 test('resourceUpdateRequest', () => {
-  expect(actions.resourceUpdateRequest(1, { title: 'test' }, resolve, reject)).toEqual({
+  expect(actions.resourceUpdateRequest(1, { title: 'test' }, done)).toEqual({
     type: actions.RESOURCE_UPDATE_REQUEST,
     payload: {
       needle: 1,
@@ -120,8 +116,7 @@ test('resourceUpdateRequest', () => {
       },
     },
     meta: {
-      resolve,
-      reject,
+      done,
     },
   })
 })
@@ -148,14 +143,13 @@ test('resourceUpdateFailure', () => {
 })
 
 test('resourceDeleteRequest', () => {
-  expect(actions.resourceDeleteRequest(1, resolve, reject)).toEqual({
+  expect(actions.resourceDeleteRequest(1, done)).toEqual({
     type: actions.RESOURCE_DELETE_REQUEST,
     payload: {
       needle: 1,
     },
     meta: {
-      resolve,
-      reject,
+      done,
     },
   })
 })

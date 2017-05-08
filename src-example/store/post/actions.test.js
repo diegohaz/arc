@@ -1,11 +1,10 @@
 // https://github.com/diegohaz/arc/wiki/Actions#unit-testing-actions
 import * as actions from './actions'
 
-const resolve = () => {}
-const reject = () => {}
+const done = () => {}
 
 test('postCreateRequest', () => {
-  expect(actions.postCreateRequest({ title: 'test' }, resolve, reject)).toEqual({
+  expect(actions.postCreateRequest({ title: 'test' }, done)).toEqual({
     type: actions.POST_CREATE_REQUEST,
     payload: {
       data: {
@@ -13,8 +12,7 @@ test('postCreateRequest', () => {
       },
     },
     meta: {
-      resolve,
-      reject,
+      done,
     },
   })
 })
@@ -41,7 +39,7 @@ test('postCreateFailure', () => {
 })
 
 test('postListReadRequest', () => {
-  expect(actions.postListReadRequest({ fields: 'test' }, resolve, reject)).toEqual({
+  expect(actions.postListReadRequest({ fields: 'test' }, done)).toEqual({
     type: actions.POST_LIST_READ_REQUEST,
     payload: {
       params: {
@@ -49,8 +47,7 @@ test('postListReadRequest', () => {
       },
     },
     meta: {
-      resolve,
-      reject,
+      done,
     },
   })
 })

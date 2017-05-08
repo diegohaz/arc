@@ -4,14 +4,13 @@ export const POST_CREATE_REQUEST = 'POST_CREATE_REQUEST'
 export const POST_CREATE_SUCCESS = 'POST_CREATE_SUCCESS'
 export const POST_CREATE_FAILURE = 'POST_CREATE_FAILURE'
 
-export const postCreateRequest = (data, resolve, reject) => ({
+export const postCreateRequest = (data, done) => ({
   type: POST_CREATE_REQUEST,
   payload: {
     data,
   },
   meta: {
-    resolve,
-    reject,
+    done,
   },
 })
 
@@ -37,14 +36,13 @@ export const POST_LIST_READ_REQUEST = 'POST_LIST_READ_REQUEST'
 export const POST_LIST_READ_SUCCESS = 'POST_LIST_READ_SUCCESS'
 export const POST_LIST_READ_FAILURE = 'POST_LIST_READ_FAILURE'
 
-export const postListReadRequest = (params, resolve, reject) => ({
+export const postListReadRequest = (params, done) => ({
   type: POST_LIST_READ_REQUEST,
   payload: {
     params,
   },
   meta: {
-    resolve,
-    reject,
+    done,
   },
 })
 

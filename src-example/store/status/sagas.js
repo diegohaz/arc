@@ -6,30 +6,28 @@ const successSuffix = '_SUCCESS'
 const failureSuffix = '_FAILURE'
 
 export const matchesRequest = ({ type, meta }) => {
-  if (!meta) return false
-  if (typeof meta.resolve !== 'function' && typeof meta.reject !== 'function') {
+  if (!meta || typeof meta.done !== 'function') {
     return false
   }
   return requestPattern.test(type)
 }
 
-export function* resolveOrReject({ type, meta }) {
+export function* handleDone({ type, meta }) {
   const prefix = type.replace(requestPattern, '')
-  const { resolve, reject } = meta
   const { success, failure } = yield race({
     success: take(prefix + successSuffix),
     failure: take(prefix + failureSuffix),
   })
 
-  if (success && typeof resolve === 'function') {
-    yield call(resolve, success.payload)
-  } else if (failure && typeof reject === 'function') {
-    yield call(reject, failure.payload)
+  if (success) {
+    yield call(meta.done, null, success.payload)
+  } else {
+    yield call(meta.done, failure.payload)
   }
 }
 
 export function* watchRequestActions() {
-  yield takeEvery(matchesRequest, resolveOrReject)
+  yield takeEvery(matchesRequest, handleDone)
 }
 
 export default function* () {

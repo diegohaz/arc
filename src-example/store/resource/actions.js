@@ -4,14 +4,13 @@ export const RESOURCE_CREATE_REQUEST = 'RESOURCE_CREATE_REQUEST'
 export const RESOURCE_CREATE_SUCCESS = 'RESOURCE_CREATE_SUCCESS'
 export const RESOURCE_CREATE_FAILURE = 'RESOURCE_CREATE_FAILURE'
 
-export const resourceCreateRequest = (data, resolve, reject) => ({
+export const resourceCreateRequest = (data, done) => ({
   type: RESOURCE_CREATE_REQUEST,
   payload: {
     data,
   },
   meta: {
-    resolve,
-    reject,
+    done,
   },
 })
 
@@ -37,14 +36,13 @@ export const RESOURCE_LIST_READ_REQUEST = 'RESOURCE_LIST_READ_REQUEST'
 export const RESOURCE_LIST_READ_SUCCESS = 'RESOURCE_LIST_READ_SUCCESS'
 export const RESOURCE_LIST_READ_FAILURE = 'RESOURCE_LIST_READ_FAILURE'
 
-export const resourceListReadRequest = (params, resolve, reject) => ({
+export const resourceListReadRequest = (params, done) => ({
   type: RESOURCE_LIST_READ_REQUEST,
   payload: {
     params,
   },
   meta: {
-    resolve,
-    reject,
+    done,
   },
 })
 
@@ -70,14 +68,13 @@ export const RESOURCE_DETAIL_READ_REQUEST = 'RESOURCE_DETAIL_READ_REQUEST'
 export const RESOURCE_DETAIL_READ_SUCCESS = 'RESOURCE_DETAIL_READ_SUCCESS'
 export const RESOURCE_DETAIL_READ_FAILURE = 'RESOURCE_DETAIL_READ_FAILURE'
 
-export const resourceDetailReadRequest = (needle, resolve, reject) => ({
+export const resourceDetailReadRequest = (needle, done) => ({
   type: RESOURCE_DETAIL_READ_REQUEST,
   payload: {
     needle,
   },
   meta: {
-    resolve,
-    reject,
+    done,
   },
 })
 
@@ -103,15 +100,14 @@ export const RESOURCE_UPDATE_REQUEST = 'RESOURCE_UPDATE_REQUEST'
 export const RESOURCE_UPDATE_SUCCESS = 'RESOURCE_UPDATE_SUCCESS'
 export const RESOURCE_UPDATE_FAILURE = 'RESOURCE_UPDATE_FAILURE'
 
-export const resourceUpdateRequest = (needle, data, resolve, reject) => ({
+export const resourceUpdateRequest = (needle, data, done) => ({
   type: RESOURCE_UPDATE_REQUEST,
   payload: {
     needle,
     data,
   },
   meta: {
-    resolve,
-    reject,
+    done,
   },
 })
 
@@ -137,14 +133,13 @@ export const RESOURCE_DELETE_REQUEST = 'RESOURCE_DELETE_REQUEST'
 export const RESOURCE_DELETE_SUCCESS = 'RESOURCE_DELETE_SUCCESS'
 export const RESOURCE_DELETE_FAILURE = 'RESOURCE_DELETE_FAILURE'
 
-export const resourceDeleteRequest = (needle, resolve, reject) => ({
+export const resourceDeleteRequest = (needle, done) => ({
   type: RESOURCE_DELETE_REQUEST,
   payload: {
     needle,
   },
   meta: {
-    resolve,
-    reject,
+    done,
   },
 })
 
