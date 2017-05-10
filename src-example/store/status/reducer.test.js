@@ -1,4 +1,5 @@
 // https://github.com/diegohaz/arc/wiki/Reducers#unit-testing-reducers
+// https://github.com/diegohaz/arc/wiki/Example-redux-modules#status
 import { initialState, getLoadingState, getErrorState } from './selectors'
 import reducer from './reducer'
 

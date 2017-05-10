@@ -1,4 +1,5 @@
 // https://github.com/diegohaz/arc/wiki/Selectors#unit-testing-selectors
+// https://github.com/diegohaz/arc/wiki/Example-redux-modules#social
 import * as selectors from './selectors'
 
 test('initialState', () => {

@@ -1,15 +1,18 @@
 // https://github.com/diegohaz/arc/wiki/Sagas
+// https://github.com/diegohaz/arc/wiki/Example-redux-modules#gtm
 import loadScript from 'simple-load-script'
 import { all, take, put, call, fork } from 'redux-saga/effects'
 import * as actions from './actions'
 
-export function* track({ type, ...action }) {
+export function* track(type, { gtm } = {}) {
+  const payload = { event: type, ...gtm }
   try {
     // istanbul ignore next
     window.dataLayer = window.dataLayer || []
-    yield window.dataLayer.push({ event: type, ...action })
+    window.dataLayer.push(payload)
+    yield payload
   } catch (e) {
-    yield put(actions.gtmFailure(e, { type, ...action }))
+    yield put(actions.gtmFailure(e, payload))
   }
 }
 
@@ -29,8 +32,8 @@ export function* startGTM({ gtmId }) {
 
 export function* watchAllActions() {
   while (true) {
-    const action = yield take('*')
-    yield call(track, action)
+    const { type, meta } = yield take('*')
+    yield call(track, type, meta)
   }
 }
 

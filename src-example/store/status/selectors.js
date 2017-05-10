@@ -1,4 +1,5 @@
 // https://github.com/diegohaz/arc/wiki/Selectors
+// https://github.com/diegohaz/arc/wiki/Example-redux-modules#status
 import find from 'lodash/find'
 import pick from 'lodash/pick'
 

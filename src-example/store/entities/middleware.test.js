@@ -1,3 +1,4 @@
+// https://github.com/diegohaz/arc/wiki/Example-redux-modules#entities
 import configureStore from 'redux-mock-store'
 import entitiesMiddleware from './middleware'
 import { entitiesReceive } from './actions'

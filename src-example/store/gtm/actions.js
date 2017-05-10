@@ -1,4 +1,5 @@
 // https://github.com/diegohaz/arc/wiki/Actions
+// https://github.com/diegohaz/arc/wiki/Example-redux-modules#gtm
 export const GTM = 'GTM'
 export const GTM_START = 'GTM_START'
 export const GTM_FAILURE = 'GTM_FAILURE'

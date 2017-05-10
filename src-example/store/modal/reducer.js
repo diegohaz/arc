@@ -1,4 +1,5 @@
 // https://github.com/diegohaz/arc/wiki/Reducers
+// https://github.com/diegohaz/arc/wiki/Example-redux-modules#modal
 import { initialState } from './selectors'
 import { MODAL_SHOW, MODAL_HIDE } from './actions'
 

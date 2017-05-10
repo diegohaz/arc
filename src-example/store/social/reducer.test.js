@@ -1,4 +1,5 @@
 // https://github.com/diegohaz/arc/wiki/Reducers#unit-testing-reducers
+// https://github.com/diegohaz/arc/wiki/Example-redux-modules#social
 import { initialState } from './selectors'
 import * as actions from './actions'
 import reducer from './reducer'
