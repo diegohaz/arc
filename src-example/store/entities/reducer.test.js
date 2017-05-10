@@ -1,5 +1,6 @@
 // https://github.com/diegohaz/arc/wiki/Reducers#unit-testing-reducers
 import { initialState } from './selectors'
+import { ENTITIES_RECEIVE } from './actions'
 import reducer from './reducer'
 
 const altState = {
@@ -15,8 +16,12 @@ it('returns the initial state', () => {
 })
 
 it('handles actions', () => {
-  expect(reducer(initialState, { entities: { foo: altState.foo } })).toEqual(altState)
-  expect(reducer(altState, { entities: { foo: { bars: [4] } } })).toEqual({
+  const createAction = payload => ({
+    type: ENTITIES_RECEIVE,
+    payload,
+  })
+  expect(reducer(initialState, createAction({ foo: altState.foo }))).toEqual(altState)
+  expect(reducer(altState, createAction({ foo: { bars: [4] } }))).toEqual({
     ...altState,
     foo: {
       ...altState.foo,

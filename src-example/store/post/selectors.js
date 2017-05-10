@@ -1,4 +1,5 @@
 // https://github.com/diegohaz/arc/wiki/Selectors
+// https://github.com/diegohaz/arc/wiki/Example-redux-modules#post
 export const initialState = {
   list: [],
 }

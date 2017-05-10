@@ -1,6 +1,6 @@
 // https://github.com/diegohaz/arc/wiki/Sagas#unit-testing-sagas
 import loadScript from 'simple-load-script'
-import { take, put, call, fork } from 'redux-saga/effects'
+import { all, take, put, call, fork } from 'redux-saga/effects'
 import saga, * as sagas from './sagas'
 import * as actions from './actions'
 
@@ -54,8 +54,10 @@ test('watchGTMStart', () => {
   const payload = { gtmId: 'foo' }
   const generator = sagas.watchGTMStart()
   expect(generator.next().value).toEqual(take(actions.GTM_START))
-  expect(generator.next({ payload }).value).toEqual(call(sagas.startGTM, payload))
-  expect(generator.next().value).toEqual(call(sagas.watchAllActions))
+  expect(generator.next({ payload }).value).toEqual(all([
+    call(sagas.startGTM, payload),
+    call(sagas.watchAllActions),
+  ]))
 })
 
 test('saga', () => {

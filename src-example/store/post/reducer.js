@@ -1,4 +1,5 @@
 // https://github.com/diegohaz/arc/wiki/Reducers
+// https://github.com/diegohaz/arc/wiki/Example-redux-modules#post
 import { initialState } from './selectors'
 import { POST_CREATE_SUCCESS, POST_LIST_READ_SUCCESS } from './actions'
 

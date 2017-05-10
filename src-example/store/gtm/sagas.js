@@ -1,10 +1,12 @@
 // https://github.com/diegohaz/arc/wiki/Sagas
 import loadScript from 'simple-load-script'
-import { take, put, call, fork } from 'redux-saga/effects'
+import { all, take, put, call, fork } from 'redux-saga/effects'
 import * as actions from './actions'
 
 export function* track({ type, ...action }) {
   try {
+    // istanbul ignore next
+    window.dataLayer = window.dataLayer || []
     yield window.dataLayer.push({ event: type, ...action })
   } catch (e) {
     yield put(actions.gtmFailure(e, { type, ...action }))
@@ -34,8 +36,10 @@ export function* watchAllActions() {
 
 export function* watchGTMStart() {
   const { payload } = yield take(actions.GTM_START)
-  yield call(startGTM, payload)
-  yield call(watchAllActions)
+  yield all([
+    call(startGTM, payload),
+    call(watchAllActions),
+  ])
 }
 
 export default function* () {

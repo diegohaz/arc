@@ -1,4 +1,5 @@
 // https://github.com/diegohaz/arc/wiki/Actions
+// https://github.com/diegohaz/arc/wiki/Example-redux-modules#resource
 export const RESOURCE_CREATE = 'RESOURCE_CREATE'
 export const RESOURCE_CREATE_REQUEST = 'RESOURCE_CREATE_REQUEST'
 export const RESOURCE_CREATE_SUCCESS = 'RESOURCE_CREATE_SUCCESS'
@@ -6,28 +7,32 @@ export const RESOURCE_CREATE_FAILURE = 'RESOURCE_CREATE_FAILURE'
 
 export const resourceCreateRequest = (data, done) => ({
   type: RESOURCE_CREATE_REQUEST,
-  payload: {
-    data,
-  },
+  payload: { data },
   meta: {
-    done,
+    // https://github.com/diegohaz/arc/wiki/Example-redux-modules#async
+    async: { done },
   },
 })
 
-export const resourceCreateSuccess = (detail, request) => ({
+export const resourceCreateSuccess = (detail, request, key) => ({
   type: RESOURCE_CREATE_SUCCESS,
   payload: detail,
   meta: {
     request,
+    async: { key },
+    // https://github.com/diegohaz/arc/wiki/Example-redux-modules#entities
+    entities: 'resource',
   },
 })
 
-export const resourceCreateFailure = (error, request) => ({
+export const resourceCreateFailure = (error, request, key) => ({
   type: RESOURCE_CREATE_FAILURE,
   error: true,
   payload: error,
   meta: {
     request,
+    // https://github.com/diegohaz/arc/wiki/Example-redux-modules#solving-race-conflicts
+    async: { key },
   },
 })
 
@@ -38,28 +43,29 @@ export const RESOURCE_LIST_READ_FAILURE = 'RESOURCE_LIST_READ_FAILURE'
 
 export const resourceListReadRequest = (params, done) => ({
   type: RESOURCE_LIST_READ_REQUEST,
-  payload: {
-    params,
-  },
+  payload: { params },
   meta: {
-    done,
+    async: { done },
   },
 })
 
-export const resourceListReadSuccess = (list, request) => ({
+export const resourceListReadSuccess = (list, request, key) => ({
   type: RESOURCE_LIST_READ_SUCCESS,
   payload: list,
   meta: {
     request,
+    async: { key },
+    entities: 'resource',
   },
 })
 
-export const resourceListReadFailure = (error, request) => ({
+export const resourceListReadFailure = (error, request, key) => ({
   type: RESOURCE_LIST_READ_FAILURE,
   error: true,
   payload: error,
   meta: {
     request,
+    async: { key },
   },
 })
 
@@ -70,28 +76,29 @@ export const RESOURCE_DETAIL_READ_FAILURE = 'RESOURCE_DETAIL_READ_FAILURE'
 
 export const resourceDetailReadRequest = (needle, done) => ({
   type: RESOURCE_DETAIL_READ_REQUEST,
-  payload: {
-    needle,
-  },
+  payload: { needle },
   meta: {
-    done,
+    async: { done },
   },
 })
 
-export const resourceDetailReadSuccess = (detail, request) => ({
+export const resourceDetailReadSuccess = (detail, request, key) => ({
   type: RESOURCE_DETAIL_READ_SUCCESS,
   payload: detail,
   meta: {
     request,
+    async: { key },
+    entities: 'resource',
   },
 })
 
-export const resourceDetailReadFailure = (error, request) => ({
+export const resourceDetailReadFailure = (error, request, key) => ({
   type: RESOURCE_DETAIL_READ_FAILURE,
   error: true,
   payload: error,
   meta: {
     request,
+    async: { key },
   },
 })
 
@@ -102,29 +109,29 @@ export const RESOURCE_UPDATE_FAILURE = 'RESOURCE_UPDATE_FAILURE'
 
 export const resourceUpdateRequest = (needle, data, done) => ({
   type: RESOURCE_UPDATE_REQUEST,
-  payload: {
-    needle,
-    data,
-  },
+  payload: { needle, data },
   meta: {
-    done,
+    async: { done },
   },
 })
 
-export const resourceUpdateSuccess = (detail, request) => ({
+export const resourceUpdateSuccess = (detail, request, key) => ({
   type: RESOURCE_UPDATE_SUCCESS,
   payload: detail,
   meta: {
     request,
+    async: { key },
+    entities: 'resource',
   },
 })
 
-export const resourceUpdateFailure = (error, request) => ({
+export const resourceUpdateFailure = (error, request, key) => ({
   type: RESOURCE_UPDATE_FAILURE,
   error: true,
   payload: error,
   meta: {
     request,
+    async: { key },
   },
 })
 
@@ -135,26 +142,26 @@ export const RESOURCE_DELETE_FAILURE = 'RESOURCE_DELETE_FAILURE'
 
 export const resourceDeleteRequest = (needle, done) => ({
   type: RESOURCE_DELETE_REQUEST,
-  payload: {
-    needle,
-  },
+  payload: { needle },
   meta: {
-    done,
+    async: { done },
   },
 })
 
-export const resourceDeleteSuccess = (request) => ({
+export const resourceDeleteSuccess = (request, key) => ({
   type: RESOURCE_DELETE_SUCCESS,
   meta: {
     request,
+    async: { key },
   },
 })
 
-export const resourceDeleteFailure = (error, request) => ({
+export const resourceDeleteFailure = (error, request, key) => ({
   type: RESOURCE_DELETE_FAILURE,
   error: true,
   payload: error,
   meta: {
     request,
+    async: { key },
   },
 })
