@@ -1,4 +1,5 @@
 // https://github.com/diegohaz/arc/wiki/Actions#unit-testing-actions
+// https://github.com/diegohaz/arc/wiki/Example-redux-modules#social
 import * as actions from './actions'
 
 test('socialLoginPrepare', () => {
@@ -19,19 +20,23 @@ test('socialLoginPrepare', () => {
 })
 
 test('socialLoginRequest', () => {
-  expect(actions.socialLoginRequest('facebook')).toEqual({
-    type: actions.SOCIAL_LOGIN_REQUEST,
-    payload: {
-      service: 'facebook',
-    },
-  })
-  expect(actions.socialLoginRequest('facebook', { clientId: 'foo' })).toEqual({
-    type: actions.SOCIAL_LOGIN_REQUEST,
-    payload: {
-      service: 'facebook',
-      clientId: 'foo',
-    },
-  })
+  expect(actions.socialLoginRequest('facebook')).toEqual(
+    expect.objectContaining({
+      type: actions.SOCIAL_LOGIN_REQUEST,
+      payload: {
+        service: 'facebook',
+      },
+    })
+  )
+  expect(actions.socialLoginRequest('facebook', { clientId: 'foo' })).toEqual(
+    expect.objectContaining({
+      type: actions.SOCIAL_LOGIN_REQUEST,
+      payload: {
+        service: 'facebook',
+        clientId: 'foo',
+      },
+    })
+  )
 })
 
 test('socialLoginSuccess', () => {

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { fromStatus } from 'store/selectors'
+import { fromAsync } from 'store/selectors'
 
 const GenericContainer = ({ loading }) => <div className={loading ? 'loading' : ''} />
 
@@ -10,7 +10,7 @@ GenericContainer.propTypes = {
 }
 
 const mapStateToProps = state => ({
-  loading: fromStatus.isLoading(state),
+  loading: fromAsync.isPending(state),
 })
 
 export default connect(mapStateToProps)(GenericContainer)

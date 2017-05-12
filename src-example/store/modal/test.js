@@ -1,4 +1,5 @@
 // https://github.com/diegohaz/arc/wiki/Testing-redux-modules
+// https://github.com/diegohaz/arc/wiki/Example-redux-modules#modal
 import { createStore } from 'redux'
 import reducer from './reducer'
 import { modalShow, modalHide } from './actions'

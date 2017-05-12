@@ -1,4 +1,5 @@
 // https://github.com/diegohaz/arc/wiki/Reducers
+// https://github.com/diegohaz/arc/wiki/Example-redux-modules#social
 import { initialState } from './selectors'
 import { SOCIAL_LOGIN_SUCCESS, SOCIAL_LOGOUT } from './actions'
 

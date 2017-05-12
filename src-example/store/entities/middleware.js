@@ -1,12 +1,28 @@
+// https://github.com/diegohaz/arc/wiki/Example-redux-modules#entities
 import { normalize } from 'normalizr'
-import { actions } from './schemas'
+import { env } from 'config'
+import { entitiesReceive } from './actions'
+import * as schemas from './schemas'
 
 const middleware = store => next => (action) => {
-  const types = Object.keys(actions)
-  if (types.indexOf(action.type) >= 0) {
-    const { result, entities } = normalize(action.payload, actions[action.type])
-    store.dispatch({ type: 'ENTITIES_RECEIVE', entities })
-    return next({ ...action, payload: result })
+  const { payload, meta } = action
+
+  if (meta && meta.entities) {
+    const schema = schemas[meta.entities]
+
+    if (schema) {
+      const { result, entities } = normalize(
+        payload,
+        Array.isArray(payload) ? [schema] : schema
+      )
+      store.dispatch(entitiesReceive(entities))
+      return next({ ...action, payload: result })
+    }
+    // istanbul ignore next
+    if (env === 'development') {
+      // eslint-disable-next-line no-console
+      console.warn(`[entities] There is no ${meta.entities} schema on ${__dirname}/schemas.js`)
+    }
   }
   return next(action)
 }

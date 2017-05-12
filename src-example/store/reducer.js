@@ -2,9 +2,11 @@
 import camelCase from 'lodash/camelCase'
 import { combineReducers } from 'redux'
 import { reducer as form } from 'redux-form'
+import { reducer as async } from 'redux-saga-async-action'
 
 const reducers = {
   form,
+  async,
 }
 
 const req = require.context('.', true, /\.\/.+\/reducer\.js$/)

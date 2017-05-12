@@ -1,4 +1,5 @@
 // https://github.com/diegohaz/arc/wiki/Actions
+// https://github.com/diegohaz/arc/wiki/Example-redux-modules#social
 export const SOCIAL_LOGIN = 'SOCIAL_LOGIN'
 export const SOCIAL_LOGIN_PREPARE = 'SOCIAL_LOGIN_PREPARE'
 export const SOCIAL_LOGIN_REQUEST = 'SOCIAL_LOGIN_REQUEST'
@@ -21,6 +22,10 @@ export const socialLoginRequest = (service, { clientId, ...options } = {}) => ({
     service,
     clientId,
     ...options,
+  },
+  meta: {
+    // https://github.com/diegohaz/arc/wiki/Example-redux-modules#gtm
+    gtm: service,
   },
 })
 

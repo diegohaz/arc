@@ -1,4 +1,5 @@
 // https://github.com/diegohaz/arc/wiki/Sagas#unit-testing-sagas
+// https://github.com/diegohaz/arc/wiki/Example-redux-modules#social
 import loadScript from 'simple-load-script'
 import { put, call, fork } from 'redux-saga/effects'
 import * as actions from './actions'

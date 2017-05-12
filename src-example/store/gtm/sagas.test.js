@@ -1,6 +1,7 @@
 // https://github.com/diegohaz/arc/wiki/Sagas#unit-testing-sagas
+// https://github.com/diegohaz/arc/wiki/Example-redux-modules#gtm
 import loadScript from 'simple-load-script'
-import { take, put, call, fork } from 'redux-saga/effects'
+import { all, take, put, call, fork } from 'redux-saga/effects'
 import saga, * as sagas from './sagas'
 import * as actions from './actions'
 
@@ -9,19 +10,23 @@ describe('track', () => {
     window.dataLayer = []
   })
 
-  it('calls success', () => {
-    const action = { type: 'FOO', bar: 'baz' }
-    const generator = sagas.track(action)
-    expect(generator.next().value).toBe(1)
+  it('calls success without meta', () => {
+    const generator = sagas.track('FOO')
+    expect(generator.next().value).toEqual({ event: 'FOO' })
+    expect(generator.next().done).toBe(true)
+  })
+
+  it('calls success with meta', () => {
+    const generator = sagas.track('FOO', { gtm: 'bar' })
+    expect(generator.next().value).toEqual({ event: 'FOO', label: 'bar' })
     expect(generator.next().done).toBe(true)
   })
 
   it('calls failure', () => {
-    const action = { type: 'FOO', bar: 'baz' }
-    const generator = sagas.track(action)
-    expect(generator.next().value).toBe(1)
+    const generator = sagas.track('FOO')
+    expect(generator.next().value).toEqual({ event: 'FOO' })
     expect(generator.throw('error').value)
-      .toEqual(put(actions.gtmFailure('error', action)))
+      .toEqual(put(actions.gtmFailure('error', { event: 'FOO' })))
   })
 })
 
@@ -45,17 +50,20 @@ describe('startGTM', () => {
 })
 
 test('watchAllActions', () => {
+  const action = { type: 'FOO', meta: {} }
   const generator = sagas.watchAllActions()
   expect(generator.next().value).toEqual(take('*'))
-  expect(generator.next('foo').value).toEqual(call(sagas.track, 'foo'))
+  expect(generator.next(action).value).toEqual(call(sagas.track, 'FOO', {}))
 })
 
 test('watchGTMStart', () => {
   const payload = { gtmId: 'foo' }
   const generator = sagas.watchGTMStart()
   expect(generator.next().value).toEqual(take(actions.GTM_START))
-  expect(generator.next({ payload }).value).toEqual(call(sagas.startGTM, payload))
-  expect(generator.next().value).toEqual(call(sagas.watchAllActions))
+  expect(generator.next({ payload }).value).toEqual(all([
+    call(sagas.startGTM, payload),
+    call(sagas.watchAllActions),
+  ]))
 })
 
 test('saga', () => {
