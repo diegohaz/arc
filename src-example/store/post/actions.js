@@ -9,7 +9,7 @@ export const postCreateRequest = (data, done) => ({
   type: POST_CREATE_REQUEST,
   payload: { data },
   meta: {
-    // https://github.com/diegohaz/arc/wiki/Async-actions
+    // https://github.com/diegohaz/arc/wiki/Actions#async-actions
     async: { name: POST_CREATE, done },
   },
 })

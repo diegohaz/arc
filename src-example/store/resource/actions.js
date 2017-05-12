@@ -9,7 +9,7 @@ export const resourceCreateRequest = (data, done) => ({
   type: RESOURCE_CREATE_REQUEST,
   payload: { data },
   meta: {
-    // https://github.com/diegohaz/arc/wiki/Async-actions
+    // https://github.com/diegohaz/arc/wiki/Actions#async-actions
     async: { name: RESOURCE_CREATE, done },
   },
 })
@@ -31,7 +31,7 @@ export const resourceCreateFailure = (error, request, key) => ({
   payload: error,
   meta: {
     request,
-    // https://github.com/diegohaz/arc/wiki/Async-actions
+    // https://github.com/diegohaz/arc/wiki/Actions#async-actions
     async: { name: RESOURCE_CREATE, key },
   },
 })

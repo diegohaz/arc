@@ -7,7 +7,7 @@ export function* createPost(api, { data }, { async }) {
   try {
     // https://github.com/diegohaz/arc/wiki/API-service
     const detail = yield call([api, api.post], '/posts', data)
-    // https://github.com/diegohaz/arc/wiki/Async-actions
+    // https://github.com/diegohaz/arc/wiki/Actions#async-actions
     yield put(actions.postCreateSuccess(detail, { data }, async.key))
   } catch (e) {
     yield put(actions.postCreateFailure(e, { data }, async.key))
