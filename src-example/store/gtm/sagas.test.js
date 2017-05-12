@@ -17,7 +17,7 @@ describe('track', () => {
   })
 
   it('calls success with meta', () => {
-    const generator = sagas.track('FOO', { gtm: { label: 'bar' } })
+    const generator = sagas.track('FOO', { gtm: 'bar' })
     expect(generator.next().value).toEqual({ event: 'FOO', label: 'bar' })
     expect(generator.next().done).toBe(true)
   })

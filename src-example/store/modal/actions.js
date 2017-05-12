@@ -9,9 +9,7 @@ export const modalShow = name => ({
     name,
   },
   meta: {
-    gtm: {
-      label: name,
-    },
+    gtm: name,
   },
 })
 

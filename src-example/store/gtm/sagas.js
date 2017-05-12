@@ -5,7 +5,7 @@ import { all, take, put, call, fork } from 'redux-saga/effects'
 import * as actions from './actions'
 
 export function* track(type, { gtm } = {}) {
-  const payload = { event: type, ...gtm }
+  const payload = { event: type, label: gtm }
   try {
     // istanbul ignore next
     window.dataLayer = window.dataLayer || []

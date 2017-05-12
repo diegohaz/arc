@@ -7,6 +7,7 @@ export function* createResource(api, { data }, { async }) {
   try {
     // https://github.com/diegohaz/arc/wiki/API-service
     const detail = yield call([api, api.post], '/resources', data)
+    // https://github.com/diegohaz/arc/wiki/Async-actions
     yield put(actions.resourceCreateSuccess(detail, { data }, async.key))
   } catch (e) {
     yield put(actions.resourceCreateFailure(e, { data }, async.key))

@@ -23,6 +23,10 @@ export const socialLoginRequest = (service, { clientId, ...options } = {}) => ({
     clientId,
     ...options,
   },
+  meta: {
+    // https://github.com/diegohaz/arc/wiki/Example-redux-modules#gtm
+    gtm: service,
+  },
 })
 
 export const socialLoginSuccess = (user, request) => ({

@@ -9,8 +9,8 @@ export const postCreateRequest = (data, done) => ({
   type: POST_CREATE_REQUEST,
   payload: { data },
   meta: {
-    // https://github.com/diegohaz/arc/wiki/Example-redux-modules#async
-    async: { done },
+    // https://github.com/diegohaz/arc/wiki/Async-actions
+    async: { name: POST_CREATE, done },
   },
 })
 
@@ -19,7 +19,7 @@ export const postCreateSuccess = (detail, request, key) => ({
   payload: detail,
   meta: {
     request,
-    async: { key },
+    async: { name: POST_CREATE, key },
     // https://github.com/diegohaz/arc/wiki/Example-redux-modules#entities
     entities: 'post',
   },
@@ -31,8 +31,7 @@ export const postCreateFailure = (error, request, key) => ({
   payload: error,
   meta: {
     request,
-    // https://github.com/diegohaz/arc/wiki/Example-redux-modules#solving-race-conflicts
-    async: { key },
+    async: { name: POST_CREATE, key },
   },
 })
 
@@ -45,7 +44,7 @@ export const postListReadRequest = (params, done) => ({
   type: POST_LIST_READ_REQUEST,
   payload: { params },
   meta: {
-    async: { done },
+    async: { name: POST_LIST_READ, done },
   },
 })
 
@@ -54,7 +53,7 @@ export const postListReadSuccess = (list, request, key) => ({
   payload: list,
   meta: {
     request,
-    async: { key },
+    async: { name: POST_LIST_READ, key },
     entities: 'post',
   },
 })
@@ -65,6 +64,6 @@ export const postListReadFailure = (error, request, key) => ({
   payload: error,
   meta: {
     request,
-    async: { key },
+    async: { name: POST_LIST_READ, key },
   },
 })
