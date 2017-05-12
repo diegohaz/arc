@@ -1,4 +1,4 @@
-import { middleware as asyncMiddleware } from 'redux-saga-async-action'
+const { middleware: asyncMiddleware } = require('redux-saga-async-action')
 
 const req = require.context('.', true, /\.\/.+\/middleware\.js$/)
 
