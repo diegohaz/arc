@@ -82,7 +82,7 @@ const Hero = (props) => {
     <Wrapper opaque reverse {...props}>
       <InnerWrapper>
         <Section>
-          <LogoImage width={170} />
+          <LogoImage height={265} />
           <ButtonGroup>
             <Tooltip reverse data-title="Just a fancy tooltip 😄">
               <IconButton icon="github" href="https://github.com/diegohaz/arc">GitHub</IconButton>
