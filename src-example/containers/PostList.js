@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { fetchState } from 'react-router-server'
+import { withDone } from 'react-router-server'
 import { isPending } from 'redux-saga-async-action'
 import { fromEntities, fromPost } from 'store/selectors'
-import { postListReadRequest, POST_LIST_READ } from 'store/actions'
+import { postListReadRequest, POST_LIST_READ_REQUEST } from 'store/actions'
 
 import { PostList } from 'components'
 
@@ -32,13 +32,11 @@ class PostListContainer extends Component {
 
 const mapStateToProps = state => ({
   list: fromEntities.getList(state, 'post', fromPost.getList(state)),
-  loading: isPending(state, POST_LIST_READ),
+  loading: isPending(state, POST_LIST_READ_REQUEST),
 })
 
 const mapDispatchToProps = (dispatch, { limit, done }) => ({
-  readList: () => dispatch(postListReadRequest({ _limit: limit }, done)),
+  readList: () => dispatch(postListReadRequest({ _limit: limit })).then(done).catch(done),
 })
-
-const withDone = fetchState(null, actions => ({ done: actions.done }))
 
 export default withDone(connect(mapStateToProps, mapDispatchToProps)(PostListContainer))

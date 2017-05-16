@@ -5629,9 +5629,9 @@ react-router-dom@^4.1.1:
     prop-types "^15.5.4"
     react-router "^4.1.1"
 
-react-router-server@^4.2.0:
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/react-router-server/-/react-router-server-4.2.0.tgz#8c02477a4e9fc8431d9f13f735f72c0614750f11"
+react-router-server@^4.2.1:
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/react-router-server/-/react-router-server-4.2.1.tgz#4ffd68bfcc983d22f8d185b4d306f1cc28ac8bc8"
 
 react-router@^4.1.1:
   version "4.1.1"
@@ -5795,9 +5795,9 @@ redux-mock-store@^1.2.3:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/redux-mock-store/-/redux-mock-store-1.2.3.tgz#1b3ad299da91cb41ba30d68e3b6f024475fb9e1b"
 
-redux-saga-async-action@^0.2.6:
-  version "0.2.6"
-  resolved "https://registry.yarnpkg.com/redux-saga-async-action/-/redux-saga-async-action-0.2.6.tgz#e90d2945c16460fb264754337b8d2c41abd4e47a"
+redux-saga-async-action@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/redux-saga-async-action/-/redux-saga-async-action-0.3.1.tgz#56577a8d5f2b751f665eeb71b93608bba0749c06"
   dependencies:
     lodash "^4.17.4"
 
@@ -6378,17 +6378,11 @@ strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
 
-style-loader@0.13.1:
+style-loader@0.13.1, style-loader@^0.13.1:
   version "0.13.1"
   resolved "https://registry.yarnpkg.com/style-loader/-/style-loader-0.13.1.tgz#468280efbc0473023cd3a6cd56e33b5a1d7fc3a9"
   dependencies:
     loader-utils "^0.2.7"
-
-style-loader@^0.13.1:
-  version "0.13.2"
-  resolved "https://registry.yarnpkg.com/style-loader/-/style-loader-0.13.2.tgz#74533384cf698c7104c7951150b49717adc2f3bb"
-  dependencies:
-    loader-utils "^1.0.2"
 
 styled-components@^1.4.4:
   version "1.4.6"
@@ -6913,10 +6907,11 @@ webpack-sources@^0.2.3:
     source-list-map "^1.1.1"
     source-map "~0.5.3"
 
-webpack-spawn-plugin@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/webpack-spawn-plugin/-/webpack-spawn-plugin-0.1.0.tgz#1c32e0484ffc0832beaae5422bbed260dcb18bfa"
+webpack-spawn-plugin@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/webpack-spawn-plugin/-/webpack-spawn-plugin-0.1.1.tgz#ccf0309f38568dd5d73ef15c626d942f386b5eee"
   dependencies:
+    cross-spawn "^5.1.0"
     fkill "^4.1.0"
 
 webpack@^1.13.1:
