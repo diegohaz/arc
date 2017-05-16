@@ -8,18 +8,18 @@ export function* createPost(api, { data }, { async }) {
     // https://github.com/diegohaz/arc/wiki/API-service
     const detail = yield call([api, api.post], '/posts', data)
     // https://github.com/diegohaz/arc/wiki/Actions#async-actions
-    yield put(actions.postCreateSuccess(detail, { data }, async.key))
+    yield put(actions.postCreateSuccess(detail, { data }, async))
   } catch (e) {
-    yield put(actions.postCreateFailure(e, { data }, async.key))
+    yield put(actions.postCreateFailure(e, { data }, async))
   }
 }
 
 export function* readPostList(api, { params }, { async }) {
   try {
     const list = yield call([api, api.get], '/posts', { params })
-    yield put(actions.postListReadSuccess(list, { params }, async.key))
+    yield put(actions.postListReadSuccess(list, { params }, async))
   } catch (e) {
-    yield put(actions.postListReadFailure(e, { params }, async.key))
+    yield put(actions.postListReadFailure(e, { params }, async))
   }
 }
 

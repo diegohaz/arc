@@ -5815,9 +5815,9 @@ redux-mock-store@^1.2.3:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/redux-mock-store/-/redux-mock-store-1.2.3.tgz#1b3ad299da91cb41ba30d68e3b6f024475fb9e1b"
 
-redux-saga-async-action@^0.2.6:
-  version "0.2.6"
-  resolved "https://registry.yarnpkg.com/redux-saga-async-action/-/redux-saga-async-action-0.2.6.tgz#e90d2945c16460fb264754337b8d2c41abd4e47a"
+redux-saga-async-action@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/redux-saga-async-action/-/redux-saga-async-action-0.3.1.tgz#56577a8d5f2b751f665eeb71b93608bba0749c06"
   dependencies:
     lodash "^4.17.4"
 
