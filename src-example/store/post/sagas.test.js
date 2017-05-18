@@ -9,8 +9,8 @@ const api = {
   get: () => {},
 }
 
-const async = '123'
-const meta = { async }
+const thunk = '123'
+const meta = { thunk }
 
 describe('createPost', () => {
   const payload = { data: 'foo' }
@@ -21,7 +21,7 @@ describe('createPost', () => {
     expect(generator.next().value)
       .toEqual(call([api, api.post], '/posts', 'foo'))
     expect(generator.next(detail).value)
-      .toEqual(put(actions.postCreateSuccess(detail, payload, async)))
+      .toEqual(put(actions.postCreateSuccess(detail, payload, thunk)))
   })
 
   it('calls failure', () => {
@@ -29,7 +29,7 @@ describe('createPost', () => {
     expect(generator.next().value)
       .toEqual(call([api, api.post], '/posts', 'foo'))
     expect(generator.throw('test').value)
-      .toEqual(put(actions.postCreateFailure('test', payload, async)))
+      .toEqual(put(actions.postCreateFailure('test', payload, thunk)))
   })
 })
 
@@ -42,7 +42,7 @@ describe('readPostList', () => {
     expect(generator.next().value)
       .toEqual(call([api, api.get], '/posts', payload))
     expect(generator.next(detail).value)
-      .toEqual(put(actions.postListReadSuccess(detail, payload, async)))
+      .toEqual(put(actions.postListReadSuccess(detail, payload, thunk)))
   })
 
   it('calls failure', () => {
@@ -50,7 +50,7 @@ describe('readPostList', () => {
     expect(generator.next().value)
       .toEqual(call([api, api.get], '/posts', payload))
     expect(generator.throw('test').value)
-      .toEqual(put(actions.postListReadFailure('test', payload, async)))
+      .toEqual(put(actions.postListReadFailure('test', payload, thunk)))
   })
 })
 

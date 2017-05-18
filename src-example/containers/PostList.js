@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { isPending } from 'redux-saga-async-action'
+import { isPending } from 'redux-saga-thunk'
 import { fromEntities, fromPost } from 'store/selectors'
 import { postListReadRequest, POST_LIST_READ_REQUEST } from 'store/actions'
 
