@@ -5,7 +5,7 @@ import { take, put, call, fork } from 'redux-saga/effects'
 import * as actions from './actions'
 
 export const promises = {
-  fbLogin: (options) => new Promise((resolve, reject) => {
+  fbLogin: options => new Promise((resolve, reject) => {
     window.FB.login((response) => {
       // istanbul ignore else
       if (response.authResponse) {
@@ -15,8 +15,8 @@ export const promises = {
       }
     }, options)
   }),
-  fbGetMe: (options) => new Promise((resolve) => {
-    window.FB.api('/me', options, (me) => resolve(me))
+  fbGetMe: options => new Promise((resolve) => {
+    window.FB.api('/me', options, me => resolve(me))
   }),
   loadGoogleAuth2: () => new Promise((resolve) => {
     window.gapi.load('auth2', resolve)

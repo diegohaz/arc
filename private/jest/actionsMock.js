@@ -1,6 +1,6 @@
 const snakeCase = require('lodash/snakeCase')
 
-const action = (prefix) => new Proxy({}, {
+const action = prefix => new Proxy({}, {
   get: (target, suffix) => () => ({
     type: snakeCase(`${prefix}_${suffix}`).toUpperCase(),
   }),

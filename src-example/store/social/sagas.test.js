@@ -19,7 +19,7 @@ window.gapi = {
 
 window.FB = {
   init: () => {},
-  login: (cb) => cb({ authResponse: 'foo' }),
+  login: cb => cb({ authResponse: 'foo' }),
   api: (endpoint, options, cb) => cb(),
 }
 
