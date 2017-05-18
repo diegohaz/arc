@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withDone } from 'react-router-server'
-import { isPending } from 'redux-saga-async-action'
+import { isPending } from 'redux-saga-thunk'
 import { fromEntities, fromPost } from 'store/selectors'
 import { postListReadRequest, POST_LIST_READ_REQUEST } from 'store/actions'
 
@@ -36,7 +36,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = (dispatch, { limit, done }) => ({
-  readList: () => dispatch(postListReadRequest({ _limit: limit })).then(done).catch(done),
+  readList: () => dispatch(postListReadRequest({ _limit: limit })).then(done, done),
 })
 
 export default withDone(connect(mapStateToProps, mapDispatchToProps)(PostListContainer))

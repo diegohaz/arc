@@ -11,8 +11,8 @@ const api = {
   delete: () => {},
 }
 
-const async = '123'
-const meta = { async }
+const thunk = '123'
+const meta = { thunk }
 
 describe('createResource', () => {
   const payload = { data: 'foo' }
@@ -23,7 +23,7 @@ describe('createResource', () => {
     expect(generator.next().value)
       .toEqual(call([api, api.post], '/resources', 'foo'))
     expect(generator.next(detail).value)
-      .toEqual(put(actions.resourceCreateSuccess(detail, payload, async)))
+      .toEqual(put(actions.resourceCreateSuccess(detail, payload, thunk)))
   })
 
   it('calls failure', () => {
@@ -31,7 +31,7 @@ describe('createResource', () => {
     expect(generator.next().value)
       .toEqual(call([api, api.post], '/resources', 'foo'))
     expect(generator.throw('test').value)
-      .toEqual(put(actions.resourceCreateFailure('test', payload, async)))
+      .toEqual(put(actions.resourceCreateFailure('test', payload, thunk)))
   })
 })
 
@@ -44,7 +44,7 @@ describe('readResourceList', () => {
     expect(generator.next().value)
       .toEqual(call([api, api.get], '/resources', payload))
     expect(generator.next(detail).value)
-      .toEqual(put(actions.resourceListReadSuccess(detail, payload, async)))
+      .toEqual(put(actions.resourceListReadSuccess(detail, payload, thunk)))
   })
 
   it('calls failure', () => {
@@ -52,7 +52,7 @@ describe('readResourceList', () => {
     expect(generator.next().value)
       .toEqual(call([api, api.get], '/resources', payload))
     expect(generator.throw('test').value)
-      .toEqual(put(actions.resourceListReadFailure('test', payload, async)))
+      .toEqual(put(actions.resourceListReadFailure('test', payload, thunk)))
   })
 })
 
@@ -65,7 +65,7 @@ describe('readResourceDetail', () => {
     expect(generator.next().value)
       .toEqual(call([api, api.get], '/resources/1'))
     expect(generator.next(detail).value)
-      .toEqual(put(actions.resourceDetailReadSuccess(detail, payload, async)))
+      .toEqual(put(actions.resourceDetailReadSuccess(detail, payload, thunk)))
   })
 
   it('calls failure', () => {
@@ -73,7 +73,7 @@ describe('readResourceDetail', () => {
     expect(generator.next().value)
       .toEqual(call([api, api.get], '/resources/1'))
     expect(generator.throw('test').value)
-      .toEqual(put(actions.resourceDetailReadFailure('test', payload, async)))
+      .toEqual(put(actions.resourceDetailReadFailure('test', payload, thunk)))
   })
 })
 
@@ -86,7 +86,7 @@ describe('updateResource', () => {
     expect(generator.next().value)
       .toEqual(call([api, api.put], '/resources/1', 'foo'))
     expect(generator.next(detail).value)
-      .toEqual(put(actions.resourceUpdateSuccess(detail, payload, async)))
+      .toEqual(put(actions.resourceUpdateSuccess(detail, payload, thunk)))
   })
 
   it('calls failure', () => {
@@ -94,7 +94,7 @@ describe('updateResource', () => {
     expect(generator.next().value)
       .toEqual(call([api, api.put], '/resources/1', 'foo'))
     expect(generator.throw('test').value)
-      .toEqual(put(actions.resourceUpdateFailure('test', payload, async)))
+      .toEqual(put(actions.resourceUpdateFailure('test', payload, thunk)))
   })
 })
 
@@ -106,7 +106,7 @@ describe('deleteResource', () => {
     expect(generator.next().value)
       .toEqual(call([api, api.delete], '/resources/1'))
     expect(generator.next().value)
-      .toEqual(put(actions.resourceDeleteSuccess(payload, async)))
+      .toEqual(put(actions.resourceDeleteSuccess(payload, thunk)))
   })
 
   it('calls failure', () => {
@@ -114,7 +114,7 @@ describe('deleteResource', () => {
     expect(generator.next().value)
       .toEqual(call([api, api.delete], '/resources/1'))
     expect(generator.throw('test').value)
-      .toEqual(put(actions.resourceDeleteFailure('test', payload, async)))
+      .toEqual(put(actions.resourceDeleteFailure('test', payload, thunk)))
   })
 })
 

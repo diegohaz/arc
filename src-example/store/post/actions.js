@@ -9,28 +9,28 @@ export const postCreateRequest = data => ({
   payload: { data },
   meta: {
     // https://github.com/diegohaz/arc/wiki/Actions#async-actions
-    async: true,
+    thunk: true,
   },
 })
 
-export const postCreateSuccess = (detail, request, async) => ({
+export const postCreateSuccess = (detail, request, thunk) => ({
   type: POST_CREATE_SUCCESS,
   payload: detail,
   meta: {
     request,
-    async,
+    thunk,
     // https://github.com/diegohaz/arc/wiki/Example-redux-modules#entities
     entities: 'post',
   },
 })
 
-export const postCreateFailure = (error, request, async) => ({
+export const postCreateFailure = (error, request, thunk) => ({
   type: POST_CREATE_FAILURE,
   error: true,
   payload: error,
   meta: {
     request,
-    async,
+    thunk,
   },
 })
 
@@ -42,26 +42,26 @@ export const postListReadRequest = params => ({
   type: POST_LIST_READ_REQUEST,
   payload: { params },
   meta: {
-    async: true,
+    thunk: true,
   },
 })
 
-export const postListReadSuccess = (list, request, async) => ({
+export const postListReadSuccess = (list, request, thunk) => ({
   type: POST_LIST_READ_SUCCESS,
   payload: list,
   meta: {
     request,
-    async,
+    thunk,
     entities: 'post',
   },
 })
 
-export const postListReadFailure = (error, request, async) => ({
+export const postListReadFailure = (error, request, thunk) => ({
   type: POST_LIST_READ_FAILURE,
   error: true,
   payload: error,
   meta: {
     request,
-    async,
+    thunk,
   },
 })
