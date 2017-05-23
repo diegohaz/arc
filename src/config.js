@@ -9,14 +9,38 @@ const config = {
     port: process.env.PORT || 3000,
     isBrowser: typeof window !== 'undefined',
     isServer: typeof window === 'undefined',
-    apiUrl: 'https://jsonplaceholder.typicode.com',
+    apiUrl: `http://${process.env.HOST || 'localhost'}:${process.env.PORT || 3000}/api`,
+    mongo: {
+      options: {
+        db: {
+          safe: true,
+        },
+      },
+    },
   },
-  test: {},
-  development: {},
+  test: {
+    mongo: {
+      uri: `mongodb://${process.env.HOST || 'localhost'}/arc-test`,
+      options: {
+        debug: false,
+      },
+    },
+  },
+  development: {
+    mongo: {
+      uri: `mongodb://${process.env.HOST || 'localhost'}/arc-dev`,
+      options: {
+        debug: true,
+      },
+    },
+  },
   production: {
     host: process.env.HOST || 'localhost',
     port: process.env.PORT || 8080,
     apiUrl: 'https://jsonplaceholder.typicode.com',
+    mongo: {
+      uri: process.env.MONGODB_URI || 'mongodb://localhost/arc',
+    },
   },
 }
 

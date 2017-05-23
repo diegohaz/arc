@@ -2,6 +2,10 @@
 import 'babel-polyfill'
 import path from 'path'
 import express from 'express'
+import cors from 'cors'
+import mongoose from 'mongoose'
+import api from 'api'
+
 import React from 'react'
 import serialize from 'serialize-javascript'
 import { ServerStyleSheet } from 'styled-components'
@@ -10,9 +14,9 @@ import { Provider } from 'react-redux'
 import { StaticRouter } from 'react-router'
 import { renderToString } from 'react-router-server'
 
-import { port, host, basename } from 'config'
+import { port, host, basename, mongo } from 'config'
 import configureStore from 'store/configure'
-import api from 'services/api'
+import apiService from 'services/api'
 import App from 'components/App'
 import Html from 'components/Html'
 import Error from 'components/Error'
@@ -39,13 +43,17 @@ const renderHtml = ({ serverState, initialState, content, sheet }) => {
   return `<!doctype html>\n${renderToStaticMarkup(html)}`
 }
 
+mongoose.connect(mongo.uri)
+
 const app = express()
+
+app.use('/api', cors(), api)
 
 app.use(basename, express.static(path.resolve(process.cwd(), 'dist/public')))
 
 app.use((req, res, next) => {
   const location = req.url
-  const store = configureStore({}, { api: api.create() })
+  const store = configureStore({}, { api: apiService.create() })
   const context = {}
   const sheet = new ServerStyleSheet()
 
