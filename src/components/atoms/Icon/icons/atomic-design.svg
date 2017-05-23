@@ -1,0 +1,12 @@
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="128.1 125.4 49.2 49.2" enable-background="new 128.1 125.4 49.2 49.2" xml:space="preserve">
+  <g id="atom">
+  	<g>
+  		<g>
+  			<circle fill="none" stroke-width="3" stroke-miterlimit="10" cx="152.7" cy="150" r="21.6"></circle>
+  			<circle stroke="none" fill="#BE6700" cx="152.7" cy="150" r="12.4"></circle>
+  		</g>
+  		<path stroke="none" fill="#BE6700" d="M175.1,136.6c0,2.9-2.4,5.3-5.3,5.3s-5.3-2.3-5.3-5.3c0-2.9,2.4-5.3,5.3-5.3
+  			C172.7,131.3,175.1,133.7,175.1,136.6z"></path>
+  	</g>
+  </g>
+</svg>
