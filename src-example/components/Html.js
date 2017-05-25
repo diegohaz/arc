@@ -14,7 +14,7 @@ const Html = ({ styles, assets, state, content }) => {
         {helmet.meta.toComponent()}
         {helmet.link.toComponent()}
         {assets.css.map(path => <link rel="stylesheet" type="text/css" key={path} href={path} />)}
-        <style dangerouslySetInnerHTML={{ __html: styles }} />
+        {styles}
       </head>
       <body {...bodyAttrs}>
         <main id="app" dangerouslySetInnerHTML={{ __html: content }} />
@@ -26,7 +26,7 @@ const Html = ({ styles, assets, state, content }) => {
 }
 
 Html.propTypes = {
-  styles: PropTypes.string.isRequired,
+  styles: PropTypes.node.isRequired,
   assets: PropTypes.shape({
     css: PropTypes.array.isRequired,
     js: PropTypes.array.isRequired,

@@ -4,7 +4,7 @@ import path from 'path'
 import express from 'express'
 import React from 'react'
 import serialize from 'serialize-javascript'
-import styleSheet from 'styled-components/lib/models/StyleSheet'
+import { ServerStyleSheet } from 'styled-components'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { Provider } from 'react-redux'
 import { StaticRouter } from 'react-router'
@@ -17,18 +17,19 @@ import App from 'components/App'
 import Html from 'components/Html'
 import Error from 'components/Error'
 
-const renderApp = ({ store, context, location }) => {
-  return renderToString(
+const renderApp = ({ store, context, location, sheet }) => {
+  const app = sheet.collectStyles(
     <Provider store={store}>
       <StaticRouter basename={basename} context={context} location={location}>
         <App />
       </StaticRouter>
     </Provider>
   )
+  return renderToString(app)
 }
 
-const renderHtml = ({ initialState, content }) => {
-  const styles = styleSheet.rules().map(rule => rule.cssText).join('\n')
+const renderHtml = ({ initialState, content, sheet }) => {
+  const styles = sheet.getStyleElement()
   const assets = global.assets
   const state = `window.__INITIAL_STATE__ = ${serialize(initialState)}`
   const html = <Html {...{ styles, assets, state, content }} />
@@ -43,8 +44,9 @@ app.use((req, res, next) => {
   const location = req.url
   const store = configureStore({}, { api: api.create() })
   const context = {}
+  const sheet = new ServerStyleSheet()
 
-  renderApp({ store, context, location }).then(({ html: content }) => {
+  renderApp({ store, context, location, sheet }).then(({ html: content }) => {
     if (context.status) {
       res.status(context.status)
     }
@@ -52,14 +54,15 @@ app.use((req, res, next) => {
       res.redirect(context.url)
     } else {
       const initialState = store.getState()
-      res.send(renderHtml({ initialState, content }))
+      res.send(renderHtml({ initialState, content, sheet }))
     }
   }).catch(next)
 })
 
 app.use((err, req, res, next) => {
-  const content = renderToStaticMarkup(<Error />)
-  res.status(500).send(renderHtml({ content }))
+  const sheet = new ServerStyleSheet()
+  const content = renderToStaticMarkup(sheet.collectStyles(<Error />))
+  res.status(500).send(renderHtml({ content, sheet }))
   console.error(err)
   next(err)
 })
