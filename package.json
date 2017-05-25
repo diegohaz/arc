@@ -90,7 +90,7 @@
     "redux-saga": "^0.15.0",
     "redux-saga-thunk": "^0.4.0",
     "simple-load-script": "^1.0.2",
-    "styled-components": "^1.4.4",
+    "styled-components": "^2.0.0",
     "styled-theme": "^0.3.0",
     "styled-tools": "^0.1.2",
     "validator": "^7.0.0",
