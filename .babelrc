@@ -7,13 +7,15 @@
     "stage-1"
   ],
   "plugins": [
-    "react-hot-loader/babel",
-    "styled-components"
+    "react-hot-loader/babel"
   ],
   "env": {
     "development": {
       "plugins": [
-        "transform-es2015-modules-commonjs"
+        "transform-es2015-modules-commonjs",
+        ["styled-components", {
+          "minify": false
+        }]
       ]
     },
     "test": {
@@ -23,7 +25,10 @@
     },
     "production": {
       "plugins": [
-        "transform-react-remove-prop-types"
+        "transform-react-remove-prop-types",
+        ["styled-components", {
+          "displayName": false
+        }]
       ]
     }
   }
