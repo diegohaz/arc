@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { isPending } from 'redux-saga-thunk'
-import { fromEntities, fromPost } from 'store/selectors'
-import { postListReadRequest, POST_LIST_READ_REQUEST } from 'store/actions'
+import { fromEntities, fromResource } from 'store/selectors'
+import { resourceListReadRequest } from 'store/actions'
 
 import { PostList } from 'components'
 
@@ -30,12 +30,12 @@ class PostListContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  list: fromEntities.getList(state, 'post', fromPost.getList(state)),
-  loading: isPending(state, POST_LIST_READ_REQUEST),
+  list: fromEntities.getList(state, 'posts', fromResource.getList(state, 'posts')),
+  loading: isPending(state, 'postsListRead'),
 })
 
 const mapDispatchToProps = (dispatch, { limit }) => ({
-  readList: () => dispatch(postListReadRequest({ _limit: limit })),
+  readList: () => dispatch(resourceListReadRequest('posts', { _limit: limit })),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostListContainer)

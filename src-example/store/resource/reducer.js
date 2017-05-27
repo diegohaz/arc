@@ -2,7 +2,7 @@
 // https://github.com/diegohaz/arc/wiki/Example-redux-modules#resource
 import findIndex from 'lodash/findIndex'
 import get from 'lodash/get'
-import { initialState } from './selectors'
+import { initialState, getResourceState, getList, getDetail } from './selectors'
 import {
   RESOURCE_CREATE_SUCCESS,
   RESOURCE_LIST_READ_REQUEST,
@@ -15,11 +15,11 @@ import {
 
 
 const updateOrDeleteReducer = (state, { type, payload, meta }) => {
-  const needle = get(payload, 'needle', get(meta, 'request.needle'))
+  const resource = get(meta, 'resource')
+  const needle = get(meta, 'request.needle')
   const needleIsObject = typeof needle === 'object'
-  const index = needleIsObject
-    ? findIndex(state.list, needle)
-    : state.list.indexOf(needle)
+  const list = getList(state, resource)
+  const index = needleIsObject ? findIndex(list, needle) : list.indexOf(needle)
 
   if (index < 0) {
     return state
@@ -29,16 +29,25 @@ const updateOrDeleteReducer = (state, { type, payload, meta }) => {
     case RESOURCE_UPDATE_SUCCESS:
       return {
         ...state,
-        list: [
-          ...state.list.slice(0, index),
-          needleIsObject ? { ...state.list[index], ...payload } : payload,
-          ...state.list.slice(index + 1),
-        ],
+        [resource]: {
+          ...getResourceState(state, resource),
+          list: [
+            ...list.slice(0, index),
+            needleIsObject ? { ...list[index], ...payload } : payload,
+            ...list.slice(index + 1),
+          ],
+        },
       }
     case RESOURCE_DELETE_SUCCESS:
       return {
         ...state,
-        list: [...state.list.slice(0, index), ...state.list.slice(index + 1)],
+        [resource]: {
+          ...getResourceState(state, resource),
+          list: [
+            ...list.slice(0, index),
+            ...list.slice(index + 1),
+          ],
+        },
       }
     // istanbul ignore next
     default:
@@ -47,33 +56,54 @@ const updateOrDeleteReducer = (state, { type, payload, meta }) => {
 }
 
 export default (state = initialState, { type, payload, meta }) => {
+  const resource = get(meta, 'resource')
+
+  if (!resource) {
+    return state
+  }
+
   switch (type) {
     case RESOURCE_CREATE_SUCCESS:
       return {
         ...state,
-        list: [payload, ...state.list],
+        [resource]: {
+          ...getResourceState(state, resource),
+          list: [payload, ...getList(state, resource)],
+        },
       }
 
     case RESOURCE_LIST_READ_REQUEST:
       return {
         ...state,
-        list: initialState.list,
+        [resource]: {
+          ...getResourceState(state, resource),
+          list: getList(initialState, resource),
+        },
       }
     case RESOURCE_LIST_READ_SUCCESS:
       return {
         ...state,
-        list: payload,
+        [resource]: {
+          ...getResourceState(state, resource),
+          list: payload,
+        },
       }
 
     case RESOURCE_DETAIL_READ_REQUEST:
       return {
         ...state,
-        detail: initialState.detail,
+        [resource]: {
+          ...getResourceState(state, resource),
+          detail: getDetail(initialState, resource),
+        },
       }
     case RESOURCE_DETAIL_READ_SUCCESS:
       return {
         ...state,
-        detail: payload,
+        [resource]: {
+          ...getResourceState(state, resource),
+          detail: payload,
+        },
       }
 
     case RESOURCE_UPDATE_SUCCESS:

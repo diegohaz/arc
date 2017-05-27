@@ -21,7 +21,7 @@ const middleware = store => next => (action) => {
     // istanbul ignore next
     if (env === 'development') {
       // eslint-disable-next-line no-console
-      console.warn(`[entities] There is no ${meta.entities} schema on ${__dirname}/schemas.js`)
+      console.warn(`[entities] There is no ${meta.entities} schema on schemas.js`)
     }
   }
   return next(action)
