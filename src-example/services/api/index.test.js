@@ -44,7 +44,7 @@ describe('parseSettings', () => {
   })
 
   it('merges headers', () => {
-    const otherSettings = { headers: { foo: 'bar' }}
+    const otherSettings = { headers: { foo: 'bar' } }
     const settings = parseSettings(otherSettings)
     expect(settings).toHaveProperty('headers.foo', 'bar')
     expect(Object.keys(settings.headers).length)
