@@ -42,6 +42,14 @@ describe('parseSettings', () => {
   it('has passed method', () => {
     expect(parseSettings({ method: 'post' }).method).toBe('post')
   })
+
+  it('merges headers', () => {
+    const otherSettings = { headers: { foo: 'bar' }}
+    const settings = parseSettings(otherSettings)
+    expect(settings).toHaveProperty('headers.foo', 'bar')
+    expect(Object.keys(settings.headers).length)
+      .toBeGreaterThan(Object.keys(otherSettings.headers).length)
+  })
 })
 
 describe('parseEndpoint', () => {
