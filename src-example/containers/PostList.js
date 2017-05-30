@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { withDone } from 'react-router-server'
+import { fetchState } from 'react-router-server'
 import { isPending } from 'redux-saga-thunk'
-import { fromEntities, fromPost } from 'store/selectors'
-import { postListReadRequest, POST_LIST_READ_REQUEST } from 'store/actions'
+import { fromEntities, fromResource } from 'store/selectors'
+import { resourceListReadRequest } from 'store/actions'
+import { isBrowser, isServer } from 'config'
 
 import { PostList } from 'components'
 
@@ -14,6 +15,9 @@ class PostListContainer extends Component {
     limit: PropTypes.number,
     loading: PropTypes.bool,
     readList: PropTypes.func.isRequired,
+    hasServerState: PropTypes.bool,
+    setServerState: PropTypes.func.isRequired,
+    cleanServerState: PropTypes.func.isRequired,
   }
 
   static defaultProps = {
@@ -21,7 +25,13 @@ class PostListContainer extends Component {
   }
 
   componentWillMount() {
-    this.props.readList()
+    const { readList, hasServerState, setServerState, cleanServerState } = this.props
+
+    if (!hasServerState) {
+      readList().then(isServer && setServerState)
+    } else if (isBrowser) {
+      cleanServerState()
+    }
   }
 
   render() {
@@ -31,12 +41,22 @@ class PostListContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  list: fromEntities.getList(state, 'post', fromPost.getList(state)),
-  loading: isPending(state, POST_LIST_READ_REQUEST),
+  list: fromEntities.getList(state, 'posts', fromResource.getList(state, 'posts')),
+  loading: isPending(state, 'postsListRead'),
 })
 
-const mapDispatchToProps = (dispatch, { limit, done }) => ({
-  readList: () => dispatch(postListReadRequest({ _limit: limit })).then(done, done),
+const mapDispatchToProps = (dispatch, { limit }) => ({
+  readList: () => dispatch(resourceListReadRequest('posts', { _limit: limit })),
 })
 
-export default withDone(connect(mapStateToProps, mapDispatchToProps)(PostListContainer))
+const withServerState = fetchState(
+  state => ({
+    hasServerState: !!state.data,
+  }),
+  actions => ({
+    setServerState: data => actions.done({ data }),
+    cleanServerState: () => actions.done(),
+  })
+)
+
+export default withServerState(connect(mapStateToProps, mapDispatchToProps)(PostListContainer))
