@@ -21,12 +21,11 @@ export const parseSettings = ({ method = 'get', data, locale, ...otherSettings }
     'Content-Type': 'application/json',
     'Accept-Language': locale,
   }
-  const settings = {
+  const settings = merge({
     body: data ? JSON.stringify(data) : undefined,
     method,
     headers,
-    ...otherSettings,
-  }
+  }, otherSettings)
   return settings
 }
 
