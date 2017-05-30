@@ -33,74 +33,74 @@ describe('resource', () => {
   test('resourceCreateRequest', async () => {
     const { getState, dispatch } = getStore()
 
-    expect(getList(getState())).toEqual([])
+    expect(getList(getState(), 'resources')).toEqual([])
 
-    dispatch(resourceCreateRequest({ title: 'foo' }))
+    dispatch(resourceCreateRequest('resources', { title: 'foo' }))
     await delay()
-    expect(getList(getState())).toEqual([{ title: 'foo' }])
+    expect(getList(getState(), 'resources')).toEqual([{ title: 'foo' }])
 
-    dispatch(resourceCreateRequest({ title: 'bar' }))
+    dispatch(resourceCreateRequest('resources', { title: 'bar' }))
     await delay()
-    expect(getList(getState())).toEqual([{ title: 'bar' }, { title: 'foo' }])
+    expect(getList(getState(), 'resources')).toEqual([{ title: 'bar' }, { title: 'foo' }])
   })
 
   test('resourceListReadRequest', async () => {
     const { getState, dispatch } = getStore()
 
-    expect(getList(getState())).toEqual([])
+    expect(getList(getState(), 'resources')).toEqual([])
 
-    dispatch(resourceListReadRequest())
+    dispatch(resourceListReadRequest('resources'))
     await delay()
-    expect(getList(getState())).toEqual([1, 2, 3])
+    expect(getList(getState(), 'resources')).toEqual([1, 2, 3])
 
-    dispatch(resourceListReadRequest())
+    dispatch(resourceListReadRequest('resources'))
     await delay()
-    expect(getList(getState())).toEqual([1, 2, 3])
+    expect(getList(getState(), 'resources')).toEqual([1, 2, 3])
   })
 
   test('resourceDetailReadRequest', async () => {
     const { getState, dispatch } = getStore()
 
-    expect(getDetail(getState())).toBeNull()
+    expect(getDetail(getState(), 'resources')).toBeNull()
 
-    dispatch(resourceDetailReadRequest())
+    dispatch(resourceDetailReadRequest('resources'))
     await delay()
-    expect(getDetail(getState())).toEqual([1, 2, 3])
+    expect(getDetail(getState(), 'resources')).toEqual([1, 2, 3])
 
-    dispatch(resourceDetailReadRequest())
+    dispatch(resourceDetailReadRequest('resources'))
     await delay()
-    expect(getDetail(getState())).toEqual([1, 2, 3])
+    expect(getDetail(getState(), 'resources')).toEqual([1, 2, 3])
   })
 
   test('resourceUpdateRequest', async () => {
-    const { getState, dispatch } = getStore({ list: [1, 2, 3] })
+    const { getState, dispatch } = getStore({ resources: { list: [1, 2, 3] } })
 
-    expect(getList(getState())).toEqual([1, 2, 3])
+    expect(getList(getState(), 'resources')).toEqual([1, 2, 3])
 
-    dispatch(resourceUpdateRequest(1, 4))
+    dispatch(resourceUpdateRequest('resources', 1, 4))
     await delay()
-    expect(getList(getState())).toEqual([4, 2, 3])
+    expect(getList(getState(), 'resources')).toEqual([4, 2, 3])
 
-    dispatch(resourceUpdateRequest(4, { title: 'foo' }))
+    dispatch(resourceUpdateRequest('resources', 4, { title: 'foo' }))
     await delay()
-    expect(getList(getState())).toEqual([{ title: 'foo' }, 2, 3])
+    expect(getList(getState(), 'resources')).toEqual([{ title: 'foo' }, 2, 3])
 
-    dispatch(resourceUpdateRequest({ title: 'foo' }, { foo: 'bar' }))
+    dispatch(resourceUpdateRequest('resources', { title: 'foo' }, { foo: 'bar' }))
     await delay()
-    expect(getList(getState())).toEqual([{ title: 'foo', foo: 'bar' }, 2, 3])
+    expect(getList(getState(), 'resources')).toEqual([{ title: 'foo', foo: 'bar' }, 2, 3])
   })
 
   test('resourceDeleteRequest', async () => {
-    const { getState, dispatch } = getStore({ list: [1, 2, { foo: 'bar' }] })
+    const { getState, dispatch } = getStore({ resources: { list: [1, 2, { foo: 'bar' }] } })
 
-    expect(getList(getState())).toEqual([1, 2, { foo: 'bar' }])
+    expect(getList(getState(), 'resources')).toEqual([1, 2, { foo: 'bar' }])
 
-    dispatch(resourceDeleteRequest(1))
+    dispatch(resourceDeleteRequest('resources', 1))
     await delay()
-    expect(getList(getState())).toEqual([2, { foo: 'bar' }])
+    expect(getList(getState(), 'resources')).toEqual([2, { foo: 'bar' }])
 
-    dispatch(resourceDeleteRequest({ foo: 'bar' }))
+    dispatch(resourceDeleteRequest('resources', { foo: 'bar' }))
     await delay()
-    expect(getList(getState())).toEqual([2])
+    expect(getList(getState(), 'resources')).toEqual([2])
   })
 })

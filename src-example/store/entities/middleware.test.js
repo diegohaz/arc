@@ -5,9 +5,8 @@ import { entitiesReceive } from './actions'
 
 jest.mock('./schemas', () => {
   const { schema } = require('normalizr')
-  const entity = new schema.Entity('entity')
   return {
-    entity,
+    entity: new schema.Entity('entity'),
   }
 })
 

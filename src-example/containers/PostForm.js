@@ -1,13 +1,13 @@
 import React from 'react'
 import { reduxForm } from 'redux-form'
-import { postCreateRequest } from 'store/actions'
+import { resourceCreateRequest } from 'store/actions'
 import { createValidator, required } from 'services/validation'
 
 import { PostForm } from 'components'
 
 const PostFormContainer = props => <PostForm {...props} />
 
-const onSubmit = (data, dispatch) => dispatch(postCreateRequest(data))
+const onSubmit = (data, dispatch) => dispatch(resourceCreateRequest('posts', data))
 
 const validate = createValidator({
   title: [required],
