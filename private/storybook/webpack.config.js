@@ -2,10 +2,10 @@ const baseConfig = require('../../webpack.config')
 
 module.exports = storybookBaseConfig =>
   Object.assign({}, storybookBaseConfig, {
-    resolve: {
-      modulesDirectories: baseConfig.resolve.modules,
-    },
+    resolve: Object.assign({}, storybookBaseConfig.resolve, {
+      modules: baseConfig.resolve.modules,
+    }),
     module: Object.assign({}, storybookBaseConfig.module, {
-      loaders: storybookBaseConfig.module.loaders.concat(baseConfig.module.rules.slice(1)),
+      rules: storybookBaseConfig.module.rules.concat(baseConfig.module.rules.slice(1)),
     }),
   })
