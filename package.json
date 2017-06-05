@@ -19,7 +19,8 @@
     "build:copy": "copyfiles -u 1 public/* public/**/* dist",
     "prebuild": "npm run build:clean && npm run build:copy",
     "build": "npm run env:prod -- webpack",
-    "build:example": "npm run env:example -- npm run build"
+    "build:example": "npm run env:example -- npm run build",
+    "component": "generact"
   },
   "jest": {
     "moduleDirectories": [
@@ -57,6 +58,7 @@
     "eslint-plugin-no-unused-vars-rest": "^1.0.6",
     "eslint-plugin-react": "^7.0.1",
     "file-loader": "^0.11.0",
+    "generact": "^0.1.0",
     "html-webpack-plugin": "^2.26.0",
     "jest-cli": "^20.0.0",
     "opn-cli": "^3.1.0",
