@@ -10,10 +10,11 @@ const Wrapper = styled.div`
   }
 `
 
-const PostList = ({ list, loading, ...props }) => {
+const PostList = ({ list, loading, failed, ...props }) => {
   return (
     <Wrapper {...props}>
       {!list.length && loading && <div>Loading</div>}
+      {failed && <div>Something went wrong while fetching posts. Please, try again later.</div>}
       {list.map(post => <Post key={post.id} {...post} />)}
     </Wrapper>
   )
@@ -22,6 +23,7 @@ const PostList = ({ list, loading, ...props }) => {
 PostList.propTypes = {
   list: PropTypes.arrayOf(PropTypes.object).isRequired,
   loading: PropTypes.bool,
+  failed: PropTypes.bool,
 }
 
 export default PostList
