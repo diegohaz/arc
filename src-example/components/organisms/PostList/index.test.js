@@ -19,3 +19,8 @@ it('renders loading when passed in', () => {
   const wrapper = wrap({ loading: true, list: [] })
   expect(wrapper.contains('Loading')).toBe(true)
 })
+
+it('renders failed when passed in', () => {
+  const wrapper = wrap({ failed: true, list: [] })
+  expect(wrapper.find('div')).toHaveLength(1)
+})

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { isPending } from 'redux-saga-thunk'
+import { isPending, hasFailed } from 'redux-saga-thunk'
 import { fromEntities, fromResource } from 'store/selectors'
 import { resourceListReadRequest } from 'store/actions'
 
@@ -12,6 +12,7 @@ class PostListContainer extends Component {
     list: PropTypes.arrayOf(PropTypes.object).isRequired,
     limit: PropTypes.number,
     loading: PropTypes.bool,
+    failed: PropTypes.bool,
     readList: PropTypes.func.isRequired,
   }
 
@@ -24,14 +25,15 @@ class PostListContainer extends Component {
   }
 
   render() {
-    const { list, loading } = this.props
-    return <PostList {...{ list, loading }} />
+    const { list, loading, failed } = this.props
+    return <PostList {...{ list, loading, failed }} />
   }
 }
 
 const mapStateToProps = state => ({
   list: fromEntities.getList(state, 'posts', fromResource.getList(state, 'posts')),
   loading: isPending(state, 'postsListRead'),
+  failed: hasFailed(state, 'postsListRead'),
 })
 
 const mapDispatchToProps = (dispatch, { limit }) => ({
