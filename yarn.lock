@@ -2333,16 +2333,9 @@ domutils@1.1:
   dependencies:
     domelementtype "1"
 
-domutils@1.5.1:
+domutils@1.5.1, domutils@^1.5.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/domutils/-/domutils-1.5.1.tgz#dcd8488a26f563d61079e48c9f7b7e32373682cf"
-  dependencies:
-    dom-serializer "0"
-    domelementtype "1"
-
-domutils@^1.5.1:
-  version "1.6.2"
-  resolved "https://registry.yarnpkg.com/domutils/-/domutils-1.6.2.tgz#1958cc0b4c9426e9ed367fb1c8e854891b0fa3ff"
   dependencies:
     dom-serializer "0"
     domelementtype "1"
@@ -5618,7 +5611,7 @@ react-komposer@^2.0.0:
     react-stubber "^1.0.0"
     shallowequal "^0.2.2"
 
-react-modal@^1.6.5, react-modal@^1.7.6, react-modal@^1.7.7:
+react-modal@^1.7.6, react-modal@^1.7.7:
   version "1.9.7"
   resolved "https://registry.yarnpkg.com/react-modal/-/react-modal-1.9.7.tgz#07ef56790b953e3b98ef1e2989e347983c72871d"
   dependencies:
@@ -5627,6 +5620,15 @@ react-modal@^1.6.5, react-modal@^1.7.6, react-modal@^1.7.7:
     exenv "1.2.0"
     lodash.assign "^4.2.0"
     prop-types "^15.5.7"
+    react-dom-factories "^1.0.0"
+
+react-modal@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/react-modal/-/react-modal-2.0.6.tgz#00eaa806ec6b52625e25716cda07734692c99e31"
+  dependencies:
+    element-class "^0.2.0"
+    exenv "1.2.0"
+    prop-types "^15.5.10"
     react-dom-factories "^1.0.0"
 
 react-proxy@^3.0.0-alpha.0:
