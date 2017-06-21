@@ -6897,9 +6897,9 @@ webpack-blocks-happypack@^0.1.3:
     happypack "^3.0.3"
     lodash "^4.17.4"
 
-webpack-blocks-server-source-map@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/webpack-blocks-server-source-map/-/webpack-blocks-server-source-map-0.1.0.tgz#aa2e180eacbfc58ab33c98dd807aca7056707437"
+webpack-blocks-server-source-map@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/webpack-blocks-server-source-map/-/webpack-blocks-server-source-map-0.2.0.tgz#af2a073971a991401c362ca7b513ad3c05206eb9"
   dependencies:
     source-map-support "^0.4.14"
 
