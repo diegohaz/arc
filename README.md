@@ -13,6 +13,8 @@
 
 ## Branches
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/diegohaz/arc.svg)](https://greenkeeper.io/)
+
 - ### [`master`](https://github.com/diegohaz/arc)
 
   The basic stack with [React](https://facebook.github.io/react/), [Webpack](https://github.com/webpack/webpack), [react-router](https://github.com/ReactTraining/react-router) and [Jest](https://facebook.github.io/jest/).
