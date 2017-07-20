@@ -6,10 +6,10 @@ import { Heading, Paragraph } from 'components'
 
 const Article = styled.article``
 
-const Post = ({ title, body, ...props }) => {
+const Post = ({ title, body, commentCount, ...props }) => {
   return (
     <Article {...props}>
-      <Heading level={2}>{title}</Heading>
+      <Heading level={2}>{title} {commentCount !== 0 && `(${commentCount})`}</Heading>
       <Paragraph>{body}</Paragraph>
     </Article>
   )
@@ -18,6 +18,7 @@ const Post = ({ title, body, ...props }) => {
 Post.propTypes = {
   title: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
+  commentCount: PropTypes.number.isRequired,
 }
 
 export default Post

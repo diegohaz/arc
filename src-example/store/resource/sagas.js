@@ -53,35 +53,35 @@ export function* deleteResource(api, { needle }, { resource, thunk }) {
 export function* watchResourceCreateRequest(api) {
   while (true) {
     const { payload, meta } = yield take(actions.RESOURCE_CREATE_REQUEST)
-    yield call(createResource, api, payload, meta)
+    yield fork(createResource, api, payload, meta)
   }
 }
 
 export function* watchResourceListReadRequest(api) {
   while (true) {
     const { payload, meta } = yield take(actions.RESOURCE_LIST_READ_REQUEST)
-    yield call(readResourceList, api, payload, meta)
+    yield fork(readResourceList, api, payload, meta)
   }
 }
 
 export function* watchResourceDetailReadRequest(api) {
   while (true) {
     const { payload, meta } = yield take(actions.RESOURCE_DETAIL_READ_REQUEST)
-    yield call(readResourceDetail, api, payload, meta)
+    yield fork(readResourceDetail, api, payload, meta)
   }
 }
 
 export function* watchResourceUpdateRequest(api) {
   while (true) {
     const { payload, meta } = yield take(actions.RESOURCE_UPDATE_REQUEST)
-    yield call(updateResource, api, payload, meta)
+    yield fork(updateResource, api, payload, meta)
   }
 }
 
 export function* watchResourceDeleteRequest(api) {
   while (true) {
     const { payload, meta } = yield take(actions.RESOURCE_DELETE_REQUEST)
-    yield call(deleteResource, api, payload, meta)
+    yield fork(deleteResource, api, payload, meta)
   }
 }
 

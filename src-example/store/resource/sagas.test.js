@@ -125,7 +125,7 @@ test('watchResourceCreateRequest', () => {
   expect(generator.next().value)
     .toEqual(take(actions.RESOURCE_CREATE_REQUEST))
   expect(generator.next({ payload, meta }).value)
-    .toEqual(call(sagas.createResource, api, payload, meta))
+    .toEqual(fork(sagas.createResource, api, payload, meta))
 })
 
 test('watchResourceListReadRequest', () => {
@@ -134,7 +134,7 @@ test('watchResourceListReadRequest', () => {
   expect(generator.next().value)
     .toEqual(take(actions.RESOURCE_LIST_READ_REQUEST))
   expect(generator.next({ payload, meta }).value)
-    .toEqual(call(sagas.readResourceList, api, payload, meta))
+    .toEqual(fork(sagas.readResourceList, api, payload, meta))
 })
 
 test('watchResourceDetailReadRequest', () => {
@@ -143,7 +143,7 @@ test('watchResourceDetailReadRequest', () => {
   expect(generator.next().value)
     .toEqual(take(actions.RESOURCE_DETAIL_READ_REQUEST))
   expect(generator.next({ payload, meta }).value)
-    .toEqual(call(sagas.readResourceDetail, api, payload, meta))
+    .toEqual(fork(sagas.readResourceDetail, api, payload, meta))
 })
 
 test('watchResourceUpdateRequest', () => {
@@ -152,7 +152,7 @@ test('watchResourceUpdateRequest', () => {
   expect(generator.next().value)
     .toEqual(take(actions.RESOURCE_UPDATE_REQUEST))
   expect(generator.next({ payload, meta }).value)
-    .toEqual(call(sagas.updateResource, api, payload, meta))
+    .toEqual(fork(sagas.updateResource, api, payload, meta))
 })
 
 test('watchResourceDeleteRequest', () => {
@@ -161,7 +161,7 @@ test('watchResourceDeleteRequest', () => {
   expect(generator.next().value)
     .toEqual(take(actions.RESOURCE_DELETE_REQUEST))
   expect(generator.next({ payload, meta }).value)
-    .toEqual(call(sagas.deleteResource, api, payload, meta))
+    .toEqual(fork(sagas.deleteResource, api, payload, meta))
 })
 
 test('saga', () => {
