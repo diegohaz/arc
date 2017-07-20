@@ -8,7 +8,7 @@ const posts = [
   { id: 3, title: 'title 3', body: 'body 3' },
 ]
 
-const wrap = (props = {}) => shallow(<PostList posts={posts} {...props} />)
+const wrap = (props = {}) => shallow(<PostList posts={posts} {...props} comments={[]} />)
 
 it('renders props when passed in', () => {
   const wrapper = wrap({ id: 'foo' })
