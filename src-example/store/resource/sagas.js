@@ -1,6 +1,6 @@
 // https://github.com/diegohaz/arc/wiki/Sagas
 // https://github.com/diegohaz/arc/wiki/Example-redux-modules#resource
-import { take, put, call, fork } from 'redux-saga/effects'
+import { put, call, takeEvery } from 'redux-saga/effects'
 import * as actions from './actions'
 
 export function* createResource(api, { data }, { resource, thunk }) {
@@ -50,45 +50,30 @@ export function* deleteResource(api, { needle }, { resource, thunk }) {
   }
 }
 
-export function* watchResourceCreateRequest(api) {
-  while (true) {
-    const { payload, meta } = yield take(actions.RESOURCE_CREATE_REQUEST)
-    yield call(createResource, api, payload, meta)
-  }
+export function* watchResourceCreateRequest(api, { payload, meta }) {
+  yield call(createResource, api, payload, meta)
 }
 
-export function* watchResourceListReadRequest(api) {
-  while (true) {
-    const { payload, meta } = yield take(actions.RESOURCE_LIST_READ_REQUEST)
-    yield call(readResourceList, api, payload, meta)
-  }
+export function* watchResourceListReadRequest(api, { payload, meta }) {
+  yield call(readResourceList, api, payload, meta)
 }
 
-export function* watchResourceDetailReadRequest(api) {
-  while (true) {
-    const { payload, meta } = yield take(actions.RESOURCE_DETAIL_READ_REQUEST)
-    yield call(readResourceDetail, api, payload, meta)
-  }
+export function* watchResourceDetailReadRequest(api, { payload, meta }) {
+  yield call(readResourceDetail, api, payload, meta)
 }
 
-export function* watchResourceUpdateRequest(api) {
-  while (true) {
-    const { payload, meta } = yield take(actions.RESOURCE_UPDATE_REQUEST)
-    yield call(updateResource, api, payload, meta)
-  }
+export function* watchResourceUpdateRequest(api, { payload, meta }) {
+  yield call(updateResource, api, payload, meta)
 }
 
-export function* watchResourceDeleteRequest(api) {
-  while (true) {
-    const { payload, meta } = yield take(actions.RESOURCE_DELETE_REQUEST)
-    yield call(deleteResource, api, payload, meta)
-  }
+export function* watchResourceDeleteRequest(api, { payload, meta }) {
+  yield call(deleteResource, api, payload, meta)
 }
 
 export default function* ({ api }) {
-  yield fork(watchResourceCreateRequest, api)
-  yield fork(watchResourceListReadRequest, api)
-  yield fork(watchResourceDetailReadRequest, api)
-  yield fork(watchResourceUpdateRequest, api)
-  yield fork(watchResourceDeleteRequest, api)
+  yield takeEvery(actions.RESOURCE_CREATE_REQUEST, watchResourceCreateRequest, api)
+  yield takeEvery(actions.RESOURCE_LIST_READ_REQUEST, watchResourceListReadRequest, api)
+  yield takeEvery(actions.RESOURCE_DETAIL_READ_REQUEST, watchResourceDetailReadRequest, api)
+  yield takeEvery(actions.RESOURCE_UPDATE_REQUEST, watchResourceUpdateRequest, api)
+  yield takeEvery(actions.RESOURCE_DELETE_REQUEST, watchResourceDeleteRequest, api)
 }

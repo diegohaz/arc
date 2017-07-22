@@ -1,6 +1,6 @@
 // https://github.com/diegohaz/arc/wiki/Sagas#unit-testing-sagas
 // https://github.com/diegohaz/arc/wiki/Example-redux-modules#resource
-import { take, put, call, fork } from 'redux-saga/effects'
+import { put, call, takeEvery } from 'redux-saga/effects'
 import * as actions from './actions'
 import saga, * as sagas from './sagas'
 
@@ -121,54 +121,44 @@ describe('deleteResource', () => {
 
 test('watchResourceCreateRequest', () => {
   const payload = { data: 1 }
-  const generator = sagas.watchResourceCreateRequest(api)
+  const generator = sagas.watchResourceCreateRequest(api, { payload, meta })
   expect(generator.next().value)
-    .toEqual(take(actions.RESOURCE_CREATE_REQUEST))
-  expect(generator.next({ payload, meta }).value)
     .toEqual(call(sagas.createResource, api, payload, meta))
 })
 
 test('watchResourceListReadRequest', () => {
   const payload = { params: { _limit: 1 } }
-  const generator = sagas.watchResourceListReadRequest(api)
+  const generator = sagas.watchResourceListReadRequest(api, { payload, meta })
   expect(generator.next().value)
-    .toEqual(take(actions.RESOURCE_LIST_READ_REQUEST))
-  expect(generator.next({ payload, meta }).value)
     .toEqual(call(sagas.readResourceList, api, payload, meta))
 })
 
 test('watchResourceDetailReadRequest', () => {
   const payload = { needle: 1 }
-  const generator = sagas.watchResourceDetailReadRequest(api)
+  const generator = sagas.watchResourceDetailReadRequest(api, { payload, meta })
   expect(generator.next().value)
-    .toEqual(take(actions.RESOURCE_DETAIL_READ_REQUEST))
-  expect(generator.next({ payload, meta }).value)
     .toEqual(call(sagas.readResourceDetail, api, payload, meta))
 })
 
 test('watchResourceUpdateRequest', () => {
   const payload = { needle: 1, data: { id: 1 } }
-  const generator = sagas.watchResourceUpdateRequest(api)
+  const generator = sagas.watchResourceUpdateRequest(api, { payload, meta })
   expect(generator.next().value)
-    .toEqual(take(actions.RESOURCE_UPDATE_REQUEST))
-  expect(generator.next({ payload, meta }).value)
     .toEqual(call(sagas.updateResource, api, payload, meta))
 })
 
 test('watchResourceDeleteRequest', () => {
   const payload = { needle: 1 }
-  const generator = sagas.watchResourceDeleteRequest(api)
-  expect(generator.next().value)
-    .toEqual(take(actions.RESOURCE_DELETE_REQUEST))
+  const generator = sagas.watchResourceDeleteRequest(api, { payload, meta })
   expect(generator.next({ payload, meta }).value)
     .toEqual(call(sagas.deleteResource, api, payload, meta))
 })
 
 test('saga', () => {
   const generator = saga({ api })
-  expect(generator.next().value).toEqual(fork(sagas.watchResourceCreateRequest, api))
-  expect(generator.next().value).toEqual(fork(sagas.watchResourceListReadRequest, api))
-  expect(generator.next().value).toEqual(fork(sagas.watchResourceDetailReadRequest, api))
-  expect(generator.next().value).toEqual(fork(sagas.watchResourceUpdateRequest, api))
-  expect(generator.next().value).toEqual(fork(sagas.watchResourceDeleteRequest, api))
+  expect(generator.next().value).toEqual(takeEvery(actions.RESOURCE_CREATE_REQUEST, sagas.watchResourceCreateRequest, api))
+  expect(generator.next().value).toEqual(takeEvery(actions.RESOURCE_LIST_READ_REQUEST, sagas.watchResourceListReadRequest, api))
+  expect(generator.next().value).toEqual(takeEvery(actions.RESOURCE_DETAIL_READ_REQUEST, sagas.watchResourceDetailReadRequest, api))
+  expect(generator.next().value).toEqual(takeEvery(actions.RESOURCE_UPDATE_REQUEST, sagas.watchResourceUpdateRequest, api))
+  expect(generator.next().value).toEqual(takeEvery(actions.RESOURCE_DELETE_REQUEST, sagas.watchResourceDeleteRequest, api))
 })
