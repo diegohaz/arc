@@ -2,10 +2,10 @@ import React from 'react'
 import { mount, shallow } from 'enzyme'
 import Post from '.'
 
-const wrap = (props = {}) => shallow(<Post title="test title" body="test body" commentCount={0} {...props} />)
+const wrap = (props = {}) => shallow(<Post title="test title" body="test body" {...props} />)
 
 it('mounts with different combination of props', () => {
-  const wrapMounted = (props = {}) => mount(<Post title="a" body="b" commentCount={0} {...props} />)
+  const wrapMounted = (props = {}) => mount(<Post title="a" body="b" {...props} />)
   wrapMounted()
   wrapMounted({ loading: true })
 })

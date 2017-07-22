@@ -10,23 +10,18 @@ const Wrapper = styled.div`
   }
 `
 
-const PostList = ({ posts, comments, loading, failed, ...props }) => {
+const PostList = ({ list, loading, failed, ...props }) => {
   return (
     <Wrapper {...props}>
-      {!posts.length && loading && <div>Loading</div>}
+      {!list.length && loading && <div>Loading</div>}
       {failed && <div>Something went wrong while fetching posts. Please, try again later.</div>}
-      {posts.map(post => (<Post
-        key={post.id}
-        {...post}
-        commentCount={comments.filter(comment => comment.postId === post.id).length}
-      />))}
+      {list.map(post => <Post key={post.id} {...post} />)}
     </Wrapper>
   )
 }
 
 PostList.propTypes = {
-  posts: PropTypes.arrayOf(PropTypes.object).isRequired,
-  comments: PropTypes.arrayOf(PropTypes.object).isRequired,
+  list: PropTypes.arrayOf(PropTypes.object).isRequired,
   loading: PropTypes.bool,
   failed: PropTypes.bool,
 }
