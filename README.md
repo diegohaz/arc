@@ -1,12 +1,12 @@
 <p align="center">
   <img alt="arclogo" src="https://cloud.githubusercontent.com/assets/3068563/23199029/55e9d55a-f8aa-11e6-91a2-74b82db3813c.png"><br><br>
   <a href="https://github.com/diegohaz/arc/releases/latest"><img src="https://github-release-version.herokuapp.com/github/diegohaz/arc/release.svg?style=flat-square" alt="Latest release" /></a>
-  <a href="https://travis-ci.org/diegohaz/arc"><img src="https://img.shields.io/travis/diegohaz/arc/master.svg?style=flat-square" alt="Build Status" /></a>
-  <a href="https://codecov.io/gh/diegohaz/arc"><img src="https://img.shields.io/codecov/c/github/diegohaz/arc.svg?style=flat-square" alt="Coverage Status" /></a>
+  <a href="https://travis-ci.org/diegohaz/arc"><img src="https://img.shields.io/travis/diegohaz/arc/redux.svg?style=flat-square" alt="Build Status" /></a>
+  <a href="https://codecov.io/gh/diegohaz/arc/branch/redux"><img src="https://img.shields.io/codecov/c/github/diegohaz/arc/redux.svg?style=flat-square" alt="Coverage Status" /></a>
   <a href="https://gitter.im/diegohaz/arc"><img src="https://img.shields.io/badge/chat-on%20gitter-1dce73.svg?style=flat-square" alt="Gitter chat" /></a>
 </p>
 
-**ARc** (Atomic React) is a React starter kit based on the [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/) methodology. It's progressive, which means that you can start with the basic boilerplate and try the other features when you are comfortable.
+## `redux`
 
 - **[Demo](https://arc.js.org)**
 - **[Documentation](https://github.com/diegohaz/arc/wiki)**
@@ -25,23 +25,13 @@
 
       Redux plus [Server Side Rendering](https://github.com/reactjs/redux/blob/master/docs/recipes/ServerRendering.md)
 
-## Why
-
-I've been a web developer for the past 14 years and after dealing with IE vs. Netscape wars, `<table>` layouts and flash websites, I can say that we are now living in the best moment in web development. Web components are awesome and React makes it better.
-
-React encourages you to create very small and pure components. However, as your project grows, you will have an increasingly complex components folder. At some point, this will be really huge and hard to maintain.
-
-I had a React project with more than 100 components in the `components` folder. The first approach I tried to organize it was separating the components by domain (described [here](http://marmelab.com/blog/2015/12/17/react-directory-structure.html)), but I realized that most of my components didn't belong to any domain, but were shared. This meant that my problems just moved to the `commons` folder.
-
-The [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/) approach comes handy to solve this problem because it considers the reusability through composition, *which is actually what React is*. You will have your minimal/stylish components in one folder, pages in another and so on.
-
 ## Setup
 
 ### 1. Get the source code
 
 Just clone one of the ARc [branches](#branches):
 ```sh
-$ git clone -b master https://github.com/diegohaz/arc my-app
+$ git clone -b redux https://github.com/diegohaz/arc my-app
 $ cd my-app
 ```
 

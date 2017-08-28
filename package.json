@@ -29,7 +29,9 @@
     ],
     "moduleNameMapper": {
       "^.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/private/jest/fileMock.js",
-      "^components$": "<rootDir>/private/jest/componentsMock.js"
+      "^(components|containers)$": "<rootDir>/private/jest/componentsMock.js",
+      "^(store|\\.\\.)\\/selectors$": "<rootDir>/private/jest/selectorsMock.js",
+      "^(store|\\.\\.)\\/actions$": "<rootDir>/private/jest/actionsMock.js"
     }
   },
   "devDependencies": {
@@ -49,6 +51,7 @@
     "babel-preset-stage-1": "^6.24.1",
     "copyfiles": "^1.0.0",
     "cross-env": "^5.0.0",
+    "delay": "^2.0.0",
     "enzyme": "^2.7.0",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^15.0.1",
@@ -63,6 +66,7 @@
     "opn-cli": "^3.1.0",
     "raw-loader": "^0.5.1",
     "react-test-renderer": "^15.5.4",
+    "redux-mock-store": "^1.2.3",
     "rimraf": "^2.6.1",
     "url-loader": "^0.5.7",
     "webpack": "^2.6.0",
@@ -71,16 +75,27 @@
     "webpack-dev-server": "^2.3.0"
   },
   "dependencies": {
+    "babel-polyfill": "^6.20.0",
     "history": "^4.6.1",
     "lodash": "^4.17.4",
+    "normalizr": "^3.0.1",
     "prop-types": "^15.5.8",
+    "query-string": "^4.3.2",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-hot-loader": "3.0.0-beta.6",
     "react-modal": "^2.0.6",
+    "react-redux": "^5.0.1",
     "react-router-dom": "^4.1.1",
+    "redux": "^3.6.0",
+    "redux-form": "^7.0.0",
+    "redux-saga": "^0.15.0",
+    "redux-saga-thunk": "^0.5.0",
+    "simple-load-script": "^1.0.2",
     "styled-components": "^2.0.0",
     "styled-theme": "^0.3.0",
-    "styled-tools": "^0.1.2"
+    "styled-tools": "^0.1.2",
+    "validator": "^8.0.0",
+    "whatwg-fetch": "^2.0.2"
   }
 }

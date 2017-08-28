@@ -34,11 +34,13 @@
     "no-unused-expressions": 0,
     "no-confusing-arrow": 0,
     "no-unused-vars": 0,
+    "no-constant-condition": 0,
     "import/no-dynamic-require": 0,
     "import/no-extraneous-dependencies": 0,
     "import/prefer-default-export": 0,
     "react/require-default-props": 0,
     "react/forbid-prop-types": 0,
+    "react/no-unused-prop-types": 0,
     "react/jsx-filename-extension": [2, {"extensions": [".js", ".jsx"]}],
     "no-unused-vars-rest/no-unused-vars": [2, {"ignoreDestructuredVarsWithRest": true}]
   }

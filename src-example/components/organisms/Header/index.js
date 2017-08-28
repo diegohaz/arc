@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { size } from 'styled-theme'
 
 import { IconLink, PrimaryNavigation, Block } from 'components'
+import { UserButton } from 'containers'
 
 const Wrapper = styled(Block)`
   display: flex;
@@ -23,12 +24,17 @@ const InnerWrapper = styled.div`
   }
 `
 
+const StyledPrimaryNavigation = styled(PrimaryNavigation)`
+  flex: 1
+`
+
 const Header = (props) => {
   return (
     <Wrapper opaque reverse {...props}>
       <InnerWrapper>
         <IconLink to="/" icon="arc" height={100} />
-        <PrimaryNavigation reverse />
+        <StyledPrimaryNavigation reverse />
+        <UserButton reverse transparent />
       </InnerWrapper>
     </Wrapper>
   )
