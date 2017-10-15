@@ -12,7 +12,7 @@ class CodeSponsor extends React.Component {
   componentDidMount() {
     const script = document.createElement('script')
 
-    script.src = 'https://app.codesponsor.io/scripts/-rubqJ_XsKW34vwj9WYShA?theme=light&height=120&width=330'
+    script.src = 'https://app.codesponsor.io/scripts/-rubqJ_XsKW34vwj9WYShA?theme=light&height=150&width=330'
     script.async = true
 
     document.body.appendChild(script)
