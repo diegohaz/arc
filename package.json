@@ -22,13 +22,10 @@
     "build:example": "npm run env:example -- npm run build"
   },
   "jest": {
-    "moduleDirectories": [
-      "src",
-      "src-example",
-      "node_modules"
-    ],
+    "moduleDirectories": ["src", "src-example", "node_modules"],
     "moduleNameMapper": {
-      "^.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/private/jest/fileMock.js",
+      "^.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
+        "<rootDir>/private/jest/fileMock.js",
       "^components$": "<rootDir>/private/jest/componentsMock.js"
     }
   },
@@ -74,9 +71,9 @@
     "history": "^4.6.1",
     "lodash": "^4.17.4",
     "prop-types": "^15.5.8",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "react-hot-loader": "3.0.0-beta.6",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-hot-loader": "3.0.0",
     "react-modal": "^2.0.6",
     "react-router-dom": "^4.1.1",
     "styled-components": "^2.0.0",
