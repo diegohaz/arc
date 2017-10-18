@@ -25,6 +25,11 @@ it('renders hero', () => {
   expect(wrapper.contains('hero')).toBe(true)
 })
 
+it('renders sponsor', () => {
+  const wrapper = wrap({ sponsor: 'sponsor' })
+  expect(wrapper.contains('sponsor')).toBe(true)
+})
+
 it('renders footer', () => {
   const wrapper = wrap()
   expect(wrapper.contains('footer')).toBe(true)
