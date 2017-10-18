@@ -22,13 +22,19 @@
     "build:example": "npm run env:example -- npm run build"
   },
   "jest": {
-    "moduleDirectories": ["src", "src-example", "node_modules"],
+    "moduleDirectories": [
+      "src",
+      "src-example",
+      "node_modules"
+    ],
     "moduleNameMapper": {
-      "^.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
-        "<rootDir>/private/jest/fileMock.js",
+      "^.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/private/jest/fileMock.js",
       "^components$": "<rootDir>/private/jest/componentsMock.js"
     },
-    "setupFiles": ["./private/jest/shim.js", "./private/jest/setupTests.js"]
+    "setupFiles": [
+      "<rootDir>/private/jest/shim.js",
+      "<rootDir>/private/jest/setupTests.js"
+    ]
   },
   "devDependencies": {
     "@storybook/addon-actions": "^3.0.0",
