@@ -28,7 +28,7 @@
         "<rootDir>/private/jest/fileMock.js",
       "^components$": "<rootDir>/private/jest/componentsMock.js"
     },
-    "setupTestFrameworkScriptFile": "./private/jest/setupTests.js"
+    "setupFiles": ["./private/jest/shim.js", "./private/jest/setupTests.js"]
   },
   "devDependencies": {
     "@storybook/addon-actions": "^3.0.0",
