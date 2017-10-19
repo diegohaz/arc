@@ -39,10 +39,10 @@ const renderHtml = ({
     window.__SERVER_STATE__ = ${serialize(serverState)};
     window.__INITIAL_STATE__ = ${serialize(initialState)};
   `
-  const html = (<Html {...{
- styles, assets, state, content,
-}}
-  />)
+  const props = {
+    styles, assets, state, content,
+  }
+  const html = <Html {...props} />
   return `<!doctype html>\n${renderToStaticMarkup(html)}`
 }
 
