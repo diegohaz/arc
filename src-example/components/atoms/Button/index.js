@@ -46,9 +46,10 @@ const styles = css`
   }
 `
 
-const StyledLink = styled(({ disabled, transparent, reverse, palette, height, theme, ...props }) =>
-  <Link {...props} />
-)`${styles}`
+const StyledLink = styled(({
+  disabled, transparent, reverse, palette, height, theme, ...props
+}) => <Link {...props} />)`${styles}`
+
 const Anchor = styled.a`${styles}`
 const StyledButton = styled.button`${styles}`
 

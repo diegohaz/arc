@@ -20,23 +20,21 @@ test('socialLoginPrepare', () => {
 })
 
 test('socialLoginRequest', () => {
-  expect(actions.socialLoginRequest('facebook')).toEqual(
-    expect.objectContaining({
+  expect(actions.socialLoginRequest('facebook'))
+    .toEqual(expect.objectContaining({
       type: actions.SOCIAL_LOGIN_REQUEST,
       payload: {
         service: 'facebook',
       },
-    })
-  )
-  expect(actions.socialLoginRequest('facebook', { clientId: 'foo' })).toEqual(
-    expect.objectContaining({
+    }))
+  expect(actions.socialLoginRequest('facebook', { clientId: 'foo' }))
+    .toEqual(expect.objectContaining({
       type: actions.SOCIAL_LOGIN_REQUEST,
       payload: {
         service: 'facebook',
         clientId: 'foo',
       },
-    })
-  )
+    }))
 })
 
 test('socialLoginSuccess', () => {

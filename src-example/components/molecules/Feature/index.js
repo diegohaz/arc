@@ -41,7 +41,9 @@ const StyledBadge = styled(Badge)`
   }
 `
 
-const Feature = ({ icon, title, link, code, children, ...props }) => {
+const Feature = ({
+  icon, title, link, code, children, ...props
+}) => {
   return (
     <Wrapper {...props}>
       {icon && <StyledIcon icon={icon} width={64} />}

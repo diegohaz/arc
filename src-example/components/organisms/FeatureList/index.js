@@ -45,7 +45,7 @@ const FeatureList = ({ ...props }) => (
         icon="react"
         link="https://facebook.github.io/react"
         title="React"
-        code={'<MyComponent attr="value" />'}
+        code="<MyComponent attr='value' />"
       >
         The Facebook&apos;s JavaScript library for building user interfaces using components.
       </StyledFeature>
@@ -53,7 +53,7 @@ const FeatureList = ({ ...props }) => (
         icon="react-router"
         link="https://github.com/ReactTraining/react-router"
         title="React Router"
-        code={'<Route path="/sample-page" />'}
+        code="<Route path='/sample-page' />"
       >
         The most popular declarative routing library for React and React Native.
       </StyledFeature>

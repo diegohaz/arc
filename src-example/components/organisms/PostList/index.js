@@ -10,7 +10,9 @@ const Wrapper = styled.div`
   }
 `
 
-const PostList = ({ list, loading, failed, ...props }) => {
+const PostList = ({
+  list, loading, failed, ...props
+}) => {
   return (
     <Wrapper {...props}>
       {!list.length && loading && <div>Loading</div>}

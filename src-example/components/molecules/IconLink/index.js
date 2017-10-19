@@ -27,7 +27,9 @@ const Text = styled.span`
   }
 `
 
-const IconLink = ({ height, icon, right, responsive, children, ...props }) => {
+const IconLink = ({
+  height, icon, right, responsive, children, ...props
+}) => {
   const iconElement = (
     <StyledIcon
       height={height}

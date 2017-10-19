@@ -3,9 +3,6 @@
   "extends": [
     "airbnb"
   ],
-  "plugins": [
-    "no-unused-vars-rest"
-  ],
   "env": {
     "browser": true,
     "jest": true
@@ -26,6 +23,7 @@
   },
   "rules": {
     "semi": [2, "never"],
+    "semi-style": [2, "first"],
     "comma-dangle": [2, "always-multiline"],
     "max-len": 0,
     "no-shadow": 0,
@@ -33,7 +31,7 @@
     "global-require": 0,
     "no-unused-expressions": 0,
     "no-confusing-arrow": 0,
-    "no-unused-vars": 0,
+    "no-unused-vars": [2, { "ignoreRestSiblings": true }],
     "no-constant-condition": 0,
     "import/no-dynamic-require": 0,
     "import/no-extraneous-dependencies": 0,
@@ -41,7 +39,12 @@
     "react/require-default-props": 0,
     "react/forbid-prop-types": 0,
     "react/no-unused-prop-types": 0,
+    "react/default-props-match-prop-types": 0,
     "react/jsx-filename-extension": [2, {"extensions": [".js", ".jsx"]}],
-    "no-unused-vars-rest/no-unused-vars": [2, {"ignoreDestructuredVarsWithRest": true}]
+    "jsx-a11y/anchor-is-valid": [2, {
+      "components": ["Link"],
+      "specialLink": ["hrefLeft", "hrefRight", "to"],
+      "aspects": ["noHref", "invalidHref", "preferButton"]
+    }]
   }
 }

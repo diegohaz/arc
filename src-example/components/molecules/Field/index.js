@@ -19,8 +19,12 @@ const Wrapper = styled.div`
   }
 `
 
-const Field = ({ error, name, invalid, label, type, ...props }) => {
-  const inputProps = { id: name, name, type, invalid, 'aria-describedby': `${name}Error`, ...props }
+const Field = ({
+  error, name, invalid, label, type, ...props
+}) => {
+  const inputProps = {
+    id: name, name, type, invalid, 'aria-describedby': `${name}Error`, ...props,
+  }
   const renderInputFirst = type === 'checkbox' || type === 'radio'
   return (
     <Wrapper>

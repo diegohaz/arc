@@ -15,7 +15,9 @@ export const checkStatus = (response) => {
 
 export const parseJSON = response => response.json()
 
-export const parseSettings = ({ method = 'get', data, locale, ...otherSettings } = {}) => {
+export const parseSettings = ({
+  method = 'get', data, locale, ...otherSettings
+} = {}) => {
   const headers = {
     Accept: 'application/json',
     'Content-Type': 'application/json',
