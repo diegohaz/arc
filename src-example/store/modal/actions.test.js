@@ -3,14 +3,12 @@
 import * as actions from './actions'
 
 test('modalShow', () => {
-  expect(actions.modalShow('test')).toEqual(
-    expect.objectContaining({
-      type: actions.MODAL_SHOW,
-      payload: {
-        name: 'test',
-      },
-    })
-  )
+  expect(actions.modalShow('test')).toEqual(expect.objectContaining({
+    type: actions.MODAL_SHOW,
+    payload: {
+      name: 'test',
+    },
+  }))
 })
 
 test('modalHide', () => {

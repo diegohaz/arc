@@ -30,17 +30,3 @@ it('passes height to icon', () => {
   const wrapper = wrap({ height: 20 })
   expect(wrapper.find({ height: 20 / 2.5 })).toHaveLength(1)
 })
-
-it('renders icon on left by default', () => {
-  const wrapper = wrap({ children: 'test' })
-  const icon = wrapper.find({ icon: 'github' })
-  const parent = icon.parent()
-  expect(parent.children().first().prop('icon')).toBe('github')
-})
-
-it('renders icon on right when prop is passed in', () => {
-  const wrapper = wrap({ children: 'test', right: true })
-  const icon = wrapper.find({ icon: 'github' })
-  const parent = icon.parent()
-  expect(parent.children().last().prop('icon')).toBe('github')
-})

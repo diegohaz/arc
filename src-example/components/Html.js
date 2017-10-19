@@ -3,7 +3,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 
-const Html = ({ styles, assets, state, content }) => {
+const Html = ({
+  styles, assets, state, content,
+}) => {
   const helmet = Helmet.renderStatic()
   const htmlAttrs = helmet.htmlAttributes.toComponent()
   const bodyAttrs = helmet.bodyAttributes.toComponent()

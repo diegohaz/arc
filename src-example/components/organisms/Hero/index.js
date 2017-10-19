@@ -98,7 +98,7 @@ const Hero = (props) => {
           </Text>
           <Instructions>
             <Heading level={2} reverse>Install</Heading>
-            <PreformattedText block reverse wrap>
+            <PreformattedText block reverse wrapped>
               git clone -b master https://github.com/diegohaz/arc my-app
             </PreformattedText>
             <IconLink

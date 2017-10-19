@@ -17,25 +17,32 @@ import App from 'components/App'
 import Html from 'components/Html'
 import Error from 'components/Error'
 
-const renderApp = ({ store, context, location, sheet }) => {
-  const app = sheet.collectStyles(
+const renderApp = ({
+  store, context, location, sheet,
+}) => {
+  const app = sheet.collectStyles((
     <Provider store={store}>
       <StaticRouter basename={basename} context={context} location={location}>
         <App />
       </StaticRouter>
     </Provider>
-  )
+  ))
   return renderToString(app)
 }
 
-const renderHtml = ({ serverState, initialState, content, sheet }) => {
+const renderHtml = ({
+  serverState, initialState, content, sheet,
+}) => {
   const styles = sheet.getStyleElement()
-  const assets = global.assets
+  const { assets } = global
   const state = `
     window.__SERVER_STATE__ = ${serialize(serverState)};
     window.__INITIAL_STATE__ = ${serialize(initialState)};
   `
-  const html = <Html {...{ styles, assets, state, content }} />
+  const html = (<Html {...{
+ styles, assets, state, content,
+}}
+  />)
   return `<!doctype html>\n${renderToStaticMarkup(html)}`
 }
 
@@ -49,19 +56,21 @@ app.use((req, res, next) => {
   const context = {}
   const sheet = new ServerStyleSheet()
 
-  renderApp({ store, context, location, sheet })
-    .then(({ state: serverState, html: content }) => {
-      if (context.status) {
-        res.status(context.status)
-      }
-      if (context.url) {
-        res.redirect(context.url)
-      } else {
-        const initialState = store.getState()
-        res.send(renderHtml({ serverState, initialState, content, sheet }))
-      }
-    })
-    .catch(next)
+  renderApp({
+    store, context, location, sheet,
+  }).then(({ state: serverState, html: content }) => {
+    if (context.status) {
+      res.status(context.status)
+    }
+    if (context.url) {
+      res.redirect(context.url)
+    } else {
+      const initialState = store.getState()
+      res.send(renderHtml({
+        serverState, initialState, content, sheet,
+      }))
+    }
+  }).catch(next)
 })
 
 app.use((err, req, res, next) => {

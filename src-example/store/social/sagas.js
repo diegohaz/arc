@@ -33,7 +33,9 @@ export const serviceAction = (suffix, service) => ({ type, payload }) =>
   type === `SOCIAL_LOGIN_${suffix}` && payload && payload.service === service
 
 export function* loginFacebook({ scope = 'public_profile', fields = 'id,name', ...options } = {}) {
-  const request = { service: 'facebook', scope, fields, ...options }
+  const request = {
+    service: 'facebook', scope, fields, ...options,
+  }
   try {
     yield call(promises.fbLogin, { scope, ...options })
     const data = yield call(promises.fbGetMe, { fields })
@@ -45,7 +47,9 @@ export function* loginFacebook({ scope = 'public_profile', fields = 'id,name', .
 }
 
 export function* prepareFacebook({ clientId, version = 'v2.8', ...options }) {
-  const request = { service: 'facebook', clientId, version, ...options }
+  const request = {
+    service: 'facebook', clientId, version, ...options,
+  }
   try {
     yield call(appendFbRoot)
     yield call(loadScript, '//connect.facebook.net/en_US/sdk.js')

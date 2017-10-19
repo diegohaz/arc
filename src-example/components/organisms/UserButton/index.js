@@ -14,7 +14,9 @@ const Image = styled.img`
   margin-right: 0.5rem;
 `
 
-const UserButton = ({ user, onLogin, onLogout, ...props }) => {
+const UserButton = ({
+  user, onLogin, onLogout, ...props
+}) => {
   return (
     <div>
       {user &&

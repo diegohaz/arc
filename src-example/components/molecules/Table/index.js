@@ -13,7 +13,9 @@ const StyledTable = styled.table`
   color: ${palette('grayscale', 0)};
 `
 
-const Table = ({ caption, head, foot, children, ...props }) => {
+const Table = ({
+  caption, head, foot, children, ...props
+}) => {
   return (
     <StyledTable {...props}>
       {caption && <Caption reverse={props.reverse}>{caption}</Caption>}

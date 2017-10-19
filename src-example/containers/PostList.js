@@ -26,7 +26,9 @@ class PostListContainer extends Component {
   }
 
   componentWillMount() {
-    const { readList, hasServerState, setServerState, cleanServerState } = this.props
+    const {
+      readList, hasServerState, setServerState, cleanServerState,
+    } = this.props
 
     if (!hasServerState) {
       if (isServer) {
