@@ -9,7 +9,7 @@ const PreformattedText = styled.pre`
   color: ${palette({ grayscale: 0 }, 1)};
   background-color: ${palette('grayscale', 1, true)};
   padding: ${ifProp('block', '1em', '0 0.5em')};
-  white-space: ${ifProp('wrap', 'pre-wrap', 'nowrap')};
+  white-space: ${ifProp('wrapped', 'pre-wrap', 'nowrap')};
   overflow: auto;
   line-height: 150%;
 `
@@ -18,7 +18,7 @@ PreformattedText.propTypes = {
   palette: PropTypes.string,
   reverse: PropTypes.bool,
   block: PropTypes.bool,
-  wrap: PropTypes.bool,
+  wrapped: PropTypes.bool,
 }
 
 PreformattedText.defaultProps = {
