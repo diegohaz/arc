@@ -6,26 +6,10 @@ const wrap = (props = {}) => shallow(<IconLink icon="github" {...props} />)
 
 it('mounts with different combination of props', () => {
   mount(<IconLink icon="github">test</IconLink>)
-  mount(
-    <IconLink icon="github" height={30}>
-      test
-    </IconLink>
-  )
-  mount(
-    <IconLink icon="github" right>
-      test
-    </IconLink>
-  )
-  mount(
-    <IconLink icon="github" responsive>
-      test
-    </IconLink>
-  )
-  mount(
-    <IconLink icon="github" right responsive>
-      test
-    </IconLink>
-  )
+  mount(<IconLink icon="github" height={30}>test</IconLink>)
+  mount(<IconLink icon="github" right>test</IconLink>)
+  mount(<IconLink icon="github" responsive>test</IconLink>)
+  mount(<IconLink icon="github" right responsive>test</IconLink>)
   mount(<IconLink icon="github" />)
   mount(<IconLink icon="github" right />)
   mount(<IconLink icon="github" responsive />)
@@ -44,10 +28,5 @@ it('renders props when passed in', () => {
 
 it('renders icon on left by default', () => {
   const wrapper = wrap({ children: 'test' })
-  expect(
-    wrapper
-      .children()
-      .at(0)
-      .prop('icon')
-  ).toBe('github')
+  expect(wrapper.children().at(0).prop('icon')).toBe('github')
 })

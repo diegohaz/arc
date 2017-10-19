@@ -2,11 +2,9 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import Tooltip, { opposite, perpendicular, perpendicularAxis } from '.'
 
-const wrap = (props = {}) => shallow(
-  <Tooltip data-title="title" {...props}>
-    <span>test</span>
-  </Tooltip>
-).dive()
+const wrap = (props = {}) => (
+  shallow(<Tooltip data-title="title" {...props}><span>test</span></Tooltip>).dive()
+)
 
 it('renders with different props', () => {
   wrap({ align: 'start' })

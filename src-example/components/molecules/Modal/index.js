@@ -86,11 +86,13 @@ const Content = styled.div`
   margin-bottom: 1rem;
 `
 
-const StyledReactModal = styled(({ className, ...props }) =>
+const StyledReactModal = styled(({ className, ...props }) => (
   <ModalBox overlayClassName={className} closeTimeoutMS={250} {...props} />
-)`${overlayStyles}`
+))`${overlayStyles}`
 
-const Modal = ({ children, title, closeable, onClose, ...props }) => {
+const Modal = ({
+  children, title, closeable, onClose, ...props
+}) => {
   const hasHeader = title || closeable
   return (
     <StyledReactModal

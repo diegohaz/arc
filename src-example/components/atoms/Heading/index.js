@@ -15,9 +15,9 @@ const styles = css`
   color: ${palette({ grayscale: 0 }, 1)};
 `
 
-const Heading = styled(({ level, children, reverse, palette, theme, ...props }) =>
-  React.createElement(`h${level}`, props, children)
-)`${styles}`
+const Heading = styled(({
+  level, children, reverse, palette, theme, ...props
+}) => React.createElement(`h${level}`, props, children))`${styles}`
 
 Heading.propTypes = {
   level: PropTypes.number,

@@ -62,19 +62,19 @@ const styles = css`
     padding: 0.75em 1em;
     ${opposite}: calc(100% + 2rem);
     ${({ align }) => {
-      switch (align) {
-        case 'start': return css`
+    switch (align) {
+      case 'start': return css`
           ${perpendicular}: 0;
         `
-        case 'center': return css`
+      case 'center': return css`
           ${perpendicular}: 50%;
           transform: translate${perpendicularAxis}(-50%);
         `
-        default: return css`
+      default: return css`
           ${perpendicularOpposite}: 0;
         `
-      }
-    }}
+    }
+  }}
   }
 
   &:after {
@@ -88,11 +88,11 @@ const styles = css`
     border-width: 0.5rem;
     margin-${perpendicular}: -0.5rem;
   }
-`
+  `
 
-const Tooltip = styled(({ position, align, reverse, children, theme, ...props }) =>
-  React.cloneElement(children, props)
-)`${styles}`
+const Tooltip = styled(({
+  position, align, reverse, children, theme, ...props
+}) => React.cloneElement(children, props))`${styles}`
 
 Tooltip.propTypes = {
   position: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
