@@ -85,6 +85,6 @@
     "react-router-dom": "^4.1.1",
     "styled-components": "^2.0.0",
     "styled-theme": "^0.3.0",
-    "styled-tools": "^0.1.2"
+    "styled-tools": "^0.2.2"
   }
 }
