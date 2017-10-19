@@ -2,9 +2,7 @@ import React from 'react'
 import { mount, shallow } from 'enzyme'
 import GenericTemplate from '.'
 
-const wrap = (props = {}) => shallow(
-  <GenericTemplate {...props}>test</GenericTemplate>
-)
+const wrap = (props = {}) => shallow(<GenericTemplate {...props}>test</GenericTemplate>)
 
 it('mounts', () => {
   mount(<GenericTemplate>test</GenericTemplate>)
