@@ -5885,9 +5885,9 @@ normalize-url@^1.4.0:
     query-string "^4.1.0"
     sort-keys "^1.0.0"
 
-normalizr@3.2.3:
-  version "3.2.3"
-  resolved "https://registry.yarnpkg.com/normalizr/-/normalizr-3.2.3.tgz#88755c64de418b040fa6ad1329b2de5c3250ac49"
+normalizr@3.2.4:
+  version "3.2.4"
+  resolved "https://registry.yarnpkg.com/normalizr/-/normalizr-3.2.4.tgz#16aafc540ca99dc1060ceaa1933556322eac4429"
 
 npm-run-path@^2.0.0:
   version "2.0.2"

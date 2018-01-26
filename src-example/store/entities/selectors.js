@@ -7,13 +7,15 @@ export const initialState = {}
 
 export const getEntity = (state = initialState, entity) => state[entity] || {}
 
+export const getEntityKeys = (state, entity) => Object.keys(getEntity(state, entity))
+
 export const getDetail = (state = initialState, entity, id) => getEntity(state, entity)[id]
 
 export const getList = (state = initialState, entity, ids) =>
-  (ids || Object.keys(getEntity(state, entity))).map(id => getDetail(state, entity, id))
+  (ids || getEntityKeys(state, entity)).map(id => getDetail(state, entity, id))
 
 export const getDenormalizedDetail = (state = initialState, entity, id) =>
-  denormalize(getDetail(state, entity, id), schemas[entity], state)
+  denormalize(id, schemas[entity], state)
 
 export const getDenormalizedList = (state = initialState, entity, ids) =>
-  denormalize(getList(state, entity, ids), [schemas[entity]], state)
+  denormalize(ids || getEntityKeys(state, entity), [schemas[entity]], state)
