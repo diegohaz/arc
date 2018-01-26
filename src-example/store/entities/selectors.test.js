@@ -56,18 +56,14 @@ test('getList', () => {
 
 test('getDenormalizedDetail', () => {
   expect(selectors.getDenormalizedDetail(undefined, 'test')).toBeUndefined()
-  expect(selectors.getDenormalizedDetail(undefined, 'test', 1)).toBeUndefined()
   expect(selectors.getDenormalizedDetail({}, 'test')).toBeUndefined()
-  expect(selectors.getDenormalizedDetail({}, 'test', 1)).toBeUndefined()
   expect(selectors.getDenormalizedDetail(altState, 'entity')).toBeUndefined()
   expect(selectors.getDenormalizedDetail(altState, 'entity', 1)).toEqual(altState.entity[1])
 })
 
 test('getDenormalizedList', () => {
   expect(selectors.getDenormalizedList(undefined, 'test')).toEqual([])
-  expect(selectors.getDenormalizedList(undefined, 'test', [1])).toEqual([undefined])
   expect(selectors.getDenormalizedList({}, 'test')).toEqual([])
-  expect(selectors.getDenormalizedList({}, 'test', [1])).toEqual([undefined])
   expect(selectors.getDenormalizedList(altState, 'entity')).toEqual(values(altState.entity))
   expect(selectors.getDenormalizedList(altState, 'entity', [1])).toEqual([altState.entity[1]])
 })
