@@ -32,7 +32,6 @@
       "^components$": "<rootDir>/private/jest/componentsMock.js"
     },
     "setupFiles": [
-      "<rootDir>/private/jest/shim.js",
       "<rootDir>/private/jest/setupTests.js"
     ]
   },
