@@ -34,7 +34,6 @@
       "^(store|\\.\\.)\\/actions$": "<rootDir>/private/jest/actionsMock.js"
     },
     "setupFiles": [
-      "<rootDir>/private/jest/shim.js",
       "<rootDir>/private/jest/setupTests.js"
     ]
   },
