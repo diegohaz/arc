@@ -78,7 +78,7 @@
     "webpack-blocks-happypack": "^0.1.3",
     "webpack-blocks-server-source-map": "^0.2.0",
     "webpack-blocks-split-vendor": "^0.2.1",
-    "webpack-child-config-plugin": "^0.1.0",
+    "webpack-child-config-plugin": "^0.1.2",
     "webpack-dev-server": "^2.3.0",
     "webpack-node-externals": "^1.5.4",
     "webpack-spawn-plugin": "^0.1.1"

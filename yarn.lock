@@ -8719,9 +8719,9 @@ webpack-blocks-split-vendor@^0.2.1:
   dependencies:
     webpack-md5-hash "^0.0.5"
 
-webpack-child-config-plugin@^0.1.0:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/webpack-child-config-plugin/-/webpack-child-config-plugin-0.1.1.tgz#8b4b39553508feee5093255b6b5b4bea5876d5a4"
+webpack-child-config-plugin@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/webpack-child-config-plugin/-/webpack-child-config-plugin-0.1.2.tgz#f2d01c8fd06314b7cdbff9bf5da1bdece38961c3"
 
 webpack-dev-middleware@1.12.2, webpack-dev-middleware@^1.12.2:
   version "1.12.2"
