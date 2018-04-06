@@ -11,11 +11,12 @@
 - **[Demo](https://arc.js.org)**
 - **[Documentation](https://github.com/diegohaz/arc/wiki)**
 
-<br />
-
-> **Shameless self promotion** 💡: I'm working on a UI toolkit built on top of React and styled-components. That's currently an experimental project, but I have plans to integrate it with ARc and other projects of mine in the future. Go have a look: https://github.com/diegohaz/reas
-
-<br />
+<br><br>
+<p align="center">
+  <strong>Small advertisement</strong> 🙈<br>
+  <a href="https://github.com/diegohaz/reas"><strong>reas</strong></a>: Minimalist and highly composable building blocks for your next React app.
+</p>
+<br><br>
 
 ## Branches
 
