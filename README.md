@@ -11,12 +11,13 @@
 - **[Demo](https://arc.js.org)**
 - **[Documentation](https://github.com/diegohaz/arc/wiki)**
 
-<br><br>
+<br>
+<hr>
 <p align="center">
   <strong>Small advertisement</strong> 🙈<br>
-  <a href="https://github.com/diegohaz/reas"><strong>reas</strong></a>: Minimalist and highly composable building blocks for your next React app.
-</p>
-<br><br>
+  <a href="https://github.com/diegohaz/reas"><strong>reas</strong></a>: Minimalist and highly composable building blocks for your next React app.</p>
+<hr>
+<br>
 
 ## Branches
 
