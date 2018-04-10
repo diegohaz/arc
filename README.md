@@ -1,6 +1,5 @@
 <p align="center">
   <img alt="arclogo" src="https://cloud.githubusercontent.com/assets/3068563/23199029/55e9d55a-f8aa-11e6-91a2-74b82db3813c.png"><br><br>
-  <a href="https://github.com/diegohaz/arc/releases/latest"><img src="https://github-release-version.herokuapp.com/github/diegohaz/arc/release.svg?style=flat-square" alt="Latest release" /></a>
   <a href="https://travis-ci.org/diegohaz/arc"><img src="https://img.shields.io/travis/diegohaz/arc/master.svg?style=flat-square" alt="Build Status" /></a>
   <a href="https://codecov.io/gh/diegohaz/arc"><img src="https://img.shields.io/codecov/c/github/diegohaz/arc.svg?style=flat-square" alt="Coverage Status" /></a>
   <a href="https://gitter.im/diegohaz/arc"><img src="https://img.shields.io/badge/chat-on%20gitter-1dce73.svg?style=flat-square" alt="Gitter chat" /></a>
@@ -14,8 +13,9 @@
 <br>
 <hr>
 <p align="center">
-  <strong>Small advertisement</strong> 🙈<br>
-  <a href="https://github.com/diegohaz/reas"><strong>reas</strong></a>: Minimalist and highly composable building blocks for your next React app.</p>
+If you find this useful, please don't forget to star ⭐️ the repo, as this will help to promote the project.<br>
+Follow me on <a href="https://twitter.com/diegohaz">Twitter</a> and <a href="https://github.com/diegohaz">GitHub</a> to keep updated about this project and <a href="https://github.com/diegohaz?tab=repositories">others</a>.
+</p>
 <hr>
 <br>
 
