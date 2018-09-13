@@ -13,8 +13,7 @@
 <br>
 <hr>
 <p align="center">
-If you find this useful, please don't forget to star ⭐️ the repo, as this will help to promote the project.<br>
-Follow me on <a href="https://twitter.com/diegohaz">Twitter</a> and <a href="https://github.com/diegohaz">GitHub</a> to keep updated about this project and <a href="https://github.com/diegohaz?tab=repositories">others</a>.
+If you find this useful, please check out <a href="https://github.com/reakit/reakit"><strong>Reakit</strong>, a toolkit for building composable UIs with React</a>.
 </p>
 <hr>
 <br>
