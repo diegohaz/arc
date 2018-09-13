@@ -13,7 +13,7 @@
 <br>
 <hr>
 <p align="center">
-If you find this useful, please check out <a href="https://github.com/reakit/reakit"><strong>Reakit</strong>, a toolkit for building composable UIs with React</a>.
+If you find this useful, please check out <a href="https://github.com/reakit/reakit"><strong>Reakit</strong>, a toolkit for building composable UI with React</a>.
 </p>
 <hr>
 <br>
