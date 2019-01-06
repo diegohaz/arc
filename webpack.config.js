@@ -27,7 +27,7 @@ const wpConfig = {
   base: {
     module: {
       rules: [
-        { test: /\.jsx?$/, exclude: /node_modules/, use: 'happypack/loader', },
+        { test: /\.jsx?$/, exclude: /node_modules/, use: 'happypack/loader' },
         { test: /\.(png|jpe?g|svg|woff2?|ttf|eot)$/, loader: 'url-loader?limit=8000' },
       ],
     },
@@ -43,7 +43,7 @@ const wpConfig = {
       new webpack.DefinePlugin({
         NODE_ENV: process.env.NODE_ENV,
         PUBLIC_PATH: publicPath.replace(/\/$/, ''),
-      })
+      }),
     ],
     resolve: {
       extensions: ['.js', '.jsx', '.json'],
@@ -81,7 +81,7 @@ const wpConfig = {
     },
     optimization: {
       namedModules: true,
-    }
+    },
   },
   production: {
     mode: 'production',
@@ -100,7 +100,7 @@ const wpConfig = {
         minChunks: 2,
       },
     },
-  }
+  },
 }
 
 const config = mergeWith(
