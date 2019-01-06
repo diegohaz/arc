@@ -1,13 +1,13 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
-import { injectGlobal, ThemeProvider } from 'styled-components'
+import { createGlobalStyle, ThemeProvider } from 'styled-components'
 
 import { HomePage, SamplePage, NotFoundPage } from 'components'
 
 // https://github.com/diegohaz/arc/wiki/Styling
 import theme from './themes/default'
 
-injectGlobal`
+const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
   }
@@ -16,11 +16,14 @@ injectGlobal`
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
-      <Switch>
-        <Route path="/" component={HomePage} exact />
-        <Route path="/sample-page" component={SamplePage} />
-        <Route component={NotFoundPage} />
-      </Switch>
+      <React.Fragment>
+        <Switch>
+          <Route path="/" component={HomePage} exact />
+          <Route path="/sample-page" component={SamplePage} />
+          <Route component={NotFoundPage} />
+        </Switch>
+        <GlobalStyle />
+      </React.Fragment>
     </ThemeProvider>
   )
 }

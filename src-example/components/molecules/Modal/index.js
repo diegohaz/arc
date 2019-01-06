@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled, { css, injectGlobal } from 'styled-components'
+import styled, { css, createGlobalStyle } from 'styled-components'
 import ReactModal from 'react-modal'
 import { font, palette } from 'styled-theme'
 
 import { Heading, IconButton } from 'components'
 
-injectGlobal`
+const GlobalStyle = createGlobalStyle`
   body.ReactModal__Body--open {
     overflow: hidden;
   }
@@ -110,6 +110,7 @@ const Modal = ({
       <Content>
         {children}
       </Content>
+      <GlobalStyle />
     </StyledReactModal>
   )
 }
