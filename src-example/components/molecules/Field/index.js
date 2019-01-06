@@ -31,10 +31,12 @@ const Field = ({
       {renderInputFirst && <Input {...inputProps} />}
       {label && <Label htmlFor={inputProps.id}>{label}</Label>}
       {renderInputFirst || <Input {...inputProps} />}
-      {invalid && error &&
+      {invalid && error
+        && (
         <Error id={`${name}Error`} role="alert" palette="danger">
           {error}
         </Error>
+        )
       }
     </Wrapper>
   )

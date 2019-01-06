@@ -13,13 +13,11 @@ const opposites = {
 
 export const opposite = ({ position }) => opposites[position]
 
-export const perpendicular = ({ position }) =>
-  position === 'left' || position === 'right' ? 'top' : 'left'
+export const perpendicular = ({ position }) => position === 'left' || position === 'right' ? 'top' : 'left'
 
 export const perpendicularOpposite = props => opposites[perpendicular(props)]
 
-export const perpendicularAxis = ({ position }) =>
-  position === 'left' || position === 'right' ? 'Y' : 'X'
+export const perpendicularAxis = ({ position }) => position === 'left' || position === 'right' ? 'Y' : 'X'
 
 const backgroundColor = ifProp('reverse', 'rgba(255, 255, 255, 0.85)', 'rgba(0, 0, 0, 0.85)')
 

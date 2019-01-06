@@ -35,9 +35,10 @@ const StyledSelect = styled.select`${styles}`
 const StyledInput = styled.input`${styles}`
 
 const Input = ({ ...props }) => {
-  if (props.type === 'textarea') {
+  const { type } = props
+  if (type === 'textarea') {
     return <StyledTextarea {...props} />
-  } else if (props.type === 'select') {
+  } if (type === 'select') {
     return <StyledSelect {...props} />
   }
   return <StyledInput {...props} />

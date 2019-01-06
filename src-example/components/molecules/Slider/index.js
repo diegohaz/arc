@@ -6,8 +6,7 @@ import { ifProp, prop } from 'styled-tools'
 
 const fontSize = ({ height }) => `${height / 35.5555555556}rem`
 
-const thumbColor = ({ disabled }) =>
-  palette(disabled ? 2 : 1)
+const thumbColor = ({ disabled }) => palette(disabled ? 2 : 1)
 
 const barColor = palette('grayscale', 2, true)
 
