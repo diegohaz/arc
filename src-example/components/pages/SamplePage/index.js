@@ -1,6 +1,8 @@
 import React from 'react'
 
-import { PageTemplate, Header, Footer, Paragraph, Heading } from 'components'
+import {
+  PageTemplate, Header, Footer, Paragraph, Heading,
+} from 'components'
 
 const SamplePage = () => {
   return (

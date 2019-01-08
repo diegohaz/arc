@@ -10,5 +10,10 @@ storiesOf('IconLink', module)
     <IconLink icon="close" href="#" right>Hello</IconLink>
   ))
   .add('inside paragraph', () => (
-    <p>Consequat cupidatat id <IconLink icon="close" href="#">excepteur</IconLink> ex nisi proident et sunt fugiat id pariatur.</p>
+    <p>
+Consequat cupidatat id
+      <IconLink icon="close" href="#">excepteur</IconLink>
+      {' '}
+ex nisi proident et sunt fugiat id pariatur.
+    </p>
   ))

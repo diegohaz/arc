@@ -68,8 +68,8 @@ const IconButton = ({ icon, children, ...props }) => {
     <StyledButton hasText={!!children} {...props}>
       <Wrapper>
         {right || iconElement}
-        {children &&
-          <Text className="text" responsive={responsive} breakpoint={breakpoint}>{children}</Text>
+        {children
+          && <Text className="text" responsive={responsive} breakpoint={breakpoint}>{children}</Text>
         }
         {right && iconElement}
       </Wrapper>

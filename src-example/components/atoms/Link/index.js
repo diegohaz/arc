@@ -22,7 +22,8 @@ const StyledNavLink = styled(({
 const Anchor = styled.a`${styles}`
 
 const Link = ({ ...props }) => {
-  if (props.to) {
+  const { to } = props
+  if (to) {
     return <StyledNavLink {...props} />
   }
   return <Anchor {...props} />

@@ -7,11 +7,9 @@ import { ifProp } from 'styled-tools'
 
 const fontSize = ({ height }) => `${height / 40}rem`
 
-const backgroundColor = ({ transparent, disabled }) =>
-  transparent ? 'transparent' : palette(disabled ? 2 : 1)
+const backgroundColor = ({ transparent, disabled }) => transparent ? 'transparent' : palette(disabled ? 2 : 1)
 
-const foregroundColor = ({ transparent, disabled }) =>
-  transparent ? palette(disabled ? 2 : 1) : palette('grayscale', 0, true)
+const foregroundColor = ({ transparent, disabled }) => transparent ? palette(disabled ? 2 : 1) : palette('grayscale', 0, true)
 
 const hoverBackgroundColor = ({ disabled, transparent }) => !disabled && !transparent && palette(0)
 const hoverForegroundColor = ({ disabled, transparent }) => !disabled && transparent && palette(0)
@@ -54,9 +52,10 @@ const Anchor = styled.a`${styles}`
 const StyledButton = styled.button`${styles}`
 
 const Button = ({ type, ...props }) => {
-  if (props.to) {
+  const { to, href } = props
+  if (to) {
     return <StyledLink {...props} />
-  } else if (props.href) {
+  } if (href) {
     return <Anchor {...props} />
   }
   return <StyledButton {...props} type={type} />
