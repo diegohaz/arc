@@ -1,5 +1,6 @@
 // https://github.com/diegohaz/arc/wiki/Sagas#unit-testing-sagas
 // https://github.com/diegohaz/arc/wiki/Example-redux-modules#gtm
+import 'babel-polyfill'
 import loadScript from 'simple-load-script'
 import { all, take, put, call, fork } from 'redux-saga/effects'
 import saga, * as sagas from './sagas'

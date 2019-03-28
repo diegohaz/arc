@@ -1,3 +1,4 @@
+import 'babel-polyfill'
 import api, { checkStatus, parseJSON, parseSettings, parseEndpoint } from '.'
 
 jest.mock('config', () => ({
