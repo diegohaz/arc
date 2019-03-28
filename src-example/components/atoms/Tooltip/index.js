@@ -90,11 +90,11 @@ const styles = css`
   }
   `
 
-const Tooltip = styled(({
+const StyledTooltip = styled(({
   position, align, reverse, children, theme, ...props
 }) => React.cloneElement(children, props))`${styles}`
 
-Tooltip.propTypes = {
+StyledTooltip.propTypes = {
   position: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
   align: PropTypes.oneOf(['start', 'center', 'end']),
   reverse: PropTypes.bool,
@@ -102,10 +102,16 @@ Tooltip.propTypes = {
   children: PropTypes.element.isRequired,
 }
 
-Tooltip.defaultProps = {
+StyledTooltip.defaultProps = {
   position: 'top',
   align: 'center',
   tabIndex: 0,
+}
+
+const Tooltip = ({ ...props }) => {
+  return (
+    <StyledTooltip {...props} />
+  )
 }
 
 export default Tooltip

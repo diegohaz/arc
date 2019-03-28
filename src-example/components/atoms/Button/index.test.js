@@ -1,8 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import Button from '.'
+import Button, { StyledButton, Anchor, StyledLink } from '.'
 
-const wrap = (props = {}) => shallow(<Button {...props} />).dive()
+const wrap = (props = {}) => shallow(<Button {...props} />)
 
 it('renders with different combination of props', () => {
   wrap({ disabled: true })
@@ -22,15 +22,15 @@ it('renders props when passed in', () => {
 
 it('renders button by default', () => {
   const wrapper = wrap()
-  expect(wrapper.find('button')).toHaveLength(1)
+  expect(wrapper.find(StyledButton)).toHaveLength(1)
 })
 
 it('renders anchor when href is passed in', () => {
   const wrapper = wrap({ href: 'test' })
-  expect(wrapper.find('a')).toHaveLength(1)
+  expect(wrapper.find(Anchor)).toHaveLength(1)
 })
 
 it('renders Link when to is passed in', () => {
-  const wrapper = wrap({ to: 'test' }).dive()
-  expect(wrapper.find('Link')).toHaveLength(1)
+  const wrapper = wrap({ to: 'test' })
+  expect(wrapper.find(StyledLink)).toHaveLength(1)
 })

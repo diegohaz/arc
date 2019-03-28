@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 import Tooltip, { opposite, perpendicular, perpendicularAxis } from '.'
 
 const wrap = (props = {}) => (
-  shallow(<Tooltip data-title="title" {...props}><span>test</span></Tooltip>).dive()
+  shallow(<Tooltip data-title="title" {...props}><span>test</span></Tooltip>)
 )
 
 it('renders with different props', () => {

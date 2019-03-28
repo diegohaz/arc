@@ -30,9 +30,9 @@ const styles = css`
   }
 `
 
-const StyledTextarea = styled.textarea`${styles}`
-const StyledSelect = styled.select`${styles}`
-const StyledInput = styled.input`${styles}`
+export const StyledTextarea = styled.textarea`${styles}`
+export const StyledSelect = styled.select`${styles}`
+export const StyledInput = styled.input`${styles}`
 
 const Input = ({ ...props }) => {
   if (props.type === 'textarea') {

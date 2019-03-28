@@ -6,8 +6,8 @@ import middlewares from './middlewares'
 import reducer from './reducer'
 import sagas from './sagas'
 
-const devtools = isDev && isBrowser && window.devToolsExtension
-  ? window.devToolsExtension
+const devtools = isDev && isBrowser && window.window.__REDUX_DEVTOOLS_EXTENSION__
+  ? window.window.__REDUX_DEVTOOLS_EXTENSION__
   : () => fn => fn
 
 const configureStore = (initialState, services = {}) => {
