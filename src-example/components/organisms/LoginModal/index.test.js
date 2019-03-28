@@ -6,8 +6,7 @@ const onFacebookLogin = jest.fn()
 const onGoogleLogin = jest.fn()
 const onClose = jest.fn()
 
-const wrap = (props = {}) =>
-  shallow(<LoginModal {...{ onFacebookLogin, onGoogleLogin, onClose }} {...props} />)
+const wrap = (props = {}) => shallow(<LoginModal {...{ onFacebookLogin, onGoogleLogin, onClose }} {...props} />)
 
 it('renders props when passed in', () => {
   const wrapper = wrap({ id: 'foo' })

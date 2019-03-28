@@ -22,8 +22,9 @@ class LoginModal extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!this.props.user && nextProps.user) {
-      this.props.onClose()
+    const { user, onClose } = this.props
+    if (!user && nextProps.user) {
+      onClose()
     }
   }
 

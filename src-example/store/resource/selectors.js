@@ -7,11 +7,8 @@ export const initialResourceState = {
   detail: null,
 }
 
-export const getResourceState = (state = initialState, resource) =>
-  state[resource] || initialResourceState
+export const getResourceState = (state = initialState, resource) => state[resource] || initialResourceState
 
-export const getList = (state = initialState, resource) =>
-  getResourceState(state, resource).list
+export const getList = (state = initialState, resource) => getResourceState(state, resource).list
 
-export const getDetail = (state = initialState, resource) =>
-  getResourceState(state, resource).detail
+export const getDetail = (state = initialState, resource) => getResourceState(state, resource).detail

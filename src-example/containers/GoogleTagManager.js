@@ -11,7 +11,8 @@ class GoogleTagManager extends Component {
   }
 
   componentDidMount() {
-    this.props.startGTM()
+    const { startGTM } = this.props
+    startGTM()
   }
 
   render() {

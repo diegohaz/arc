@@ -16,4 +16,3 @@ test('modal', () => {
   dispatch(modalHide('foo'))
   expect(isOpen(getState(), 'foo')).toBe(false)
 })
-

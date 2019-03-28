@@ -14,8 +14,9 @@ class LoginModalContainer extends Component {
   }
 
   componentDidMount() {
-    this.props.prepareGoogle()
-    this.props.prepareFacebook()
+    const { prepareGoogle, prepareFacebook } = this.props
+    prepareGoogle()
+    prepareFacebook()
   }
 
   render() {

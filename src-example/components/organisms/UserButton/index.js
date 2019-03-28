@@ -19,13 +19,15 @@ const UserButton = ({
 }) => {
   return (
     <div>
-      {user &&
+      {user
+        && (
         <Button {...props} onClick={onLogout}>
           <InnerButton>
             <Image src={user.picture} width={20} height={20} />
             Sign out
           </InnerButton>
         </Button>
+        )
       }
       {!user && <Button {...props} onClick={onLogin}>Sign in</Button>}
       <LoginModal />

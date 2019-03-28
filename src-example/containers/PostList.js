@@ -21,7 +21,8 @@ class PostListContainer extends Component {
   }
 
   componentWillMount() {
-    this.props.readList()
+    const { readList } = this.props
+    readList()
   }
 
   render() {

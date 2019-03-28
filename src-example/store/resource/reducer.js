@@ -2,7 +2,9 @@
 // https://github.com/diegohaz/arc/wiki/Example-redux-modules#resource
 import findIndex from 'lodash/findIndex'
 import get from 'lodash/get'
-import { initialState, getResourceState, getList, getDetail } from './selectors'
+import {
+  initialState, getResourceState, getList, getDetail,
+} from './selectors'
 import {
   RESOURCE_CREATE_SUCCESS,
   RESOURCE_LIST_READ_REQUEST,

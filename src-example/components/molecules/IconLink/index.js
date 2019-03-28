@@ -30,6 +30,7 @@ const Text = styled.span`
 const IconLink = ({
   height, icon, right, responsive, children, ...props
 }) => {
+  const { palette, reverse } = props
   const iconElement = (
     <StyledIcon
       height={height}
@@ -37,8 +38,8 @@ const IconLink = ({
       hasText={!!children}
       right={right}
       responsive={responsive}
-      palette={props.palette}
-      reverse={props.reverse}
+      palette={palette}
+      reverse={reverse}
     />
   )
   return (

@@ -1,7 +1,9 @@
 // https://github.com/diegohaz/arc/wiki/Sagas
 // https://github.com/diegohaz/arc/wiki/Example-redux-modules#social
 import loadScript from 'simple-load-script'
-import { take, put, call, fork } from 'redux-saga/effects'
+import {
+  take, put, call, fork,
+} from 'redux-saga/effects'
 import * as actions from './actions'
 
 export const promises = {
@@ -29,8 +31,7 @@ export const appendFbRoot = () => {
   document.body.appendChild(fbRoot)
 }
 
-export const serviceAction = (suffix, service) => ({ type, payload }) =>
-  type === `SOCIAL_LOGIN_${suffix}` && payload && payload.service === service
+export const serviceAction = (suffix, service) => ({ type, payload }) => type === `SOCIAL_LOGIN_${suffix}` && payload && payload.service === service
 
 export function* loginFacebook({ scope = 'public_profile', fields = 'id,name', ...options } = {}) {
   const request = {
