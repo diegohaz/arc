@@ -1,8 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import TableCell from '.'
+import TableCell, { Td, Th } from '.'
 
-const wrap = (props = {}) => shallow(<TableCell {...props} />).dive()
+const wrap = (props = {}) => shallow(<TableCell {...props} />)
 
 it('renders children when passed in', () => {
   const wrapper = wrap({ children: 'test' })
@@ -16,10 +16,10 @@ it('renders props when passed in', () => {
 
 it('renders td by default', () => {
   const wrapper = wrap()
-  expect(wrapper.find('td')).toHaveLength(1)
+  expect(wrapper.find(Td)).toHaveLength(1)
 })
 
 it('renders th when prop heading is passed in', () => {
   const wrapper = wrap({ heading: true })
-  expect(wrapper.find('th')).toHaveLength(1)
+  expect(wrapper.find(Th)).toHaveLength(1)
 })

@@ -11,8 +11,8 @@ const styles = css`
   color: ${palette({ grayscale: 0 }, 1)};
 `
 
-const Ol = styled.ol`${styles}`
-const Ul = styled.ul`${styles}`
+export const Ol = styled.ol`${styles}`
+export const Ul = styled.ul`${styles}`
 
 const List = ({ ordered, children, ...props }) => {
   return React.createElement(ordered ? Ol : Ul, props, children)

@@ -1,20 +1,27 @@
+import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { palette } from 'styled-theme'
 
-const HorizontalRule = styled.hr`
+const StyledHorizontalRule = styled.hr`
   border: 1px solid ${palette(1, true)};
   border-width: 0 0 1px;
   width: 100%;
 `
 
-HorizontalRule.propTypes = {
+StyledHorizontalRule.propTypes = {
   palette: PropTypes.string,
   reverse: PropTypes.bool,
 }
 
-HorizontalRule.defaultProps = {
+StyledHorizontalRule.defaultProps = {
   palette: 'grayscale',
+}
+
+const HorizontalRule = ({ ...props }) => {
+  return (
+    <StyledHorizontalRule {...props} />
+  )
 }
 
 export default HorizontalRule

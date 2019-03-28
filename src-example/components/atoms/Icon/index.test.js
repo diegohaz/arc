@@ -3,7 +3,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import Icon from '.'
 
-const wrap = (props = {}) => shallow(<Icon icon="github" {...props} />).dive()
+const wrap = (props = {}) => shallow(<Icon icon="github" {...props} />)
 
 it('renders with different combination of props', () => {
   wrap({ height: 40 })

@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import Blockquote from '.'
 
-const wrap = (props = {}) => shallow(<Blockquote {...props} />).dive()
+const wrap = (props = {}) => shallow(<Blockquote {...props} />)
 
 it('renders children when passed in', () => {
   const wrapper = wrap({ children: 'test' })

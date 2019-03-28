@@ -7,8 +7,8 @@ const styles = css`
   padding: 0.75em;
 `
 
-const Th = styled.th`${styles}`
-const Td = styled.td`${styles}`
+export const Th = styled.th`${styles}`
+export const Td = styled.td`${styles}`
 
 const TableCell = ({ heading, children, ...props }) => {
   return React.createElement(heading ? Th : Td, props, children)
