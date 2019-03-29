@@ -7,6 +7,7 @@ import { ThemeProvider } from 'styled-components'
 import configureStore from 'store/configure'
 import api from 'services/api'
 import theme from 'components/themes/default'
+import { withInfo } from '@storybook/addon-info'
 
 const store = configureStore({}, { api: api.create() })
 const req = require.context('components', true, /.stories.js$/)
@@ -22,5 +23,10 @@ addDecorator(story => (
     </BrowserRouter>
   </Provider>
 ))
+addDecorator(
+  withInfo({
+    header: false, // Global configuration for the info addon across all of your stories.
+  })
+)
 
 configure(loadStories, module)
