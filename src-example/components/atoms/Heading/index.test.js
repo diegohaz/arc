@@ -1,6 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import Heading, { StyledHeading } from '.'
+import Heading, { StyledHeading, fontSize } from '.'
 
 const wrap = (props = {}) => shallow(<Heading {...props} />)
 
@@ -22,4 +22,8 @@ it('renders h1 by default', () => {
 it('renders hLevel when level is passed in', () => {
   const wrapper = wrap({ level: 2 })
   expect(wrapper.find(StyledHeading).find({ level: 2 })).toHaveLength(1)
+})
+
+it('execute fontSizeFunction', () => {
+  expect(fontSize({ level: 1 })).toBe('1.75rem')
 })

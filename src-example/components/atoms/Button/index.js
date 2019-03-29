@@ -5,14 +5,14 @@ import { Link } from 'react-router-dom'
 import { font, palette } from 'styled-theme'
 import { ifProp } from 'styled-tools'
 
-const fontSize = ({ height }) => `${height / 40}rem`
+export const fontSize = ({ height }) => `${height / 40}rem`
 
-const backgroundColor = ({ transparent, disabled }) => transparent ? 'transparent' : palette(disabled ? 2 : 1)
+export const backgroundColor = ({ transparent, disabled }) => transparent ? 'transparent' : palette(disabled ? 2 : 1)
 
-const foregroundColor = ({ transparent, disabled }) => transparent ? palette(disabled ? 2 : 1) : palette('grayscale', 0, true)
+export const foregroundColor = ({ transparent, disabled }) => transparent ? palette(disabled ? 2 : 1) : palette('grayscale', 0, true)
 
-const hoverBackgroundColor = ({ disabled, transparent }) => !disabled && !transparent && palette(0)
-const hoverForegroundColor = ({ disabled, transparent }) => !disabled && transparent && palette(0)
+export const hoverBackgroundColor = ({ disabled, transparent }) => !disabled && !transparent && palette(0)
+export const hoverForegroundColor = ({ disabled, transparent }) => !disabled && transparent && palette(0)
 
 const styles = css`
   display: inline-flex;

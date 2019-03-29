@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import { palette } from 'styled-theme'
 import { ifProp } from 'styled-tools'
 
-const fontSize = ({ width, height }) => {
+export const fontSize = ({ width, height }) => {
   const size = width || height
   return size ? `${size / 16}rem` : '1.25em'
 }

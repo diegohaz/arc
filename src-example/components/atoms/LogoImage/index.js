@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { palette } from 'styled-theme'
 import { ifProp } from 'styled-tools'
 
-const height = ({ height }) => height
+export const height = ({ height }) => height
 
 const Wrapper = styled.span`
   color: ${ifProp('palette', palette({ grayscale: 0 }, 1), 'currentcolor')};

@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components'
 import { font, palette } from 'styled-theme'
 import { ifProp } from 'styled-tools'
 
-const fontSize = ({ height }) => `${height / 35.5555555556}rem`
+export const fontSize = ({ height }) => `${height / 35}rem`
 
 const styles = css`
   font-family: ${font('primary')};

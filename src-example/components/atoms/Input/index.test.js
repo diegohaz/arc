@@ -1,6 +1,11 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import Input, { StyledTextarea, StyledSelect, StyledInput } from '.'
+import Input, {
+  StyledTextarea,
+  StyledSelect,
+  StyledInput,
+  fontSize,
+} from '.'
 
 const wrap = (props = {}) => shallow(<Input {...props} />)
 
@@ -22,4 +27,8 @@ it('renders select when type is select', () => {
 it('renders textarea when type is textarea', () => {
   const wrapper = wrap({ type: 'textarea' })
   expect(wrapper.find(StyledTextarea)).toHaveLength(1)
+})
+
+it('execute fontSizeFunction', () => {
+  expect(fontSize({ height: 35 })).toBe('1rem')
 })
