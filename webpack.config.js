@@ -2,7 +2,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 const WebpackMd5Hash = require('webpack-md5-hash')
 const HappyPack = require('happypack')
 const mergeWith = require('lodash/mergeWith')
@@ -94,7 +94,12 @@ const wpConfig = {
     },
     optimization: {
       minimizer: [
-        new UglifyJsPlugin(),
+        new TerserPlugin({
+          cache: false,
+          parallel: true,
+          sourceMap: true,
+          extractComments: true,
+        }),
       ],
       splitChunks: {
         name: 'vendor',
