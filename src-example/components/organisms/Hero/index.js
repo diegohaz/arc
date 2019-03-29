@@ -26,6 +26,7 @@ const Wrapper = styled(Block)`
 
 const InnerWrapper = styled.div`
   display: flex;
+  padding-top: 20px
   width: 100%;
   max-width: ${size('maxWidth')};
   @media screen and (max-width: 640px) {
@@ -37,7 +38,9 @@ const Section = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem;
+  padding: 0,5rem;
+  padding-right: 10px;
+  padding-bottom: 45px
   box-sizing: border-box;
   &:first-child {
     flex: none;
