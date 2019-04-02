@@ -16,7 +16,7 @@ const validate = createValidator({
 
 export default reduxForm({
   form: 'PostForm',
-  destroyOnUnmount: false,
+  destroyOnUnmount: true,
   onSubmit,
   validate,
 })(PostFormContainer)
