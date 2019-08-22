@@ -9,7 +9,7 @@ import sagas from './sagas'
 
 const devtools = isDev && isBrowser
   ? composeWithDevTools({})
-  : () => fn => fn
+  : () => (fn) => fn
 
 const configureStore = (initialState, services = {}) => {
   const sagaMiddleware = createSagaMiddleware()

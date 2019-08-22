@@ -8,18 +8,6 @@ import { resourceListReadRequest } from 'store/actions'
 import { PostList } from 'components'
 
 class PostListContainer extends Component {
-  static propTypes = {
-    list: PropTypes.arrayOf(PropTypes.object).isRequired,
-    limit: PropTypes.number,
-    loading: PropTypes.bool,
-    failed: PropTypes.bool,
-    readList: PropTypes.func.isRequired,
-  }
-
-  static defaultProps = {
-    limit: 20,
-  }
-
   componentWillMount() {
     const { readList } = this.props
     readList()
@@ -31,7 +19,7 @@ class PostListContainer extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   list: fromEntities.getList(state, 'posts', fromResource.getList(state, 'posts')),
   loading: pending(state, 'postsListRead'),
   failed: rejected(state, 'postsListRead'),
@@ -40,5 +28,18 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = (dispatch, { limit }) => ({
   readList: () => dispatch(resourceListReadRequest('posts', { _limit: limit })),
 })
+
+
+PostListContainer.propTypes = {
+  list: PropTypes.arrayOf(PropTypes.object).isRequired,
+  limit: PropTypes.number,
+  loading: PropTypes.bool,
+  failed: PropTypes.bool,
+  readList: PropTypes.func.isRequired,
+}
+
+PostListContainer.defaultProps = {
+  limit: 20,
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostListContainer)

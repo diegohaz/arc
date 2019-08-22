@@ -36,8 +36,7 @@ const Field = ({
         <Error id={`${name}Error`} role="alert" palette="danger">
           {error}
         </Error>
-        )
-      }
+        )}
     </Wrapper>
   )
 }

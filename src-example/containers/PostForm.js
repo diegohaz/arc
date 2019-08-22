@@ -5,7 +5,7 @@ import { createValidator, required } from 'services/validation'
 
 import { PostForm } from 'components'
 
-const PostFormContainer = props => <PostForm {...props} />
+const PostFormContainer = (props) => <PostForm {...props} />
 
 const onSubmit = (data, dispatch) => dispatch(resourceCreateRequest('posts', data))
 

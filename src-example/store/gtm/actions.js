@@ -4,7 +4,7 @@ export const GTM = 'GTM'
 export const GTM_START = 'GTM_START'
 export const GTM_FAILURE = 'GTM_FAILURE'
 
-export const gtmStart = gtmId => ({
+export const gtmStart = (gtmId) => ({
   type: GTM_START,
   payload: {
     gtmId,

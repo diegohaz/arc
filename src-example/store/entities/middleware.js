@@ -4,7 +4,7 @@ import { env } from 'config'
 import { entitiesReceive } from './actions'
 import * as schemas from './schemas'
 
-const middleware = store => next => (action) => {
+const middleware = (store) => (next) => (action) => {
   const { payload, meta } = action
 
   if (meta && meta.entities) {

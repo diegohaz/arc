@@ -13,10 +13,10 @@ const store = configureStore({}, { api: api.create() })
 const req = require.context('components', true, /.stories.js$/)
 
 function loadStories() {
-  req.keys().forEach(filename => req(filename))
+  req.keys().forEach((filename) => req(filename))
 }
 
-addDecorator(story => (
+addDecorator((story) => (
   <Provider store={store}>
     <BrowserRouter>
       <ThemeProvider theme={theme}>{story()}</ThemeProvider>

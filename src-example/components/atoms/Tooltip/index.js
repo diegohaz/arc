@@ -15,7 +15,7 @@ export const opposite = ({ position }) => opposites[position]
 
 export const perpendicular = ({ position }) => position === 'left' || position === 'right' ? 'top' : 'left'
 
-export const perpendicularOpposite = props => opposites[perpendicular(props)]
+export const perpendicularOpposite = (props) => opposites[perpendicular(props)]
 
 export const perpendicularAxis = ({ position }) => position === 'left' || position === 'right' ? 'Y' : 'X'
 

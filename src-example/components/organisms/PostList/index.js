@@ -17,7 +17,7 @@ const PostList = ({
     <Wrapper {...props}>
       {!list.length && loading && <div>Loading</div>}
       {failed && <div>Something went wrong while fetching posts. Please, try again later.</div>}
-      {list.map(post => <Post key={post.id} {...post} />)}
+      {list.map((post) => <Post key={post.id} {...post} />)}
     </Wrapper>
   )
 }

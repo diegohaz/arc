@@ -12,7 +12,7 @@ export const checkStatus = (response) => {
   throw error
 }
 
-export const parseJSON = response => response.json()
+export const parseJSON = (response) => response.json()
 
 export const parseSettings = ({
   method = 'get', data, locale, ...otherSettings

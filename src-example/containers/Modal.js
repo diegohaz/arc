@@ -6,7 +6,7 @@ import { modalHide } from 'store/actions'
 
 import { Modal } from 'components'
 
-const ModalContainer = props => <Modal {...props} />
+const ModalContainer = (props) => <Modal {...props} />
 
 ModalContainer.propTypes = {
   name: PropTypes.string.isRequired,

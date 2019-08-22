@@ -8,7 +8,7 @@ import sagas from './sagas'
 
 const devtools = isDev && isBrowser && window.devToolsExtension
   ? window.devToolsExtension
-  : () => fn => fn
+  : () => (fn) => fn
 
 const configureStore = (initialState, services = {}) => {
   const sagaMiddleware = createSagaMiddleware()

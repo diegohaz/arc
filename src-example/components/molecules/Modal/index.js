@@ -108,8 +108,7 @@ const Modal = ({
           <StyledHeading level={2} reverse={reverse}>{title}</StyledHeading>
           {closeable && <IconButton icon="close" onClick={onClose} palette="white" reverse />}
         </Header>
-        )
-      }
+        )}
       <Content>
         {children}
       </Content>
