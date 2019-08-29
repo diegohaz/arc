@@ -1,8 +1,13 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import Input from '.'
+import Input, {
+  StyledTextarea,
+  StyledSelect,
+  StyledInput,
+  fontSize,
+} from '.'
 
-const wrap = (props = {}) => shallow(<Input {...props} />).dive()
+const wrap = (props = {}) => shallow(<Input {...props} />)
 
 it('renders props when passed in', () => {
   const wrapper = wrap({ type: 'text' })
@@ -11,15 +16,19 @@ it('renders props when passed in', () => {
 
 it('renders input by default', () => {
   const wrapper = wrap()
-  expect(wrapper.find('input')).toHaveLength(1)
+  expect(wrapper.find(StyledInput)).toHaveLength(1)
 })
 
 it('renders select when type is select', () => {
   const wrapper = wrap({ type: 'select' })
-  expect(wrapper.find('select')).toHaveLength(1)
+  expect(wrapper.find(StyledSelect)).toHaveLength(1)
 })
 
 it('renders textarea when type is textarea', () => {
   const wrapper = wrap({ type: 'textarea' })
-  expect(wrapper.find('textarea')).toHaveLength(1)
+  expect(wrapper.find(StyledTextarea)).toHaveLength(1)
+})
+
+it('execute fontSizeFunction', () => {
+  expect(fontSize({ height: 35 })).toBe('1rem')
 })

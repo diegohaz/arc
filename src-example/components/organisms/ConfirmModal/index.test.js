@@ -5,8 +5,7 @@ import ConfirmModal from '.'
 const onConfirm = jest.fn()
 const onClose = jest.fn()
 
-const wrap = (props = {}) =>
-  shallow(<ConfirmModal {...{ onConfirm, onClose }} name="confirm" {...props} />)
+const wrap = (props = {}) => shallow(<ConfirmModal {...{ onConfirm, onClose }} name="confirm" {...props} />)
 
 it('renders children when passed in', () => {
   const wrapper = wrap({ children: 'test' })

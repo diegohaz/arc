@@ -1,14 +1,27 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import Tooltip, { opposite, perpendicular, perpendicularAxis } from '.'
+import Tooltip, {
+  opposite,
+  perpendicular,
+  perpendicularAxis,
+  StyledTooltip,
+  perpendicularOpposite,
+  align,
+  borderPosition,
+} from '.'
 
 const wrap = (props = {}) => (
-  shallow(<Tooltip data-title="title" {...props}><span>test</span></Tooltip>).dive()
+  shallow(<Tooltip data-title="title" {...props}><span>test</span></Tooltip>)
 )
 
 it('renders with different props', () => {
   wrap({ align: 'start' })
-  wrap({ align: 'end' })
+  wrap({ align: 'center' })
+})
+
+it('renders inner component with props', () => {
+  const wrapper = wrap({ align: 'center' })
+  expect(wrapper.find(StyledTooltip)).toHaveLength(1)
 })
 
 it('renders children when passed in', () => {
@@ -38,6 +51,13 @@ test('opposite', () => {
   expect(opposite({ position: 'left' })).toBe('right')
 })
 
+test('perpendicularOpposite', () => {
+  expect(perpendicularOpposite({ position: 'top' })).toBe('right')
+  expect(perpendicularOpposite({ position: 'right' })).toBe('bottom')
+  expect(perpendicularOpposite({ position: 'bottom' })).toBe('right')
+  expect(perpendicularOpposite({ position: 'left' })).toBe('bottom')
+})
+
 test('perpendicular', () => {
   expect(perpendicular({ position: 'top' })).toBe('left')
   expect(perpendicular({ position: 'right' })).toBe('top')
@@ -50,4 +70,20 @@ test('perpendicularAxis', () => {
   expect(perpendicularAxis({ position: 'right' })).toBe('Y')
   expect(perpendicularAxis({ position: 'bottom' })).toBe('X')
   expect(perpendicularAxis({ position: 'left' })).toBe('Y')
+})
+
+test('Align Function with start', () => {
+  expect(align({ align: 'start' })).toBeInstanceOf(Array)
+})
+
+test('Align Function with center', () => {
+  expect(align({ align: 'center' })).toBeInstanceOf(Array)
+})
+
+test('Align Function with end', () => {
+  expect(align({ align: 'end' })).toBeInstanceOf(Array)
+})
+
+test('borderPosition Function', () => {
+  expect(borderPosition({ position: 'top' })).toBe('top')
 })

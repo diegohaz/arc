@@ -1,5 +1,6 @@
 // https://github.com/diegohaz/arc/wiki/Testing-redux-modules
 // https://github.com/diegohaz/arc/wiki/Example-redux-modules#resource
+import 'babel-polyfill'
 import { createStore, applyMiddleware } from 'redux'
 import createSagaMiddleware from 'redux-saga'
 import delay from 'delay'

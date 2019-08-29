@@ -1,11 +1,13 @@
 // https://github.com/diegohaz/arc/wiki/Sagas
 // https://github.com/diegohaz/arc/wiki/Example-redux-modules#social
 import loadScript from 'simple-load-script'
-import { take, put, call, fork } from 'redux-saga/effects'
+import {
+  take, put, call, fork,
+} from 'redux-saga/effects'
 import * as actions from './actions'
 
 export const promises = {
-  fbLogin: options => new Promise((resolve, reject) => {
+  fbLogin: (options) => new Promise((resolve, reject) => {
     window.FB.login((response) => {
       // istanbul ignore else
       if (response.authResponse) {
@@ -15,8 +17,8 @@ export const promises = {
       }
     }, options)
   }),
-  fbGetMe: options => new Promise((resolve) => {
-    window.FB.api('/me', options, me => resolve(me))
+  fbGetMe: (options) => new Promise((resolve) => {
+    window.FB.api('/me', options, (me) => resolve(me))
   }),
   loadGoogleAuth2: () => new Promise((resolve) => {
     window.gapi.load('auth2', resolve)
@@ -29,8 +31,7 @@ export const appendFbRoot = () => {
   document.body.appendChild(fbRoot)
 }
 
-export const serviceAction = (suffix, service) => ({ type, payload }) =>
-  type === `SOCIAL_LOGIN_${suffix}` && payload && payload.service === service
+export const serviceAction = (suffix, service) => ({ type, payload }) => type === `SOCIAL_LOGIN_${suffix}` && payload && payload.service === service
 
 export function* loginFacebook({ scope = 'public_profile', fields = 'id,name', ...options } = {}) {
   const request = {

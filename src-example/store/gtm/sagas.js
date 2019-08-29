@@ -1,7 +1,9 @@
 // https://github.com/diegohaz/arc/wiki/Sagas
 // https://github.com/diegohaz/arc/wiki/Example-redux-modules#gtm
 import loadScript from 'simple-load-script'
-import { all, take, put, call, fork } from 'redux-saga/effects'
+import {
+  all, take, put, call, fork,
+} from 'redux-saga/effects'
 import * as actions from './actions'
 
 export function* track(type, { gtm } = {}) {

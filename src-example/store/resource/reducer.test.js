@@ -13,7 +13,7 @@ const action = (type, payload, meta) => ({
   },
 })
 
-const state = resourceState => ({
+const state = (resourceState) => ({
   ...initialState,
   resources: {
     ...getResourceState(initialState, 'resources'),

@@ -1,5 +1,6 @@
 // https://github.com/diegohaz/arc/wiki/Sagas#unit-testing-sagas
 // https://github.com/diegohaz/arc/wiki/Example-redux-modules#social
+import 'babel-polyfill'
 import loadScript from 'simple-load-script'
 import { put, call, fork } from 'redux-saga/effects'
 import * as actions from './actions'
@@ -19,7 +20,7 @@ window.gapi = {
 
 window.FB = {
   init: () => {},
-  login: cb => cb({ authResponse: 'foo' }),
+  login: (cb) => cb({ authResponse: 'foo' }),
   api: (endpoint, options, cb) => cb(),
 }
 

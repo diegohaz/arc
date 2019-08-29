@@ -6,12 +6,9 @@ import { gtmStart } from 'store/actions'
 import { gtmId } from 'config'
 
 class GoogleTagManager extends Component {
-  static propTypes = {
-    startGTM: PropTypes.func.isRequired,
-  }
-
   componentDidMount() {
-    this.props.startGTM()
+    const { startGTM } = this.props
+    startGTM()
   }
 
   render() {
@@ -27,8 +24,11 @@ class GoogleTagManager extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   startGTM: () => dispatch(gtmStart(gtmId)),
 })
 
+GoogleTagManager.propTypes = {
+  startGTM: PropTypes.func.isRequired,
+}
 export default connect(null, mapDispatchToProps)(GoogleTagManager)

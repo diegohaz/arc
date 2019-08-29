@@ -1,5 +1,4 @@
 // https://github.com/diegohaz/arc/wiki/API-service
-import 'whatwg-fetch'
 import { stringify } from 'query-string'
 import merge from 'lodash/merge'
 import { apiUrl } from 'config'
@@ -13,7 +12,7 @@ export const checkStatus = (response) => {
   throw error
 }
 
-export const parseJSON = response => response.json()
+export const parseJSON = (response) => response.json()
 
 export const parseSettings = ({
   method = 'get', data, locale, ...otherSettings
@@ -39,16 +38,13 @@ export const parseEndpoint = (endpoint, params) => {
 
 const api = {}
 
-api.request = (endpoint, { params, ...settings } = {}) =>
-  fetch(parseEndpoint(endpoint, params), parseSettings(settings))
-    .then(checkStatus)
-    .then(parseJSON)
-
-;['delete', 'get'].forEach((method) => {
+api.request = (endpoint, { params, ...settings } = {}) => fetch(parseEndpoint(endpoint, params), parseSettings(settings))
+  .then(checkStatus)
+  .then(parseJSON);
+['delete', 'get'].forEach((method) => {
   api[method] = (endpoint, settings) => api.request(endpoint, { method, ...settings })
-})
-
-;['post', 'put', 'patch'].forEach((method) => {
+});
+['post', 'put', 'patch'].forEach((method) => {
   api[method] = (endpoint, data, settings) => api.request(endpoint, { method, data, ...settings })
 })
 

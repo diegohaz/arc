@@ -17,7 +17,7 @@ it('returns the initial state', () => {
 })
 
 it('handles actions', () => {
-  const createAction = payload => ({
+  const createAction = (payload) => ({
     type: ENTITIES_RECEIVE,
     payload,
   })

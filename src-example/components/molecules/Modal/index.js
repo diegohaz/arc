@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled, { css, injectGlobal } from 'styled-components'
+import styled, { css, createGlobalStyle } from 'styled-components'
 import ReactModal from 'react-modal'
 import { font, palette } from 'styled-theme'
 
 import { Heading, IconButton } from 'components'
 
-injectGlobal`
+const GlobalStyle = createGlobalStyle`
   body.ReactModal__Body--open {
     overflow: hidden;
   }
@@ -94,6 +94,7 @@ const Modal = ({
   children, title, closeable, onClose, ...props
 }) => {
   const hasHeader = title || closeable
+  const { reverse } = props
   return (
     <StyledReactModal
       contentLabel={title || 'Modal'}
@@ -101,15 +102,17 @@ const Modal = ({
       hasHeader={hasHeader}
       {...props}
     >
-      {hasHeader &&
+      {hasHeader
+        && (
         <Header>
-          <StyledHeading level={2} reverse={props.reverse}>{title}</StyledHeading>
+          <StyledHeading level={2} reverse={reverse}>{title}</StyledHeading>
           {closeable && <IconButton icon="close" onClick={onClose} palette="white" reverse />}
         </Header>
-      }
+        )}
       <Content>
         {children}
       </Content>
+      <GlobalStyle />
     </StyledReactModal>
   )
 }

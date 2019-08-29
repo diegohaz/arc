@@ -1,8 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import Link from '.'
+import Link, { StyledNavLink, Anchor } from '.'
 
-const wrap = (props = {}) => shallow(<Link {...props} />).dive()
+const wrap = (props = {}) => shallow(<Link {...props} />)
 
 it('renders children when passed in', () => {
   const wrapper = wrap({ children: 'test' })
@@ -16,10 +16,10 @@ it('renders props when passed in', () => {
 
 it('renders anchor by default', () => {
   const wrapper = wrap()
-  expect(wrapper.find('a')).toHaveLength(1)
+  expect(wrapper.find(Anchor)).toHaveLength(1)
 })
 
 it('renders Link when prop to is passed in', () => {
-  const wrapper = wrap({ to: 'test' }).dive()
-  expect(wrapper.find('NavLink')).toHaveLength(1)
+  const wrapper = wrap({ to: 'test' })
+  expect(wrapper.find(StyledNavLink)).toHaveLength(1)
 })

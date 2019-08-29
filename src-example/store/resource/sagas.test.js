@@ -1,5 +1,6 @@
 // https://github.com/diegohaz/arc/wiki/Sagas#unit-testing-sagas
 // https://github.com/diegohaz/arc/wiki/Example-redux-modules#resource
+import 'babel-polyfill'
 import { put, call, takeEvery } from 'redux-saga/effects'
 import * as actions from './actions'
 import saga, * as sagas from './sagas'

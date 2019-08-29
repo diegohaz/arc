@@ -1,19 +1,26 @@
+import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { font, palette } from 'styled-theme'
 
-const Atom = styled.span`
+const StyledAtom = styled.span`
   font-family: ${font('primary')};
   color: ${palette({ grayscale: 0 }, 1)};
 `
 
-Atom.propTypes = {
+StyledAtom.propTypes = {
   palette: PropTypes.string,
   reverse: PropTypes.bool,
 }
 
-Atom.defaultProps = {
+StyledAtom.defaultProps = {
   palette: 'grayscale',
+}
+
+const Atom = ({ ...props }) => {
+  return (
+    <StyledAtom {...props} />
+  )
 }
 
 export default Atom

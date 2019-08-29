@@ -12,7 +12,7 @@ const fadeIn = keyframes`
 `
 
 const StyledButton = styled(Button)`
-  max-width: ${props => props.hasText && !props.collapsed ? '100%' : '2.5em'};
+  max-width: ${(props) => props.hasText && !props.collapsed ? '100%' : '2.5em'};
   width: ${ifProp('hasText', 'auto', '2.5em')};
   padding: ${ifProp('hasText', '0 0.4375em', 0)};
   flex: 0 0 2.5em;
@@ -68,9 +68,8 @@ const IconButton = ({ icon, children, ...props }) => {
     <StyledButton hasText={!!children} {...props}>
       <Wrapper>
         {right || iconElement}
-        {children &&
-          <Text className="text" responsive={responsive} breakpoint={breakpoint}>{children}</Text>
-        }
+        {children
+          && <Text className="text" responsive={responsive} breakpoint={breakpoint}>{children}</Text>}
         {right && iconElement}
       </Wrapper>
     </StyledButton>

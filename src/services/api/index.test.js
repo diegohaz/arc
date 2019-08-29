@@ -1,4 +1,7 @@
-import api, { checkStatus, parseJSON, parseSettings, parseEndpoint } from '.'
+import 'babel-polyfill'
+import api, {
+  checkStatus, parseJSON, parseSettings, parseEndpoint,
+} from '.'
 
 jest.mock('config', () => ({
   apiUrl: 'https://api.foo.com',
@@ -83,9 +86,8 @@ describe('api', () => {
         method: 'get',
       })
     )
-  })
-
-  ;['delete', 'get', 'post', 'put', 'patch'].forEach((method) => {
+  });
+  ['delete', 'get', 'post', 'put', 'patch'].forEach((method) => {
     test(method, async () => {
       expect(global.fetch).not.toBeCalled()
       await api[method]('/foo')
@@ -139,9 +141,8 @@ describe('api', () => {
         foo: 'bar',
         baz: 'qux',
       })
-    })
-
-    ;['get', 'delete'].forEach((method) => {
+    });
+    ['get', 'delete'].forEach((method) => {
       test(method, () => {
         const obj = api.create({ foo: 'bar' })
         expect(api.request).not.toBeCalled()
@@ -152,9 +153,8 @@ describe('api', () => {
           method,
         })
       })
-    })
-
-    ;['post', 'put', 'patch'].forEach((method) => {
+    });
+    ['post', 'put', 'patch'].forEach((method) => {
       test(method, () => {
         const obj = api.create({ foo: 'bar' })
         expect(api.request).not.toBeCalled()

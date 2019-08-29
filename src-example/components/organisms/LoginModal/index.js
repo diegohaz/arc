@@ -12,18 +12,11 @@ const Wrapper = styled.div`
     margin-bottom: 0.5rem;
   }
 `
-
 class LoginModal extends Component {
-  static propTypes = {
-    user: PropTypes.object,
-    onFacebookLogin: PropTypes.func.isRequired,
-    onGoogleLogin: PropTypes.func.isRequired,
-    onClose: PropTypes.func.isRequired,
-  }
-
   componentWillReceiveProps(nextProps) {
-    if (!this.props.user && nextProps.user) {
-      this.props.onClose()
+    const { user, onClose } = this.props
+    if (!user && nextProps.user) {
+      onClose()
     }
   }
 
@@ -38,6 +31,13 @@ class LoginModal extends Component {
       </Modal>
     )
   }
+}
+
+LoginModal.propTypes = {
+  user: PropTypes.object,
+  onFacebookLogin: PropTypes.func.isRequired,
+  onGoogleLogin: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
 }
 
 export default LoginModal

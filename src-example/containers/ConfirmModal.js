@@ -5,7 +5,7 @@ import { modalHide } from 'store/actions'
 
 import { ConfirmModal } from 'components'
 
-const ConfirmModalContainer = props => <ConfirmModal {...props} />
+const ConfirmModalContainer = (props) => <ConfirmModal {...props} />
 
 ConfirmModalContainer.propTypes = {
   name: PropTypes.string.isRequired,

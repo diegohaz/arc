@@ -1,14 +1,15 @@
 // https://github.com/diegohaz/arc/wiki/Redux-modules
 import { createStore, applyMiddleware, compose } from 'redux'
+import { composeWithDevTools } from 'redux-devtools-extension'
 import createSagaMiddleware from 'redux-saga'
 import { isDev, isBrowser } from 'config'
 import middlewares from './middlewares'
 import reducer from './reducer'
 import sagas from './sagas'
 
-const devtools = isDev && isBrowser && window.devToolsExtension
-  ? window.devToolsExtension
-  : () => fn => fn
+const devtools = isDev && isBrowser
+  ? composeWithDevTools({})
+  : () => (fn) => fn
 
 const configureStore = (initialState, services = {}) => {
   const sagaMiddleware = createSagaMiddleware()

@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import { palette } from 'styled-theme'
 import { ifProp } from 'styled-tools'
 
-const fontSize = ({ width, height }) => {
+export const fontSize = ({ width, height }) => {
   const size = width || height
   return size ? `${size / 16}rem` : '1.25em'
 }
@@ -29,7 +29,7 @@ const Wrapper = styled.span`
 
 const Icon = ({ icon, ...props }) => {
   const svg = require(`!raw-loader!./icons/${icon}.svg`)
-  return <Wrapper {...props} dangerouslySetInnerHTML={{ __html: svg }} />
+  return <Wrapper {...props} dangerouslySetInnerHTML={{ __html: svg.default }} />
 }
 
 Icon.propTypes = {
