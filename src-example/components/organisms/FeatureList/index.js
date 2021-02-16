@@ -39,9 +39,9 @@ const FeatureList = ({ ...props }) => (
   <div {...props}>
     <StyledHeading>Basic stack</StyledHeading>
     <Description>
-      It includes everything necessary to build a tipical web app with focus on productivity and developer experience.
+      It includes everything necessary to build a typical web app with focus on productivity and developer experience.
       <br />
-      <Link href="https://github.com/diegohaz/arc/wiki/Workflow">Learn more about the recomended workflow</Link>
+      <Link href="https://github.com/diegohaz/arc/wiki/Workflow">Learn more about the recommended workflow</Link>
     </Description>
     <Grid>
       <StyledFeature
